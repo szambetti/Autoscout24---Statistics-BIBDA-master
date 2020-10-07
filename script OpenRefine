@@ -452,5 +452,74 @@ Script dettaglio
     "op": "core/column-removal",
     "columnName": "_ - _ - Emissioni di CO22",
     "description": "Remove column _ - _ - Emissioni di CO22"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Prossima nuova",
+    "description": "Remove column _ - _ - Prossima nuova"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Prossima revisione",
+    "description": "Remove column _ - _ - Prossima revisione"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Ultimo cambio cinghia distribuzione",
+    "description": "Remove column _ - _ - Ultimo cambio cinghia distribuzione"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Bollino polveri",
+    "description": "Remove column _ - _ - Bollino polveri"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Disponibilità",
+    "description": "Remove column _ - _ - Disponibilità"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Numero della chiave",
+    "description": "Remove column _ - _ - Numero della chiave"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Altre fonti di energia",
+    "description": "Remove column _ - _ - Altre fonti di energia"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Per neopatentati",
+    "newColumnName": "Per neopatentati",
+    "description": "Rename column _ - _ - Per neopatentati to Per neopatentati"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Tagliandi certificati",
+    "newColumnName": "Tagliandi certificati",
+    "description": "Rename column _ - _ - Tagliandi certificati to Tagliandi certificati"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Versione per nazione",
+    "newColumnName": "Versione per nazione",
+    "description": "Rename column _ - _ - Versione per nazione to Versione per nazione"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Versione per nazione",
+    "description": "Remove column Versione per nazione"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Ultimo tagliando",
+    "newColumnName": "Ultimo tagliando",
+    "description": "Rename column _ - _ - Ultimo tagliando to Ultimo tagliando"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Ultimo tagliando",
+    "description": "Remove column Ultimo tagliando"
   }
 ]
