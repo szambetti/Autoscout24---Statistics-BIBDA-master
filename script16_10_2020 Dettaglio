@@ -208,6 +208,12 @@
     "newColumnName": "Emissioni di CO23",
     "description": "Rename column _ - _ - Emissioni di CO23 to Emissioni di CO23"
   },
+    {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Emissioni di CO2",
+    "newColumnName": "Emissioni di CO2",
+    "description": "Rename column _ - _ - Emissioni di CO2 to Emissioni di CO2"
+  }
   {
     "op": "core/column-rename",
     "oldColumnName": "_ - _ - Versione per nazione",
@@ -225,5 +231,66 @@
     "oldColumnName": "_ - _ - Per neopatentati",
     "newColumnName": "Per neopatentati",
     "description": "Rename column _ - _ - Per neopatentati to Per neopatentati"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Versione per nazione",
+    "description": "Remove column Versione per nazione"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Consumo di energia elettrica3",
+    "description": "Remove column _ - _ - Consumo di energia elettrica3"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Consumo di energia elettrica2",
+    "description": "Remove column _ - _ - Consumo di energia elettrica2"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Consumo carburante:3",
+    "newColumnName": "Consumo carburante",
+    "description": "Rename column Consumo carburante:3 to Consumo carburante"
+  },
+    {
+    "op": "core/column-removal",
+    "columnName": "Emissioni di CO23",
+    "description": "Remove column Emissioni di CO23"
+  },
+   {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Disponibilità",
+    "description": "Remove column _ - _ - Disponibilità"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Disponibile da",
+    "description": "Remove column _ - _ - Disponibile da"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Altre fonti di energia",
+    "description": "Remove column _ - _ - Altre fonti di energia"
+  },
+    {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Ultimo tagliando",
+    "description": "Remove column _ - _ - Ultimo tagliando"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Prossima revisione",
+    "description": "Remove column _ - _ - Prossima revisione"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Prossima nuova",
+    "description": "Remove column _ - _ - Prossima nuova"
+  },
+    {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Ultimo cambio cinghia distribuzione",
+    "description": "Remove column _ - _ - Ultimo cambio cinghia distribuzione"
   }
 ]
