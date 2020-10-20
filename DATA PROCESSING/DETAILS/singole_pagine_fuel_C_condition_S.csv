@@ -1,0 +1,1034 @@
+Carrozzeria,id_annuncio,Alimentazione,Tipo di veicolo,Anno,Marca,Modello,Porte,Posti a sedere,Tipo di cambio,Tipo di unita,Colore esterno,Emissioni di CO2,Rivestimenti,Colore originale,Tipo di vernice,Marce,Peso a vuoto,Usato Garantito,Per neopatentati,Proprietari,Cilindrata,Classe emissioni,Cilindri,Veicolo per non fumatori,Consumo carburante,Tagliandi certificati
+City car,97c61f78-b85f-45fe-813f-1cdbb92d15f3,Metano,KM0,2020,Lancia,Ypsilon,5,,Manuale,anteriore,Grigio,,"Stoffa, Nero",Grigio pietra,,5,1090,23 mese,,1,2,Euro 6,2,Sì,,Sì
+City car,e997e23e-2c07-4725-9520-cd9ef1006e22,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Argento,81 g CO2/km (comb.),"Altro, Altro",,,5,,Sì,,,999,,3,,"6,8 kg/100 km (comb.)
+8,5 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+City car,0eeb2eef-03ba-41b9-9fd5-168ed2695259,Metano,KM0,2020,Lancia,Ypsilon,5,,Manuale,anteriore,Grigio,,"Stoffa, Nero",Grigio pietra,,5,1090,23 mese,,1,2,Euro 6,2,Sì,,Sì
+City car,53933f7f-1eb8-49a3-ad55-ea55ba327a8e,Metano,KM0,2019,Volkswagen,Caddy,4,2,Automatico,anteriore,Bianco,135 g CO2/km (comb.),,Bianco pastello,Base,,,,,,1395,Euro 6,,,"5,9 kg/100 km (comb.)
+7,2 kg/100 km (urbano)
+5,1 kg/100 km (extraurbano)",
+City car,f5a5850e-ce96-424b-96ab-de646d0b206f,Metano,KM0,2019,Volkswagen,Caddy,4,2,Manuale,anteriore,Bianco,135 g CO2/km (comb.),,Bianco pastello,Base,,,,,,1395,Euro 6,,,"5,9 kg/100 km (comb.)
+7,2 kg/100 km (urbano)
+5,1 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,e96983af-75f5-454f-a83b-cdcb82430b6b,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),"Stoffa, Altro",Bianco Candy Nero Midnight,,6,1305,48 mese,Sì,1,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,48ab6b27-5c57-464f-a860-87687100412b,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Grigio,96 g CO2/km (comb.),"Stoffa, Nero",Grigio,Metallizzato,6,1308,48 mese,Sì,,999,Euro 6d-TEMP,3,,"4,7 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,0d1c8f8c-3e34-4f05-9fc2-cd6f85b86716,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Grigio,96 g CO2/km (comb.),"Stoffa, Nero",Grigio,Metallizzato,6,1308,48 mese,Sì,,999,Euro 6d-TEMP,3,,"4,7 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,1f136505-1e0b-4bab-98e8-bc81c6c2cc99,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Bianco,96 g CO2/km (comb.),,Bianco,Base,6,1308,24 mese,Sì,,999,Euro 6,3,,"4,7 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,97cfb86f-af36-4101-9c51-467efe772af5,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Nero,93 g CO2/km (comb.),Nero,Bianco Candy Nero Midnight,,6,1305,12 mese,Sì,,999,Euro 6,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,3ce7f849-b1b9-4071-93a8-c2f03c5c790c,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Bianco,115 g CO2/km (comb.),"Stoffa, Nero",Bianco,Base,6,1308,48 mese,Sì,,999,Euro 6d-TEMP,3,,"4,7 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,63fcf631-6c0a-4d67-974e-56d1e23c2411,Metano,KM0,2020,Skoda,Kamiq,5,5,Manuale,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",Grigio quarzo,Metallizzato,6,,,,1,999,,3,,"8,2 kg/100 km (comb.)
+8,6 kg/100 km (urbano)
+6,5 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,af37fb54-e9ff-446a-92b4-3ff625831666,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Blu/Azzurro,115 g CO2/km (comb.),"Stoffa, Nero",Blu,Metallizzato,6,1308,48 mese,Sì,,999,Euro 6d-TEMP,3,,"4,7 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,a7f50364-47e4-4f1d-9747-13b10a3f966a,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Blu/Azzurro,115 g CO2/km (comb.),"Stoffa, Nero",Blu,Metallizzato,6,1308,48 mese,Sì,,999,Euro 6d-TEMP,3,,"4,7 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,ad131209-e561-4caf-87a9-3f549b865482,Metano,KM0,2020,Skoda,Kamiq,5,5,Manuale,anteriore,Grigio,95 g CO2/km (comb.),,Grigio Quarzo Metallizzato,Metallizzato,,,24 mese,,1,999,Euro 6,3,,"5,3 kg/100 km (comb.)",
+SUV/Fuoristrada/Pick-up,f3d03aa4-7210-488b-b1f5-d5a297ac46b1,Metano,KM0,2020,Skoda,Kamiq,5,5,Manuale,anteriore,Bianco,95 g CO2/km (comb.),,Bianco Luna Metallizzato,Metallizzato,,,24 mese,,1,999,Euro 6,3,,"5,3 kg/100 km (comb.)",
+SUV/Fuoristrada/Pick-up,36a4a39a-ce4c-4cc1-a64c-07f0889f9fdc,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Nero,96 g CO2/km (comb.),"Stoffa, Altro",,,6,,48 mese,,,999,,3,Sì,"7,2 kg/100 km (comb.)
+8,6 kg/100 km (urbano)
+6,5 kg/100 km (extraurbano)",Sì
+SUV/Fuoristrada/Pick-up,510409f7-a8b5-4565-8a36-1e2d38313f34,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Bianco,96 g CO2/km (comb.),"Stoffa, Altro",,,6,,48 mese,,1,999,,3,Sì,"7,2 kg/100 km (comb.)
+8,6 kg/100 km (urbano)
+6,5 kg/100 km (extraurbano)",Sì
+SUV/Fuoristrada/Pick-up,2b3d7010-4bee-4e62-b02e-85462e359dea,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Nero,98 g CO2/km (comb.),"Stoffa, Grigio",,,6,1308,,Sì,1,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,06205e9f-f41e-4510-b8a2-f41ad6738440,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Nero,96 g CO2/km (comb.),"Stoffa, Altro",Nero metallizzato,Metallizzato,6,,24 mese,,,999,,3,Sì,"7,2 kg/100 km (comb.)
+8,6 kg/100 km (urbano)
+6,5 kg/100 km (extraurbano)",Sì
+SUV/Fuoristrada/Pick-up,c8eb2d4b-e43c-4339-af1c-455a839ad87f,Metano,KM0,2020,Skoda,Kamiq,5,5,Manuale,anteriore,Bianco,95 g CO2/km (comb.),"Altro, Altro",GRIGIO QUARZO METALLIZZATO,Metallizzato,,,,,,999,,,,,
+Station wagon,a005f74e-6350-4058-9591-1f1946557d2c,Metano,KM0,2019,Skoda,Octavia,5,5,Manuale,anteriore,Bianco,,,Bianco,Metallizzato,7,,,,,1498,,4,,,
+Station wagon,2056d63f-3da3-4719-b845-39659e271c3e,Metano,KM0,2020,Skoda,Octavia,5,,Automatico,anteriore,Bianco,,"Stoffa, Nero",Bianco Luna,,7,1314,24 mese,,1,4,Euro 6,4,Sì,,Sì
+Station wagon,6f2411e1-ac61-45d5-8c15-337af9a1e7ee,Metano,KM0,2020,Skoda,Octavia,5,,Automatico,anteriore,Nero,,"Stoffa, Nero",Nero Tulipano,,7,1314,24 mese,,1,4,Euro 6,4,Sì,,Sì
+Station wagon,232832a4-5a40-4155-9c85-36cfa7ba5220,Metano,KM0,2020,Skoda,Octavia,5,,Automatico,anteriore,Bianco,,"Stoffa, Nero",Bianco Luna,,7,1314,24 mese,,1,4,Euro 6,4,Sì,,Sì
+Station wagon,bdfc91b3-3034-49a4-870d-a4e851a87a2a,Metano,KM0,2020,Skoda,Octavia,5,,Automatico,anteriore,Bianco,,"Stoffa, Nero",Bianco Luna,,7,1314,24 mese,,1,4,Euro 6,4,Sì,,Sì
+Station wagon,8ba5c9a6-0540-450e-af25-d72cebc8f4ba,Metano,KM0,2020,Skoda,Octavia,5,,Automatico,anteriore,Nero,,"Stoffa, Nero",Nero Tulipano,,7,1314,24 mese,,1,4,Euro 6,4,Sì,,Sì
+Station wagon,a972316b-f5b2-4033-b524-2d28867fdda0,Metano,KM0,2020,Skoda,Octavia,5,,Automatico,anteriore,Bianco,,"Stoffa, Nero",Bianco Luna,,7,1314,24 mese,,1,4,Euro 6,4,Sì,,Sì
+Station wagon,29f01565-691b-4e37-8b04-210c89284e9d,Metano,KM0,2020,Volkswagen,Golf Variant,5,5,Automatico,anteriore,Bianco,99 g CO2/km (comb.),"Stoffa, Grigio",,,7,1415,24 mese,,1,1498,Euro 6d-TEMP,4,,"5,5 kg/100 km (comb.)
+7,1 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,2448d2e2-0976-4cb6-bae1-9909551e15ec,Metano,KM0,2020,Skoda,Octavia,5,5,Semiautomatico,anteriore,Grigio,96 g CO2/km (comb.),"Stoffa, Nero",,Metallizzato,7,1389,,,1,1498,Euro 6d-TEMP,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,9e4b850b-b1da-40d0-8a49-a25a055639d8,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Nero,98 g CO2/km (comb.),Nero,Nero,Metallizzato,6,,,,,999,Euro 6,3,,"3,1 kg/100 km (comb.)
+3,7 kg/100 km (urbano)
+2,8 kg/100 km (extraurbano)",
+Station wagon,cf50e2c3-7705-4d9b-ac87-75dfad1d6b1f,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Argento,116 g CO2/km (comb.),"Stoffa, Grigio",Argento,Metallizzato,7,1389,24 mese,,1,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,7 kg/100 km (urbano)
+4,7 kg/100 km (extraurbano)",
+Station wagon,5d2ad512-7088-4643-aa44-045a8f0203d2,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Grigio,,"Stoffa, Nero",Grigio Monsone,,7,1590,22 mese,,1,4,Euro 6,4,Sì,,Sì
+Station wagon,cf6f3de9-be9b-4f14-ae50-7d2686649946,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Grigio,,"Stoffa, Nero",Grigio Monsone,,7,1590,22 mese,,1,4,Euro 6,4,Sì,,Sì
+Station wagon,847334db-727b-4739-b811-0e48c4ef95f1,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Bianco,105 g CO2/km (comb.),"Altro, Altro",Bianco ghiaccio,Metallizzato,7,,Sì,,,1984,,4,,"8,9 kg/100 km (comb.)
+11,5 kg/100 km (urbano)
+7,1 kg/100 km (extraurbano)",
+Station wagon,2d32b0de-f0e8-4770-b71b-fd49898645ad,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Grigio,105 g CO2/km (comb.),"Stoffa, Grigio",Grigio Sterling,Metallizzato,7,1665,,,,1984,Euro 6,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,f7dc6baf-aed8-4506-8ccf-5631553e2920,Metano,KM0,2019,SEAT,Arona,5,5,Manuale,anteriore,Argento,98 g CO2/km (comb.),,Argento,,6,,,,,999,Euro 6,3,,"3,1 kg/100 km (comb.)
+3,7 kg/100 km (urbano)
+2,8 kg/100 km (extraurbano)",
+Station wagon,907abe55-e1b7-4c8e-9ae7-b02f97cff1ab,Metano,KM0,2020,SEAT,Leon,5,5,,anteriore,Nero,108 g CO2/km (comb.),,Nero,,7,,,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,2 kg/100 km (extraurbano)",
+Station wagon,0d1cb3df-ca0e-4dc2-9348-0ceec8bf846f,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Blu/Azzurro,105 g CO2/km (comb.),,Blu,Metallizzato,7,,Sì,,,1984,Euro 6,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,247d838c-2cca-4a56-a968-2c94e0bdfb20,Metano,KM0,2020,Volkswagen,Golf Variant,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),,Argento,,7,,,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Station wagon,aa63b1b7-9c78-4577-826a-e4daee702cf9,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Blu/Azzurro,105 g CO2/km (comb.),,Blu,Metallizzato,7,,,,,1984,Euro 6,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,ab614420-bf3a-4cfe-91b3-a746e32aa974,Metano,KM0,2019,SEAT,Leon,5,5,Manuale,anteriore,Bianco,116 g CO2/km (comb.),,Bianco,Base,6,1342,,,,1498,Euro 6,4,,"5,1 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,3 kg/100 km (extraurbano)",
+Station wagon,a4115eb3-0f6f-4a30-9083-d5e0bf9f36f3,Metano,KM0,2020,Skoda,Octavia,5,,Automatico,anteriore,Argento,,"Stoffa, Nero",Argento Brillante,,7,1314,24 mese,,1,4,Euro 6,4,Sì,,Sì
+Station wagon,2728c34e-14a5-4570-bc3a-a621e9caedf1,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Argento,105 g CO2/km (comb.),,Argento Fioretto Metallizzato,Metallizzato,7,,48 mese,,1,1984,Euro 6,4,,,
+Station wagon,d85b23c8-2d72-4565-be55-02b00d858523,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Bianco,105 g CO2/km (comb.),"Altro, Altro",,,7,,Sì,,,1984,,4,,"8,9 kg/100 km (comb.)
+11,5 kg/100 km (urbano)
+7,1 kg/100 km (extraurbano)",
+Station wagon,a40ad212-279c-4567-abc6-572301b13733,Metano,KM0,2020,Skoda,Octavia,,,Manuale,anteriore,Argento,,,ARGENTO,,,,12 mese,,,1498,,,,,
+Station wagon,1370b0d3-54ad-4c16-8fb6-0146eaaf2cd5,Metano,KM0,2020,Skoda,Octavia,5,,Automatico,anteriore,Argento,,"Stoffa, Nero",Argento Brillante,,7,1314,22 mese,,1,4,Euro 6,4,Sì,,Sì
+Station wagon,da2cf922-c2f5-4dae-88ed-4c623c6814e6,Metano,KM0,2020,Skoda,Octavia,5,,Automatico,anteriore,Argento,,"Stoffa, Nero",Argento Brillante,,7,1314,22 mese,,1,4,Euro 6,4,Sì,,Sì
+Station wagon,4ef801cf-2814-49aa-b32e-a47435303751,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,,Blu/Azzurro,96 g CO2/km (comb.),,BLU MEDITERRANEO,,7,1389,,,1,1498,Euro 6d-TEMP,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,926e008d-b9d9-49cc-9cdf-b0b8c205a26b,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Bianco,116 g CO2/km (comb.),"Stoffa, Nero",,Metallizzato,7,,48 mese,,,1498,Euro 6d-TEMP,4,,"8,3 kg/100 km (comb.)
+10,3 kg/100 km (urbano)
+7,2 kg/100 km (extraurbano)",
+Station wagon,3157eda1-ce3f-449a-8a55-bd5e405e4bb1,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Bianco,105 g CO2/km (comb.),,Bianco,Metallizzato,7,,Sì,,,1984,Euro 6,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,c9f6c220-4f7f-46b3-8479-2c1742dd13cd,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Nero,105 g CO2/km (comb.),,Nero,Metallizzato,7,,Sì,,,1984,Euro 6,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,d2d31852-6d1a-4ff1-99fe-39e8e6f20f1e,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Bianco,105 g CO2/km (comb.),,Bianco,Metallizzato,7,,,,,1984,Euro 6,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,b086e38a-df3b-415d-89f5-d8df4a318aff,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Nero,105 g CO2/km (comb.),,Nero,Metallizzato,7,,,,,1984,Euro 6,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,a41b4ec9-1967-40c1-a750-7cb7378686ea,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Grigio,105 g CO2/km (comb.),"Stoffa, Altro",GRIGIO QUANTUM,Metallizzato,7,1665,24 mese,,1,1984,Euro 6d-TEMP,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Station wagon,e321cdbd-ea26-4703-9d02-9ed913731149,Metano,KM0,2019,SEAT,Leon,5,5,Manuale,anteriore,Bianco,116 g CO2/km (comb.),"Stoffa, Altro",,,6,,,,1,1498,,4,,"7,8 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,6 kg/100 km (extraurbano)",
+Station wagon,d859c289-085e-41a7-89aa-22b7db492e6f,Metano,KM0,2020,Volkswagen,Golf,5,5,,anteriore,Grigio,99 g CO2/km (comb.),"Stoffa, Nero",Grigio scuro,,7,,,,,1498,Euro 6,4,,"5,5 kg/100 km (comb.)
+7,1 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,2efb9a2c-c0ca-4bdd-b873-714508893042,Metano,KM0,2020,Skoda,Octavia,5,5,,anteriore,Argento,96 g CO2/km (comb.),"Stoffa, Nero",Argento,,7,,,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,176afff9-26ed-4838-9458-f40df5cd3824,Metano,KM0,2020,Skoda,Octavia,5,5,,anteriore,Nero,96 g CO2/km (comb.),"Stoffa, Nero",Nero,,7,,,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,18263598-0083-4954-8886-6543f9c27d2b,Metano,KM0,2019,SEAT,Leon,5,5,Manuale,anteriore,Bianco,116 g CO2/km (comb.),,Bianco,Base,6,1342,,,,1498,Euro 6,4,,"5,1 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,3 kg/100 km (extraurbano)",
+Station wagon,32bfbb8c-f1bd-434c-a523-77e50a6ca5ac,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Argento,96 g CO2/km (comb.),Nero,Argento Brillante Metallizzato,Metallizzato,7,,12 mese,,1,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,b7a149e8-850f-4677-8ef8-797dfe80f720,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Argento,96 g CO2/km (comb.),Nero,Argento Brillante Metallizzato,Metallizzato,7,,24 mese,,1,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,c00d5e79-8dba-445b-bdb7-dc3498220aa4,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Bianco,96 g CO2/km (comb.),Nero,Bianco Luna Metallizzato,Metallizzato,7,,24 mese,,1,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,8a138bc6-69b4-400d-8a2d-7f29ddeff4a8,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Argento,96 g CO2/km (comb.),Nero,Argento Brillante Metallizzato,Metallizzato,7,,24 mese,,1,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,3cac646f-3677-48a1-9607-53ffb7b18f50,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Argento,96 g CO2/km (comb.),Nero,Argento Brillante Metallizzato,Metallizzato,7,,24 mese,,1,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,e9f05e61-c0bc-4b78-9d0b-4bec36ff0ffc,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Nero,96 g CO2/km (comb.),Nero,Nero Tulipano Perlato,,7,,24 mese,,1,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,7cc6ab3c-abbd-4d81-8b97-3a2140623821,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Argento,96 g CO2/km (comb.),Nero,Argento Brillante Metallizzato,Metallizzato,7,,24 mese,,1,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,84e78955-dfd1-431c-92f3-96da11ef42f6,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Nero,96 g CO2/km (comb.),Nero,Nero Tulipano Perlato,,7,,24 mese,,1,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,e1f232c6-f699-4e3e-8b82-c79daaf2c794,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Bianco,96 g CO2/km (comb.),Nero,Bianco Magnolia,,7,,24 mese,,1,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,bdf152a8-687d-40bf-800b-367a84f51c83,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Bianco,96 g CO2/km (comb.),Nero,Bianco Magnolia,,7,,24 mese,,1,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,82599d89-d4dc-4b1d-bed3-6b92a496cfae,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Nero,96 g CO2/km (comb.),Nero,Nero Tulipano Perlato,,7,,24 mese,,1,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,d51d7181-7d6a-4a56-8e97-be1c8bf4129c,Metano,KM0,2020,Skoda,Octavia,5,5,Semiautomatico,anteriore,Argento,96 g CO2/km (comb.),"Stoffa, Nero",,Metallizzato,7,1389,,,1,1498,Euro 6d-TEMP,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,94bfaa22-4ca8-488a-9b78-6f46ebf3ebe4,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Nero,96 g CO2/km (comb.),Nero,Nero,,7,,,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,32ed7e39-6e2b-4c48-9388-ed3c1d48bed8,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Grigio,105 g CO2/km (comb.),"Stoffa, Nero",Grigio,Metallizzato,7,1665,24 mese,,1,1984,Euro 6,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,d76a20b5-92ab-48e2-ae3f-acb35bd5676e,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Altro, Altro",Indium grey,Metallizzato,7,,,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Station wagon,1d424963-4bf8-4c11-806a-4d68718c3d15,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Argento,105 g CO2/km (comb.),"Stoffa, Nero",Argento fioretto,Metallizzato,7,,,,1,1984,,4,,"8,9 kg/100 km (comb.)
+11,5 kg/100 km (urbano)
+7,1 kg/100 km (extraurbano)",
+Station wagon,883b0a8a-4222-4b4e-b8e6-d9d3e7976ef4,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Bianco,105 g CO2/km (comb.),"Altro, Nero",Bianco ghiacciaio,Metallizzato,7,,,,1,1984,,4,,"8,9 kg/100 km (comb.)
+11,5 kg/100 km (urbano)
+7,1 kg/100 km (extraurbano)",
+Station wagon,c535e033-59b0-40da-aa25-e6de3e852688,Metano,KM0,2019,Audi,A4,5,5,Automatico,anteriore,Grigio,105 g CO2/km (comb.),"Stoffa, Nero",Grigio scuro,Metallizzato,7,,,,,1984,Euro 6,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Station wagon,d4b5423e-e030-4e1c-b643-a648fe257143,Metano,KM0,2020,Volkswagen,Golf Variant,5,5,,anteriore,Argento,99 g CO2/km (comb.),"Stoffa, Nero",Tungsten Silver Met,Metallizzato,7,,,,1,1498,Euro 6,4,,"5,5 kg/100 km (comb.)
+7,1 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,f37dcdc4-e5de-4ae2-8234-3cd1b9fa15a2,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Nero,105 g CO2/km (comb.),"Stoffa, Nero",Nero Mythos Met,Metallizzato,7,,,,1,1984,Euro 6,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,422c0679-970e-487f-a28c-525e36de9ea1,Metano,KM0,2020,Skoda,Octavia,5,,Automatico,anteriore,Argento,,"Stoffa, Nero",Argento Brillante,,7,1314,24 mese,,1,4,Euro 6,4,Sì,,Sì
+Station wagon,b0460613-c970-4829-87a9-7ba0cdbf8676,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Grigio,105 g CO2/km (comb.),,Grigio,Metallizzato,7,1665,,,,1984,Euro 6,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,714784b7-bfcb-40e3-b01b-2dc912af75fe,Metano,KM0,2020,Skoda,Octavia,5,5,,anteriore,Bianco,96 g CO2/km (comb.),Nero,Bianco,,7,,,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,effb30ad-6ee7-4fd9-8590-3b3db371e700,Metano,KM0,2020,Skoda,Octavia,5,5,,anteriore,Grigio,96 g CO2/km (comb.),Nero,Grigio,,7,,,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,21228929-df2d-4dc5-990f-f42ae2bd0acc,Metano,KM0,2020,Skoda,Octavia,5,5,,anteriore,Nero,96 g CO2/km (comb.),Nero,Nero,,7,,,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,549ebf73-a30d-45a2-bcf0-f8264e42e1f7,Metano,KM0,2020,Skoda,Octavia,5,5,,anteriore,Bianco,96 g CO2/km (comb.),,Bianco,Base,7,,24 mese,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,be8454f2-c69b-476b-9cc7-5320a9169d16,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Nero,105 g CO2/km (comb.),"Altro, Nero",Nero argento,,7,,,,,1984,Euro 6,4,,"6,2 kg/100 km (comb.)
+7,7 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,b75954f2-bba3-4122-8851-ea965591bc7e,Metano,KM0,2019,Audi,A4,5,5,Automatico,anteriore,Grigio,105 g CO2/km (comb.),"Pelle parziale, Grigio",Grigio,Metallizzato,7,1665,,,,1984,Euro 6d-TEMP,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,bc619227-334b-4286-9d98-0e034ce2203d,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Grigio,96 g CO2/km (comb.),"Stoffa, Nero",,Metallizzato,7,1389,,,1,1498,Euro 6d-TEMP,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,b184eb4f-3ff9-4623-a492-b47a4a95fa66,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Bianco,116 g CO2/km (comb.),,Bianco,Base,7,1389,Sì,,,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,7 kg/100 km (urbano)
+4,7 kg/100 km (extraurbano)",
+Station wagon,24b6d8ee-53a5-4344-8742-d354a0aaa562,Metano,KM0,2020,Audi,A4,5,5,Automatico,,Grigio,105 g CO2/km (comb.),"Stoffa, Nero",monsone,Metallizzato,7,1665,,,1,1984,Euro 6d-TEMP,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Station wagon,87dce983-f49f-40b0-b2b4-cedafb5bc932,Metano,KM0,2020,Audi,A4,5,5,Automatico,,Grigio,105 g CO2/km (comb.),"Stoffa, Nero",monsone,Metallizzato,7,1665,,,1,1984,Euro 6d-TEMP,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Station wagon,63b333c4-1a75-49f2-a072-9de1f6c85e2c,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Bianco,96 g CO2/km (comb.),"Stoffa, Nero",,,7,1389,,,1,1498,Euro 6d-TEMP,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,e8d07510-a33f-4782-9020-7ea071cb1c9b,Metano,KM0,2020,SEAT,Leon,5,5,Automatico,anteriore,Nero,116 g CO2/km (comb.),"Stoffa, Grigio",NERO MIDNIGHT,Metallizzato,7,1374,48 mese,,,1498,Euro 6d-TEMP,4,Sì,"5,1 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,3 kg/100 km (extraurbano)",
+Station wagon,6e6d6a89-a55d-4485-a36c-2b2b748ab1f7,Metano,KM0,2019,SEAT,Leon,5,5,Manuale,anteriore,Bianco,116 g CO2/km (comb.),,Bianco,Base,6,1342,,,,1498,Euro 6,4,,"5,1 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,3 kg/100 km (extraurbano)",
+Station wagon,991bb318-b9e1-4805-80ef-58b3f8e871f3,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Nero,105 g CO2/km (comb.),"Stoffa, Grigio",Nero,Metallizzato,7,1665,Sì,,,1984,Euro 6,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,edae318d-df66-440c-9040-4f36fd0a7f86,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Grigio,105 g CO2/km (comb.),Stoffa,Grigio scuro,Metallizzato,7,1665,Sì,,,1984,Euro 6,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,c4ed15cc-6da1-40f1-b3df-bd9dcd6bf004,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Grigio,116 g CO2/km (comb.),,Grigio,Metallizzato,7,1389,Sì,,,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,7 kg/100 km (urbano)
+4,7 kg/100 km (extraurbano)",Sì
+Station wagon,c7dee0a7-9754-471d-9c07-653d43597f81,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Nero,116 g CO2/km (comb.),,Nero,Metallizzato,7,1389,Sì,,,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,7 kg/100 km (urbano)
+4,7 kg/100 km (extraurbano)",Sì
+Station wagon,be813019-e780-4ae1-a705-e7acc6e4d90d,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Bianco,116 g CO2/km (comb.),,Bianco,Metallizzato,7,1389,Sì,,,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,7 kg/100 km (urbano)
+4,7 kg/100 km (extraurbano)",Sì
+Station wagon,13bd366c-b894-47d9-a22b-af2c6747c570,Metano,KM0,2020,SEAT,Leon,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),"Stoffa, Grigio",BIANCO NEVADA,Metallizzato,6,1342,48 mese,,,1498,Euro 6d-TEMP,4,Sì,"5,1 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,3 kg/100 km (extraurbano)",
+Station wagon,536e3992-17bc-4219-b736-c1f146fec617,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Grigio,99 g CO2/km (comb.),"Stoffa, Nero",GRIGIO MONSONE,Metallizzato,7,1230,24 mese,,1,1984,Euro 6d-TEMP,4,,"3,8 kg/100 km (comb.)
+4,6 kg/100 km (urbano)
+3,3 kg/100 km (extraurbano)",
+Station wagon,8bdaa303-7f85-4551-9963-90cddba494f6,Metano,KM0,2019,SEAT,Leon,5,5,Manuale,anteriore,Bianco,116 g CO2/km (comb.),,Bianco,Base,6,1342,,,,1498,Euro 6,4,,"5,1 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,3 kg/100 km (extraurbano)",
+Station wagon,3c00209c-3062-4005-a80c-59e87682e435,Metano,KM0,2019,Audi,A4,5,5,Automatico,anteriore,Grigio,105 g CO2/km (comb.),"Altro, Altro",,,7,,Sì,,,1984,,4,,"8,9 kg/100 km (comb.)
+11,5 kg/100 km (urbano)
+7,1 kg/100 km (extraurbano)",
+Station wagon,6b029300-cace-4c86-954c-d2aad4108e03,Metano,KM0,2019,Skoda,Octavia,5,5,Automatico,anteriore,Argento,116 g CO2/km (comb.),,Argento,Metallizzato,7,1389,,,,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,7 kg/100 km (urbano)
+4,7 kg/100 km (extraurbano)",
+Station wagon,b96230ee-a08e-449d-966e-932b3bc8a117,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Argento,116 g CO2/km (comb.),,Vari colori,Metallizzato,7,1389,,,,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,7 kg/100 km (urbano)
+4,7 kg/100 km (extraurbano)",
+Station wagon,1a62d0e5-e991-43de-926c-e4f9bdd97291,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Grigio,116 g CO2/km (comb.),"Stoffa, Nero",Grigio,Metallizzato,7,1389,,,,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,7 kg/100 km (urbano)
+4,7 kg/100 km (extraurbano)",
+Station wagon,90dff2ab-6176-4095-bee8-d609fde08fd8,Metano,KM0,2019,Audi,A4,5,5,Automatico,anteriore,Grigio,105 g CO2/km (comb.),Stoffa,Grigio Monsone,Metallizzato,7,1665,Sì,,,1984,Euro 6d-TEMP,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,005b8137-7e39-4aa1-890a-a1a1cf56c387,Metano,KM0,2019,Audi,A4,5,5,Automatico,anteriore,Grigio,105 g CO2/km (comb.),Stoffa,grigio Manhattan,Metallizzato,7,1665,Sì,,,1984,Euro 6d-TEMP,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,5104419b-c587-47a1-9dff-0a019144718c,Metano,KM0,2019,Audi,A4,5,5,Automatico,anteriore,Grigio,105 g CO2/km (comb.),Stoffa,grigio Manhattan,Metallizzato,7,1665,Sì,,,1984,Euro 6d-TEMP,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,78f83c45-6256-438e-8779-6dbafd095b99,Metano,KM0,2019,Audi,A4,5,5,Automatico,anteriore,Grigio,105 g CO2/km (comb.),Stoffa,Grigio Monsone,Metallizzato,7,1665,Sì,,,1984,Euro 6d-TEMP,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,1466f2de-042c-4ad3-90bd-dbe4920642d9,Metano,KM0,2019,Skoda,Octavia,5,5,Automatico,anteriore,Bianco,116 g CO2/km (comb.),,Bianco,Metallizzato,7,1389,24 mese,,,1498,Euro 6d-TEMP,4,Sì,"5,4 kg/100 km (comb.)
+6,7 kg/100 km (urbano)
+4,7 kg/100 km (extraurbano)",
+Station wagon,75b50665-01f8-4521-844a-e85cc70f924a,Metano,KM0,2019,Skoda,Octavia,5,5,Automatico,anteriore,Bianco,96 g CO2/km (comb.),"Stoffa, Nero",Bianco Luna,Metallizzato,7,1389,Sì,,1,1498,Euro 6d-TEMP,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,86a3f480-0250-4696-8285-2eb3addb1661,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Argento,105 g CO2/km (comb.),"Pelle totale, Nero",argento fioretto met.,Metallizzato,7,1665,Sì,,1,1984,Euro 6,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Station wagon,7f27dcc7-9ee8-4504-8c8f-02141563d222,Metano,KM0,2019,Skoda,Octavia,5,5,Automatico,anteriore,Blu/Azzurro,116 g CO2/km (comb.),"Stoffa, Altro",,Metallizzato,7,,Sì,,,1498,,4,,"8,3 kg/100 km (comb.)
+10,3 kg/100 km (urbano)
+7,2 kg/100 km (extraurbano)",
+Station wagon,5d6678f9-553b-44ff-bf95-5dd275a8b9ac,Metano,KM0,2019,Audi,A4,5,5,Automatico,anteriore,Nero,105 g CO2/km (comb.),"Stoffa, Nero",Nero,Metallizzato,7,1665,,,,1984,Euro 6,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Station wagon,b6b277f2-944a-4684-9226-7abcd38b62e6,Metano,KM0,2020,SEAT,Leon,5,5,Automatico,anteriore,Bianco,116 g CO2/km (comb.),"Stoffa, Grigio",Bianco,Base,7,1374,48 mese,,,1498,Euro 6d-TEMP,4,,"5,1 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,3 kg/100 km (extraurbano)",
+Station wagon,e0f48db0-0185-43e2-b385-5f2526d8bcab,Metano,KM0,2020,Audi,A4,5,5,Automatico,anteriore,Grigio,105 g CO2/km (comb.),"Pelle parziale, Grigio",Grigio,Metallizzato,7,1665,,,,1984,Euro 6d-TEMP,4,,"5,8 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Station wagon,2c57716a-5784-43c8-9f31-ef9160b18652,Metano,KM0,2020,Audi,A4,4,5,Automatico,,Bianco,116 g CO2/km (comb.),,BIANCO IBIS,,7,1615,,,1,1968,Euro 6,4,,"4,5 kg/100 km (comb.)
+5,3 kg/100 km (urbano)
+4 kg/100 km (extraurbano)",
+Station wagon,5227458c-a1a8-430f-b50e-51b789c718cf,Metano,KM0,2019,Opel,Astra,5,5,Manuale,,Nero,116 g CO2/km (comb.),"Stoffa, Nero",,Metallizzato,6,1350,,,1,1399,,4,,"3,8 kg/100 km (comb.)
+4,6 kg/100 km (urbano)
+3,2 kg/100 km (extraurbano)",
+Station wagon,0756d027-c4e7-49a1-84be-c44c2bb441ae,Metano,KM0,2020,SEAT,Leon,5,5,Automatico,anteriore,Bianco,116 g CO2/km (comb.),"Stoffa, Grigio",BIANCO NEVADA,Metallizzato,7,1374,48 mese,,,1498,Euro 6d,4,,"5,1 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,3 kg/100 km (extraurbano)",
+Station wagon,5edf9682-bfaa-4c72-be54-a432ddbf4731,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Rosso,111 g CO2/km (comb.),,Rosso Pastello,,5,1090,48 mese,,1,999,Euro 6,3,,"4,9 kg/100 km (comb.)
+6,1 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+Berlina,aac8e9dd-04dc-45cb-8ae9-75d982c1e84d,Metano,KM0,2020,Volkswagen,Polo,5,5,Manuale,,Bianco,91 g CO2/km (comb.),"Stoffa, Nero",White Silver Perlato,Metallizzato,6,1275,,Sì,1,999,Euro 6d-TEMP,3,,"3,3 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,26835912-2bfa-484f-b49a-9b8438cf753c,Metano,KM0,2020,Skoda,Scala,5,5,Manuale,anteriore,Argento,,"Stoffa, Nero",Argento Brillante,,6,1235,23 mese,Sì,1,3,Euro 6,3,,,Sì
+Berlina,9aafe41a-2320-41d4-9362-c0d8792ce9cc,Metano,KM0,2020,Skoda,Scala,5,5,Manuale,anteriore,Argento,,"Stoffa, Nero",Argento Brillante,,6,1235,23 mese,Sì,1,3,Euro 6,3,,,Sì
+Berlina,574aaf61-db91-4b91-b195-d1a2adf15c4d,Metano,KM0,2020,Skoda,Scala,5,5,Manuale,anteriore,Argento,,"Stoffa, Nero",Argento Brillante,,6,1235,23 mese,Sì,1,3,Euro 6,3,,,Sì
+Berlina,249b9ebf-98e2-45b7-96a7-8887cff57558,Metano,KM0,2020,Skoda,Scala,5,5,Manuale,anteriore,Argento,,"Stoffa, Nero",Argento Brillante,,6,1235,23 mese,Sì,1,3,Euro 6,3,,,Sì
+Berlina,45efa36c-5505-4e41-a27a-9fb759b5d22b,Metano,KM0,2020,SEAT,Leon,5,5,Manuale,anteriore,Nero,100 g CO2/km (comb.),Pelle totale,Nero,Metallizzato,6,,,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,2 kg/100 km (extraurbano)",
+Berlina,f986e1cd-7429-42fa-8238-aa6d2477e52e,Metano,KM0,2019,Fiat,Panda,5,5,Manuale,anteriore,Bianco,120 g CO2/km (comb.),"Stoffa, Grigio",Bianco,Base,5,980,24 mese,,1,900,Euro 6,4,,"5,2 kg/100 km (comb.)
+6,7 kg/100 km (urbano)
+4,3 kg/100 km (extraurbano)",
+Berlina,0984c26b-fdba-4497-9fcf-e9646686ea70,Metano,KM0,2020,Skoda,Scala,5,5,Manuale,anteriore,Argento,98 g CO2/km (comb.),Nero,Argento,Metallizzato,6,,,,,999,Euro 6,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+Berlina,dabcc2d1-6f8d-4bcc-ad0d-dd17764763c2,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),Stoffa,,Metallizzato,7,1370,,,1,1498,Euro 6d-TEMP,4,Sì,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",Sì
+Berlina,49e7ace0-7b99-4ab7-87af-2dc307763edf,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Altro",,,7,1370,,,1,1498,Euro 6d-TEMP,4,Sì,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",Sì
+Berlina,e4f16d46-e792-4f73-888d-6322c5f25d09,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),,Bianco,Base,7,1370,24 mese,,,1498,Euro 6d-TEMP,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,c6e7c5b3-5014-4435-8ec4-dcde5dc42fc5,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Altro, Altro",,,7,,Sì,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,6d171990-0b9b-49c4-baad-62f1ca049870,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Nero,81 g CO2/km (comb.),"Stoffa, Nero",Nero,Base,5,1070,24 mese,Sì,,999,Euro 6d-TEMP,3,,"4,4 kg/100 km (comb.)
+5,5 kg/100 km (urbano)
+3,8 kg/100 km (extraurbano)",
+Berlina,7d0b707a-3f35-4dc5-9173-338a438faec1,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Nero,84 g CO2/km (comb.),Nero,Nero perla,,5,1070,12 mese,Sì,,999,Euro 6,3,,"4,7 kg/100 km (comb.)
+5,9 kg/100 km (urbano)
+4 kg/100 km (extraurbano)",
+Berlina,920a40cb-1fc5-447f-b7d9-440598494e26,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),Nero,Pure White,,7,1370,12 mese,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,0fefbb33-fdf9-4567-a382-edffe831ddd1,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),Nero,Pure White,,7,1370,12 mese,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,ccc5f46d-d558-4e4a-a93c-58e3efe5a757,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Alcantara, Nero",Tungsten Silver,Metallizzato,7,1370,,,1,1498,Euro 6d-TEMP,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,046b1d73-df50-4ed3-8eff-bc46d6380604,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Stoffa, Nero",Argento riflesso,Metallizzato,7,1370,,,1,1498,Euro 6d-TEMP,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,91e8e360-a6b7-4737-8041-fdf096ab0f7e,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Altro, Nero",,Metallizzato,7,,Sì,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,0783bc3f-33a0-436a-92ce-767980ffe3e4,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),,INDIUM GREY,Metallizzato,7,1370,Sì,,,1498,Euro 6d-TEMP,4,Sì,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",Sì
+Berlina,a4e71ee7-af40-430d-88e7-1c4d1c589e15,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Grigio,97 g CO2/km (comb.),,Antracite,Metallizzato,5,,19 mese,,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,f9d3b235-0345-471a-8f07-bf2437916467,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Altro, Altro",,,7,,Sì,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,8624e326-e1ed-4b4e-863f-c2a63a18fc53,Metano,KM0,2020,Skoda,Scala,5,5,Manuale,anteriore,Argento,96 g CO2/km (comb.),"Alcantara, Altro",Argento brillante,Metallizzato,6,,48 mese,,,999,Euro 6d-TEMP,3,,"8,3 kg/100 km (comb.)
+8,6 kg/100 km (urbano)
+6,5 kg/100 km (extraurbano)",
+Berlina,9b0c4e1d-b1f5-42c9-b1e6-d498cad3cc1d,Metano,KM0,2020,Volkswagen,Golf,,,Automatico,anteriore,Argento,,,ARGENTO,,,,12 mese,,,1498,,,,,
+Berlina,f055f3e0-4910-4392-a16f-46b2f4c50025,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),Nero,Grigio Urano,,7,1370,12 mese,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,9a3de48a-76fc-4d4c-9f9e-338a6d2448e3,Metano,KM0,2020,SEAT,Leon,5,5,,anteriore,Nero,108 g CO2/km (comb.),Stoffa,Nero,Base,7,,,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,2 kg/100 km (extraurbano)",
+Berlina,4eabac9a-c12f-4f7f-bab6-78eeb9ef028c,Metano,KM0,2020,Fiat,Panda,5,4,Manuale,anteriore,Bianco,97 g CO2/km (comb.),,Bianco,,5,,21 mese,,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+7 kg/100 km (urbano)
+4,5 kg/100 km (extraurbano)",
+Berlina,341792a4-e87c-4bc3-9553-c2b4165126a7,Metano,KM0,2020,Fiat,Panda,5,5,Manuale,anteriore,Grigio,97 g CO2/km (comb.),,Grigio scuro,,5,,21 mese,,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+7 kg/100 km (urbano)
+4,5 kg/100 km (extraurbano)",
+Berlina,38aff081-fad8-4bca-a1a6-2f05346eeb9a,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Argento,81 g CO2/km (comb.),"Altro, Nero",,Metallizzato,5,,48 mese,,,999,Euro 6d-TEMP,3,,"6,8 kg/100 km (comb.)
+8,5 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+Berlina,c468a99c-74e9-4fcf-8c61-ffaa0613e1bb,Metano,KM0,2020,Audi,A5,5,5,Automatico,anteriore,Nero,104 g CO2/km (comb.),"Altro, Altro",,,7,,Sì,,,1984,,4,,"8,8 kg/100 km (comb.)
+11,5 kg/100 km (urbano)
+7,1 kg/100 km (extraurbano)",
+Berlina,d79869e6-e3b2-420a-aeba-8ef7bf3ced39,Metano,KM0,2020,Fiat,Panda,5,4,Manuale,anteriore,Grigio,97 g CO2/km (comb.),"Stoffa, Nero",Grigio,Base,5,,,,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+7 kg/100 km (urbano)
+4,5 kg/100 km (extraurbano)",
+Berlina,e1d11999-356a-4045-902c-f438f4eca71e,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),,Grigio Urano,,,,24 mese,,1,1498,Euro 6,4,Sì,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,df8bf44f-a84b-47d9-954e-8de71040a139,Metano,KM0,2020,Volkswagen,Golf,5,5,,anteriore,Grigio,95 g CO2/km (comb.),,Grigio,Base,7,,24 mese,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,a1bbb231-f997-42c3-8745-8dce23f36645,Metano,KM0,2019,Volkswagen,up!,,4,Manuale,anteriore,Bianco,,"Stoffa, Nero",bianco,,,,Sì,,1,999,,,Sì,,Sì
+Berlina,7ac063b1-c993-4883-b2eb-8580f7fe33fe,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",,Metallizzato,7,1370,22 mese,,1,1498,Euro 6d-TEMP,4,Sì,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",Sì
+Berlina,8f364e4c-ad72-446c-8ca5-ab0b2e58c4b9,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),"Stoffa, Nero",,,7,1370,22 mese,,1,1498,Euro 6d-TEMP,4,Sì,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",Sì
+Berlina,73831bad-fc81-4aef-8177-11be41aa92cb,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",Grigio scuro,Metallizzato,7,1370,24 mese,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,365d16f0-ef87-4c6b-a46a-e89d42a728c4,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",Grigio scuro,Metallizzato,7,1370,24 mese,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,cb3d690f-dee1-4ac4-9ad9-db15b5e8ff63,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),"Stoffa, Nero",,,7,1370,,,1,1498,Euro 6d-TEMP,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,55a44d47-a133-4a4d-93d6-cfc3de921299,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),Grigio,,Metallizzato,7,1370,23 mese,,1,1498,Euro 6d-TEMP,4,Sì,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",Sì
+Berlina,6953a5d3-a979-4243-bbf9-15390c07a0b6,Metano,KM0,2020,Fiat,Panda,5,4,Manuale,anteriore,Nero,95 g CO2/km (comb.),Stoffa,,,5,1155,,Sì,1,875,Euro 6d-TEMP,2,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Berlina,4ad98ba4-1c8b-4764-94e4-49caf0e0c530,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),Grigio,,Metallizzato,7,1370,23 mese,,1,1498,Euro 6d-TEMP,4,Sì,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",Sì
+Berlina,0bd66c85-c1f8-48ca-8484-356cf72dfdf9,Metano,KM0,2020,Skoda,Scala,5,5,Manuale,anteriore,Argento,96 g CO2/km (comb.),"Stoffa, Altro",,,6,,47 mese,,,999,,3,,"8,3 kg/100 km (comb.)
+8,6 kg/100 km (urbano)
+6,5 kg/100 km (extraurbano)",
+Berlina,c40f4ff5-2307-454b-ae69-0955a6f50791,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Bianco,81 g CO2/km (comb.),"Altro, Nero",,,5,,48 mese,,,999,Euro 6d-TEMP,3,,"6,8 kg/100 km (comb.)
+8,5 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+Berlina,f55bde6d-ad19-4c79-86d9-ce7b69e77e16,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Argento,81 g CO2/km (comb.),"Altro, Nero",,Metallizzato,5,,48 mese,,,999,Euro 6d-TEMP,3,,"6,8 kg/100 km (comb.)
+8,5 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+Berlina,c2f22f56-55eb-4dfc-a97e-41ab536beb2f,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Bianco,81 g CO2/km (comb.),"Altro, Nero",,,5,,48 mese,,,999,Euro 6d-TEMP,3,,"6,8 kg/100 km (comb.)
+8,5 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+Berlina,208b6c53-dc62-4b54-b382-5e7787220ea5,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Bianco,81 g CO2/km (comb.),"Altro, Nero",,,5,,48 mese,,,999,Euro 6d-TEMP,3,,"6,8 kg/100 km (comb.)
+8,5 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+Berlina,7e2a36ce-b734-4cda-b23d-b3cc9256da18,Metano,KM0,2020,Volkswagen,Golf,5,5,Semiautomatico,anteriore,Argento,95 g CO2/km (comb.),"Stoffa, Nero",,Metallizzato,7,1370,48 mese,,1,1498,Euro 6d-TEMP,4,Sì,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,4ae4ccd3-4f76-450b-aa51-7d14c34d273d,Metano,KM0,2020,Volkswagen,Golf,,5,Automatico,anteriore,Bianco,,"Stoffa, Nero",bianco,,,,Sì,,1,1498,,,Sì,,Sì
+Berlina,96b6613a-bda6-4880-ab65-a4688150c394,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Altro, Altro",,Metallizzato,7,,Sì,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,47c284b3-a668-4cfd-ad17-f33fda4493bf,Metano,KM0,2019,Lancia,Ypsilon,5,4,Manuale,,Nero,86 g CO2/km (comb.),"Alcantara, Nero",met,,5,1165,24 mese,Sì,1,875,Euro 6,2,Sì,"3,1 kg/100 km (comb.)
+4 kg/100 km (urbano)
+2,6 kg/100 km (extraurbano)",Sì
+Berlina,d99b6932-a4e2-41b2-8c51-ee358b12d87b,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Nero,81 g CO2/km (comb.),"Stoffa, Nero",Nero,Base,5,1070,24 mese,Sì,1,999,Euro 6d-TEMP,3,,"4,4 kg/100 km (comb.)
+5,5 kg/100 km (urbano)
+3,8 kg/100 km (extraurbano)",
+Berlina,00402178-95ac-4ffa-b93b-31955984a99b,Metano,KM0,2020,Volkswagen,Golf,5,5,Semiautomatico,anteriore,Argento,95 g CO2/km (comb.),"Stoffa, Nero",argento riflesso,Metallizzato,7,1370,,,1,1498,Euro 6d-TEMP,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,2863d26b-3022-47c7-9bdd-69a5d718387e,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",Grigio scuro,Base,7,1370,24 mese,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,9b3787e8-2372-448f-90cd-60a36195d2ad,Metano,KM0,2020,Fiat,Panda,5,4,Manuale,anteriore,Grigio,125 g CO2/km (comb.),,Grigio scuro,Metallizzato,5,1155,,Sì,,875,,2,,"5,5 kg/100 km (comb.)
+6,7 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,82769a56-53ae-426c-9c9d-4740168811c2,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",Grigio scuro,Base,7,1370,24 mese,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,d817be0e-3bca-4029-99ff-fced1e9d7bf2,Metano,KM0,2020,Skoda,Scala,5,5,Manuale,anteriore,Argento,115 g CO2/km (comb.),"Stoffa, Nero",Argento,Metallizzato,6,,12 mese,,,999,Euro 6,3,,"4,7 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+Berlina,8c6dd083-94f1-4707-a67e-c2d13bd3ba1b,Metano,KM0,2020,Fiat,New Panda,5,4,Manuale,anteriore,Nero,85 g CO2/km (comb.),"Stoffa, Nero",,,5,1155,,Sì,1,875,Euro 6d-TEMP,2,,"3,1 kg/100 km (comb.)
+4 kg/100 km (urbano)
+2,6 kg/100 km (extraurbano)",
+Berlina,1e0d3bb5-c976-40a2-ae47-0a8f60b0f671,Metano,KM0,2020,Audi,A5,5,5,Automatico,anteriore,Nero,103 g CO2/km (comb.),Grigio,Nero,Metallizzato,7,,,,,1984,Euro 6,4,,"5,7 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Berlina,a22ffbbd-8d07-47bb-88e6-55fb249ebcad,Metano,KM0,2020,Audi,A5,5,5,Automatico,anteriore,Nero,103 g CO2/km (comb.),Grigio,Nero,Metallizzato,7,,,,,1984,Euro 6,4,,"5,7 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Berlina,c965e3ab-9f0c-4c2c-94ed-3caf2686e7da,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Bianco,81 g CO2/km (comb.),"Altro, Nero",,,5,,48 mese,,,999,Euro 6d-TEMP,3,,"6,8 kg/100 km (comb.)
+8,5 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+Berlina,c079f76b-25a4-405b-88a7-12f4771b13da,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Nero,81 g CO2/km (comb.),"Altro, Nero",,,5,,48 mese,,,999,Euro 6d-TEMP,3,,"6,8 kg/100 km (comb.)
+8,5 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+Berlina,41d30074-f3fb-4016-a708-392f8220fa8e,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Grigio,97 g CO2/km (comb.),Verde,Grigio,,5,,,,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,a03228fd-0671-4e47-bf47-6e12b58c6d8a,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Bianco,81 g CO2/km (comb.),"Altro, Nero",,,5,,48 mese,,,999,Euro 6d-TEMP,3,,"6,8 kg/100 km (comb.)
+8,5 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+Berlina,eb1ddc38-0562-4f09-83d2-5e01167c539a,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Bianco,81 g CO2/km (comb.),"Altro, Nero",,,5,,48 mese,,,999,Euro 6d-TEMP,3,,"6,8 kg/100 km (comb.)
+8,5 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+Berlina,444f8bcb-1eeb-4802-aa25-8a98144daf2b,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,,"Alcantara, Grigio",,Metallizzato,7,,,,,1498,Euro 6,4,Sì,,
+Berlina,2bf3d7c9-83a8-413d-9b29-6f4adbb4d826,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Argento,,"Stoffa, Nero",Argento Urban,,6,1230,22 mese,Sì,1,3,Euro 6,3,Sì,,Sì
+Berlina,4ce4eff0-5615-4f93-aecf-a760a7b66627,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",Grigio scuro,Base,7,1370,24 mese,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,96410f45-afa8-41cc-ab16-0435b2c479f4,Metano,KM0,2020,SEAT,Ibiza,5,5,Manuale,anteriore,Argento,92 g CO2/km (comb.),,Vari colori,Metallizzato,6,1257,24 mese,Sì,,999,,3,,"5,8 kg/100 km (comb.)
+7,4 kg/100 km (urbano)
+4,9 kg/100 km (extraurbano)",
+Berlina,0ed6aa7f-0915-4f91-9b7d-240d0537b24d,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",Grigio scuro,Base,7,1370,24 mese,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,9af7fabf-c4a7-4c69-bca8-406743957578,Metano,KM0,2020,Audi,A5,5,5,Automatico,anteriore,Nero,104 g CO2/km (comb.),"Pelle totale, Nero",NERO MITHOS MET.,Metallizzato,7,1650,Sì,,1,1984,Euro 6,4,,"3,8 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Berlina,082d2e20-be1a-41a7-ab4a-da52dd2420ee,Metano,KM0,2019,Fiat,Panda,5,5,Manuale,anteriore,Bianco,,Grigio,,,5,,,,,875,Euro 6,2,,,
+Berlina,61f4be27-46f4-4f14-8fb0-df25a2732ec5,Metano,KM0,2020,SEAT,Ibiza,5,5,Manuale,anteriore,Nero,92 g CO2/km (comb.),"Stoffa, Grigio",Nero,Metallizzato,6,1257,48 mese,Sì,,999,Euro 6d-TEMP,3,,"5,8 kg/100 km (comb.)
+7,4 kg/100 km (urbano)
+4,9 kg/100 km (extraurbano)",
+Berlina,004e52bb-e37a-4d50-9236-8fbd627165fd,Metano,KM0,2020,Volkswagen,Golf,5,5,,anteriore,Argento,95 g CO2/km (comb.),"Stoffa, Nero",Argento,,7,,,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,71738e71-5949-4d9d-bf60-ab367ec2d0f8,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,,Argento,95 g CO2/km (comb.),"Stoffa, Nero",,,7,1370,,,1,1498,,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,7242b318-f363-45c9-bc30-12595ba1f473,Metano,KM0,2020,Skoda,Scala,5,5,Manuale,anteriore,Argento,96 g CO2/km (comb.),"Stoffa, Nero",Argento brillante,Metallizzato,6,,,,1,999,Euro 6,3,,"8,3 kg/100 km (comb.)
+8,6 kg/100 km (urbano)
+6,5 kg/100 km (extraurbano)",
+Berlina,793378cd-a041-4a85-80bb-743dd69fe962,Metano,KM0,2020,SEAT,Ibiza,5,5,Manuale,anteriore,Blu/Azzurro,92 g CO2/km (comb.),,Blu,Metallizzato,6,1257,,Sì,,999,Euro 6,3,,"5,8 kg/100 km (comb.)
+7,4 kg/100 km (urbano)
+4,9 kg/100 km (extraurbano)",
+Berlina,abfadb91-a29c-4ad9-9d93-83595d5632cd,Metano,KM0,2018,Lancia,Ypsilon,5,4,Manuale,anteriore,Beige,,Nero,,,5,,,,,875,Euro 6,2,,,
+Berlina,4a9eaed2-930b-4551-9e7e-f5e263570fdd,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),"Stoffa, Nero",,,7,1370,,,1,1498,Euro 6d-TEMP,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,e94717fd-c585-4b29-806b-bc2c03ce051f,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),Nero,Pure White,,7,1370,12 mese,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,d931ec3e-2560-472e-9bdb-c4b9ff371cae,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),Nero,Indium Grey metallizzato,Metallizzato,7,1370,12 mese,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,3e8ca7da-628e-4582-9cc3-2b2cacac9c68,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Argento,,"Stoffa, Nero",Argento Urban,,6,1230,22 mese,Sì,1,3,Euro 6,3,Sì,,Sì
+Berlina,91b61f36-dfef-46d5-875b-b46aa517b7ca,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Stoffa, Nero",,,7,1370,,,1,1498,Euro 6d-TEMP,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,ca48ea04-daba-48b7-9d81-c033c7dda47d,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Grigio,86 g CO2/km (comb.),,Antracite,Metallizzato,5,,19 mese,,,875,Euro 6,2,,"3,1 kg/100 km (comb.)
+4 kg/100 km (urbano)
+2,6 kg/100 km (extraurbano)",
+Berlina,10dd40f8-71e0-4715-9b6e-3db83d6ffea4,Metano,KM0,2020,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),"Stoffa, Nero",Bianco Nevada,Metallizzato,6,1257,48 mese,Sì,1,999,Euro 6d-TEMP,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",Sì
+Berlina,dcdd3416-9889-4658-9d1a-63ba3f6d8e51,Metano,KM0,2020,Volkswagen,Golf,5,5,Semiautomatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",,,7,1370,,,1,1498,Euro 6d-TEMP,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,ad2e1dd8-7c98-447c-86fc-a04898b735fe,Metano,KM0,2020,Volkswagen,Golf,5,5,,anteriore,Grigio,99 g CO2/km (comb.),,Grigio scuro,Metallizzato,7,,24 mese,,,1498,Euro 6,4,,"5,5 kg/100 km (comb.)
+7,1 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Berlina,0f81b18b-44b4-4704-9adc-74b3d65afeb9,Metano,KM0,2020,Volkswagen,Golf,5,5,,anteriore,Grigio,99 g CO2/km (comb.),,Grigio scuro,Metallizzato,7,,24 mese,,,1498,Euro 6,4,,"5,5 kg/100 km (comb.)
+7,1 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Berlina,d037ae18-1982-4bd4-8378-63879882a2f0,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Altro, Nero",TUGSTENON,Base,,,,,1,1498,,,,,
+Berlina,a8265b75-7245-4db5-a270-0c35b651da99,Metano,KM0,2020,SEAT,Leon,5,5,Manuale,anteriore,Nero,100 g CO2/km (comb.),"Stoffa, Nero",NERO MIDNIGHT,Metallizzato,6,1301,48 mese,,1,1498,Euro 6d-TEMP,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,2 kg/100 km (extraurbano)",
+Berlina,8f6b5b73-7880-4cb0-97f6-1d11e0e8148c,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),,Grigio scuro,Metallizzato,7,1370,,,,1498,Euro 6d-TEMP,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,7533a8d7-c519-42d2-9df6-a358344d7a46,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),,Grigio,Metallizzato,7,1370,,,,1498,Euro 6d-TEMP,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,4d4c402f-657b-4e50-a201-f065514b3371,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",Grigio scuro,Base,7,1370,,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,5817e161-a6c7-4a2f-a370-633c82ac73c5,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Bianco,97 g CO2/km (comb.),Verde,Bianco,,5,,,,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,c2a8f311-cb1a-46a7-995b-f22edb46dfbf,Metano,KM0,2020,Volkswagen,Golf,5,5,,anteriore,Grigio,99 g CO2/km (comb.),,Grigio scuro,Metallizzato,7,,24 mese,,,1498,Euro 6,4,,"5,5 kg/100 km (comb.)
+7,1 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Berlina,8efeb107-808b-49f9-aced-19cd67173171,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),"Altro, Nero",Pure white,Metallizzato,7,,Sì,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,301542d6-d039-4656-a646-d2a47eef9b18,Metano,KM0,2020,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),,Bianco Nevada,,5,,24 mese,,1,999,Euro 6,3,,"3,3 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,2f31a4b6-104a-41b5-a519-23b28d08fa3c,Metano,KM0,2020,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),,Bianco Nevada,,5,,24 mese,,1,999,Euro 6,3,,"3,3 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,e7ed27a5-b816-49a4-8bf5-9d93b25cf7ef,Metano,KM0,2020,Fiat,Panda,5,4,Manuale,anteriore,Bianco,97 g CO2/km (comb.),Grigio,Bianco,Base,5,,,,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+7 kg/100 km (urbano)
+4,5 kg/100 km (extraurbano)",
+Berlina,d3d6651a-a217-4b0b-aabd-5f68066e3e94,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,98 g CO2/km (comb.),"Stoffa, Nero",TUNGSTEN SILVER METALLIZZATO,Metallizzato,6,1275,47 mese,,1,1498,Euro 6d-TEMP,4,Sì,,
+Berlina,5f5f33fb-185d-4497-8296-dc5d2efe00d8,Metano,KM0,2020,Fiat,Panda,5,4,Manuale,anteriore,Nero,,,nero cinema,Base,5,,,,,875,,4,,,
+Berlina,4ed652aa-c8bd-4afb-9a58-7801f94c4dc6,Metano,KM0,2020,Fiat,Panda,5,4,Manuale,anteriore,Blu/Azzurro,,,blu mediterraneo,Metallizzato,5,,,,,875,,4,,,
+Berlina,605e10ac-09c8-4cfd-9898-1492641df44c,Metano,KM0,2020,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),"Stoffa, Nero",BIANCO NEVADA,Metallizzato,5,1257,48 mese,Sì,1,999,Euro 6d-TEMP,5,,"5,8 kg/100 km (comb.)",
+Berlina,d74909e1-2dd0-416e-a8fc-0237f3193472,Metano,KM0,2020,Audi,A5,5,4,Automatico,anteriore,Bianco,104 g CO2/km (comb.),,Bianco ghiaccio metallizzato,Metallizzato,7,,,,1,1984,Euro 6,4,,"5,8 kg/100 km (comb.)
+7,7 kg/100 km (urbano)
+4,7 kg/100 km (extraurbano)",
+Berlina,ac72faa5-3990-4178-8c14-839c5e06c760,Metano,KM0,2020,Audi,A5,5,5,Automatico,anteriore,Bianco,104 g CO2/km (comb.),,Bianco pastello,Base,,,,,,1984,,,,"5,7 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Berlina,9c553c22-cf39-4986-8f19-f92dd18d454d,Metano,KM0,2020,Volkswagen,Golf,5,5,,anteriore,Grigio,99 g CO2/km (comb.),Nero,Grigio scuro,,7,,,,,1498,Euro 6,4,,"5,5 kg/100 km (comb.)
+7,1 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Berlina,b9a8b151-8e8d-46d2-8dcc-ae15d2680d69,Metano,KM0,2020,Fiat,Panda,5,4,Manuale,anteriore,Grigio,,"Pelle scamosciata, Nero",,Metallizzato,5,,,,,875,Euro 6,2,Sì,,
+Berlina,29eebe7d-9158-43a8-834a-af950f5f7611,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",Grigio,Metallizzato,7,1370,24 mese,,,1498,Euro 6,4,Sì,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,2e122020-020b-4bca-92cc-1b4c3aa24187,Metano,KM0,2020,SEAT,Ibiza,5,5,Manuale,anteriore,Nero,92 g CO2/km (comb.),"Stoffa, Grigio",Nero,Metallizzato,6,1257,48 mese,Sì,,999,Euro 6d-TEMP,3,,"5,8 kg/100 km (comb.)
+7,4 kg/100 km (urbano)
+4,9 kg/100 km (extraurbano)",
+Berlina,7a4dea97-c929-44f8-ba36-9a1ee7031fdc,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",Grigio,Metallizzato,7,1370,24 mese,,,1498,Euro 6,4,Sì,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,94538e7f-fab3-4058-8794-75f74fc5dbff,Metano,KM0,,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Altro, Nero",Tungtesn silver,Metallizzato,7,,,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,38ac1a88-ce17-4fd0-9420-fc01a1aa33fe,Metano,KM0,2020,Audi,A5,5,5,Automatico,anteriore,Bianco,103 g CO2/km (comb.),"Pelle totale, Nero",Bianco,Metallizzato,7,,48 mese,,,1984,Euro 6,4,,"5,7 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Berlina,37bb080f-82de-460f-8893-c94bfd04cf30,Metano,KM0,,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),"Altro, Nero",Pure white,,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,907ef34a-3b93-4955-9d65-344eda2d7d47,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Blu/Azzurro,97 g CO2/km (comb.),,blu di blu,Metallizzato,5,,24 mese,,1,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,f328bea6-f9c0-4860-afea-cd5fceb6d6e3,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,,Giallo,95 g CO2/km (comb.),,grigio scuro met,Metallizzato,7,1370,,,1,1498,Euro 6d-TEMP,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,cdcdf18a-f5f6-4437-9414-79aee37ef35c,Metano,KM0,2020,Fiat,Panda,5,4,Manuale,anteriore,Arancione,95 g CO2/km (comb.),"Stoffa, Nero",arancio sicilia,,5,1155,,Sì,1,875,Euro 6d-TEMP,2,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Berlina,6a0b19e6-af9b-49b1-88c4-a7b3fd6a9c50,Metano,KM0,2020,Skoda,Scala,5,5,Manuale,anteriore,Argento,92 g CO2/km (comb.),Nero,Argento Brillante Metallizzato,Metallizzato,6,,24 mese,,1,999,Euro 6,3,,"5,1 kg/100 km (comb.)
+7 kg/100 km (urbano)
+4,5 kg/100 km (extraurbano)",
+Berlina,7111cde4-d2b6-4434-b225-14ed6783d1f8,Metano,KM0,2019,Fiat,Panda,5,4,Manuale,anteriore,Grigio,125 g CO2/km (comb.),"Stoffa, Grigio",Grigio,Metallizzato,5,1155,Sì,Sì,,875,,2,,"5,5 kg/100 km (comb.)
+6,7 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,2bd5f197-8c18-42b0-89be-5c4c25671d7e,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Blu/Azzurro,97 g CO2/km (comb.),Verde,Blu,,5,,,,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,1c55638f-68c9-45b0-9ec3-ac30823c26a3,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),"Altro, Nero",Pure white,,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,4a20fd37-6473-4c4f-8934-26a537b74ded,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),"Altro, Nero",Pure white,,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,24fb6db1-8755-44c8-be80-acfd52915dac,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),"Altro, Nero",Pure white,,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,2286a57a-7278-4a31-b154-cd27e59a427d,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Altro, Nero",Indium grey,Metallizzato,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,7a72311e-76a1-41f7-b21a-4a82a41fdf93,Metano,KM0,2013,Fiat,Punto,5,5,Manuale,anteriore,Grigio,149 g CO2/km (comb.),"Stoffa, Nero",Grigio,Metallizzato,5,1260,12 mese,Sì,,1368,Euro 5,4,,"6,3 kg/100 km (comb.)
+7,9 kg/100 km (urbano)
+5,4 kg/100 km (extraurbano)",
+Berlina,e58546b8-1bae-4167-8563-d7ad061ec824,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Altro, Nero",Indium grey,Metallizzato,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,f1fef2a4-1f17-43cb-b371-afee4892a51f,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",Indium grey,Metallizzato,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,3ac8858b-272d-408a-aae4-155cfb55cf76,Metano,KM0,2020,Volkswagen,Golf,5,5,Manuale,anteriore,Nero,98 g CO2/km (comb.),"Altro, Nero",Nero perla,,6,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,7c26d26e-8603-4850-8674-9abf2a2cd199,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Altro, Nero",Argento riflesso,Metallizzato,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,cdd53c14-ce97-4d7e-85fc-0be8bea5773a,Metano,KM0,2020,Volkswagen,Golf,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),"Altro, Nero",Pure white,,6,,48 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,3a45c117-8b0f-48b9-ab4d-16ed0308a9f6,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Verde,97 g CO2/km (comb.),,VERDE SMERALDO,Metallizzato,5,,24 mese,,1,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,784c16bc-3a35-4d5c-9e97-3a46683d493f,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Nero,97 g CO2/km (comb.),,Nero Vulcano,Metallizzato,5,,24 mese,,1,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,ecd351e3-fca8-471b-bc7d-5e4ddedcc086,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Grigio,97 g CO2/km (comb.),,GRIGIO PIETRA,Base,5,,24 mese,,1,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,37fa0a92-71d0-4183-94f2-349636cd056c,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Rosso,97 g CO2/km (comb.),,ROSSO ARGILLA,Base,5,,24 mese,,1,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,f6ea56f5-e972-4384-82c5-5e8f5a167eb9,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Bianco,125 g CO2/km (comb.),,BIANCO NEVE,Base,5,,24 mese,,1,875,Euro 6,2,,"5,5 kg/100 km (comb.)",
+Berlina,355f7e3b-3374-4eb0-9e99-76302368cad3,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Argento,97 g CO2/km (comb.),,GRIGIO ARGENTO,Metallizzato,5,,24 mese,,1,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,0b5f9f02-d68f-4786-a8dd-5848e46ec441,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Grigio,97 g CO2/km (comb.),,GRIGIO ARDESIA,Base,5,,24 mese,,1,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,4414501b-7f52-4549-82ee-5527a250d89d,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Grigio,125 g CO2/km (comb.),,GRIGIO ARDESIA,Base,5,,,,,875,Euro 6,2,,55 kg/100 km (comb.),
+Berlina,6b5922ec-a2de-4d20-bb4c-f70a57019740,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Nero,125 g CO2/km (comb.),,Nero Vulcano,Metallizzato,5,,,,,875,Euro 6,2,,55 kg/100 km (comb.),
+Berlina,adc7e909-8600-49ce-9960-605a96a5935d,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Grigio,125 g CO2/km (comb.),,GRIGIO PIETRA,Metallizzato,5,,,,,875,Euro 6,2,,55 kg/100 km (comb.),
+Berlina,7dd29d5a-3234-4e38-9a90-ad05e5cd4196,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Blu/Azzurro,125 g CO2/km (comb.),,blu di blu,Metallizzato,5,,,,,875,Euro 6,2,,55 kg/100 km (comb.),
+Berlina,ce093f51-f5eb-4f53-a5b1-bf048af57d02,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Rosso,125 g CO2/km (comb.),,ROSSO ARGILLA,Base,5,,,,,875,Euro 6,2,,55 kg/100 km (comb.),
+Berlina,3bbea3c0-b10c-4f45-8fe1-46258208f3a9,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Bianco,125 g CO2/km (comb.),,BIANCO NEVE,Base,5,,,,,875,Euro 6,2,,55 kg/100 km (comb.),
+Berlina,0c041cad-4ec7-4694-93e5-7f0a7c4fdd96,Metano,KM0,2020,Volkswagen,Golf,5,5,Manuale,anteriore,Grigio,98 g CO2/km (comb.),"Altro, Nero",Indium grey,Metallizzato,6,,48 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",Sì
+Berlina,b1482ae1-8486-4492-9afd-6e73ce13dadd,Metano,KM0,2020,SEAT,Ibiza,5,5,Manuale,4x4,Bianco,92 g CO2/km (comb.),"Stoffa, Nero",,,6,1257,,Sì,1,999,Euro 6d-TEMP,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,bd06ec4f-c4cd-4b0d-bfb9-3ba19fd313bd,Metano,KM0,2019,Volkswagen,up!,,4,Manuale,anteriore,Rosso,,"Stoffa, Nero",rosso,,,,Sì,,1,999,,,Sì,,Sì
+Berlina,546450a2-3f72-4c34-8a3f-788843451ca2,Metano,KM0,2020,Volkswagen,Golf,5,5,Semiautomatico,anteriore,Argento,95 g CO2/km (comb.),"Stoffa, Nero",argento,Metallizzato,7,1370,60 mese,,1,1498,Euro 6d-TEMP,4,Sì,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,990f489b-b237-4a14-8adf-138e70cae359,Metano,KM0,2020,SEAT,Ibiza,5,5,Manuale,anteriore,Nero,92 g CO2/km (comb.),,Nero,,5,,,,,999,Euro 6,3,,"5,8 kg/100 km (comb.)
+7,4 kg/100 km (urbano)
+4,9 kg/100 km (extraurbano)",
+Berlina,18cb7f8e-55dd-4d10-83c9-1e60563b4c99,Metano,KM0,2019,Fiat,Panda,5,4,Manuale,anteriore,,97 g CO2/km (comb.),,,,5,,,,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+7 kg/100 km (urbano)
+4,5 kg/100 km (extraurbano)",
+Berlina,d70cbc65-bcf8-4692-b437-e1f975083c6e,Metano,KM0,2020,Fiat,Panda,5,4,Manuale,anteriore,Argento,125 g CO2/km (comb.),"Stoffa, Grigio",Argento,Metallizzato,5,1155,23 mese,Sì,,875,Euro 6,2,,"5,5 kg/100 km (comb.)
+6,4 kg/100 km (urbano)
+4,9 kg/100 km (extraurbano)",
+Berlina,117cbd36-460b-4579-895f-54e7572570b7,Metano,KM0,2020,Volkswagen,Golf,,5,Automatico,anteriore,Grigio,,"Stoffa, Nero",GRIGIO URANO,,,,Sì,,1,1498,,,Sì,,Sì
+Berlina,517b1cac-db89-4938-9875-98758007e95b,Metano,KM0,2020,SEAT,Leon,5,5,Semiautomatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",Grigio Magnetico,Metallizzato,7,1334,24 mese,,1,1498,Euro 6d-TEMP,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,2 kg/100 km (extraurbano)",
+Berlina,2fc7c875-a34b-4eda-a6f7-0db1efeda709,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Stoffa, Nero",Tungsteno,Metallizzato,7,,24 mese,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,0ac66f5d-07f0-49b7-ab56-109995c18776,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Alcantara, Nero",Argento,Metallizzato,7,,24 mese,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,08adaa19-8171-4714-807f-0d51cb751f6a,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,,95 g CO2/km (comb.),"Alcantara, Nero",,Metallizzato,7,,24 mese,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,c9344434-e262-4763-8e05-95361a4c70ea,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Stoffa, Nero",Argento,Metallizzato,7,,12 mese,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,976e97f2-de1e-4bf2-a7ec-50287d3605b8,Metano,KM0,2019,Fiat,Panda,5,4,Manuale,anteriore,Grigio,97 g CO2/km (comb.),,Grigio colosseo,,,,,,,875,Euro 6,2,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Berlina,89aa51fd-d60e-4a37-ae9b-a7c12994d5da,Metano,KM0,2019,Fiat,Panda,5,4,Manuale,anteriore,Rosso,97 g CO2/km (comb.),,Rosso amore,,,,,,,875,Euro 6,2,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Berlina,fcec67a9-4f68-4440-8861-727c7ecac723,Metano,KM0,,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Altro, Nero",Tungsten silver,,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,8e168166-8a71-4437-a919-138830821437,Metano,KM0,2019,Lancia,Ypsilon,5,4,Manuale,anteriore,Nero,97 g CO2/km (comb.),,Nero vulcano metalizzato,Metallizzato,,,,,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,59b18e47-5968-4686-bd79-ce99710ca013,Metano,KM0,2020,Volkswagen,Golf,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),"Altro, Nero",Pure white,,6,,48 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,bcf527ae-ab79-4774-bb36-56ee38d0b19e,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,98 g CO2/km (comb.),,,,6,1350,24 mese,,1,1498,Euro 6d-TEMP,4,,"5,5 kg/100 km (comb.)
+7,2 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,169ec271-f2fd-4c03-ac68-5d9608399d9f,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),Grigio,Grigio,Metallizzato,7,,,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,09c403e2-7907-41cb-9124-8a80f7e1a481,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),Grigio,Argento,Metallizzato,7,,,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,862dc772-e8f5-4342-b985-31d53a3af459,Metano,KM0,2019,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Altro, Altro",,,7,,Sì,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,698391b3-e793-4aed-8339-c4715a412531,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Altro, Altro",,,7,,Sì,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,3f6b0277-d83f-46d1-b781-836027ae613d,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),Nero,,,7,1370,23 mese,,1,1498,Euro 6d-TEMP,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,ca32b66d-32d2-4949-a9c4-026f1362e8c1,Metano,KM0,2020,Volkswagen,Golf,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),"Altro, Nero",Pure white,,6,,48 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,35b973d4-4abc-4f8f-8625-22de0b857d71,Metano,KM0,2020,Volkswagen,Golf,5,5,Semiautomatico,anteriore,Argento,95 g CO2/km (comb.),"Stoffa, Nero",,Metallizzato,7,1370,48 mese,,1,1498,Euro 6d-TEMP,4,Sì,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,6157c1fe-3662-4fbd-86a2-022f51eb5d55,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Rosso,86 g CO2/km (comb.),"Stoffa, Grigio",Rosso Argilla pastello extra,,5,1165,24 mese,Sì,1,875,Euro 6,2,,"3,1 kg/100 km (comb.)
+4 kg/100 km (urbano)
+2,6 kg/100 km (extraurbano)",
+Berlina,d81d8f22-2309-445c-85ea-47a6701e5e19,Metano,KM0,2020,Audi,A5,5,5,Automatico,anteriore,Argento,104 g CO2/km (comb.),"Altro, Altro",,,7,,Sì,,,1984,,4,,"8,8 kg/100 km (comb.)
+11,5 kg/100 km (urbano)
+7,1 kg/100 km (extraurbano)",
+Berlina,52a210f8-6b49-4b94-b840-42906e81a37c,Metano,KM0,2020,Volkswagen,Polo,5,5,Manuale,anteriore,Argento,112 g CO2/km (comb.),,Vari colori,Metallizzato,6,1275,,Sì,,999,Euro 6,3,,"4,9 kg/100 km (comb.)
+6,3 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,44b2cf1e-d2cf-4a1f-be1b-77d429b90644,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),Grigio,Grigio,Metallizzato,7,,,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,fbe5e443-dd3d-4eee-93d1-b70e065e90de,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),Grigio,Bianco,,7,,,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,e25d0a05-3cb5-4017-9397-6adfb38a410c,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),Grigio,Grigio,,7,,,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,48601563-a0b7-49b0-befa-cc95ce079cbf,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Nero,95 g CO2/km (comb.),,Nero,Metallizzato,7,1370,,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,ec7917b8-b2ff-4c09-b6d5-b4548c1feafd,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),,Vari colori,Metallizzato,7,1370,,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,1efe8406-490a-454b-8eae-9b7975786618,Metano,KM0,2018,Lancia,Ypsilon,5,4,Manuale,anteriore,Nero,97 g CO2/km (comb.),,Nero vulcano metalizzato,Metallizzato,,,,,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,0df0a923-57e2-4fdd-ba03-4c1d0603919f,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),,Vari colori,Metallizzato,7,1370,,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,fe3a751a-4f57-4551-a027-11f2a64d3f63,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Altro, Altro",,,7,,Sì,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,d253e942-a048-4911-9d1c-dbf8dec15294,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),"Altro, Altro",,,7,,Sì,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,9d30b4be-bf10-4f46-a7b0-0286bdf95116,Metano,KM0,2020,Audi,A5,5,5,Automatico,anteriore,Bianco,103 g CO2/km (comb.),"Altro, Nero",Bianco ghiaccio met.,Metallizzato,7,,Sì,,,1984,,4,,"8,8 kg/100 km (comb.)
+11,5 kg/100 km (urbano)
+7,1 kg/100 km (extraurbano)",
+Berlina,40fe31a0-b185-0874-e053-e250040aa4af,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),Alcantara,,Metallizzato,7,1370,48 mese,,1,1498,Euro 6d-TEMP,4,Sì,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",Sì
+Berlina,31e4e5dd-7b77-4982-8f9c-df63bc9bf78b,Metano,KM0,2020,Volkswagen,Golf,5,5,Semiautomatico,anteriore,Nero,95 g CO2/km (comb.),"Altro, Altro",NERO PERLA,Metallizzato,7,1370,,,1,1498,,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,cee6a507-ab2e-4ea9-9d30-a671f1339b1c,Metano,KM0,2020,Volkswagen,Golf,,5,Automatico,anteriore,Grigio,,"Stoffa, Nero",GRIGIO URANO,,,,Sì,,1,1498,,,Sì,,Sì
+Berlina,e9127f10-84f9-4746-8fec-e7e7edd93bba,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Nero,82 g CO2/km (comb.),,,Metallizzato,5,956,,Sì,1,999,,3,,"2,9 kg/100 km (comb.)
+3,7 kg/100 km (urbano)
+2,5 kg/100 km (extraurbano)",
+Berlina,f17b8c8b-bbc3-4b2f-a21b-9ae33b83e603,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Nero,82 g CO2/km (comb.),"Stoffa, Nero",nero perla,Metallizzato,5,956,23 mese,Sì,1,999,Euro 6d-TEMP,3,,"2,9 kg/100 km (comb.)
+3,7 kg/100 km (urbano)
+2,5 kg/100 km (extraurbano)",
+Berlina,f2705497-dcff-4f26-823d-2fe064488da0,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",Urano,,7,1370,48 mese,,1,1498,,4,Sì,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",Sì
+Berlina,59ef9ef5-4d35-49dc-b5af-cf6825f5e2d1,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Altro, Altro",,,7,,Sì,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,cea178e5-7c28-4ee8-a08a-44ac35f9c900,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),Grigio,Grigio,,7,,,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,7b76f75e-be83-4dab-9be5-2efbfe3aa781,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",TUNGSTENO,Metallizzato,7,1370,,,1,1498,,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,be71dc1e-8225-4e94-80e8-4676595de67d,Metano,KM0,2019,Volkswagen,up!,5,4,Manuale,anteriore,Grigio,105 g CO2/km (comb.),"Altro, Nero",BIANCO,Base,,,,,1,999,,,,,
+Berlina,5486abed-1561-4416-bb1b-051e015d9e0c,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Altro, Altro",,,7,,Sì,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,8007cb91-d899-4f6b-988b-ce613e82d3ee,Metano,KM0,2019,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),"Stoffa, Nero",Bianco Nevada,,6,1257,,Sì,1,999,Euro 6d-TEMP,3,Sì,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,c08365d2-f70e-46a8-8b33-33742570b66d,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Altro, Altro",,Metallizzato,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,b5cbf2e7-66ea-4b14-86d6-f2b72c69da49,Metano,KM0,2019,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),"Stoffa, Nero",,,6,,Sì,,,999,,3,,"8,9 kg/100 km (comb.)
+11,4 kg/100 km (urbano)
+7,5 kg/100 km (extraurbano)",
+Berlina,f8594bec-348d-4e2b-9d03-6216541b1eef,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),,,,7,1370,24 mese,,1,1498,,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,cb3dfdd6-a327-4c61-b627-2d7a14dc3fed,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Nero,105 g CO2/km (comb.),"Stoffa, Altro",,,5,,24 mese,,,999,,3,,"6,8 kg/100 km (comb.)
+8,5 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+Berlina,df28a783-2806-4ee0-95d9-a5a8bbe6abe2,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),,Vari colori,Metallizzato,7,1370,,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,f7430b73-2d9e-4550-bea1-228f74e94559,Metano,KM0,2020,Volkswagen,up!,5,4,Manuale,anteriore,Nero,105 g CO2/km (comb.),"Stoffa, Altro",,,5,,24 mese,,,999,,3,,"6,8 kg/100 km (comb.)
+8,5 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+Berlina,cf5326b3-bc01-4575-b6d4-23be49770109,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Altro, Altro",,,7,,Sì,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,74155f35-d5e2-47c3-aed6-740c080afbaf,Metano,KM0,2019,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),"Stoffa, Nero",,Metallizzato,6,,Sì,,,999,,3,,"8,9 kg/100 km (comb.)
+11,4 kg/100 km (urbano)
+7,5 kg/100 km (extraurbano)",
+Berlina,d4bd1f20-4ea3-4842-8fe4-322a265b7ed7,Metano,KM0,2019,Audi,A5,5,4,Automatico,anteriore,Grigio,102 g CO2/km (comb.),"Stoffa, Nero",Grigio scuro,Metallizzato,7,1580,,,,1984,Euro 6,4,,"3,8 kg/100 km (comb.)
+5,1 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Berlina,10743e9a-efcd-4f40-8b80-ea94e88cfc3c,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Verde,97 g CO2/km (comb.),,VERDE SMERALDO,Metallizzato,5,1165,24 mese,Sì,1,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,8f1bb38a-f561-4ce2-a7ab-a397a088792a,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Blu/Azzurro,97 g CO2/km (comb.),,blu di blu,Metallizzato,5,1165,24 mese,Sì,1,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,fc6e2ca8-15ec-45a4-ade0-1be44f1582a6,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Grigio,97 g CO2/km (comb.),,GRIGIO ARDESIA,Base,5,1165,24 mese,Sì,1,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,96053383-4d36-46e0-8e2a-049680d849e8,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Grigio,97 g CO2/km (comb.),,GRIGIO PIETRA,Base,5,1165,24 mese,Sì,1,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,99ae8eab-39e8-45fb-8f2f-20c776bca5cb,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Nero,97 g CO2/km (comb.),,Nero Vulcano,Metallizzato,5,1165,24 mese,Sì,1,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,de89d30a-f9c4-4084-9685-afb8b21c265f,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Argento,97 g CO2/km (comb.),,GRIGIO ARGENTO,Metallizzato,5,1165,24 mese,Sì,1,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,83fd5921-82b8-456e-9328-3354c813cfb4,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Blu/Azzurro,125 g CO2/km (comb.),,blu di blu,Metallizzato,5,1040,,Sì,,875,Euro 6,2,,55 kg/100 km (comb.),
+Berlina,bbe97332-27a5-4f24-a5f5-9019a6f07928,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Rosso,97 g CO2/km (comb.),,ROSSO ARGILLA,Base,5,1165,24 mese,Sì,1,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,03a5c2ac-6965-446e-b9f4-45244f267f5f,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Grigio,125 g CO2/km (comb.),,GRIGIO ARDESIA,Base,5,1040,,Sì,,875,Euro 6,2,,55 kg/100 km (comb.),
+Berlina,a2f7f442-8a4a-4cc1-ba24-9007d67da7c6,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Bianco,125 g CO2/km (comb.),,BIANCO NEVE,Base,5,1040,24 mese,Sì,1,875,Euro 6,2,,"5,5 kg/100 km (comb.)",
+Berlina,e781fc45-af47-4eec-a33d-058aaca3625f,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Nero,125 g CO2/km (comb.),,Nero Vulcano,Metallizzato,5,1040,,Sì,,875,Euro 6,2,,55 kg/100 km (comb.),
+Berlina,70acc1e2-5b7d-4d75-9774-8c189514b0ac,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Rosso,125 g CO2/km (comb.),,ROSSO ARGILLA,Base,5,1040,,Sì,,875,Euro 6,2,,55 kg/100 km (comb.),
+Berlina,9b9fa4d2-110e-4d02-8fd4-ab1a5d0a38f3,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Grigio,125 g CO2/km (comb.),,GRIGIO PIETRA,Metallizzato,5,1040,,Sì,,875,Euro 6,2,,55 kg/100 km (comb.),
+Berlina,c1013d00-0d62-481b-97f7-70ceaf546a77,Metano,KM0,2020,Lancia,Ypsilon,5,4,Manuale,anteriore,Bianco,125 g CO2/km (comb.),,BIANCO NEVE,Base,5,1040,,Sì,,875,Euro 6,2,,55 kg/100 km (comb.),
+Berlina,4069f25e-e9ce-432e-b151-08c08f8d7f74,Metano,KM0,2019,Fiat,Panda,5,4,Manuale,anteriore,Blu/Azzurro,,Stoffa,Blu,Metallizzato,5,1155,Sì,Sì,,875,Euro 6d,2,Sì,,
+Berlina,5bf8af2d-8b7d-4088-8ed3-440e59351c80,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),,Vari colori,Metallizzato,7,1370,,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,31276676-f948-409d-9dda-d50a314ec852,Metano,KM0,2020,Fiat,Panda,5,4,Manuale,anteriore,Grigio,97 g CO2/km (comb.),,Grigio,,5,1155,,Sì,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+7 kg/100 km (urbano)
+4,5 kg/100 km (extraurbano)",
+Berlina,2fae3dd2-76bf-403d-963a-d0b22ea69bd1,Metano,KM0,2019,Fiat,Panda,5,4,Manuale,anteriore,Bianco,97 g CO2/km (comb.),,Bianco gelato,,,,,,,875,Euro 6,2,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Berlina,c9c1c105-00a5-466a-8fb8-a96f3f94821b,Metano,KM0,2019,Fiat,Panda,5,4,Manuale,anteriore,Blu/Azzurro,97 g CO2/km (comb.),,Blu mediterraneo,,,,,,,875,Euro 6,2,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Berlina,987a01cb-6a05-4df3-9b87-77402ac5220b,Metano,KM0,2018,Lancia,Ypsilon,5,4,Manuale,anteriore,Bianco,97 g CO2/km (comb.),,Avorio chic,,,,,,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,21069cb9-e2ed-40a6-8636-9cde5c8fdf84,Metano,KM0,2019,Fiat,Panda,5,4,Manuale,anteriore,Bianco,97 g CO2/km (comb.),"Stoffa, Altro",,,5,1155,,Sì,1,875,,2,,"3,5 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+Berlina,97e972d5-f02f-49b5-a458-2ee16306ac55,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),,Vari colori,Metallizzato,7,1370,,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,5715b08b-1b32-44a6-b9b3-d32095cbfd3f,Metano,KM0,2019,Fiat,Panda,5,4,Manuale,anteriore,Grigio,125 g CO2/km (comb.),"Stoffa, Grigio",Grigio scuro,Base,5,1155,24 mese,Sì,,875,Euro 6d-TEMP,2,Sì,"5,5 kg/100 km (comb.)
+6,7 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,873f920c-98a5-4a60-802f-d5c1b002db82,Metano,KM0,2019,Opel,Astra,5,5,Manuale,,Bianco,113 g CO2/km (comb.),Stoffa,SUMMIT/OLYMPIC WHITE,,6,1308,,,1,1399,,4,,"3,6 kg/100 km (comb.)
+4,4 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+Berlina,3f180024-fcbf-4028-82fe-426e97797199,Metano,KM0,2019,Lancia,Ypsilon,5,4,Manuale,anteriore,Verde,,Stoffa,Verde,Base,5,1165,24 mese,Sì,,875,Euro 6,2,,,
+Berlina,d16d8c00-c437-4ca3-8ca1-ebdb4f7d20cc,Metano,KM0,2019,Lancia,Ypsilon,5,4,Manuale,anteriore,Bianco,107 g CO2/km (comb.),"Stoffa, Nero",Bianco,Base,5,1165,24 mese,Sì,,875,Euro 6d-TEMP,2,Sì,"4,6 kg/100 km (comb.)
+5,8 kg/100 km (urbano)
+3,9 kg/100 km (extraurbano)",
+Berlina,466d12e3-f106-481f-b9dc-7bb729af6307,Metano,KM0,2019,Fiat,Panda,5,4,Manuale,anteriore,,97 g CO2/km (comb.),,,,5,1155,,Sì,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+7 kg/100 km (urbano)
+4,5 kg/100 km (extraurbano)",
+Berlina,da4e1b48-406a-4c93-89f0-71458b47c7c0,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",Grigio,Metallizzato,7,1370,24 mese,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,05696d8b-7c94-470c-8b68-c2f673834fec,Metano,KM0,2019,Fiat,Panda,5,4,Manuale,anteriore,Rosso,85 g CO2/km (comb.),"Stoffa, Nero",,,5,1155,,Sì,1,875,Euro 6,2,,"3,1 kg/100 km (comb.)
+4 kg/100 km (urbano)
+2,6 kg/100 km (extraurbano)",
+Berlina,60aa8281-5903-4305-89f9-2ce4b1606f4e,Metano,KM0,2019,Lancia,Ypsilon,5,4,Manuale,,Bianco,86 g CO2/km (comb.),"Alcantara, Nero",,,5,1165,,Sì,1,875,Euro 6d-TEMP,2,,"3,1 kg/100 km (comb.)
+4 kg/100 km (urbano)
+2,6 kg/100 km (extraurbano)",
+Berlina,c40fe1ca-af66-4c26-b0f2-f409cadcf59f,Metano,KM0,2019,SEAT,Ibiza,5,5,Manuale,,Nero,92 g CO2/km (comb.),,NERA,,6,1257,Sì,Sì,1,999,Euro 6d-TEMP,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,cbf57761-1f82-4552-9166-f1afe8a50554,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Nero,98 g CO2/km (comb.),"Stoffa, Nero",,,7,1350,48 mese,,1,1498,Euro 6d-TEMP,4,Sì,"5,5 kg/100 km (comb.)
+7,2 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,8373f56b-5c47-4c17-bbd9-661a063f4dcd,Metano,KM0,2019,SEAT,Ibiza,5,5,Manuale,anteriore,Nero,,"Stoffa, Nero",,Metallizzato,6,1257,,Sì,1,999,Euro 6d-TEMP,3,,,
+Berlina,e0417af8-d1ae-4930-bcdd-5ebcdeeb2158,Metano,KM0,2019,Volkswagen,up!,5,4,Manuale,anteriore,Bianco,82 g CO2/km (comb.),"Stoffa, Nero",,,5,956,,Sì,1,999,Euro 6,3,,"2,9 kg/100 km (comb.)
+3,7 kg/100 km (urbano)
+2,5 kg/100 km (extraurbano)",
+Berlina,649ff92d-267e-467d-84e9-ffaf37069262,Metano,KM0,2020,Lancia,Ypsilon,5,5,Manuale,anteriore,Bianco,,Stoffa,Bianco,Base,5,1165,Sì,Sì,,875,Euro 6,2,,,
+Berlina,4987cb65-5382-4a5b-a4c3-eb83418652bd,Metano,KM0,2019,Fiat,Panda,5,4,Manuale,anteriore,,97 g CO2/km (comb.),,,,5,1155,,Sì,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+7 kg/100 km (urbano)
+4,5 kg/100 km (extraurbano)",
+Berlina,5e96da56-df7c-4353-9350-5e9a2f5f7832,Metano,KM0,2020,Fiat,Panda,5,4,Manuale,anteriore,Nero,125 g CO2/km (comb.),"Stoffa, Nero",Nero,Base,5,1015,24 mese,Sì,,1242,Euro 6d-TEMP,4,,"5,4 kg/100 km (comb.)
+7 kg/100 km (urbano)
+4,7 kg/100 km (extraurbano)",
+Berlina,4e9ce35b-adf7-191c-e053-e350040a11a2,Metano,KM0,2020,Fiat,Panda,5,4,Manuale,anteriore,Arancione,86 g CO2/km (comb.),"Stoffa, Grigio",Arancio Sicilia pastello extr,,5,1080,24 mese,Sì,1,875,Euro 6,2,Sì,"3,1 kg/100 km (comb.)
+4 kg/100 km (urbano)
+2,6 kg/100 km (extraurbano)",
+Altro,23d000aa-d624-448b-96d6-e4cddd4a371c,Metano,KM0,2020,Skoda,Kamiq,5,5,Manuale,,Bianco,95 g CO2/km (comb.),,BIANCO MAGNOLIA,,6,1332,,Sì,1,999,Euro 6d-TEMP,3,,"5,3 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+Altro,18e9550b-7330-4295-9b82-b528e46aa121,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Bianco,93 g CO2/km (comb.),,Bianco Candy Nero Midnight,,,,24 mese,,1,999,Euro 6,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+Altro,26078e79-ad6a-40e0-92b5-8e1c89510ed9,Metano,KM0,2019,Volkswagen,Caddy,4,2,Manuale,anteriore,Bianco,135 g CO2/km (comb.),"Altro, Altro",,,6,,Sì,,,1395,Euro 6,4,,"9,1 kg/100 km (comb.)
+11,1 kg/100 km (urbano)
+7,8 kg/100 km (extraurbano)",
+Altro,643962b1-ff5d-49df-9399-37bdd970f096,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,,Bianco,98 g CO2/km (comb.),"Stoffa, Nero",,,6,1308,24 mese,Sì,1,999,Euro 6d-TEMP,3,Sì,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+Altro,a5e3c372-6a40-4157-8796-3d37f1da277a,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),"Stoffa, Nero",,,6,1308,,Sì,1,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+Altro,d522b46d-cf0c-4588-a15c-3d5352029f11,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Bianco,96 g CO2/km (comb.),Nero,Bianco Luna Metallizzato,Metallizzato,7,,24 mese,,1,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Altro,ba6595da-4fe2-46d5-8cd3-e5d793f619b5,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Bianco,96 g CO2/km (comb.),Nero,Bianco Luna Metallizzato,Metallizzato,7,,24 mese,,1,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Altro,a9170055-f974-4bc1-a2a4-9b9c634a323a,Metano,KM0,2020,Skoda,Octavia,5,5,Automatico,anteriore,Grigio,96 g CO2/km (comb.),Nero,Grigio Quarzo Metallizzato,Metallizzato,7,,24 mese,,1,1498,Euro 6,4,,"5,4 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Altro,3ac27dfd-5bb1-446f-89b8-3d3a84d5de79,Metano,KM0,2020,Lancia,Ypsilon,,,Manuale,,Blu/Azzurro,,Grigio,Blu,,,,,,,,,,,,
+Altro,cfc24d04-5a97-40ff-a83d-7db9a955bb54,Metano,KM0,2020,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),,Pure White,,7,,24 mese,,1,1498,Euro 6,4,Sì,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Altro,b54efde8-2a5a-4e58-90f9-64fa21525eb4,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,anteriore,Bianco,,"Stoffa, Nero",Bianco,Base,6,1308,,Sì,,999,Euro 6d-TEMP,3,,,
+Altro,9dff2af9-e2b4-420c-8848-4d58850582b1,Metano,KM0,2020,Lancia,Ypsilon,,,Manuale,,Blu/Azzurro,,Verde,Blu,,,,,,,,,,,,
+Altro,cbeae5e8-150a-4ebe-9f6d-69117dbb421e,Metano,KM0,2020,SEAT,Arona,5,5,Manuale,,Nero,98 g CO2/km (comb.),"Stoffa, Grigio",,Metallizzato,6,1308,,Sì,1,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+Altro,f6ab761d-dbdc-4eae-9edd-5c0f04bdebe5,Metano,KM0,2019,Fiat,Qubo,5,5,Manuale,anteriore,Arancione,135 g CO2/km (comb.),"Stoffa, Nero",551 ARANCIO,,5,1365,,Sì,1,1368,Euro 6d-TEMP,4,,"4,9 kg/100 km (comb.)
+6 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Altro,56149322-2b6a-47a6-9728-c2dd85d1bc2b,Metano,KM0,2020,Fiat,Doblo,3,,Manuale,,Bianco,173 g CO2/km (comb.),,Bianco,Base,,,Sì,,,,,,,,
+Altro,b5c93c0d-ddc8-43d2-9deb-53509c2b3645,Metano,KM0,2019,Volkswagen,Caddy,4,2,Manuale,anteriore,Bianco,135 g CO2/km (comb.),"Altro, Altro",,,6,,Sì,,,1395,,4,,"9,1 kg/100 km (comb.)
+11,1 kg/100 km (urbano)
+7,8 kg/100 km (extraurbano)",
+Monovolume,d2462c88-0afc-4172-84d8-1f5a1f680620,Metano,KM0,2020,Volkswagen,Caddy,,,Manuale,,Beige,,"Altro, Nero",,Metallizzato,,,24 mese,,1,1400,,,Sì,,Sì
+Monovolume,1723db49-323b-4d5d-bec2-a48237d8aad2,Metano,KM0,2020,Fiat,Fiorino,4,2,Manuale,anteriore,Bianco,134 g CO2/km (comb.),Grigio,Bianco,Base,5,,,,,1368,Euro 6,4,,"4,9 kg/100 km (comb.)
+6,2 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Monovolume,228e2498-a944-444b-9df3-fec77999fa21,Metano,KM0,2020,Volkswagen,Caddy,5,5,Manuale,anteriore,Nero,135 g CO2/km (comb.),"Stoffa, Nero",Nero,Metallizzato,6,1541,24 mese,,,1395,Euro 6,4,,"5,9 kg/100 km (comb.)
+7,2 kg/100 km (urbano)
+5,1 kg/100 km (extraurbano)",
+Monovolume,312e1bc7-e0b8-4831-af6e-eef3bdb456da,Metano,KM0,2019,Fiat,Doblo,5,7,Manuale,anteriore,Bianco,173 g CO2/km (comb.),"Stoffa, Nero",Bianco,Base,6,1615,Sì,,,1368,Euro 6,4,Sì,"7,4 kg/100 km (comb.)
+9,6 kg/100 km (urbano)
+6,1 kg/100 km (extraurbano)",
+Monovolume,a392328d-e7fe-4049-96c9-3c76f64fc4c0,Metano,KM0,2019,Fiat,Doblo,5,5,Manuale,anteriore,Bianco,173 g CO2/km (comb.),"Stoffa, Nero",Bianco,Base,6,1615,Sì,,,1368,Euro 6,4,Sì,"7,4 kg/100 km (comb.)
+9,6 kg/100 km (urbano)
+6,1 kg/100 km (extraurbano)",
+Monovolume,14f39c49-c339-4df5-b198-0bea1a184ab1,Metano,KM0,2019,Fiat,Doblo,5,7,Manuale,anteriore,Bianco,173 g CO2/km (comb.),"Stoffa, Nero",Bianco,Base,6,1615,Sì,,,1368,Euro 6,4,Sì,"7,4 kg/100 km (comb.)
+9,6 kg/100 km (urbano)
+6,1 kg/100 km (extraurbano)",
+Monovolume,94f22455-565b-417b-8d58-d2523a1fa53c,Metano,KM0,2020,Fiat,Fiorino,4,2,Manuale,anteriore,Bianco,134 g CO2/km (comb.),Grigio,Bianco,Base,5,,,,,1368,Euro 6,4,,"4,9 kg/100 km (comb.)
+6,2 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Monovolume,cd0caa25-7bc4-4c2b-84f5-855844c28063,Metano,KM0,2020,Volkswagen,Caddy,5,7,Manuale,anteriore,Beige,116 g CO2/km (comb.),Stoffa,Beige Metallizzato,Metallizzato,6,,,,1,1395,Euro 6,4,,"65 kg/100 km (comb.)
+81 kg/100 km (urbano)
+56 kg/100 km (extraurbano)",
+Monovolume,81402900-66c6-4d8c-94c3-aa90b61e3cf3,Metano,KM0,2020,Fiat,Fiorino,4,2,Manuale,anteriore,Bianco,134 g CO2/km (comb.),,Bianco,,5,,18 mese,,,1368,Euro 6,4,,"4,9 kg/100 km (comb.)
+6,2 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Monovolume,385fb469-20e5-4f05-92c9-e41f1b0d20bf,Metano,KM0,2020,Volkswagen,Caddy,,,Manuale,,Bianco,,"Altro, Nero",,,,,24 mese,,1,1400,,,Sì,,Sì
+Monovolume,00a8be4a-548d-45fb-9e7d-78cea7caec98,Metano,KM0,2020,Skoda,Kamiq,,,Manuale,anteriore,Blu/Azzurro,,,BLU MEDITERRANEO,,,,,,1,,,,,,

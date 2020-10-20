@@ -1,0 +1,458 @@
+Carrozzeria,id_annuncio,Alimentazione,Tipo di veicolo,Anno,Marca,Modello,Porte,Posti a sedere,Tipo di cambio,Tipo di unita,Colore esterno,Emissioni di CO2,Rivestimenti,Colore originale,Tipo di vernice,Marce,Peso a vuoto,Usato Garantito,Per neopatentati,Proprietari,Cilindrata,Classe emissioni,Cilindri,Veicolo per non fumatori,Consumo carburante,Tagliandi certificati
+SUV/Fuoristrada/Pick-up,2b8a6a3a-69ba-471a-ac1e-1eba3d5473a9,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Grigio,98 g CO2/km (comb.),"Stoffa, Altro",Magnetic Tech Nero Midnight,Metallizzato,6,1305,48 mese,Sì,,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,912dff61-475d-48b8-8a92-411436d8e179,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),"Alcantara, Nero",Bianco Candy Nero Midnight,Metallizzato,6,1305,48 mese,Sì,,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,13b6c2e6-a73c-4c5e-a219-397cc15005b5,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Rosso,98 g CO2/km (comb.),"Alcantara, Nero",ROSSO DESIRE TETTO NERO,Metallizzato,6,1308,48 mese,Sì,0,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,a5f0a9f6-b893-46a7-98d0-5a2bd7ef06aa,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),"Stoffa, Grigio",BIANCO CANDY,,6,1308,24 mese,Sì,,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,c96bf025-5bf8-4a89-8121-acbeec3b2f64,Metano,Nuovo,,Skoda,Kamiq,5,5,Manuale,anteriore,Nero,115 g CO2/km (comb.),,Nero,Metallizzato,6,,,,,999,Euro 6,3,,"4,7 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,d1924f2b-c4ef-4bcf-a0a8-2498e63eaffd,Metano,Nuovo,,Skoda,Kamiq,5,5,Manuale,anteriore,Grigio,115 g CO2/km (comb.),,Grigio scuro,Metallizzato,6,,,,,999,Euro 6,3,,"4,7 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,93d111e3-4e95-4185-af03-a7b979396c26,Metano,Nuovo,,Skoda,Kamiq,5,5,Manuale,anteriore,Bianco,115 g CO2/km (comb.),,Bianco,Base,6,,,,,999,Euro 6,3,,"4,7 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,7df73bad-e7d9-4a53-9052-b77dc10b9d21,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Rosso,98 g CO2/km (comb.),"Stoffa, Nero",ROSSO DESIRE,Metallizzato,6,1308,24 mese,Sì,,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,70080804-d546-451c-b599-a3e6104e9fc5,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Grigio,98 g CO2/km (comb.),"Stoffa, Altro",Magnetic Tech Nero Midnight,Metallizzato,6,1308,48 mese,Sì,,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,04818431-e45f-44e7-aa97-9f87b6a56001,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Rosso,98 g CO2/km (comb.),"Alcantara, Nero",ROSSO DESIRE TETTO NERO,Metallizzato,6,1308,48 mese,Sì,0,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,98bb18ea-4935-4c3c-8064-64273375e802,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),"Stoffa, Nero",BIANCO CANDY TETTO GRIGIO,Metallizzato,6,1308,48 mese,Sì,0,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,e0ec21db-28f9-4db4-b834-36d4a66fa2d2,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Grigio,98 g CO2/km (comb.),"Stoffa, Nero",GRIGIO MAGNETICO TETTO NERO,Metallizzato,6,1308,48 mese,Sì,0,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,5e8b8a15-9e20-4cb1-87a9-417cd0bd8499,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Argento,98 g CO2/km (comb.),"Stoffa, Grigio",Argento urban,Metallizzato,6,1308,24 mese,Sì,0,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,c8102942-e3b5-44c3-adfa-f3673139bb44,Metano,Nuovo,,Skoda,Kamiq,5,5,Manuale,anteriore,Nero,95 g CO2/km (comb.),,Nero,Metallizzato,6,1332,,Sì,,999,Euro 6,3,,"5,3 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,def01c8d-dc85-4abf-9a92-8c99a6a11887,Metano,Nuovo,,Skoda,Kamiq,5,5,Manuale,anteriore,Argento,115 g CO2/km (comb.),,Vari colori,Metallizzato,6,1214,,Sì,,999,Euro 6,3,,"4,7 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,4eb61be9-74f5-4ad4-8026-d7057ae6f3ae,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Bianco,115 g CO2/km (comb.),"Stoffa, Grigio",Bianco,Base,6,1308,Sì,Sì,,999,Euro 6,3,Sì,"4,7 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+SUV/Fuoristrada/Pick-up,4d1919e7-99f7-47ef-80ea-5f4dfef9037e,Metano,Nuovo,,Skoda,Kamiq,,,Manuale,anteriore,Blu/Azzurro,,,BLU MEDITERRANEO,,,,,,0,,,,,,
+SUV/Fuoristrada/Pick-up,e52abfda-3833-418c-9ea5-536687918479,Metano,Nuovo,,SEAT,Arona,4,5,Manuale,anteriore,Blu/Azzurro,112 g CO2/km (comb.),,Blu,,6,,,,,999,Euro 6,3,,,
+Station wagon,191f0bd2-72e8-45f0-a478-6ca805315be5,Metano,Nuovo,,Skoda,Octavia,5,5,Automatico,anteriore,Grigio,96 g CO2/km (comb.),Nero,Grigio,Metallizzato,7,,,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,ba50c445-820f-4b1c-bb57-f3367d0825ae,Metano,Nuovo,,Skoda,Octavia,5,5,Automatico,anteriore,Bianco,96 g CO2/km (comb.),Nero,Bianco,Metallizzato,7,,,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,daaab6a0-8c22-4c8d-aa03-ec056da84fc3,Metano,Nuovo,,Audi,A4,5,5,Semiautomatico,anteriore,Grigio,105 g CO2/km (comb.),"Stoffa, Grigio",,Metallizzato,7,1665,24 mese,,,1984,Euro 6d-TEMP,4,Sì,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",Sì
+Station wagon,33e29394-e1ee-435e-9fe9-8bad942ce609,Metano,Nuovo,,Skoda,Octavia,5,5,Automatico,,Blu/Azzurro,96 g CO2/km (comb.),,BLU MEDITERRANEO,,7,1389,,,,1498,Euro 6d-TEMP,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,34f5721d-cf09-4305-8dda-709aac96cf4f,Metano,Nuovo,,Skoda,Octavia,5,5,Automatico,anteriore,Argento,96 g CO2/km (comb.),"Stoffa, Grigio",Argento,Metallizzato,7,,48 mese,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,cba83e01-5144-4aac-b50c-894493f6d569,Metano,Nuovo,,Skoda,Octavia,5,5,,anteriore,Bianco,96 g CO2/km (comb.),Nero,Bianco,Metallizzato,7,,,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,7403228b-eb96-43c1-bd40-92a96aebcb3d,Metano,Nuovo,,Skoda,Octavia,5,5,,anteriore,Bianco,96 g CO2/km (comb.),Nero,Bianco,Metallizzato,7,,,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,20263095-b834-4b04-b6af-64c246b887ff,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Grigio,98 g CO2/km (comb.),Stoffa,Grigio,,6,,,,,999,Euro 6,3,,"3,1 kg/100 km (comb.)
+3,7 kg/100 km (urbano)
+2,8 kg/100 km (extraurbano)",
+Station wagon,f12d8275-6598-4e8b-89df-19ddca19fb00,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Blu/Azzurro,98 g CO2/km (comb.),Stoffa,Blu,,6,,,,,999,Euro 6,3,,"3,1 kg/100 km (comb.)
+3,7 kg/100 km (urbano)
+2,8 kg/100 km (extraurbano)",
+Station wagon,c099f5d0-0e90-4884-a896-df18bdf228e9,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",Grigio,Metallizzato,7,,48 mese,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Station wagon,b37658cd-eb78-4272-8a89-8acb7d584083,Metano,Nuovo,,Volkswagen,Golf Variant,5,5,Automatico,anteriore,Blu/Azzurro,95 g CO2/km (comb.),"Stoffa, Grigio",ATLANTIC BLU,Metallizzato,7,1415,,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Station wagon,98c7be38-b2a9-435a-948d-c2d61a4bc7cc,Metano,Nuovo,,Audi,A4,5,5,Automatico,anteriore,Nero,105 g CO2/km (comb.),,Nero Mito Metallizzato,Metallizzato,7,,,,,1984,Euro 6,4,,"5,9 kg/100 km (comb.)
+7,7 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Station wagon,dcba62cf-b03d-4402-897a-2415836d9679,Metano,Nuovo,,Skoda,Octavia,5,5,Automatico,anteriore,Bianco,116 g CO2/km (comb.),"Stoffa, Nero",Bianco Luna Metalizzato,Metallizzato,7,1389,48 mese,,,1498,Euro 6d-TEMP,4,,"5,4 kg/100 km (comb.)
+6,7 kg/100 km (urbano)
+4,7 kg/100 km (extraurbano)",
+Station wagon,6c5f1864-788c-4cc6-8d9a-e6ca910bf619,Metano,Nuovo,,Audi,A4,5,5,Automatico,anteriore,Bianco,105 g CO2/km (comb.),Grigio,Bianco,,7,,,,,1984,Euro 6,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Station wagon,b513cb7b-b371-469e-98c5-dc38c5d1b437,Metano,Nuovo,,Audi,A4,5,5,Automatico,anteriore,Bianco,105 g CO2/km (comb.),Grigio,Bianco,,7,,,,,1984,Euro 6,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Station wagon,4233b443-e8f0-4d8f-a2f2-c559e7120290,Metano,Nuovo,,Audi,A4,5,5,Automatico,anteriore,Grigio,105 g CO2/km (comb.),,Grigio Daytona Perlato,,7,,,,,1984,Euro 6,4,,"5,9 kg/100 km (comb.)
+7,7 kg/100 km (urbano)
+4,7 kg/100 km (extraurbano)",
+Station wagon,fdefda0a-3e3d-47aa-90b6-0982d34cccab,Metano,Nuovo,,DR Motor,DR4,5,5,Manuale,,Bianco,,"Pelle totale, Grigio",Bianco,Base,6,,96 mese,,,1590,,4,,,
+Station wagon,37c4ca55-3711-4d2f-82db-232a08c6feef,Metano,Nuovo,,Volkswagen,Golf Variant,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),Grigio,Grigio,,7,,,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Station wagon,4ff2278c-dce2-4907-897d-b2f15cfa2788,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Altro, Nero",Argento riflesso,Metallizzato,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Station wagon,04e9fba0-6d82-4ab4-ab20-1a57d47c0241,Metano,Nuovo,,Skoda,Octavia,5,5,Automatico,anteriore,Argento,96 g CO2/km (comb.),"Stoffa, Grigio",Argento,Metallizzato,7,,48 mese,,,1498,Euro 6,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,e1c65947-d0dd-4ffb-afc0-dd9cadcbc09f,Metano,Nuovo,,Skoda,Octavia,5,5,Automatico,anteriore,Grigio,96 g CO2/km (comb.),"Stoffa, Nero",Grigio Quarzo Metallizzato,Metallizzato,7,1389,24 mese,,0,1498,Euro 6d-TEMP,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,ea59090f-1080-4501-96aa-6bbedde65271,Metano,Nuovo,,Audi,A4,5,5,Automatico,anteriore,Bianco,110 g CO2/km (comb.),"Pelle parziale, Nero",BIANCO GHIACCIO METALLIZZATO,Metallizzato,7,1665,,,0,1984,Euro 6d-TEMP,4,,7 kg/100 km (comb.),
+Station wagon,7e8b14f0-283c-42a4-9cce-b31b3a612d69,Metano,Nuovo,,SEAT,Leon,5,5,Automatico,anteriore,Nero,116 g CO2/km (comb.),"Stoffa, Grigio",Nero,Metallizzato,7,1374,48 mese,,,1498,Euro 6d-TEMP,4,,"5,1 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,3 kg/100 km (extraurbano)",
+Station wagon,5b546ca0-0313-4198-b24b-279f7f8f0855,Metano,Nuovo,,Volkswagen,Golf Variant,5,5,Automatico,anteriore,Grigio,,"Stoffa, Nero",Grigio,Metallizzato,7,,,,,1488,Euro 6,4,,,
+Station wagon,97a7a335-da91-4cb3-9e72-99ec4839b166,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),,Bianco,,6,1308,,Sì,,999,Euro 6,3,,"3,1 kg/100 km (comb.)
+3,7 kg/100 km (urbano)
+2,8 kg/100 km (extraurbano)",
+Station wagon,28ae05ad-ac30-492d-8d92-8cbf26238e75,Metano,Nuovo,2020,SEAT,Arona,5,5,Manuale,anteriore,Rosso,98 g CO2/km (comb.),Stoffa,Rosso,,6,1308,,Sì,,999,Euro 6,3,,"3,1 kg/100 km (comb.)
+3,7 kg/100 km (urbano)
+2,8 kg/100 km (extraurbano)",
+Station wagon,95ddde3d-5447-4672-8142-11e59b880f9f,Metano,Nuovo,,Skoda,Octavia,5,5,Semiautomatico,,Bianco,96 g CO2/km (comb.),"Stoffa, Altro",,,7,1389,,,0,1498,Euro 6d-TEMP,4,,"3,9 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,5 kg/100 km (extraurbano)",
+Station wagon,a7de0b78-c19f-4359-8ce2-1ef852c90d91,Metano,Nuovo,,SEAT,Leon,5,5,Automatico,anteriore,Argento,116 g CO2/km (comb.),,Vari colori,Metallizzato,7,1374,,,,1498,Euro 6,4,,"5,1 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,3 kg/100 km (extraurbano)",
+Station wagon,6855315b-5e61-4bc9-98ad-abc926d115a7,Metano,Nuovo,,Audi,A4,5,5,Automatico,anteriore,,105 g CO2/km (comb.),,,Metallizzato,7,1665,,,,1984,Euro 6,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Station wagon,1982287a-c464-487c-9156-4843c1d65fdf,Metano,Nuovo,,Audi,A4,5,5,Automatico,anteriore,,105 g CO2/km (comb.),,,Metallizzato,7,1665,,,,1984,Euro 6,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,1 kg/100 km (extraurbano)",
+Station wagon,3fba64c3-1a84-45ed-968b-97d254254370,Metano,Nuovo,,Audi,A4,4,5,Automatico,,Bianco,119 g CO2/km (comb.),,BIANCO IBIS,,7,1450,,,0,1986,Euro 6,4,,"5,2 kg/100 km (comb.)
+6,7 kg/100 km (urbano)
+4,3 kg/100 km (extraurbano)",
+Station wagon,5dfabb42-6880-4a74-a0c1-b8df7e4cceae,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),Stoffa,,Metallizzato,6,1308,,Sì,0,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+Station wagon,c88c27c0-ef97-4c09-a3ef-bb39e3af28f7,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Rosso,111 g CO2/km (comb.),,Rosso Pastello,,5,1090,48 mese,,0,999,Euro 6,3,,"4,9 kg/100 km (comb.)
+6,1 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+Berlina,c67275b9-0732-4bdf-bac8-fae16610ac2a,Metano,Nuovo,,Skoda,Scala,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),,Bianco,Base,6,,,,,999,Euro 6,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+Berlina,12bea1ad-0415-47b6-b01e-4c7ad4f02b5f,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),"Stoffa, Nero",,,7,1370,24 mese,,,1498,Euro 6d-TEMP,4,Sì,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",Sì
+Berlina,637a56de-bab6-4736-b740-7dac645a9c37,Metano,Nuovo,,Volkswagen,Golf,5,5,Semiautomatico,,Nero,95 g CO2/km (comb.),"Stoffa, Nero",perlato,,7,1370,24 mese,,,1498,Euro 6d-TEMP,4,Sì,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",Sì
+Berlina,44c2a82f-63be-4760-88df-0d2a9bbb9c2f,Metano,Nuovo,,Audi,A5,5,5,Automatico,anteriore,Nero,103 g CO2/km (comb.),Grigio,Nero,Metallizzato,7,,,,,1984,Euro 6,4,,"5,7 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Berlina,66605f91-1174-47d3-b013-86fa76048260,Metano,Nuovo,,Audi,A5,5,5,Automatico,anteriore,Nero,103 g CO2/km (comb.),Grigio,Nero,Metallizzato,7,,,,,1984,Euro 6,4,,"5,7 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Berlina,a3ceb463-c762-40e4-9309-3fe56eb1dca3,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),"Stoffa, Nero",Bianco Nevada,Metallizzato,6,1257,,Sì,0,999,Euro 6d-TEMP,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,a7948f75-7941-4adb-9b63-e9dec0e02fb6,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Blu/Azzurro,92 g CO2/km (comb.),"Stoffa, Nero",Blu Mistery,Metallizzato,6,1257,,Sì,0,999,Euro 6d-TEMP,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,5d615a47-6637-4300-9949-f597ed16c1e9,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Argento,92 g CO2/km (comb.),Stoffa,,Metallizzato,6,1257,48 mese,Sì,,999,Euro 6d-TEMP,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,a4c01cc5-913e-45d6-bf0f-2024509cda3e,Metano,Nuovo,,Skoda,Scala,5,5,Manuale,anteriore,Grigio,98 g CO2/km (comb.),Nero,Grigio,Metallizzato,6,,,,,999,Euro 6,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+Berlina,4fe02ef1-b1a7-4eae-9c7e-56b447036b26,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Grigio,92 g CO2/km (comb.),"Stoffa, Grigio",VARI COLORI,Metallizzato,5,,,,,999,Euro 6,3,,"5,8 kg/100 km (comb.)
+7,4 kg/100 km (urbano)
+4,9 kg/100 km (extraurbano)",
+Berlina,b7a6f2c9-7f96-4a1a-80fb-6474ed4bc88c,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Grigio,92 g CO2/km (comb.),"Stoffa, Grigio",VARI COLORI,Metallizzato,5,,,,,999,Euro 6,3,,"5,8 kg/100 km (comb.)
+7,4 kg/100 km (urbano)
+4,9 kg/100 km (extraurbano)",
+Berlina,cc4b6c82-b4f2-4264-ba20-945c84b3bb46,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Grigio,92 g CO2/km (comb.),"Stoffa, Grigio",VARI COLORI,Metallizzato,5,,,,,999,Euro 6,3,,"5,8 kg/100 km (comb.)
+7,4 kg/100 km (urbano)
+4,9 kg/100 km (extraurbano)",
+Berlina,b7e1358e-64c3-4631-bac7-f8c8f749306e,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Grigio,92 g CO2/km (comb.),"Stoffa, Grigio",VARI COLORI,Metallizzato,5,,,,,999,Euro 6,3,,"5,8 kg/100 km (comb.)
+7,4 kg/100 km (urbano)
+4,9 kg/100 km (extraurbano)",
+Berlina,ad0d68c8-76ed-4ce8-ad36-6208d8901015,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Grigio,92 g CO2/km (comb.),"Stoffa, Grigio",VARI COLORI,Metallizzato,5,,,,,999,Euro 6,3,,"5,8 kg/100 km (comb.)
+7,4 kg/100 km (urbano)
+4,9 kg/100 km (extraurbano)",
+Berlina,9ff03d6d-0683-4c42-b87c-a30e87c9da1e,Metano,Nuovo,,Volkswagen,up!,5,4,Manuale,anteriore,Bianco,81 g CO2/km (comb.),"Pelle totale, Nero",pure white,,5,1070,,Sì,,999,Euro 6d-TEMP,3,Sì,"2,9 kg/100 km (comb.)
+3,7 kg/100 km (urbano)
+2,5 kg/100 km (extraurbano)",Sì
+Berlina,669f8b6c-b279-4db0-a930-0159d7ae5b76,Metano,Nuovo,,Skoda,Scala,5,5,Manuale,anteriore,Bianco,96 g CO2/km (comb.),,Bianco,Base,6,,,,,999,Euro 6,3,,"5,4 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+Berlina,213da5b8-a970-43f1-86e7-69c65a11ee66,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),"Stoffa, Grigio",,Metallizzato,6,1257,48 mese,Sì,,999,Euro 6d-TEMP,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,38e211a0-889b-4f45-87d4-add5913f53c2,Metano,Nuovo,,Volkswagen,up!,5,4,Manuale,anteriore,Nero,82 g CO2/km (comb.),"Stoffa, Nero",Nero,Perlato,5,,48 mese,,,999,Euro 6,3,,"2,9 kg/100 km (comb.)
+3,7 kg/100 km (urbano)
+2,5 kg/100 km (extraurbano)",
+Berlina,93d40f5c-641f-4235-ab26-50edecdb4657,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Altro, Altro",,Metallizzato,7,,,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,a60f61a6-6fb4-4e88-906d-8962302a7b14,Metano,Nuovo,,Volkswagen,Polo,5,5,Manuale,anteriore,Nero,112 g CO2/km (comb.),"Altro, Altro",,,6,,,,,999,,3,,"7,5 kg/100 km (comb.)
+9,7 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,1b9c7c4b-abd8-4f02-89fb-8100fd6de8ef,Metano,Nuovo,,Fiat,Panda,5,5,Manuale,anteriore,Rosso,,,ROSSO AMORE,Base,5,,,,,875,,4,,,
+Berlina,dd2386fc-ac18-4bf0-81af-7bf2f03a9c8d,Metano,Nuovo,,Volkswagen,Polo,5,5,Manuale,anteriore,Nero,91 g CO2/km (comb.),"Stoffa, Nero",Nero,Perlato,5,,48 mese,,,999,Euro 6,3,,"3,3 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,24a23d1d-c9be-4c49-b3d0-d3cd7f299860,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Stoffa, Nero",,Metallizzato,7,1370,,,0,1498,Euro 6d-TEMP,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",Sì
+Berlina,050ef350-c306-40d8-ace5-362e50073ae1,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,124 g CO2/km (comb.),Nero,Bianco,,7,,,,,1498,Euro 6,4,,"4,1 kg/100 km (comb.)
+6,1 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,28bf6464-a2ba-4bc6-8f4c-b3dc7ee7b3fa,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,124 g CO2/km (comb.),Nero,Grigio,Metallizzato,7,,,,,1498,Euro 6,4,,"4,1 kg/100 km (comb.)
+6,1 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,9b4fc654-e23e-499a-85fd-26f49e164d71,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Rosso,92 g CO2/km (comb.),,Rosso,Metallizzato,5,,,,,999,Euro 6,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,60bdd035-fa7a-4828-9a5a-8094112615ce,Metano,Nuovo,,Volkswagen,Polo,5,5,Manuale,anteriore,Argento,91 g CO2/km (comb.),"Stoffa, Nero",Argento,Metallizzato,5,,48 mese,,,999,Euro 6,3,,"3,3 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,b35b68f3-781e-41fe-ae64-bf43e70ab196,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,124 g CO2/km (comb.),Nero,Bianco,,7,,,,,1498,Euro 6,4,,"4,1 kg/100 km (comb.)
+6,1 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,f79f4ba7-2cac-4ff2-a1ce-33730693f226,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Alcantara, Nero",Argento,Metallizzato,7,,24 mese,,,1498,Euro 6,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,fbe6611f-6fcc-409d-a223-fa4cc396a27a,Metano,Nuovo,,Fiat,Panda,5,4,Manuale,anteriore,Nero,,,nero cinema,Base,5,,,,,875,,4,,,
+Berlina,14e1debc-bd5d-43ee-b68f-6da5d7959560,Metano,Nuovo,,Volkswagen,up!,5,4,Manuale,anteriore,Argento,81 g CO2/km (comb.),"Stoffa, Nero",Argento,Metallizzato,5,1070,24 mese,Sì,,999,Euro 6d-TEMP,3,,"4,4 kg/100 km (comb.)
+5,5 kg/100 km (urbano)
+3,8 kg/100 km (extraurbano)",
+Berlina,768d1394-5533-4028-84f5-f3a09600972f,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),"Altro, Altro",,,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,ac7d5df6-bc4f-4954-8d0a-b5848d2e07d7,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Altro, Nero",Tungsten silver,Metallizzato,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,4ec4ec26-11bb-4b29-9f95-b8d50fa1804f,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,,92 g CO2/km (comb.),,,,5,,,,,999,Euro 6,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,7ce06bf8-66a1-4bbe-a817-f167e261e2a4,Metano,Nuovo,,Audi,A5,5,5,Automatico,anteriore,Bianco,103 g CO2/km (comb.),"Pelle totale, Grigio",Bianco,Metallizzato,7,,,,,1984,Euro 6,4,,"5,7 kg/100 km (comb.)
+7,5 kg/100 km (urbano)
+4,6 kg/100 km (extraurbano)",
+Berlina,799fc22b-71f1-49f2-877b-0e8312eb6285,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),"Stoffa, Nero",BIANCO CANDIDO,Base,6,1257,48 mese,Sì,,999,Euro 6,3,,"5,8 kg/100 km (comb.)
+7,4 kg/100 km (urbano)
+4,9 kg/100 km (extraurbano)",
+Berlina,b8afa304-be66-4d98-8616-92905d2c3454,Metano,Nuovo,,Volkswagen,up!,5,4,Manuale,anteriore,Argento,81 g CO2/km (comb.),"Altro, Altro",,Metallizzato,5,,,,,999,,3,,"6,8 kg/100 km (comb.)
+8,5 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+Berlina,5c9adc77-bdaa-4d3c-81a4-cebe9a04c79b,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Blu/Azzurro,92 g CO2/km (comb.),Stoffa,blu mistero,Metallizzato,6,1257,48 mese,Sì,0,999,Euro 6d-TEMP,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,d944906d-c839-44fe-8379-bddf4b47744e,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Bianco,95 g CO2/km (comb.),"Altro, Nero",Pure white,,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,f75c4ce5-f124-494a-a9cf-3bb36d1b6b54,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Altro, Nero",Grigio urano,,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,a42a1440-f583-440a-bcdf-0b618bc8b04d,Metano,Nuovo,,Volkswagen,Polo,5,5,Manuale,anteriore,Argento,112 g CO2/km (comb.),"Altro, Nero",Argento riflesso,Metallizzato,6,,24 mese,,,999,,3,,"7,5 kg/100 km (comb.)
+9,7 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,e6b727fc-a833-40cd-9833-b7133d622ebd,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Argento,92 g CO2/km (comb.),,Vari colori,Metallizzato,6,1257,,Sì,,999,Euro 6,3,,"5,8 kg/100 km (comb.)
+7,4 kg/100 km (urbano)
+4,9 kg/100 km (extraurbano)",
+Berlina,2c4a671b-8fcc-41ec-a8f5-a460fa2f17f7,Metano,Nuovo,,Skoda,Scala,5,5,Manuale,anteriore,Argento,115 g CO2/km (comb.),Nero,Argento,Metallizzato,6,,,,,999,Euro 6,3,,"4,7 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+Berlina,610b7ff6-f15e-4136-bd03-dab967cea527,Metano,Nuovo,,Volkswagen,up!,5,4,Manuale,anteriore,Rosso,81 g CO2/km (comb.),"Altro, Grigio",Rosso tornado,,5,,24 mese,,,999,,3,,"6,8 kg/100 km (comb.)
+8,5 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+Berlina,5b78fed0-f39f-446c-b80c-23125239e44e,Metano,Nuovo,,Volkswagen,Golf,5,5,Semiautomatico,,Grigio,95 g CO2/km (comb.),Stoffa,,Metallizzato,7,1370,,,0,1498,Euro 6d-TEMP,4,,"5,3 kg/100 km (comb.)
+6,8 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,f33c7c0d-e427-472c-bd6f-8e82dd1b11b6,Metano,Nuovo,,Volkswagen,Golf,5,5,Manuale,anteriore,Bianco,106 g CO2/km (comb.),"Altro, Nero",,,,,,,,1498,,,,"6,3 kg/100 km (comb.)
+7,1 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+Berlina,a57c3343-4cd5-4bd3-83e4-4d45567f2502,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),"Altro, Nero",Tungsten silver,Metallizzato,7,,24 mese,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,f40c81ae-04b8-4b4a-8c44-c2c29bef27f1,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),"Altro, Altro",,Metallizzato,7,,,,,1498,,4,,"7,7 kg/100 km (comb.)
+10 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,4f95a8b7-3600-47d0-bf53-2a5114571fcc,Metano,Nuovo,,Volkswagen,Polo,5,5,Manuale,anteriore,Grigio,112 g CO2/km (comb.),"Altro, Grigio",Argento riflesso,Metallizzato,6,,,,,999,,3,,"7,5 kg/100 km (comb.)
+9,7 kg/100 km (urbano)
+6,3 kg/100 km (extraurbano)",
+Berlina,60ad9bba-e94e-4d0f-9dfa-ae3913533d9e,Metano,Nuovo,,Volkswagen,up!,5,4,Manuale,,Bianco,81 g CO2/km (comb.),,,,5,1070,,Sì,0,999,Euro 6d-TEMP,3,,"2,9 kg/100 km (comb.)
+3,7 kg/100 km (urbano)
+2,5 kg/100 km (extraurbano)",
+Berlina,46de1a45-a3f0-49d8-b89a-ec9917aaafdc,Metano,Nuovo,2019,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,99 g CO2/km (comb.),"Stoffa, Grigio",Bianco,Metallizzato,5,1247,48 mese,Sì,,999,Euro 6,3,,"3,8 kg/100 km (comb.)
+4,5 kg/100 km (urbano)
+3,4 kg/100 km (extraurbano)",
+Berlina,9a3c7252-6d1c-4be6-910a-701719382a08,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),,Antracite,Base,7,1370,,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,82f66edc-a6b0-45ec-b322-e3a2c78a4f1c,Metano,Nuovo,,Volkswagen,up!,5,4,Manuale,anteriore,Blu/Azzurro,81 g CO2/km (comb.),"Stoffa, Nero",Costa azul,Metallizzato,5,,,,0,999,Euro 6d-TEMP,3,,"6,8 kg/100 km (comb.)
+8,5 kg/100 km (urbano)
+5,8 kg/100 km (extraurbano)",
+Berlina,52fd78e9-25f5-48ba-b481-72901c402551,Metano,Nuovo,,Lancia,Ypsilon,5,4,Manuale,anteriore,Grigio,97 g CO2/km (comb.),,GRIGIO PIETRA,,,,,,,875,Euro 6,2,,"5,4 kg/100 km (comb.)
+6,6 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,f3b10324-5a28-4645-83ff-c6a9008e3b5e,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),,Bianco,Metallizzato,5,,,,,999,Euro 6,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,00b85ae5-7177-4e65-97e3-f78498e64391,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),,Bianco,Metallizzato,5,,,,,999,Euro 6,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,fc1f3ead-8103-4f36-afb3-6a5628543d03,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),,Bianco,Metallizzato,5,,,,,999,Euro 6,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,f342bd1e-ca0a-41c9-97af-b6f924012cb1,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),,Bianco,Metallizzato,5,,,,,999,Euro 6,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,b5768106-2ba8-4d00-915f-86d7277062d7,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),,Bianco,Metallizzato,5,,,,,999,Euro 6,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,c27eab44-64a5-4de1-ad9a-33cce74a1108,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Nero,,"Stoffa, Nero",Nero,Metallizzato,6,,,,0,1488,Euro 6,4,,,
+Berlina,e3fd7329-21ec-4dd8-a7e5-9ec1ab80daf6,Metano,Nuovo,,Skoda,Scala,5,5,Manuale,anteriore,Argento,115 g CO2/km (comb.),Nero,Argento,Metallizzato,6,1255,,Sì,,999,Euro 6,3,,"4,7 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+Berlina,a8d3e765-d891-478a-84c9-e0214c56e0c6,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),"Stoffa, Nero",BIANCO NEVADA,Metallizzato,6,1257,,Sì,0,999,Euro 6d-TEMP,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,e2bddad7-a39f-4643-98ea-45103c297287,Metano,Nuovo,,SEAT,Leon,5,5,Automatico,anteriore,Nero,95 g CO2/km (comb.),"Stoffa, Grigio",Nero Midnight,Metallizzato,7,1334,,,0,1498,Euro 6d-TEMP,4,,"3,9 kg/100 km (comb.)
+5 kg/100 km (urbano)
+3,2 kg/100 km (extraurbano)",
+Berlina,45217cf4-0a29-4358-a45b-49412812212c,Metano,Nuovo,,SEAT,Leon,5,5,Automatico,anteriore,Argento,116 g CO2/km (comb.),,Vari colori,Metallizzato,7,1334,,,,1498,Euro 6,4,,"5,1 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,3 kg/100 km (extraurbano)",
+Berlina,db658fcd-b745-4e79-9445-b1709672ec46,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Bianco,92 g CO2/km (comb.),,BIANCO NEVADA,,5,1257,,Sì,,999,Euro 6,3,,"3,2 kg/100 km (comb.)
+4,1 kg/100 km (urbano)
+2,7 kg/100 km (extraurbano)",
+Berlina,2129c528-aef3-4a68-a1fe-79fc85d167a7,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Argento,92 g CO2/km (comb.),,Vari colori,Metallizzato,6,1257,,Sì,,999,Euro 6,3,,"5,8 kg/100 km (comb.)
+7,4 kg/100 km (urbano)
+4,9 kg/100 km (extraurbano)",
+Berlina,36d98252-1b7d-4a4a-a931-53b339ea1d8c,Metano,Nuovo,,Volkswagen,Golf,5,5,Manuale,anteriore,Argento,98 g CO2/km (comb.),Nero,Argento,Metallizzato,6,1350,,,,1498,Euro 6,4,,"5,5 kg/100 km (comb.)
+7,2 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",
+Berlina,0922e8cd-c6a1-45c5-94f9-7b7f3500b806,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Argento,95 g CO2/km (comb.),,Vari colori,Metallizzato,7,1370,,,,1498,Euro 6,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,1a4a2cd5-2cb5-47f8-9479-594e618651a1,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,95 g CO2/km (comb.),,Grigio,Metallizzato,7,1370,,,,1498,,4,,"5 kg/100 km (comb.)
+6,5 kg/100 km (urbano)
+4,1 kg/100 km (extraurbano)",
+Berlina,74d0e99f-015b-4630-8978-c9ac7cdc0994,Metano,Nuovo,,Volkswagen,up!,5,4,Manuale,anteriore,Bianco,82 g CO2/km (comb.),"Stoffa, Nero",,,5,956,24 mese,Sì,0,999,Euro 6,3,,"2,9 kg/100 km (comb.)
+3,7 kg/100 km (urbano)
+2,5 kg/100 km (extraurbano)",
+Berlina,7ab52009-4cf9-4f91-9e15-95797e7363a2,Metano,Nuovo,,Volkswagen,up!,5,4,Manuale,anteriore,Bianco,82 g CO2/km (comb.),"Stoffa, Grigio",bianco o blue grigio,,5,956,48 mese,Sì,0,999,Euro 6d-TEMP,3,Sì,"2,9 kg/100 km (comb.)
+3,7 kg/100 km (urbano)
+2,5 kg/100 km (extraurbano)",
+Berlina,1414c481-828a-492e-bec7-be13bfd31064,Metano,Nuovo,,Volkswagen,Golf,5,5,Automatico,anteriore,Grigio,98 g CO2/km (comb.),"Stoffa, Nero",TUNGSTENO,Metallizzato,6,1350,24 mese,,0,1498,Euro 6d-TEMP,4,,"5,5 kg/100 km (comb.)
+7,2 kg/100 km (urbano)
+4,4 kg/100 km (extraurbano)",Sì
+Berlina,cfd2c4b2-208d-4128-983f-abdd54e612c5,Metano,Nuovo,,Fiat,Panda,5,4,Manuale,anteriore,Rosso,125 g CO2/km (comb.),"Stoffa, Nero",Rosso,Base,5,1155,24 mese,Sì,,875,Euro 6d-TEMP,2,Sì,"5,5 kg/100 km (comb.)
+7,1 kg/100 km (urbano)
+4,8 kg/100 km (extraurbano)",
+Berlina,ca5b65c6-1f09-4123-8e93-204c5e650c67,Metano,Nuovo,,SEAT,Ibiza,5,5,Manuale,anteriore,Grigio,92 g CO2/km (comb.),"Stoffa, Nero",ARGENTO,Metallizzato,6,1257,48 mese,Sì,0,999,Euro 6,3,,"5,8 kg/100 km (comb.)",
+Berlina,5a6b3f57-2ca1-f743-e053-e350040ace5d,Metano,Nuovo,,Fiat,Panda,5,5,Manuale,anteriore,Grigio,85 g CO2/km (comb.),"Stoffa, Nero",785 GRIGIO MODA PASTELLO,,5,1080,24 mese,Sì,,875,Euro 6,2,,"3,1 kg/100 km (comb.)
+4 kg/100 km (urbano)
+2,6 kg/100 km (extraurbano)",
+Altro,2462af32-e632-4cf2-b409-5ace8fa4ceec,Metano,Nuovo,,Skoda,Kamiq,5,5,Manuale,,Bianco,95 g CO2/km (comb.),,BIANCO MAGNOLIA,,6,1332,,Sì,,999,Euro 6d-TEMP,3,,"5,3 kg/100 km (comb.)
+5,6 kg/100 km (urbano)
+4,2 kg/100 km (extraurbano)",
+Altro,f0174366-c82c-48f1-b997-2866bf2550a2,Metano,Nuovo,,Audi,A4,,,Manuale,,Nero,,"Altro, Nero",Nero mito metallizzato,Metallizzato,,,,,,1984,,,,,
+Altro,6a849aeb-07e3-42a2-a09e-54f2336247e0,Metano,Nuovo,2020,SEAT,Ibiza,5,,Manuale,anteriore,Blu/Azzurro,,Nero,,,,,,,,1000,Euro 6,,,,
+Altro,8f1662a2-ea58-4124-b10d-abccb7f0b849,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),"Stoffa, Nero",,,6,1308,48 mese,Sì,,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+Altro,bb7c2aee-c542-43de-b916-18bd37b24142,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),"Stoffa, Grigio",bianco,,6,1308,48 mese,Sì,,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+Altro,554b7695-d276-4d03-8bbb-6138186d01e9,Metano,Nuovo,2020,SEAT,Arona,5,,Manuale,anteriore,Rosso,,Nero,,,,,,,,1000,Euro 6,,,,
+Altro,410b59d1-236b-4e25-ba13-c9523fb76ab7,Metano,Nuovo,,Volkswagen,Caddy,4,2,Manuale,anteriore,Bianco,115 g CO2/km (comb.),,Bianco Candy,,6,,,,,1395,Euro 6,4,,"6,4 kg/100 km (comb.)
+8 kg/100 km (urbano)
+5,5 kg/100 km (extraurbano)",
+Altro,4b64b354-9472-4a9e-a651-32abd6968d10,Metano,Nuovo,,Volkswagen,Caddy,4,2,Manuale,anteriore,Bianco,115 g CO2/km (comb.),,Bianco Candy,,6,,,,,1395,Euro 6,4,,"6,4 kg/100 km (comb.)
+8 kg/100 km (urbano)
+5,5 kg/100 km (extraurbano)",
+Altro,07a259d4-799b-46bd-8699-6061b950c1d9,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),"Stoffa, Nero",BIANCO CANDY TETTO NERO,,6,1308,48 mese,Sì,,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+Altro,d20eee08-148d-4100-a7c4-4141e87aa55a,Metano,Nuovo,,Audi,A4,,,Automatico,anteriore,Bianco,,Grigio,Bianco,Metallizzato,7,,,,,1984,,,,,
+Altro,46ec9f24-6d97-49a8-a698-282906de3112,Metano,Nuovo,,Audi,A4,,,Automatico,anteriore,Grigio,,Grigio,Grigio,Metallizzato,7,,,,,1984,,,,,
+Altro,6df0537d-d221-486b-868e-947efa760839,Metano,Nuovo,,Audi,A4,,,Automatico,anteriore,Bianco,,Grigio,Bianco,Metallizzato,7,,,,,1984,,,,,
+Altro,e0c9cb13-c1fd-4bcf-9c73-6b81c5fc134e,Metano,Nuovo,,Audi,A4,,,Automatico,anteriore,Grigio,,Grigio,Grigio,Metallizzato,7,,,,,1984,,,,,
+Altro,976b55d0-cf51-40a6-8e03-e9b9d2f77460,Metano,Nuovo,2020,Volkswagen,up!,3,,Manuale,anteriore,Blu/Azzurro,,Nero,,,,,,,,1000,Euro 6,,,,
+Altro,f9441162-65d7-49c9-b215-95a50f0af693,Metano,Nuovo,2020,Volkswagen,Golf,5,,Automatico,anteriore,Grigio,,Nero,,,,,,,,1500,Euro 6,,,,
+Altro,6a8f026f-661a-43cb-8746-0cebe1c3c7e5,Metano,Nuovo,2020,Volkswagen,Polo,5,,Manuale,anteriore,Grigio,,Nero,,,,,,,,1000,Euro 6,,,,
+Altro,de7bd01b-9705-43f1-8910-d40a80f1d3ef,Metano,Nuovo,2020,SEAT,Ibiza,5,,Manuale,anteriore,Blu/Azzurro,,Nero,,,,,,,,1000,Euro 6,,,,
+Altro,2cae83a4-92b2-478f-94cf-b2f290583c3d,Metano,Nuovo,2020,Skoda,Kamiq,5,,Manuale,anteriore,Blu/Azzurro,,Nero,,,,,,,,1000,Euro 6,,,,
+Altro,e78bcc53-668e-41d6-8283-fed515425ada,Metano,Nuovo,2020,SEAT,Arona,5,,Manuale,anteriore,Rosso,,Nero,,,,,,,,1000,Euro 6,,,,
+Altro,a9308fe9-6cee-46a3-919b-3eb3325f49e8,Metano,Nuovo,,DR Motor,DR6,5,5,Manuale,anteriore,Bianco,,"Pelle totale, Grigio",Bianco,Base,5,,96 mese,,,1498,,4,,,
+Altro,41046acc-0ea9-4d87-8eed-1a3f57d48795,Metano,Nuovo,,DR Motor,DR4,5,5,Manuale,anteriore,Grigio,,"Pelle totale, Grigio",Grigio,Metallizzato,6,,96 mese,,,1590,,4,,,
+Altro,5edc403c-99e8-42c1-b982-965206b2e09b,Metano,Nuovo,,Audi,A4,,,Manuale,,Grigio,,"Altro, Nero",Grigio manhattan metalliz,Metallizzato,,,,,,1984,,,,,
+Altro,099ae771-b111-4d3a-9cb4-4bcf1a73d28a,Metano,Nuovo,2020,Lancia,Ypsilon,5,,Manuale,anteriore,Rosso,,Nero,,,,,,,,900,Euro 6,,,,
+Altro,bfc01546-b688-4da2-be9a-163791245db6,Metano,Nuovo,,SEAT,Arona,5,5,Manuale,anteriore,Bianco,98 g CO2/km (comb.),"Stoffa, Nero",,Metallizzato,6,1308,,Sì,0,999,Euro 6d-TEMP,3,,"3,5 kg/100 km (comb.)
+4,3 kg/100 km (urbano)
+3 kg/100 km (extraurbano)",
+Altro,d79c174e-1ffb-4efc-a026-120ed42cb826,Metano,Nuovo,,Fiat,Doblo,,3,Manuale,,Bianco,,,Bianco,Base,6,,24 mese,,,1400,Euro 6d-TEMP,4,,,
+Monovolume,ac46ef69-421c-4bd0-9ce2-a5a2f0b5f31f,Metano,Nuovo,,Volkswagen,Caddy,5,7,Manuale,anteriore,Grigio,138 g CO2/km (comb.),Grigio,Grigio,Metallizzato,6,,,,,1395,Euro 6,4,,"6 kg/100 km (comb.)
+7,3 kg/100 km (urbano)
+5,2 kg/100 km (extraurbano)",
+Monovolume,355d0e4e-b71a-4d05-8335-1b07bd3163ab,Metano,Nuovo,,Volkswagen,Caddy,5,5,Manuale,anteriore,Bianco,135 g CO2/km (comb.),"Stoffa, Nero",Bianco,Base,6,1541,24 mese,,,1395,Euro 6,4,,"5,9 kg/100 km (comb.)
+7,2 kg/100 km (urbano)
+5,1 kg/100 km (extraurbano)",
+Monovolume,7d56a064-31d8-4964-a403-a39e359f1382,Metano,Nuovo,,Volkswagen,Caddy,5,5,Manuale,anteriore,Rosso,135 g CO2/km (comb.),"Stoffa, Nero",Rosso,Base,6,1541,24 mese,,,1395,Euro 6,4,,"5,9 kg/100 km (comb.)
+7,2 kg/100 km (urbano)
+5,1 kg/100 km (extraurbano)",
+Monovolume,953e87a6-333e-4af8-bcfe-a5320d9b5a31,Metano,Nuovo,,Volkswagen,Caddy,5,5,Manuale,anteriore,Grigio,135 g CO2/km (comb.),"Stoffa, Nero",Grigio,Metallizzato,6,1541,24 mese,,,1395,Euro 6,4,,"5,9 kg/100 km (comb.)
+7,2 kg/100 km (urbano)
+5,1 kg/100 km (extraurbano)",
+Monovolume,9e75af4e-fe62-485f-9332-7486054306bd,Metano,Nuovo,,Volkswagen,Caddy,5,7,Manuale,anteriore,Bianco,138 g CO2/km (comb.),"Stoffa, Nero",Bianco,Base,6,1565,24 mese,,,1395,Euro 6,4,,"6 kg/100 km (comb.)
+7,3 kg/100 km (urbano)
+5,2 kg/100 km (extraurbano)",
+Monovolume,a5024c3f-2f1b-4e33-ae0d-3b4400a40405,Metano,Nuovo,,Volkswagen,Caddy,4,2,Manuale,anteriore,Bianco,138 g CO2/km (comb.),"Altro, Altro",,,6,,,,,1395,Euro 6,4,,"9,2 kg/100 km (comb.)
+11,2 kg/100 km (urbano)
+8 kg/100 km (extraurbano)",
+Monovolume,81e35f0c-1690-4cbd-8d7c-60aba2f975c6,Metano,Nuovo,,Volkswagen,Caddy,5,7,Manuale,anteriore,Nero,138 g CO2/km (comb.),"Altro, Altro",,,6,,,,,1395,,4,,"9,2 kg/100 km (comb.)
+11,2 kg/100 km (urbano)
+8 kg/100 km (extraurbano)",
+Monovolume,49897e3c-7ae4-4f6f-964a-dfb5da5eb8b9,Metano,Nuovo,,Volkswagen,Caddy,4,2,Manuale,anteriore,Bianco,,Nero,Bianco,,6,,,,,1395,Euro 6,4,,,
+Monovolume,3e0bbfb6-c839-45da-9cad-08db7fb100ae,Metano,Nuovo,,Volkswagen,Caddy,5,7,Manuale,anteriore,Bianco,138 g CO2/km (comb.),"Stoffa, Nero",Bianco,Base,6,1565,24 mese,,,1395,Euro 6,4,,"6 kg/100 km (comb.)
+7,3 kg/100 km (urbano)
+5,2 kg/100 km (extraurbano)",
+Monovolume,8a4bbd90-5784-45b2-875c-476dc06242c4,Metano,Nuovo,,Volkswagen,Caddy,5,7,Manuale,anteriore,Blu/Azzurro,138 g CO2/km (comb.),"Stoffa, Altro",Blu acapulco,Metallizzato,6,,,,,1395,,4,,"9,2 kg/100 km (comb.)
+11,2 kg/100 km (urbano)
+8 kg/100 km (extraurbano)",
+Monovolume,74073bac-b368-4432-a763-d17fb7fa8dc0,Metano,Nuovo,,Volkswagen,Caddy,5,5,Manuale,anteriore,Argento,135 g CO2/km (comb.),"Altro, Altro",,,6,,24 mese,,,1395,,4,,"9,1 kg/100 km (comb.)
+11,1 kg/100 km (urbano)
+7,8 kg/100 km (extraurbano)",
+Monovolume,9f9b65f2-6447-4f88-b9e1-a862f915feea,Metano,Nuovo,,Volkswagen,Caddy,5,7,Manuale,anteriore,Grigio,138 g CO2/km (comb.),"Stoffa, Nero",Grigio scuro,Metallizzato,6,,,,,1395,Euro 6,4,,"6 kg/100 km (comb.)
+7,3 kg/100 km (urbano)
+5,2 kg/100 km (extraurbano)",
+Monovolume,757d4a98-07ba-4621-a534-c66731c4c7e0,Metano,Nuovo,,Volkswagen,Caddy,5,5,Manuale,anteriore,Argento,135 g CO2/km (comb.),"Stoffa, Nero",Argento,Metallizzato,6,1541,24 mese,,,1395,Euro 6,4,,"5,9 kg/100 km (comb.)
+7,2 kg/100 km (urbano)
+5,1 kg/100 km (extraurbano)",
+Monovolume,c682ad21-96e3-4a96-a198-f6d73b026e6d,Metano,Nuovo,,Volkswagen,Caddy,5,5,Manuale,anteriore,Beige,135 g CO2/km (comb.),"Stoffa, Altro",Beige,Metallizzato,6,1541,24 mese,,,1395,Euro 6,4,,"5,9 kg/100 km (comb.)
+7,2 kg/100 km (urbano)
+5,1 kg/100 km (extraurbano)",
+Monovolume,392957ae-efe8-4eca-b197-83b7a2a00e81,Metano,Nuovo,,Volkswagen,Caddy,5,5,Manuale,anteriore,Nero,135 g CO2/km (comb.),"Stoffa, Nero",Nero,Metallizzato,6,1541,24 mese,,,1395,Euro 6,4,,"5,9 kg/100 km (comb.)
+7,2 kg/100 km (urbano)
+5,1 kg/100 km (extraurbano)",
+Monovolume,5159328a-f648-4cf8-b5ae-f4a430cef58d,Metano,Nuovo,,Volkswagen,Caddy,5,7,Manuale,anteriore,Blu/Azzurro,116 g CO2/km (comb.),"Stoffa, Nero",Blu acapulco metallizzato,Metallizzato,6,1565,,,0,1395,Euro 6d-TEMP,4,,"4,3 kg/100 km (comb.)
+5,3 kg/100 km (urbano)
+3,6 kg/100 km (extraurbano)",
+Monovolume,a8e9b05b-655d-464a-8fc0-03963f074e1e,Metano,Nuovo,,Volkswagen,Caddy,5,7,Manuale,anteriore,Beige,138 g CO2/km (comb.),"Altro, Altro",,Metallizzato,6,,,,,1395,,4,,"9,2 kg/100 km (comb.)
+11,2 kg/100 km (urbano)
+8 kg/100 km (extraurbano)",
+Monovolume,5d3ffb95-c062-4417-bd22-c99e657b7034,Metano,Nuovo,,Volkswagen,Caddy,5,7,Manuale,anteriore,Beige,138 g CO2/km (comb.),"Altro, Altro",,Metallizzato,6,,,,,1395,,4,,"9,2 kg/100 km (comb.)
+11,2 kg/100 km (urbano)
+8 kg/100 km (extraurbano)",
+Monovolume,1229e3e0-12dc-4547-962a-ea33362f6165,Metano,Nuovo,,Volkswagen,Caddy,5,7,Manuale,anteriore,Rosso,138 g CO2/km (comb.),"Stoffa, Nero",Rosso Fortana Metallizzato,Metallizzato,6,,,,0,1395,Euro 6,4,,,
+Monovolume,a78b926e-76f9-4648-a9e3-860bc7b092de,Metano,Nuovo,,Volkswagen,Caddy,5,7,Manuale,anteriore,Blu/Azzurro,138 g CO2/km (comb.),"Stoffa, Nero",Azzurro,Metallizzato,6,1565,,,,1395,Euro 6,4,,"6 kg/100 km (comb.)
+7,3 kg/100 km (urbano)
+5,2 kg/100 km (extraurbano)",
+Monovolume,6a36eb68-b74b-40b2-8608-72d7d6c88933,Metano,Nuovo,,Volkswagen,Caddy,4,2,Manuale,anteriore,Bianco,,"Stoffa, Nero",Bianco,Base,6,1418,,,,1395,Euro 6,4,,,
+Monovolume,399d327a-e82d-4b7d-87c5-41b3d67b0630,Metano,Nuovo,,Volkswagen,Caddy,4,2,Manuale,anteriore,Bianco,,"Stoffa, Nero",Bianco,Base,6,1418,,,,1395,Euro 6,4,,,

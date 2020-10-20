@@ -1,0 +1,317 @@
+[
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - id_annuncio",
+    "newColumnName": "id_annuncio",
+    "description": "Rename column _ - _ - id_annuncio to id_annuncio"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Anno",
+    "newColumnName": "Anno",
+    "description": "Rename column _ - _ - Anno to Anno"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Carrozzeria",
+    "newColumnName": "Carrozzeria",
+    "description": "Rename column _ - _ - Carrozzeria to Carrozzeria"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Alimentazione",
+    "newColumnName": "Alimentazione",
+    "description": "Rename column _ - _ - Alimentazione to Alimentazione"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Tipo di veicolo",
+    "newColumnName": "Tipo di veicolo",
+    "description": "Rename column _ - _ - Tipo di veicolo to Tipo di veicolo"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Marca",
+    "newColumnName": "Marca",
+    "description": "Rename column _ - _ - Marca to Marca"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Modello",
+    "newColumnName": "Modello",
+    "description": "Rename column _ - _ - Modello to Modello"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Colore esterno",
+    "newColumnName": "Colore esterno",
+    "description": "Rename column _ - _ - Colore esterno to Colore esterno"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Tipo di cambio",
+    "newColumnName": "Tipo di cambio",
+    "description": "Rename column _ - _ - Tipo di cambio to Tipo di cambio"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Porte",
+    "newColumnName": "Porte",
+    "description": "Rename column _ - _ - Porte to Porte"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Posti a sedere",
+    "newColumnName": "Posti a sedere",
+    "description": "Rename column _ - _ - Posti a sedere to Posti a sedere"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Cilindrata",
+    "newColumnName": "Cilindrata",
+    "description": "Rename column _ - _ - Cilindrata to Cilindrata"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Marce",
+    "newColumnName": "Marce",
+    "description": "Rename column _ - _ - Marce to Marce"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Cilindri",
+    "newColumnName": "Cilindri",
+    "description": "Rename column _ - _ - Cilindri to Cilindri"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Classe emissioni",
+    "newColumnName": "Classe emissioni",
+    "description": "Rename column _ - _ - Classe emissioni to Classe emissioni"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Peso a vuoto",
+    "newColumnName": "Peso a vuoto",
+    "description": "Rename column _ - _ - Peso a vuoto to Peso a vuoto"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Tipo di unità",
+    "newColumnName": "Tipo di unità",
+    "description": "Rename column _ - _ - Tipo di unità to Tipo di unità"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Consumo carburante:3",
+    "newColumnName": "Consumo carburante:3",
+    "description": "Rename column _ - _ - Consumo carburante:3 to Consumo carburante:3"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Offerta n.",
+    "description": "Remove column _ - _ - Offerta n."
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Proprietari",
+    "newColumnName": "Proprietari",
+    "description": "Rename column _ - _ - Proprietari to Proprietari"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Usato Garantito",
+    "newColumnName": "Usato Garantito",
+    "description": "Rename column _ - _ - Usato Garantito to Usato Garantito"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Veicolo per non fumatori",
+    "newColumnName": "Veicolo per non fumatori",
+    "description": "Rename column _ - _ - Veicolo per non fumatori to Veicolo per non fumatori"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Rivestimenti",
+    "newColumnName": "Rivestimenti",
+    "description": "Rename column _ - _ - Rivestimenti to Rivestimenti"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Colore originale",
+    "newColumnName": "Colore originale",
+    "description": "Rename column _ - _ - Colore originale to Colore originale"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Tipo di vernice",
+    "newColumnName": "Tipo di vernice",
+    "description": "Rename column _ - _ - Tipo di vernice to Tipo di vernice"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Cilindrata",
+    "expression": "jython:return value.replace(' cm³','').replace(\".\",\"\").strip() if value else value",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Cilindrata using expression jython:return value.replace(' cm³','').replace(\".\",\"\").strip() if value else value"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Peso a vuoto",
+    "expression": "jython:return value.replace(' kg','').replace(\".\",\"\").strip() if value else value",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Peso a vuoto using expression jython:return value.replace(' kg','').replace(\".\",\"\").strip() if value else value"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Consumo carburante:3",
+    "expression": "join ([coalesce(cells['Consumo carburante:3'].value,''),coalesce(cells['_ - _ - Consumo carburante:2'].value,'')],'')",
+    "onError": "keep-original",
+    "newColumnName": "Consumo carburante",
+    "columnInsertIndex": 17,
+    "description": "Create column Consumo carburante at index 17 based on column Consumo carburante:3 using expression join ([coalesce(cells['Consumo carburante:3'].value,''),coalesce(cells['_ - _ - Consumo carburante:2'].value,'')],'')"
+  },
+  {
+    "op": "core/column-reorder",
+    "columnNames": [
+      "Carrozzeria",
+      "id_annuncio",
+      "Alimentazione",
+      "Tipo di cambio",
+      "Tipo di veicolo",
+      "Marca",
+      "Modello",
+      "Porte",
+      "Tipo di unità",
+      "Cilindrata",
+      "Posti a sedere",
+      "Cilindri",
+      "Colore esterno",
+      "Marce",
+      "Classe emissioni",
+      "_ - _ - Emissioni di CO23",
+      "Consumo carburante",
+      "Colore originale",
+      "Rivestimenti",
+      "Tipo di vernice",
+      "Peso a vuoto",
+      "Usato Garantito",
+      "_ - _ - Versione per nazione",
+      "Proprietari",
+      "_ - _ - Per neopatentati",
+      "Veicolo per non fumatori",
+      "Anno",
+      "_ - _ - Tagliandi certificati",
+      "_ - _ - Emissioni di CO22",
+      "_ - _ - Bollino polveri",
+      "_ - _ - Ultimo tagliando",
+      "_ - _ - Disponibilità",
+      "_ - _ - Ultimo cambio cinghia distribuzione"
+    ],
+    "description": "Reorder columns"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "_ - _ - Emissioni di CO23",
+    "expression": "join ([coalesce(cells['_ - _ - Emissioni di CO23'].value,''),coalesce(cells['_ - _ - Emissioni di CO22'].value,'')],'')",
+    "onError": "keep-original",
+    "newColumnName": "Emissioni di CO2",
+    "columnInsertIndex": 16,
+    "description": "Create column Emissioni di CO2 at index 16 based on column _ - _ - Emissioni di CO23 using expression join ([coalesce(cells['_ - _ - Emissioni di CO23'].value,''),coalesce(cells['_ - _ - Emissioni di CO22'].value,'')],'')"
+  },
+  {
+    "op": "core/column-reorder",
+    "columnNames": [
+      "Carrozzeria",
+      "id_annuncio",
+      "Alimentazione",
+      "Tipo di cambio",
+      "Tipo di veicolo",
+      "Marca",
+      "Modello",
+      "Porte",
+      "Tipo di unità",
+      "Cilindrata",
+      "Posti a sedere",
+      "Cilindri",
+      "Colore esterno",
+      "Marce",
+      "Classe emissioni",
+      "Emissioni di CO2",
+      "Consumo carburante",
+      "Colore originale",
+      "Rivestimenti",
+      "Tipo di vernice",
+      "Peso a vuoto",
+      "Usato Garantito",
+      "_ - _ - Versione per nazione",
+      "Proprietari",
+      "_ - _ - Per neopatentati",
+      "Veicolo per non fumatori",
+      "Anno",
+      "_ - _ - Tagliandi certificati",
+      "_ - _ - Bollino polveri",
+      "_ - _ - Ultimo tagliando",
+      "_ - _ - Disponibilità",
+      "_ - _ - Ultimo cambio cinghia distribuzione"
+    ],
+    "description": "Reorder columns"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Per neopatentati",
+    "newColumnName": "Per neopatentati",
+    "description": "Rename column _ - _ - Per neopatentati to Per neopatentati"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Bollino polveri",
+    "description": "Remove column _ - _ - Bollino polveri"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Ultimo tagliando",
+    "description": "Remove column _ - _ - Ultimo tagliando"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Disponibilità",
+    "description": "Remove column _ - _ - Disponibilità"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Ultimo cambio cinghia distribuzione",
+    "description": "Remove column _ - _ - Ultimo cambio cinghia distribuzione"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "_ - _ - Versione per nazione",
+    "description": "Remove column _ - _ - Versione per nazione"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - Tagliandi certificati",
+    "newColumnName": "Tagliandi certificati",
+    "description": "Rename column _ - _ - Tagliandi certificati to Tagliandi certificati"
+  }
+]
