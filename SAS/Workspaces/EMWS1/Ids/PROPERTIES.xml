@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  DataSource="texttrain" Scope="LOCAL" Role="RAW" Library="LIB" Table="TEXT_TRAIN"
+ NCols="40" NObs="6778" NBytes="6120448" Segment="" DataSourceRole="RAW" OutputType="VIEW"
+ ForceRun="N" ComputeStatistics="N" DataSelection="DATASOURCE" NewTable="" MetaAdvisor="BASIC"
+ ApplyIntervalLevelLowerLimit="Y" IntervalLowerLimit="20" ApplyMaxPercentMissing="Y"
+ MaxPercentMissing="50" ApplyMaxClassLevels="Y" MaxClassLevels="20" IdentifyEmptyColumns="Y"
+ VariableValidation="STRICT" NewVariableRole="REJECT" DropMapVariables="Y" DsId="texttrain"
+ DsSampleName="" DsSampleSizeType="" DsSampleSize="" DsCreatedBy="Maria Vallarelli"
+ DsCreateDate="1918771984" DsModifiedBy="Maria Vallarelli" DsModifyDate="1918771984.1"
+ DsScope="LOCAL" Sample="D" SampleSizeType="PERCENT" SampleSizePercent="20" SampleSizeObs="10000"
+ DBPassThrough="Y" RunAction="Train" Component="DataSource" RawCreateTime="1918771987.6"
+ CreateTime="20OCT2020:00:13:08" Description="" Data="LIB.TEXT_TRAIN" CMeta="WORK.M3CM4A4J"
+>
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>

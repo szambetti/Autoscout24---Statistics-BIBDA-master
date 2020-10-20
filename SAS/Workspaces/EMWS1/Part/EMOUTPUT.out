@@ -1,0 +1,77 @@
+*------------------------------------------------------------*
+Utente:             Maria Vallarelli
+Data:               19 ottobre 2020
+Ora:                23:40:52
+*------------------------------------------------------------*
+* Output di training
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Riepilogo delle variabili
+ 
+                         Conteggio
+          Livello di         di
+Ruolo     misurazione    frequenza
+ 
+INPUT      BINARY             4
+INPUT      INTERVAL           4
+INPUT      NOMINAL           18
+TARGET     BINARY             1
+ 
+ 
+ 
+ 
+Riepilogo della partizione
+ 
+                                     Numero di
+Tipo             Data set          osservazioni
+ 
+DATA        EMWS1.Stat_TRAIN           6778
+TRAIN       EMWS1.Part_TRAIN           4743
+VALIDATE    EMWS1.Part_VALIDATE        2035
+
+
+*------------------------------------------------------------*
+* Output di scoring
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Output dei report
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Statistiche di riepilogo per target categorici
+ 
+Dati=DATA
+ 
+                                       Conteggio
+              Valore       Valore          di
+Variabile    numerico    formattato    frequenza    Percentuale    Etichetta
+ 
+ target          0           0            4206        62.0537       target
+ target          1           1            2572        37.9463       target
+ 
+ 
+Dati=TRAIN
+ 
+                                       Conteggio
+              Valore       Valore          di
+Variabile    numerico    formattato    frequenza    Percentuale    Etichetta
+ 
+ target          0           0            2943        62.0493       target
+ target          1           1            1800        37.9507       target
+ 
+ 
+Dati=VALIDATE
+ 
+                                       Conteggio
+              Valore       Valore          di
+Variabile    numerico    formattato    frequenza    Percentuale    Etichetta
+ 
+ target          0           0            1263        62.0639       target
+ target          1           1             772        37.9361       target
