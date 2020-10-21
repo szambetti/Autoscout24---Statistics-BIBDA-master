@@ -1,0 +1,32 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Valori di limitazione e di sostituzione per variabili continue
+
+                                                           Valore di                    Valore di
+                    Sostituisci               Limite     sostituzione      Limite     sostituzione
+Variabile           variabile               inferiore      inferiore     superiore      superiore
+
+Cilindrata          REP_Cilindrata             -39.08         -39.08       2753.10       2753.10  
+Emissioni_di_CO2    REP_Emissioni_di_CO2        33.54          33.54        196.82        196.82  
+Peso_a_vuoto        REP_Peso_a_vuoto           563.47         563.47       2063.98       2063.98  
+price               REP_price               -17140.31      -17140.31      61735.16      61735.16  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Valori di sostituzione per variabili categoriche
+
+                                                         Valore
+                                                      alfanumerico
+                                  Valore                  non          Valore      Valore di
+Variabile                       formattato    Tipo     formattato     numerico    sostituzione    Etichetta
+
+Classe_emissioni                               C                          .         _blank_                
+Colore_esterno                                 C                          .         _blank_                
+Consumo_carburante_combinato                   C                          .         _blank_                
+Consumo_carburante_urbano                      C                          .         _blank_                
+Tipo_di_cambio                                 C                          .         _blank_                
+Tipo_di_unita                                  C                          .         _blank_                
+Tipo_di_vernice                                C                          .         _blank_                

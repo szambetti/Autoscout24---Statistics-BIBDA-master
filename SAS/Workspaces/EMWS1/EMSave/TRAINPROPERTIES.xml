@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  Location="CATALOG" Catalog="Sashelp.Emutil.Savext.Source" Type="SAS7BDAT" Replace="Y"
+ AllObs="Y" OutObs="1000" AllRoles="Y" Train="Y" Validate="Y" Test="Y" Score="Y" Transaction="Y"
+ ForceRun="N" RunAction="Train" Component="EMSave" Lib="LIB" DirectorySelector=""
+ Name="text" RawCreateTime="1918764245.6" CreateTime="19OCT2020:22:04:06" RunId="f92c3f6a-ce7b-495f-b96a-78b577f5b074"
+ RawLastTimeRun="1918771696.8" RawRunTime="13.585000038" LastTimeRun="20OCT2020:00:08:17"
+ RunTime="0 Hr. 0 Min. 13.59 Sec.">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES ><![CDATA[
+USERTRAINCODE
+USERSCORECODE
+USERREPORTCODE
+]]>
+</FILEPROPERTIES></_ROOT_>

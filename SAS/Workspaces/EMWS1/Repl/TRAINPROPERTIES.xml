@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  Location="CATALOG" Catalog="SASHELP.EMMDFY.REPLACE.SOURCE" HideVariable="N" UnknownLevel="NONE"
+ ReplaceMethod="COMPUTED" CalcMethod="STDDEV" MADSCutoff="9.0" SpacingsCutoff="9.0"
+ StddevCutoff="3.0" PercentsCutoff="0.5" CountReport="Y" ForceRun="N" RunAction="Train"
+ Component="Replace" IntervalMethod="NONE" DataNeeded="Y" RawCreateTime="1918770367.5"
+ CreateTime="19OCT2020:23:46:07" RunId="64d35a5a-0e54-4db0-b22e-efd73cc80b1a" RawLastTimeRun="1918771326.5"
+ RawRunTime="13.135999918" LastTimeRun="20OCT2020:00:02:07" RunTime="0 Hr. 0 Min. 13.14 Sec."
+>
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES ><![CDATA[
+USERTRAINCODE
+USERSCORECODE
+USERREPORTCODE
+NEWVALUES
+]]>
+</FILEPROPERTIES></_ROOT_>

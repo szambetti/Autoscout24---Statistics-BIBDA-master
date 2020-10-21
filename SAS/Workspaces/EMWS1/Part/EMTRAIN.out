@@ -1,0 +1,26 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Riepilogo delle variabili
+
+                         Conteggio
+          Livello di         di
+Ruolo     misurazione    frequenza
+
+INPUT      BINARY             4   
+INPUT      INTERVAL           4   
+INPUT      NOMINAL           18   
+TARGET     BINARY             1   
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Riepilogo della partizione
+
+                                     Numero di
+Tipo             Data set          osservazioni
+
+DATA        EMWS1.Stat_TRAIN           6778    
+TRAIN       EMWS1.Part_TRAIN           4743    
+VALIDATE    EMWS1.Part_VALIDATE        2035    

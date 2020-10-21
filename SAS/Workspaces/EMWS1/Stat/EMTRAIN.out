@@ -1,0 +1,417 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Riepilogo delle variabili
+
+                           Conteggio
+            Livello di         di
+Ruolo       misurazione    frequenza
+
+INPUT        BINARY             4   
+INPUT        INTERVAL           4   
+INPUT        NOMINAL           19   
+REJECTED     NOMINAL           12   
+TARGET       BINARY             1   
+ 
+                                                                                                                                                                                                                                                                
+ 
+Riepilogo dei livelli delle variabili
+(massimo 500 osservazioni stampate)
+
+                       Conteggio
+                           di
+Variabile    Ruolo     frequenza
+
+ target      TARGET        2    
+ 
+                                                                                                                                                                                                                                                                
+ 
+Statistiche di riepilogo delle variabili categoriche
+(massimo 500 osservazioni stampate)
+
+Ruolo dei dati=TRAIN
+
+                                                       Numero
+ Ruolo                                                   di                                  Percentuale                               Percentuale
+dei dati    Nome variabile                  Ruolo     livelli    Mancanti    Moda               moda        Moda2                         moda2
+
+ TRAIN      Alimentazione                   INPUT         6           0      Benzina            33.74       Diesel                        29.55   
+ TRAIN      Anno                            INPUT        10          23      2020.0             80.04       2019.0                        17.48   
+ TRAIN      Carrozzeria                     INPUT         8           0      Berlina            26.78       SUV/Fuoristrada/Pick-up       18.52   
+ TRAIN      Cilindri                        INPUT         8         577      4                  61.67       3                             26.07   
+ TRAIN      Classe_emissioni                INPUT         7        1019      Euro 6             54.88       Euro 6d-TEMP                  27.10   
+ TRAIN      Colore_esterno                  INPUT        15         128      Grigio             27.40       Bianco                        27.34   
+ TRAIN      Consumo_carburante_combinato    INPUT        92         848                         12.51       3,9                           10.89   
+ TRAIN      Consumo_carburante_extraurb     INPUT        80        1000                         14.75       3,4                            9.01   
+ TRAIN      Consumo_carburante_urbano       INPUT       111        1007                         14.86       4,7                           10.31   
+ TRAIN      Marca                           INPUT        40           0      Fiat               37.56       Jeep                           7.80   
+ TRAIN      Marce                           INPUT         8         654      6                  50.35       5                             21.19   
+ TRAIN      Modello                         INPUT       233           0      500                13.20       500L                           7.61   
+ TRAIN      Per_neopatentati                INPUT         2           0      0                  76.78       1                             23.22   
+ TRAIN      Porte                           INPUT         6         291      5                  74.61       3                             13.82   
+ TRAIN      Posti_a_sedere                  INPUT         9         309      5                  68.77       4                             23.05   
+ TRAIN      Tagliandi_certificati           INPUT         2           0      0                  93.23       1                              6.77   
+ TRAIN      Tipo_di_cambio                  INPUT         4          71      Manuale            69.84       Automatico                    28.44   
+ TRAIN      Tipo_di_unita                   INPUT         4         622      anteriore          77.22       4x4                            9.80   
+ TRAIN      Tipo_di_vernice                 INPUT         4        2530      Metallizzato       45.88                                     37.33   
+ TRAIN      Usato_Garantito                 INPUT         2           0      0                  51.55       1                             48.45   
+ TRAIN      Veicolo_per_non_fumatori        INPUT         2           0      0                  87.27       1                             12.73   
+ TRAIN      conditional_on_price            INPUT        10           0      12                 57.75       2                             16.10   
+ TRAIN      target                          TARGET        2           0      0                  62.05       1                             37.95   
+ 
+                                                                                                                                                                                                                                                                
+ 
+Distribuzione del target categorico e delle variabili di segmentazione
+(massimo 500 osservazioni stampate)
+
+Ruolo dei dati=TRAIN
+
+                                               Conteggio
+ Ruolo        Nome                                    di
+dei dati    variabile    Ruolo     Livello     frequenza    Percentuale
+
+ TRAIN       target      TARGET       0             4206      62.0537  
+ TRAIN       target      TARGET       1             2572      37.9463  
+ 
+                                                                                                                                                                                                                                                                
+ 
+Statistiche di riepilogo delle variabili continue
+(massimo 500 osservazioni stampate)
+
+Ruolo dei dati=TRAIN
+
+                                         Deviazione      Non
+Variabile           Ruolo       Media     standard     mancanti    Mancanti      Minimo     Mediana     Massimo    Skewness     Curtosi
+
+Cilindrata          INPUT    1362.228     470.9931         6597         181           1        1368        3996     0.31381     3.81335
+Emissioni_di_CO2    INPUT     115.132     27.49977         5948         830           0         116         284    -0.54482    6.163999
+Peso_a_vuoto        INPUT    1309.355     249.3186         3788        2990         350        1320        2585    0.772335    1.663317
+price               INPUT    22446.52     13689.16         6778           0        6450       18700      189000    4.126061     30.4946
+ 
+                                                                                                                                                                                                                                                                
+ 
+Statistiche di riepilogo delle variabili categoriche per target categorico
+(massimo 500 osservazioni stampate)
+
+Ruolo dei dati=TRAIN Nome variabile=Alimentazione
+
+                         Numero
+             Livello       di                             Percentuale              Percentuale
+Target       target     livelli    Mancanti     Moda         moda        Moda2        moda2
+
+_OVERALL_                  6           0       Benzina       33.74       Diesel       29.55   
+target          0          6           0       Benzina       30.53       Diesel       24.85   
+target          1          6           0       Benzina       39.00       Diesel       37.25   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Anno
+
+                         Numero
+             Livello       di                            Percentuale              Percentuale
+Target       target     livelli    Mancanti     Moda        moda        Moda2        moda2
+
+_OVERALL_                  10         23       2020.0       80.04       2019.0       17.48   
+target          0           7         18       2020.0       85.40       2019.0       12.82   
+target          1           9          5       2020.0       71.27       2019.0       25.12   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Carrozzeria
+
+                         Numero
+             Livello       di                                   Percentuale                               Percentuale
+Target       target     livelli    Mancanti    Moda                moda        Moda2                         moda2
+
+_OVERALL_                  8           0       Berlina             26.78       SUV/Fuoristrada/Pick-up       18.52   
+target          0          8           0       Berlina             30.58       City car                      17.67   
+target          1          8           0       Station wagon       22.28       SUV/Fuoristrada/Pick-up       20.92   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Cilindri
+
+                         Numero
+             Livello       di                          Percentuale             Percentuale
+Target       target     livelli    Mancanti    Moda       moda        Moda2       moda2
+
+_OVERALL_                  8          577       4         61.67         3         26.07   
+target          0          8          398       4         57.04         3         28.34   
+target          1          7          179       4         69.25         3         22.36   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Classe_emissioni
+
+                         Numero
+             Livello       di                            Percentuale                    Percentuale
+Target       target     livelli    Mancanti     Moda        moda           Moda2           moda2
+
+_OVERALL_                  7         1019      Euro 6       54.88       Euro 6d-TEMP       27.10   
+target          0          7          622      Euro 6       55.23       Euro 6d-TEMP       26.41   
+target          1          6          397      Euro 6       54.32       Euro 6d-TEMP       28.23   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Colore_esterno
+
+                         Numero
+             Livello       di                            Percentuale              Percentuale
+Target       target     livelli    Mancanti     Moda        moda        Moda2        moda2
+
+_OVERALL_                  15         128      Grigio       27.40       Bianco       27.34   
+target          0          15          80      Bianco       27.03       Grigio       26.68   
+target          1          13          48      Grigio       28.58       Bianco       27.84   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Consumo_carburante_combinato
+
+                         Numero
+             Livello       di                          Percentuale             Percentuale
+Target       target     livelli    Mancanti    Moda       moda        Moda2       moda2
+
+_OVERALL_                  92         848                 12.51        3,9        10.89   
+target          0          81         527      3,9        14.79                   12.53   
+target          1          75         321                 12.48        4,4         6.26   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Consumo_carburante_extraurb
+
+                         Numero
+             Livello       di                          Percentuale             Percentuale
+Target       target     livelli    Mancanti    Moda       moda        Moda2       moda2
+
+_OVERALL_                  80        1000                 14.75        3,4         9.01   
+target          0          72         664                 15.79        3,4        12.74   
+target          1          63         336                 13.06        4,9         6.53   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Consumo_carburante_urbano
+
+                         Numero
+             Livello       di                          Percentuale             Percentuale
+Target       target     livelli    Mancanti    Moda       moda        Moda2       moda2
+
+_OVERALL_                 111        1007                 14.86        4,7        10.31   
+target          0          99         665                 15.81        4,7        14.55   
+target          1          92         342                 13.30        6,5         5.87   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Marca
+
+                         Numero
+             Livello       di                          Percentuale              Percentuale
+Target       target     livelli    Mancanti    Moda       moda        Moda2        moda2
+
+_OVERALL_                  40          0       Fiat       37.56       Jeep          7.80   
+target          0          38          0       Fiat       48.86       Lancia        6.78   
+target          1          35          0       Jeep       20.14       Fiat         19.09   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Marce
+
+                         Numero
+             Livello       di                          Percentuale             Percentuale
+Target       target     livelli    Mancanti    Moda       moda        Moda2       moda2
+
+_OVERALL_                  8          654       6         50.35         5         21.19   
+target          0          8          444       6         48.19         5         27.75   
+target          1          7          210       6         53.89         7         16.64   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Modello
+
+                         Numero
+             Livello       di                              Percentuale             Percentuale
+Target       target     livelli    Mancanti    Moda           moda        Moda2       moda2
+
+_OVERALL_                 233          0       500            13.20       500L         7.61   
+target          0         199          0       500            21.16       500L         9.30   
+target          1         164          0       Renegade       13.92       Tipo         7.15   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Per_neopatentati
+
+                         Numero
+             Livello       di                          Percentuale             Percentuale
+Target       target     livelli    Mancanti    Moda       moda        Moda2       moda2
+
+_OVERALL_                  2           0        0         76.78         1         23.22   
+target          0          2           0        0         67.97         1         32.03   
+target          1          2           0        0         91.17         1          8.83   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Porte
+
+                         Numero
+             Livello       di                          Percentuale             Percentuale
+Target       target     livelli    Mancanti    Moda       moda        Moda2       moda2
+
+_OVERALL_                  6          291       5         74.61         3         13.82   
+target          0          5          189       5         70.90         3         20.07   
+target          1          6          102       5         80.68         2          6.30   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Posti_a_sedere
+
+                         Numero
+             Livello       di                          Percentuale             Percentuale
+Target       target     livelli    Mancanti    Moda       moda        Moda2       moda2
+
+_OVERALL_                  9          309       5         68.77         4         23.05   
+target          0          9          213       5         60.20         4         32.55   
+target          1          9           96       5         82.78         4          7.50   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Tagliandi_certificati
+
+                         Numero
+             Livello       di                          Percentuale             Percentuale
+Target       target     livelli    Mancanti    Moda       moda        Moda2       moda2
+
+_OVERALL_                  2           0        0         93.23         1          6.77   
+target          0          2           0        0         94.25         1          5.75   
+target          1          2           0        0         91.56         1          8.44   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Tipo_di_cambio
+
+                         Numero
+             Livello       di                             Percentuale                  Percentuale
+Target       target     livelli    Mancanti     Moda         moda          Moda2          moda2
+
+_OVERALL_                  4          71       Manuale       69.84       Automatico       28.44   
+target          0          4          30       Manuale       77.08       Automatico       21.61   
+target          1          4          41       Manuale       58.01       Automatico       39.62   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Tipo_di_unita
+
+                         Numero
+             Livello       di                               Percentuale             Percentuale
+Target       target     livelli    Mancanti      Moda          moda        Moda2       moda2
+
+_OVERALL_                  4          622      anteriore       77.22        4x4         9.80   
+target          0          4          397      anteriore       78.29        4x4        10.22   
+target          1          4          225      anteriore       75.47        4x4         9.10   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Tipo_di_vernice
+
+                         Numero
+             Livello       di                                  Percentuale             Percentuale
+Target       target     livelli    Mancanti        Moda           moda        Moda2       moda2
+
+_OVERALL_                  4         2530      Metallizzato       45.88                   37.33   
+target          0          4         1481      Metallizzato       45.70                   35.21   
+target          1          4         1049      Metallizzato       46.19                   40.79   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Usato_Garantito
+
+                         Numero
+             Livello       di                          Percentuale             Percentuale
+Target       target     livelli    Mancanti    Moda       moda        Moda2       moda2
+
+_OVERALL_                  2           0        0         51.55         1         48.45   
+target          0          2           0        0         51.93         1         48.07   
+target          1          2           0        0         50.93         1         49.07   
+
+
+Ruolo dei dati=TRAIN Nome variabile=Veicolo_per_non_fumatori
+
+                         Numero
+             Livello       di                          Percentuale             Percentuale
+Target       target     livelli    Mancanti    Moda       moda        Moda2       moda2
+
+_OVERALL_                  2           0        0         87.27         1         12.73   
+target          0          2           0        0         87.14         1         12.86   
+target          1          2           0        0         87.48         1         12.52   
+
+
+Ruolo dei dati=TRAIN Nome variabile=conditional_on_price
+
+                         Numero
+             Livello       di                          Percentuale             Percentuale
+Target       target     livelli    Mancanti    Moda       moda        Moda2       moda2
+
+_OVERALL_                  10          0        12        57.75         2         16.10   
+target          0           9          0        12        56.68         2         16.71   
+target          1           8          0        12        59.49         2         15.09   
+ 
+                                                                                                                                                                                                                                                                
+ 
+Statistiche di riepilogo delle variabili continue per target categorico
+(massimo 500 osservazioni stampate)
+
+Ruolo dei dati=TRAIN Variabile=Cilindrata
+
+             Livello                              Non                                           Deviazione
+Target       target      Mediana    Mancanti    mancanti      Minimo     Massimo       Media     standard     Skewness     Curtosi    Ruolo    Etichetta
+
+_OVERALL_                   1368         181        6597           1        3996    1362.228     470.9931      0.31381     3.81335    INPUT    Cilindrata
+target          0           1242         140        4066           1        3996    1303.303     441.2277     0.768279    6.214051    INPUT    Cilindrata
+target          1           1496          41        2531           1        3996    1456.888     501.0037     -0.29472    2.278485    INPUT    Cilindrata
+
+
+Ruolo dei dati=TRAIN Variabile=Emissioni_di_CO2
+
+             Livello                              Non                                           Deviazione
+Target       target      Mediana    Mancanti    mancanti      Minimo     Massimo       Media     standard     Skewness     Curtosi    Ruolo       Etichetta
+
+_OVERALL_                    116         830        5948           0         284     115.132     27.49977     -0.54482    6.163999    INPUT    Emissioni_di_CO2
+target          0            113         517        3689           0         284    111.4958     28.42861     -0.49707    6.182598    INPUT    Emissioni_di_CO2
+target          1            122         313        2259           0         276    121.0699     24.79613      -0.5168    6.777823    INPUT    Emissioni_di_CO2
+
+
+Ruolo dei dati=TRAIN Variabile=Peso_a_vuoto
+
+             Livello                              Non                                           Deviazione
+Target       target      Mediana    Mancanti    mancanti      Minimo     Massimo       Media     standard     Skewness     Curtosi    Ruolo     Etichetta
+
+_OVERALL_                   1320        2990        3788         350        2585    1309.355     249.3186     0.772335    1.663317    INPUT    Peso_a_vuoto
+target          0           1245        1822        2384         350        2585     1247.92     252.9984     1.157405    2.663863    INPUT    Peso_a_vuoto
+target          1           1375        1168        1404         880        2390    1413.672     204.3563     0.787178    2.134657    INPUT    Peso_a_vuoto
+
+
+Ruolo dei dati=TRAIN Variabile=price
+
+             Livello                              Non                                           Deviazione
+Target       target      Mediana    Mancanti    mancanti      Minimo     Massimo       Media     standard     Skewness     Curtosi    Ruolo    Etichetta
+
+_OVERALL_                  18700           0        6778        6450      189000    22446.52     13689.16     4.126061     30.4946    INPUT      price  
+target          0          16500           0        4206        7490      189000    20996.58     14415.55     4.750005    35.75963    INPUT      price  
+target          1          21900           0        2572        6450      151990     24817.6     12042.14     2.904608    18.04388    INPUT      price  
+ 
+                                                                                                                                                                                                                                                                
+ 
+Statistiche del chi-quadrato
+(massimo 500 osservazioni stampate)
+
+Ruolo dei dati=TRAIN Target=target
+
+                                      Chi-
+Input                             quadrato     Df      Prob
+
+Modello                          3973.2643    232    <.0001
+Marca                            2126.8837     39    <.0001
+Consumo_carburante_urbano        1048.8717    110    <.0001
+Consumo_carburante_combinato      864.3209     91    <.0001
+Consumo_carburante_extraurb       768.4519     79    <.0001
+Carrozzeria                       711.3069      7    <.0001
+Posti_a_sedere                    684.7852      8    <.0001
+Peso_a_vuoto                      562.1828      5    <.0001
+Marce                             483.9202      7    <.0001
+Per_neopatentati                  481.8042      1    <.0001
+Alimentazione                     449.9685      5    <.0001
+Porte                             448.3429      5    <.0001
+Cilindrata                        283.4568      5    <.0001
+Tipo_di_cambio                    277.6741      3    <.0001
+Emissioni_di_CO2                  237.1453      5    <.0001
+Anno                              217.4643      9    <.0001
+Cilindri                          167.7133      7    <.0001
+Colore_esterno                    147.9131     14    <.0001
+Tipo_di_unita                      94.9229      3    <.0001
+Tipo_di_vernice                    48.3572      3    <.0001
+Tagliandi_certificati              18.2024      1    <.0001
+Classe_emissioni                   17.2105      6    0.0085
+price                              15.4639      4    0.0038
+conditional_on_price               12.2409      9    0.2001
+Usato_Garantito                     0.6297      1    0.4275
+Veicolo_per_non_fumatori            0.1691      1    0.6809

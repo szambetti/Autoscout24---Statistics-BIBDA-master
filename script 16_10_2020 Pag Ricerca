@@ -1,0 +1,87 @@
+
+
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "_ - _ - asking_price",
+    "expression": "jython:return value[:value.index(',')].replace(u'\\u20ac',\"\").replace(\".\",\"\").strip()",
+    "onError": "set-to-blank",
+    "newColumnName": "price",
+    "columnInsertIndex": 6,
+    "description": "Create column price at index 6 based on column _ - _ - asking_price using expression jython:return value[:value.index(',')].replace(u'\\u20ac',\"\").replace(\".\",\"\").strip()"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "_ - _ - asking_price",
+    "expression": "jython:return value[value.index('-'):].replace('- ',\"\").strip()",
+    "onError": "set-to-blank",
+    "newColumnName": "conditional_on_price",
+    "columnInsertIndex": 6,
+    "description": "Create column conditional_on_price at index 6 based on column _ - _ - asking_price using expression jython:return value[value.index('-'):].replace('- ',\"\").strip()"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - seller",
+    "newColumnName": "seller",
+    "description": "Rename column _ - _ - seller to seller"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - vehicle",
+    "newColumnName": "vehicle",
+    "description": "Rename column _ - _ - vehicle to vehicle"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - country",
+    "newColumnName": "country",
+    "description": "Rename column _ - _ - country to country"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - address",
+    "newColumnName": "address",
+    "description": "Rename column _ - _ - address to address"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - id_annuncio",
+    "newColumnName": "id_annuncio",
+    "description": "Rename column _ - _ - id_annuncio to id_annuncio"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - asking_price",
+    "newColumnName": "asking_price",
+    "description": "Rename column _ - _ - asking_price to asking_price"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - link_annuncio",
+    "newColumnName": "link_annuncio",
+    "description": "Rename column _ - _ - link_annuncio to link_annuncio"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - _ - vehicle_user_desc",
+    "newColumnName": "vehicle_user_desc",
+    "description": "Rename column _ - _ - vehicle_user_desc to vehicle_user_desc"
+  },
+    {
+    "op": "core/column-removal",
+    "columnName": "asking_price",
+    "description": "Remove column asking_price"
+  }
+
+]
+
+
+

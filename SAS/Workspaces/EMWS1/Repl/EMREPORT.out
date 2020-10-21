@@ -1,0 +1,19 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Conteggi delle sostituzioni
+
+Oss    Variabile                       Etichetta           Ruolo    Training    Validazione
+
+  1    Cilindrata                      Cilindrata          INPUT       48            32    
+  2    Classe_emissioni                                    INPUT        0             0    
+  3    Colore_esterno                                      INPUT        0             0    
+  4    Consumo_carburante_combinato                        INPUT        0             0    
+  5    Consumo_carburante_urbano                           INPUT        0             0    
+  6    Emissioni_di_CO2                Emissioni_di_CO2    INPUT       98            48    
+  7    Peso_a_vuoto                    Peso_a_vuoto        INPUT       40            16    
+  8    Tipo_di_cambio                                      INPUT        0             0    
+  9    Tipo_di_unita                                       INPUT        0             0    
+ 10    Tipo_di_vernice                                     INPUT        0             0    
+ 11    price                           price               INPUT       59            38    
