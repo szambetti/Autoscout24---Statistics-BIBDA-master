@@ -1,0 +1,566 @@
+*------------------------------------------------------------*
+Utente:             Maria Vallarelli
+Data:               25 ottobre 2020
+Ora:                22:53:13
+Sito:                50306432
+Piattaforma:            X64_10PRO
+Release di maintenance: 9.04.01M5P091317
+Versione di EM:          14.3
+* 
+*------------------------------------------------------------*
+* Log di training
+Data:               25 ottobre 2020
+Ora:                22:53:07
+*------------------------------------------------------------*
+11423  proc freq data=EMWS1.Varsel_VariableSet noprint;
+11424  table ROLE*LEVEL/out=WORK.VarselMETA;
+11425  run;
+ 
+NOTE: There were 31 observations read from the data set EMWS1.VARSEL_VARIABLESET.
+NOTE: The data set WORK.VARSELMETA has 6 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+ 
+ 
+11426  proc print data=WORK.VarselMETA label noobs;
+11427  var ROLE LEVEL COUNT;
+11428  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+11429  title9 ' ';
+11430  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+11431  run;
+ 
+NOTE: There were 6 observations read from the data set WORK.VARSELMETA.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+11432  title10;
+ 
+11433  data WORK.M2960RYP;
+11434  set WORK.M2960RYP;
+11435  if role = 'TARGET' and use = 'Y' then do;
+11436  role = 'TARGET';
+11437  output;
+11438  end;
+11439  if role = 'INPUT' and use in ('Y','D','N') then do;
+11440  role = 'INPUT';
+11441  output;
+11442  end;
+11443  if role = 'REJECTED' and use = 'Y' then do;
+11444  role = 'INPUT';
+11445  output;
+11446  end;
+11447  if role = 'FREQ' and use in ('Y', 'D') then do;
+11448  role = 'FREQ';
+11449  output;
+11450  end;
+11451  if role = 'REJECTED' and use in ('N', 'D') then do;
+11452  role = 'REJECTED';
+11453  output;
+11454  end;
+11455  run;
+ 
+NOTE: There were 31 observations read from the data set WORK.M2960RYP.
+NOTE: The data set WORK.M2960RYP has 31 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11456  /*by pass cmeta */
+11457  data WORK.M2960RYP;
+11458  set WORK.M2960RYP;
+11459  run;
+ 
+NOTE: There were 31 observations read from the data set WORK.M2960RYP.
+NOTE: The data set WORK.M2960RYP has 31 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.03 seconds
+ 
+ 
+11460  data WORK.M3F0S08D;
+11461  set WORK.M3F0S08D;
+11462  if role = 'INPUT' and use in ('N') then delete;
+11463  if role = 'REJECTED' and use in ('N', 'D') then delete;
+11464  run;
+ 
+NOTE: There were 31 observations read from the data set WORK.M3F0S08D.
+NOTE: The data set WORK.M3F0S08D has 24 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+ 
+ 
+NOTE: Run proc dmdb with the specified maxlevel criterion.
+11465  *------------------------------------------------------------* ;
+11466  * EM: DMDBClass Macro ;
+11467  *------------------------------------------------------------* ;
+11468  %macro DMDBClass;
+11469      Alimentazione(ASC) Carrozzeria(ASC) IMP_Cilindri(ASC)
+11470     IMP_Classe_emissioni(ASC) IMP_Colore_esterno(ASC) IMP_Marce(ASC) IMP_Porte(ASC)
+11471     IMP_Posti_a_sedere(ASC) IMP_REP_Tipo_di_vernice(ASC) IMP_Tipo_di_cambio(ASC)
+11472     IMP_Tipo_di_unita(ASC) Modello(ASC) OPT_IMP_REP_Consumo_Carburante_T(ASC)
+11473     OPT_IMP_REP_Emissioni_di_CO2(ASC) OPT_IMP_REP_Peso_a_vuoto(ASC)
+11474     Per_neopatentati(ASC) Tagliandi_certificati(ASC) Usato_Garantito(ASC)
+11475     Veicolo_per_non_fumatori(ASC) conditional_on_price(ASC) target10(DESC)
+11476  %mend DMDBClass;
+11477  *------------------------------------------------------------* ;
+11478  * EM: DMDBVar Macro ;
+11479  *------------------------------------------------------------* ;
+11480  %macro DMDBVar;
+11481      IMP_REP_Cilindrata LG10_REP_price REP_Anno
+11482  %mend DMDBVar;
+11483  *------------------------------------------------------------*;
+11484  * EM: Create DMDB;
+11485  *------------------------------------------------------------*;
+11486  libname _spdslib SPDE "C:\Users\MARIAV~1\AppData\Local\Temp\SAS Temporary Files\_TD13764_DESKTOP-NN2L3RB_";
+NOTE: Libref _SPDSLIB was successfully assigned as follows:
+      Engine:        SPDE
+      Physical Name: C:\Users\MARIAV~1\AppData\Local\Temp\SAS Temporary Files\_TD13764_DESKTOP-NN2L3RB_\
+11487  proc dmdb batch data=EMWS1.Trans_TRAIN
+11488  dmdbcat=WORK.EM_DMDB
+11489  maxlevel = 101
+11490  out=_spdslib.EM_DMDB
+11491  ;
+11492  class %DMDBClass;
+11493  var %DMDBVar;
+11494  target
+11495  target10
+11496  ;
+11497  run;
+ 
+NOTE: Variable _WARN_ is uninitialized.
+NOTE: Records processed = 4743   Memory used = 511K.
+NOTE: There were 4743 observations read from the data set EMWS1.PART_TRAIN.
+NOTE: There were 4743 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: Visualizza EMWS1.TRANS_TRAIN.VIEW used (Total process time):
+      real time           0.29 seconds
+      cpu time            0.23 seconds
+ 
+NOTE: There were 4743 observations read from the data set EMWS1.IMPT_TRAIN.
+NOTE: There were 4743 observations read from the data set EMWS1.TRANS_TRAIN.
+NOTE: The data set _SPDSLIB.EM_DMDB has 4743 observations and 24 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.35 seconds
+      cpu time            0.29 seconds
+ 
+ 
+11498  quit;
+ 
+NOTE: Variable _WARN_ is uninitialized.
+NOTE: There were 4743 observations read from the data set EMWS1.PART_TRAIN.
+NOTE: There were 4743 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: Visualizza EMWS1.TRANS_TRAIN.VIEW used (Total process time):
+      real time           0.30 seconds
+      cpu time            0.25 seconds
+ 
+NOTE: There were 4743 observations read from the data set EMWS1.IMPT_TRAIN.
+11499  options nonotes nosource;
+ 
+*-------------------------------------------------------------------------------*
+* Rieseguire la proc dmdb soltanto con le variabili nel modello. ;
+*-------------------------------------------------------------------------------*
+11507  *------------------------------------------------------------* ;
+11508  * EM: DMDBClass Macro ;
+11509  *------------------------------------------------------------* ;
+11510  %macro DMDBClass;
+11511      Alimentazione(ASC) Carrozzeria(ASC) IMP_Cilindri(ASC)
+11512     IMP_Classe_emissioni(ASC) IMP_Colore_esterno(ASC) IMP_Marce(ASC) IMP_Porte(ASC)
+11513     IMP_Posti_a_sedere(ASC) IMP_REP_Tipo_di_vernice(ASC) IMP_Tipo_di_cambio(ASC)
+11514     IMP_Tipo_di_unita(ASC) OPT_IMP_REP_Consumo_Carburante_T(ASC)
+11515     OPT_IMP_REP_Emissioni_di_CO2(ASC) OPT_IMP_REP_Peso_a_vuoto(ASC)
+11516     Per_neopatentati(ASC) Tagliandi_certificati(ASC) Usato_Garantito(ASC)
+11517     Veicolo_per_non_fumatori(ASC) conditional_on_price(ASC) target10(DESC)
+11518  %mend DMDBClass;
+11519  *------------------------------------------------------------* ;
+11520  * EM: DMDBVar Macro ;
+11521  *------------------------------------------------------------* ;
+11522  %macro DMDBVar;
+11523      IMP_REP_Cilindrata LG10_REP_price REP_Anno
+11524  %mend DMDBVar;
+11525  *------------------------------------------------------------*;
+11526  * EM: Create DMDB;
+11527  *------------------------------------------------------------*;
+11528  libname _spdslib SPDE "C:\Users\MARIAV~1\AppData\Local\Temp\SAS Temporary Files\_TD13764_DESKTOP-NN2L3RB_";
+NOTE: Libref _SPDSLIB was successfully assigned as follows:
+      Engine:        SPDE
+      Physical Name: C:\Users\MARIAV~1\AppData\Local\Temp\SAS Temporary Files\_TD13764_DESKTOP-NN2L3RB_\
+11529  proc dmdb batch data=EMWS1.Trans_TRAIN
+11530  dmdbcat=WORK.EM_DMDB
+11531  maxlevel = 101
+11532  out=_spdslib.EM_DMDB
+11533  ;
+11534  class %DMDBClass;
+11535  var %DMDBVar;
+11536  target
+11537  target10
+11538  ;
+11539  run;
+ 
+NOTE: Variable _WARN_ is uninitialized.
+NOTE: Records processed = 4743   Memory used = 511K.
+NOTE: There were 4743 observations read from the data set EMWS1.PART_TRAIN.
+NOTE: There were 4743 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: Visualizza EMWS1.TRANS_TRAIN.VIEW used (Total process time):
+      real time           0.28 seconds
+      cpu time            0.23 seconds
+ 
+NOTE: There were 4743 observations read from the data set EMWS1.IMPT_TRAIN.
+NOTE: There were 4743 observations read from the data set EMWS1.TRANS_TRAIN.
+NOTE: The data set _SPDSLIB.EM_DMDB has 4743 observations and 23 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.34 seconds
+      cpu time            0.29 seconds
+ 
+ 
+11540  quit;
+ 
+11541  *------------------------------------------------------------* ;
+11542  * Varsel: Input Variables Macro ;
+11543  *------------------------------------------------------------* ;
+11544  %macro INPUTS;
+11545                 ALIMENTAZIONE CARROZZERIA IMP_CILINDRI IMP_CLASSE_EMISSIONI IMP_COLORE_ESTERNO
+11546                IMP_Marce IMP_PORTE IMP_POSTI_A_SEDERE IMP_REP_CILINDRATA
+11547                IMP_REP_Tipo_di_vernice IMP_TIPO_DI_CAMBIO IMP_TIPO_DI_UNITA LG10_REP_PRICE
+11548                OPT_IMP_REP_Consumo_Carburante_T OPT_IMP_REP_EMISSIONI_DI_CO2
+11549                OPT_IMP_REP_Peso_a_vuoto PER_NEOPATENTATI REP_ANNO TAGLIANDI_CERTIFICATI
+11550     Usato_Garantito VEICOLO_PER_NON_FUMATORI CONDITIONAL_ON_PRICE
+11551  %mend INPUTS;
+11552  proc dmine data=_spdslib.EM_DMDB dmdbcat=WORK.EM_DMDB
+11553  minr2=0.005 maxrows=3000 stopr2=0.0005 NOAOV16 NOINTER USEGROUPS OUTGROUP=EMWS1.Varsel_OUTGROUP outest=EMWS1.Varsel_OUTESTDMINE outeffect=EMWS1.Varsel_OUTEFFECT outrsquare =EMWS1.Varsel_OUTRSQUARE
+11554  NOMONITOR
+11555  PSHORT
+11556  ;
+11557  var %INPUTS;
+11558  target target10;
+11559  code file="C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Varsel\EMFLOWSCORE.sas";
+11560  code file="C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Varsel\EMPUBLISHSCORE.sas";
+11561  run;
+ 
+NOTE: Checking database engine with sqluse...
+NOTE: Number of threads reset to 1 because of fewer partitions.
+ 
+Passaggio iniziale per calcolare R2 per tutti i target
+4743 record letti
+NOTE: The full X'X matrix has 49 rows and columns.
+ 
+Costruzione di X'X per il target: target10 rows=50 memory=0.00 meg.
+4743 record letti
+4743 record letti
+NOTE: External file C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Varsel\EMFLOWSCORE.sas opened.
+NOTE: External file C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Varsel\EMPUBLISHSCORE.sas opened.
+NOTE: There were 4743 observations read from the data set _SPDSLIB.EM_DMDB.
+NOTE: The data set EMWS1.VARSEL_OUTGROUP has 54 observations and 8 variables.
+NOTE: The data set EMWS1.VARSEL_OUTESTDMINE has 23 observations and 23 variables.
+NOTE: The data set EMWS1.VARSEL_OUTEFFECT has 14 observations and 6 variables.
+NOTE: The data set EMWS1.VARSEL_OUTRSQUARE has 373 observations and 4 variables.
+NOTE: The PROCEDURE DMINE printed pages 2-7.
+NOTE: PROCEDURE DMINE used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.11 seconds
+ 
+ 
+11562  quit;
+11563  /*      proc print data =EMWS1.Varsel_OUTEFFECT;      proc print data =EMWS1.Varsel_OUTRSQUARE;      */
+11564  run;
+ 
+11565  data EMWS1.Varsel_OUTESTDMINE;
+11566  set EMWS1.Varsel_OUTESTDMINE;
+11567  _uname_=upcase(_name_);
+11568  run;
+ 
+NOTE: There were 23 observations read from the data set EMWS1.VARSEL_OUTESTDMINE.
+NOTE: The data set EMWS1.VARSEL_OUTESTDMINE has 23 observations and 24 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11569  proc sql;
+11570  create table _tmpoutgroup as select distinct VARIABLE from EMWS1.Varsel_OUTGROUP where VARTYPE='GROUP';
+NOTE: Table WORK._TMPOUTGROUP created, with 7 rows and 1 columns.
+ 
+11571  quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11572  run;
+ 
+11573  data EMWS1.Varsel_OUTAOV16;
+11574  set EMWS1.Varsel_OUTGROUP;
+11575  if STRIP(VARTYPE) eq 'AOV16' then output;
+11576  DROP VARTYPE LEVEL LEVEL2 VARIABLE2;
+11577  label NAME= "Nome";
+11578  label GROUP = "Gruppo";
+11579  label VARIABLE = "Variabile";
+11580  label BIN = "Cutoff dei raggruppamenti";
+11581  run;
+ 
+NOTE: There were 54 observations read from the data set EMWS1.VARSEL_OUTGROUP.
+NOTE: The data set EMWS1.VARSEL_OUTAOV16 has 0 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11582  data EMWS1.Varsel_OUTGINT;
+11583  set EMWS1.Varsel_OUTGROUP;
+11584  if STRIP(VARTYPE) eq 'GINTER' then output;
+11585  DROP VARTYPE BIN;
+11586  label NAME= "Nome";
+11587  label GROUP = "Gruppo";
+11588  label VARIABLE = "Variabile 1";
+11589  label VARIABLE2 = "Variabile 2";
+11590  label LEVEL = "Livello 1";
+11591  label LEVEL2 = "Livello 2";
+11592  run;
+ 
+NOTE: There were 54 observations read from the data set EMWS1.VARSEL_OUTGROUP.
+NOTE: The data set EMWS1.VARSEL_OUTGINT has 0 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11593  data EMWS1.Varsel_OUTGVAR;
+11594  set EMWS1.Varsel_OUTGROUP;
+11595  if STRIP(VARTYPE) eq 'GROUP' then output;
+11596  DROP VARTYPE BIN VARIABLE2 LEVEL2;
+11597  label NAME= "Nome";
+11598  label GROUP = "Gruppo";
+11599  label VARIABLE = "Variabile";
+11600  label LEVEL = "Livello";
+11601  run;
+ 
+NOTE: There were 54 observations read from the data set EMWS1.VARSEL_OUTGROUP.
+NOTE: The data set EMWS1.VARSEL_OUTGVAR has 54 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.03 seconds
+ 
+ 
+11602  quit;
+ 
+11603  options nonotes nosource;
+11629  run;
+ 
+NOTE: 15 lines were written to file PRINT.
+NOTE: The DATA step printed page 8.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+ 
+ 
+11630  data EMWS1.Varsel_RESULTEDVARS;
+11631  run;
+ 
+NOTE: The data set EMWS1.VARSEL_RESULTEDVARS has 1 observations and 0 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11632  libname _spdslib;
+NOTE: Libref _SPDSLIB has been deassigned.
+ 
+11633  *;
+11634  data EMWS1.Varsel_EMSCOREVAR;
+11635  length Name $32 formula $70 file $200;
+11636  keep NAME Formula file;
+11637  name = "G_Alimentazione";
+11638  file="VARSELCODE\G_Alimentazione.sas";
+11639  output;
+11640  name = "G_Carrozzeria";
+11641  file="VARSELCODE\G_Carrozzeria.sas";
+11642  output;
+11643  name = "G_IMP_Cilindri";
+11644  file="VARSELCODE\G_IMP_Cilindri.sas";
+11645  output;
+11646  name = "G_IMP_Colore_esterno";
+11647  file="VARSELCODE\G_IMP_Colore_esterno.sas";
+11648  output;
+11649  name = "G_IMP_Marce";
+11650  file="VARSELCODE\G_IMP_Marce.sas";
+11651  output;
+11652  name = "G_IMP_Posti_a_sedere";
+11653  file="VARSELCODE\G_IMP_Posti_a_sedere.sas";
+11654  output;
+11655  name = "G_IMP_Tipo_di_cambio";
+11656  file="VARSELCODE\G_IMP_Tipo_di_cambio.sas";
+11657  output;
+11658  run;
+ 
+NOTE: Variable formula is uninitialized.
+NOTE: The data set EMWS1.VARSEL_EMSCOREVAR has 7 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+ 
+ 
+*------------------------------------------------------------*
+* Log di scoring
+Data:               25 ottobre 2020
+Ora:                22:53:10
+*------------------------------------------------------------*
+11760  filename emflow "C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Varsel\EMFLOWSCORE.sas";
+11761  *------------------------------------------------------------*;
+11762  * Varsel: Scoring DATA data;
+11763  *------------------------------------------------------------*;
+11764  data EMWS1.Varsel_TRAIN
+11765  / view=EMWS1.Varsel_TRAIN
+11766  ;
+11767  set EMWS1.Trans_TRAIN
+11768  ;
+11769  %inc emflow;
+11911  run;
+ 
+NOTE: DATA STEP view saved on file EMWS1.VARSEL_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: Visualizza EMWS1.TRANS_TRAIN.VIEW used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.15 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.18 seconds
+ 
+ 
+11912  quit;
+11913  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+ 
+11914  filename emflow "C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Varsel\EMFLOWSCORE.sas";
+11915  *------------------------------------------------------------*;
+11916  * Varsel: Scoring VALIDATE data;
+11917  *------------------------------------------------------------*;
+11918  data EMWS1.Varsel_VALIDATE
+11919  / view=EMWS1.Varsel_VALIDATE
+11920  ;
+11921  set EMWS1.Trans_VALIDATE
+11922  ;
+11923  %inc emflow;
+12065  run;
+ 
+NOTE: DATA STEP view saved on file EMWS1.VARSEL_VALIDATE.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: Visualizza EMWS1.TRANS_VALIDATE.VIEW used (Total process time):
+      real time           0.16 seconds
+      cpu time            0.17 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.20 seconds
+ 
+ 
+12066  quit;
+12067  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+ 
+12068  options nosource;
+ 
+NOTE: There were 373 observations read from the data set EMWS1.VARSEL_OUTRSQUARE.
+NOTE: The data set EMWS1.VARSEL_R2DS has 370 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: There were 370 observations read from the data set EMWS1.VARSEL_R2DS.
+NOTE: The data set EMWS1.VARSEL_R2DS has 370 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: There were 14 observations read from the data set EMWS1.VARSEL_OUTEFFECT.
+NOTE: The data set EMWS1.VARSEL_EFFECTDS has 14 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: There were 14 observations read from the data set EMWS1.VARSEL_EFFECTDS.
+NOTE: The data set EMWS1.VARSEL_EFFECTDS has 14 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: Visualizza EMWS1.VARSEL_TRAIN.VIEW used (Total process time):
+      real time           0.21 seconds
+      cpu time            0.20 seconds
+ 
+NOTE: Visualizza EMWS1.VARSEL_TRAIN.VIEW used (Total process time):
+      real time           0.24 seconds
+      cpu time            0.18 seconds
+ 
+NOTE: Visualizza EMWS1.VARSEL_VALIDATE.VIEW used (Total process time):
+      real time           0.23 seconds
+      cpu time            0.18 seconds
+ 
+12558  run;
+ 
+12559  data EMWS1.Varsel_CMETA_NONREJECTS EMWS1.Varsel_CMETA_REJECTS;
+12560  set EMWS1.Varsel_CMETA_TRAIN;
+12561  if ROLE ='REJECTED' then output EMWS1.Varsel_CMETA_REJECTS;
+12562  else output EMWS1.Varsel_CMETA_NONREJECTS;
+12563  run;
+ 
+NOTE: There were 40 observations read from the data set EMWS1.VARSEL_CMETA_TRAIN.
+NOTE: The data set EMWS1.VARSEL_CMETA_NONREJECTS has 17 observations and 20 variables.
+NOTE: The data set EMWS1.VARSEL_CMETA_REJECTS has 23 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.04 seconds
+ 
+ 
+12564  data EMWS1.Varsel_CMETA_TRAIN;
+12565  set EMWS1.Varsel_CMETA_NONREJECTS;
+12566  run;
+ 
+NOTE: There were 17 observations read from the data set EMWS1.VARSEL_CMETA_NONREJECTS.
+NOTE: The data set EMWS1.VARSEL_CMETA_TRAIN has 17 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12567  data WORK._tmp_meta_;
+12568  set EMWS1.Varsel_CMETA_TRAIN;
+12569  if ROLE ^= 'INPUT' then delete;
+12570  run;
+ 
+NOTE: There were 17 observations read from the data set EMWS1.VARSEL_CMETA_TRAIN.
+NOTE: The data set WORK._TMP_META_ has 14 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+*------------------------------------------------------------*
+* Log dei report
+Data:               25 ottobre 2020
+Ora:                22:53:13
+*------------------------------------------------------------*
+12594  %em_getActionStatus(emlib=EMWS1, nodeid=Varsel);
+ 
+12595  %let em_Train = Y;
+12596  %let em_Report = Y;
+12597  %let em_Score = Y;
+12598  %let em_Run = Y;
+NOTE: PROCEDURE DISPLAY used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 

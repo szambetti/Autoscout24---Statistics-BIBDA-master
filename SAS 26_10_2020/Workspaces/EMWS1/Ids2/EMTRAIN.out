@@ -1,0 +1,65 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Riepilogo delle variabili
+
+                         Conteggio
+          Livello di         di
+Ruolo     misurazione    frequenza
+
+INPUT      INTERVAL          19   
+INPUT      NOMINAL           15   
+TARGET     INTERVAL           4   
+TEXT       NOMINAL            2   
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Attributi della tabella di output
+
+     Attributo          Valore
+
+Tabella di output       EMWS1.Ids2_DATA
+Tipo di output          Visualizzazione
+Variabili eliminate     0              
+Ruolo di data mining    Dati grezzi    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Attributi della tabella di input
+
+Attributo                                         Valore
+
+Origine dati                                      autoscoutscore     
+                                                                     
+Nome libreria                                     LIB                
+Nome elemento libreria                            AUTOSCOUT_TRAIN    
+Etichetta data set                                                   
+Tipo speciale di data set (da TYPE=)                                 
+Osservazioni nel data set                         6778               
+Nome engine                                       BASE               
+Data di creazione                                 23/10/2020 18:03:19
+Ultima modifica                                   23/10/2020 18:03:19
+Osservazioni eliminate nel data set               0                  
+Utilizzo variabile in indici                      NONE               
+Tipo elemento libreria                            DATA               
+Numero indici per il data set                     0                  
+Protezione con password (Read Write Alter)        ---                
+Flag di aggiornamento (Protect Contribute Add)    ---                
+Routine di compressione                           NO                 
+Riutilizzo dello spazio                           NO                 
+Ordinato e/o validato                             .                  
+Posizione variabile nella clausola Sortedby       .                  
+Set di caratteri host                                                
+Sequenza di ordinamento                                              
+Opzione Sort: nessuna chiave duplicata            NO                 
+Opzione Sort: nessun record duplicato             NO                 
+Routine di crittografia                           NO                 
+Punta alle osservazioni                           YES                
+Numero massimo di generazioni                     0                  
+Numero della generazione                          .                  
+Numero successiva generazione                     .                  
+Variabili alfanumeriche transcodificate           YES                
+Variabili                                         40                 

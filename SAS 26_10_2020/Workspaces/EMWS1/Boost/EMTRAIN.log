@@ -1,0 +1,951 @@
+*------------------------------------------------------------*
+* Log di training
+Data:               25 ottobre 2020
+Ora:                22:52:15
+*------------------------------------------------------------*
+15208  proc freq data=EMWS1.Boost_VariableSet noprint;
+15209  table ROLE*LEVEL/out=WORK.BoostMETA;
+15210  run;
+
+NOTE: There were 32 observations read from the data set EMWS1.BOOST_VARIABLESET.
+NOTE: The data set WORK.BOOSTMETA has 7 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.03 seconds
+      
+
+15211  proc print data=WORK.BoostMETA label noobs;
+15212  var ROLE LEVEL COUNT;
+15213  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+15214  title9 ' ';
+15215  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+15216  run;
+
+NOTE: There were 7 observations read from the data set WORK.BOOSTMETA.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+      
+
+15217  title10;
+
+15218  %let EMNORLEN = %DMNORLEN;
+EMWS1.Repl_TRAIN EMWS1.Repl_TRAIN 
+EMWS1.Repl_TRAIN EMWS1.Repl_TRAIN EMWS1 Repl_TRAIN 
+EMWS1.Repl_TRAIN EMWS1.Repl_TRAIN 
+EMWS1.Repl_TRAIN EMWS1.Repl_TRAIN EMWS1 Repl_TRAIN 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL setMetaData >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL setMetaData >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >> 
+15247  data WORK.Boost_EVENT(KEEP=VARIABLE LABEL LEVEL EVENT NUMLEVELS ORDER);
+15248  length ORDER $20;
+15249  label VARIABLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_target_vlabel,  NOQUOTE))" EVENT = "%sysfunc(sasmsg(sashelp.dmine, assmt_event_vlabel, NOQUOTE))" NUMLEVELS = "%sysfunc(sasmsg(sashelp.dmine, rpt_numcat_vlabel, NOQUOTE))" LEVEL =
+15250     "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" ORDER = "%sysfunc(sasmsg(sashelp.dmine, meta_order_vlabel, NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel, NOQUOTE))";
+15251  set EMWS1.IDS_TARGET10_DM( where=(_TYPE_="TARGET"));
+15252  NumLevels=2;
+15253  select(upcase(ORDER));
+15254  when('DESC') ORDER = 'Descending';
+15255  when('ASC') ORDER = 'Ascending';
+15256  when('FMTDESC') ORDER = 'Formatted Descending';
+15257  when('FMTASC') ORDER = 'Formatted Ascending';
+15258  otherwise ORDER = 'Descending';
+15259  end;
+15260  output;
+15261  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.IDS_TARGET10_DM.
+      WHERE _TYPE_='TARGET';
+NOTE: The data set WORK.BOOST_EVENT has 1 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+      
+
+15262  title9 ' ';
+15263  proc print data=WORK.Boost_EVENT noobs label;
+15264  var VARIABLE EVENT LEVEL NUMLEVELS ORDER LABEL;
+15265  title9 ' ';
+15266  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_modelEvent_title  , NOQUOTE))";
+15267  run;
+
+NOTE: There were 1 observations read from the data set WORK.BOOST_EVENT.
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+15268  title10;
+
+"Nessuna decisione definita per il target "target10"." 
+15269  proc print data = EMWS1.Ids_target10_DM noobs label;
+15270  var _type_ variable label;
+15271  where _type_ ^in('MATRIX', 'DECISION', 'TRAINPRIOR', 'DATAPRIOR', 'DECPRIOR');
+15272  label _TYPE_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_type_vlabel,     NOQUOTE))" VARIABLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel, NOQUOTE))";
+15273  title9 ' ';
+15274  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_predDecVars_title  , NOQUOTE))";
+15275  run;
+
+NOTE: There were 7 observations read from the data set EMWS1.IDS_TARGET10_DM.
+      WHERE _type_ not in ('DATAPRIOR', 'DECISION', 'DECPRIOR', 'MATRIX', 'TRAINPRIOR');
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.03 seconds
+      
+
+15276  title10;
+
+15277  %let EMEXCEPTIONSTRING=;
+PERFORMANCE  DETAILS
+15756  *------------------------------------------------------------*;
+15757  * Boost: Generation of macros and macro variables;
+15758  * To see the code generated, set the EM_DEBUG macro variable to SOURCE or _ALL_;
+15759  *------------------------------------------------------------*;
+
+15760  %let EMEXCEPTIONSTRING=;
+15761  *------------------------------------------------------------*;
+15762  * TRAIN: Boost;
+15763  *------------------------------------------------------------*;
+15764  %let EM_ACTION = TRAIN;
+15765  %let syscc = 0;
+15766  %macro main;
+15767  
+15768    filename temp catalog 'sashelp.emmodl.boost_macros.source';
+15769    %include temp;
+15770    filename temp;
+15771  
+15772    %setProperties;
+15773  
+15774    %if %upcase(&EM_ACTION) = CREATE %then %do;
+15775      filename temp catalog 'sashelp.emmodl.boost_create.source';
+15776      %include temp;
+15777      filename temp;
+15778  
+15779      %create;
+15780    %end;
+15781  
+15782     %else
+15783     %if %upcase(&EM_ACTION) = TRAIN %then %do;
+15784  
+15785         filename temp catalog 'sashelp.emmodl.boost_train.source';
+15786         %include temp;
+15787         filename temp;
+15788         %train;
+15789     %end;
+15790  
+15791    %else
+15792    %if %upcase(&EM_ACTION) = SCORE %then %do;
+15793      filename temp catalog 'sashelp.emmodl.boost_score.source';
+15794      %include temp;
+15795      filename temp;
+15796  
+15797      %score;
+15798  
+15799    %end;
+15800  
+15801    %else
+15802    %if %upcase(&EM_ACTION) = REPORT %then %do;
+15803  
+15804         filename temp catalog 'sashelp.emmodl.boost_report.source';
+15805         %include temp;
+15806         filename temp;
+15807  
+15808         %report;
+15809     %end;
+15810  
+15811     %doendm:
+15812  %mend main;
+15813  
+15814  %main;
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMMODL.BOOST_MACROS.SOURCE.
+15815 +
+15816 +%macro SetProperties;
+15817 +
+15818 +     /* boost options */
+15819 +     %em_checkmacro(name=EM_PROPERTY_ITERATIONS,   value=50, global=Y);
+15820 +     %em_checkmacro(name=EM_PROPERTY_TRAINPROPORTION,   value=60, global=Y);
+15821 +     %em_checkmacro(name=EM_PROPERTY_CATEGORICALBINS, value=30, global=Y);
+15822 +     %em_checkmacro(name=EM_PROPERTY_INTERVALBINS, value=100, global=Y);
+15823 +     %em_checkmacro(name=EM_PROPERTY_HUBER, value=NO, global=Y);
+15824 +     %em_checkmacro(name=EM_PROPERTY_SEED,   value=12345, global=Y);
+15825 +     %em_checkmacro(name=EM_PROPERTY_SHRINKAGE,   value=0.1, global=Y);
+15826 +     %em_checkmacro(name=EM_PROPERTY_LEAFFRACTION,   value=0.1, global=Y);
+15827 +     %em_checkmacro(name=EM_PROPERTY_SPLITSIZE,   value=., global=Y);
+15828 +     %em_checkmacro(name=EM_PROPERTY_NODESIZE,   value=20000, global=Y);
+15829 +     %em_checkmacro(name=EM_PROPERTY_SUBSERIES,   value=BEST, global=Y);
+15830 +     %em_checkmacro(name=EM_PROPERTY_ITERATIONNUM,   value=1, global=Y);
+15831 +
+15832 +     %em_checkmacro(name=EM_PROPERTY_PRECISION,    value=0, global=Y);
+15833 +     %em_checkmacro(name=EM_PROPERTY_MISSING,      value=USEINSEARCH, global=Y);
+15834 +     %em_checkmacro(name=EM_PROPERTY_MINCATSIZE, value=5, global=Y);
+15835 +     %em_checkmacro(name=EM_PROPERTY_MAXBRANCH,  value=2, global=Y);
+15836 +     %em_checkmacro(name=EM_PROPERTY_MAXDEPTH,   value=2, global=Y);
+15837 +     %em_checkmacro(name=EM_PROPERTY_REUSEVAR,   value=1, global=Y);
+15838 +     %em_checkmacro(name=EM_PROPERTY_EXHAUSTIVE,   value=5000, global=Y);
+15839 +     %em_checkmacro(name=EM_PROPERTY_PERFORMANCE,   value=DISK, global=Y);
+15840 +
+15841 +     %em_checkmacro(name=EM_PROPERTY_ASSESSMEASURE, value=PROFIT, global=Y);
+15842 +     %em_checkmacro(name=EM_PROPERTY_MEASURE, value=PROFIT, global=Y);
+15843 +     %em_checkmacro(name=EM_PROPERTY_NSURRS, value=0, global=Y);
+15844 +     %em_checkmacro(name=EM_PROPERTY_VARSELECTION, value=Y, global=Y);
+15845 +
+15846 +     %em_checkmacro(name=EM_PROPERTY_OBSIMPORTANCE, value=N, global=Y);
+15847 +     %em_checkmacro(name=EM_PROPERTY_NUMSINGLEIMP, value=5, global=Y);
+15848 +     %em_checkmacro(name=EM_PROPERTY_NUMPAIRIMP, value=0, global=Y);
+15849 +
+15850 +%mend SetProperties;
+15851 +
+15852 +
+NOTE: %INCLUDE (level 1) ending.
+NOTE: Fileref TEMP has been deassigned.
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMMODL.BOOST_TRAIN.SOURCE.
+15854 +%macro train;
+15856 +   filename temp catalog 'sashelp.emmodl.boost_trainmacros.source';
+15857 +   %include temp;
+15858 +   filename temp;
+15860 +   %if &EM_IMPORT_DATA eq %then %do;
+15861 +       %let EMEXCEPTIONSTRING = exception.server.IMPORT.NOTRAIN,1;
+15862 +       %put &em_codebar;
+15863 +       %let errormsg = %sysfunc(sasmsg(sashelp.dmine, error_nodeTrainRawData_note, NOQUOTE));
+15864 +       %put &errormsg;
+15865 +       %put &em_codebar;
+15866 +       %goto doendm;
+15867 +   %end;
+15868 +   %else
+15869 +       %let EMEXCEPTIONSTRING =;
+15871 +   %if  &EM_NUM_TARGET ne 1 %then %do;
+15872 +        %let EMEXCEPTIONSTRING = exception.server.USE1TARGET;
+15873 +        %put &em_codebar;
+15874 +        %let errormsg = %sysfunc(sasmsg(sashelp.dmine, metadata.use01target_err, NOQUOTE));
+15875 +        %put &errormsg;
+15876 +        %put &em_codebar;
+15877 +        %goto doendm;
+15878 +   %end;
+15880 +   %let target_level = %EM_TARGET_LEVEL;
+15881 +   %let target_var = %EM_TARGET;
+15883 +   %if ("&target_Level" ne "INTERVAL") %then %do;
+15884 +       %em_boost_makeDMDB(indata=&EM_IMPORT_DATA, target=&target_Var,
+15885 +                             nLevel=_nTargetLevel);
+15886 +   %end;
+15888 +   /* check actual num of target levels */
+15889 +   %if (&target_Level eq BINARY) %then %do;
+15890 +      %if &_nTargetLevel  > 2 %then %do;
+15891 +        %let EMEXCEPTIONSTRING = exception.server.METADATA.WRONGTARGETLEVEL,&target_Var;
+15892 +        %put &em_codebar;
+15893 +        %let errormsg = %sysfunc(sasmsg(sashelp.dmine, metadata.wrongtargetlevel, NOQUOTE));
+15894 +        %put &errormsg;
+15895 +        %put &em_codebar;
+15896 +        %goto doendm;
+15897 +      %end;
+15898 +   %end;
+15900 +   %if  (&EM_NUM_INTERVAL_INPUT < 1) and (&EM_NUM_BINARY_INPUT < 1) and (&EM_NUM_ORDINAL_INPUT < 1)
+15901 +        and (&EM_NUM_NOMINAL_INPUT < 1) %then %do;
+15902 +        %let EMEXCEPTIONSTRING = exception.server.USEATLEAST1INPUTREJECT;
+15903 +        %put &em_codebar;
+15904 +        %let errormsg = %sysfunc(sasmsg(sashelp.dmine, error_noInput_note, NOQUOTE));
+15905 +        %put &errormsg;
+15906 +        %put &em_codebar;
+15907 +        %goto doendm;
+15908 +   %end;
+15910 +   /* Initialize property macro variables */
+15911 +   %SetProperties;
+15913 +   /* data sets */
+15914 +   %EM_GETNAME(key=MODEL, type=DATA);
+15915 +   %EM_GETNAME(key=IMPORTANCE, type=DATA);
+15916 +   %EM_GETNAME(key=SUBFIT, type=DATA);
+15917 +   %EM_GETNAME(key=EMOUTFIT, type=DATA);
+15919 +   /* files
+15920 +   %EM_GETNAME(key=BINNINGCODE, type=FILE, extension=sas);*/
+15922 +   /* retrieve target information */
+15923 +   %let dsid=%sysfunc(open(&EM_DEC_DECMETA(where=(_TYPE_='TARGET'))));
+15925 +   %let vn_event =%sysfunc(varnum(&dsid, EVENT));
+15926 +   %let vn_target_type = %sysfunc(varnum(&dsid, TYPE));
+15927 +   %let vn_target_format = %sysfunc(varnum(&dsid, FORMAT));
+15928 +   %let vn_target_level  = %sysfunc(varnum(&dsid, LEVEL));
+15929 +   %do %while(^ %sysfunc(fetch(&dsid)));
+15930 +      %let temp = %nrbquote(%sysfunc(getvarc(&dsid, &vn_event)));
+15931 +      %let Target_Event = %nrbquote(%sysfunc(tranwrd(&temp, %str(%"),"")));
+15932 +      %let Target_Type =  %sysfunc(getvarc(&dsid, &vn_target_type));
+15933 +      %let Target_Format = %sysfunc(getvarc(&dsid, &vn_target_format));
+15934 +      %let Target_Level = %sysfunc(getvarc(&dsid, &vn_target_level));
+15935 +   %end;
+15936 +   %let dsid = %sysfunc(close(&dsid));
+15938 +   /* if target level is ORDINAL, throw run time exception -- proc boost does not support ordinal target */
+15939 +   %if &Target_Level eq ORDINAL %then %do;
+15940 +        %let EMEXCEPTIONSTRING = exception.server.METADATA.INVALIDORDINALTARGET;
+15941 +        %put &em_codebar;
+15942 +        %let errormsg = %sysfunc(sasmsg(sashelp.dmine, error_invalidordinaltarget_note, NOQUOTE));
+15943 +        %put &errormsg;
+15944 +        %put &em_codebar;
+15945 +        %goto doendm;
+15946 +   %end;
+15948 +   /* if subSeries=ITERATIONS and iterationNum not specified, exception should be thrown */
+15949 +   %if ((&EM_PROPERTY_SUBSERIES eq ITERATIONS) and (&EM_PROPERTY_ITERATIONNUM eq . )) %then %do;
+15950 +        %let EMEXCEPTIONSTRING = exception.server.EMTOOL.BOOST.NOITERATIONNUM;
+15951 +        %put &em_codebar;
+15952 +        %let errormsg = %sysfunc(sasmsg(sashelp.dmine, error_noiterationnum_note, NOQUOTE));
+15953 +        %put &errormsg;
+15954 +        %put &em_codebar;
+15955 +        %goto doendm;
+15956 +   %end;
+15958 +   %runBoostProcedure;
+15961 +   %doendm:
+15962 +%mend train;
+NOTE: %INCLUDE (level 1) ending.
+NOTE: Fileref TEMP has been deassigned.
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMMODL.BOOST_TRAINMACROS.SOURCE.
+15963 +%Macro em_boost_makeDMDB(indata=, target=,  nLevel= );
+15964 +  %global &nLevel;
+15966 +  %let targetLevel=;
+15967 +  data _null_;
+15968 +     length orderString $64;
+15969 +     set &em_data_variableset end=eof;
+15970 +     where NAME="&target";
+15971 +     select(order);
+15972 +            when('')        order ='DESC';
+15973 +            when('FMTASC')  order='ASCFMT';
+15974 +            when('FMTDESC') order='DESFMT';
+15975 +            otherwise;
+15976 +     end;
+15977 +     if eof then do;
+15978 +        call symput("targetOrder", trim(order));
+15979 +        call symput("targetLevel", trim(Level));
+15980 +     end;
+15981 +  run;
+15983 +  %if "&targetLevel" ne "INTERVAL" %then %do;
+15984 +  proc dmdb batch data=&indata dmdbCat=_BoostDMDB
+15985 +    classout=_tmp_dmdbout;
+15986 +    class &target(&targetOrder);
+15987 +    target &target;
+15988 +  run;
+15989 +  data _tmp_dmdbout;
+15990 +    set _tmp_dmdbout;
+15991 +    if strip(TYPE) = 'N' and  strip(LEVEL) = '.' then delete;
+15992 +    if strip(TYPE) = 'C' and  strip(LEVEL) = '' then delete;
+15993 +  run;
+15994 +  data _null_;
+15995 +    %let dsid = %sysfunc(open(work._tmp_dmdbout));
+15996 +    %let _obs = %sysfunc(attrn(&dsid, NOBS));
+15997 +    %let dsid = %sysfunc(close(&dsid));
+15998 +     call symput("&nLevel", put(&_obs, Best12.));
+15999 +  run;
+16001 +  proc datasets lib=work nolist;
+16002 +     delete _tmp_dmdbout;
+16003 +  run;
+16004 +  quit;
+16005 +  %end;
+16007 +%Mend em_boost_makeDMDB;
+16009 +%macro runBoostProcedure;
+16011 +  proc sql;
+16012 +    reset noprint;
+16013 +    select count(*) into :nobs from &EM_IMPORT_DATA;
+16014 +  quit;
+16016 +  %let arborkluge= "work._BoostDMDB";
+16017 +  proc arbor proc=treeboost data=&EM_IMPORT_DATA
+16019 +    %if &EM_PROPERTY_ITERATIONS ne %then %do;
+16020 +      iterations = &EM_PROPERTY_ITERATIONS
+16021 +    %end;
+16023 +    %if &EM_PROPERTY_TRAINPROPORTION ne %then %do;
+16024 +       %let tprop = %sysevalf(&EM_PROPERTY_TRAINPROPORTION / 100);
+16025 +       trainproportion = &tprop
+16026 +    %end;
+16028 +    %if &EM_PROPERTY_SEED ne %then %do;
+16029 +       seed = &EM_PROPERTY_SEED
+16030 +    %end;
+16032 +    %if &EM_PROPERTY_SHRINKAGE ne %then %do;
+16033 +       shrinkage = &EM_PROPERTY_SHRINKAGE
+16034 +    %end;
+16036 +    %if &EM_PROPERTY_LEAFFRACTION ne %then %do;
+16037 +      leaffraction = &EM_PROPERTY_LEAFFRACTION
+16038 +    %end;
+16040 +    %let splitsize = &EM_PROPERTY_SPLITSIZE;
+16041 +    %if &splitsize ge &nobs %then %do;
+16042 +       %let splitsize= .;
+16043 +    %end;
+16044 +    %if &splitsize ne . %then %do;
+16045 +      splitsize = &splitsize
+16046 +    %end;
+16048 +    %if &EM_PROPERTY_MINCATSIZE ne %then %do;
+16049 +      mincatsize = &EM_PROPERTY_MINCATSIZE
+16050 +    %end;
+16052 +    %if &EM_PROPERTY_MAXBRANCH ne %then %do;
+16053 +       maxbranch = &EM_PROPERTY_MAXBRANCH
+16054 +    %end;
+16056 +    %if &EM_PROPERTY_MAXDEPTH ne %then %do;
+16057 +       maxdepth = &EM_PROPERTY_MAXDEPTH
+16058 +    %end;
+16060 +    %let nsurrs = ;
+16061 +    %if &EM_PROPERTY_NSURRS ne %then %do;
+16062 +      %let numInputs = %sysevalf(&EM_NUM_BINARY_INPUT + &EM_NUM_ORDINAL_INPUT + &EM_NUM_INTERVAL_INPUT + &EM_NUM_NOMINAL_INPUT);
+16063 +      %let nsurrs = %sysevalf(%sysfunc(min(&EM_PROPERTY_NSURRS, (&numInputs -1 ))));
+16064 +      maxsurrs = &nsurrs
+16065 +    %end;
+16067 +    %if &EM_PROPERTY_MISSING ne %then %do;
+16068 +      Missing = &EM_PROPERTY_MISSING
+16069 +    %end;
+16071 +    %if &EM_PROPERTY_REUSEVAR ne %then %do;
+16072 +      reusevar = &EM_PROPERTY_REUSEVAR
+16073 +    %end;
+16074 +/*
+16075 +    %if &EM_PROPERTY_PRECISION ne %then %do;
+16076 +      intervaldecimals=&EM_PROPERTY_PRECISION
+16077 +    %end;
+16078 +*/
+16079 +    %if &EM_PROPERTY_EXHAUSTIVE ne %then %do;
+16080 +      Exhaustive = &EM_PROPERTY_EXHAUSTIVE
+16081 +    %end;
+16083 +    %if &Target_Event ne %then %do;
+16084 +      Event="&Target_Event"
+16085 +    %end;
+16087 +    %if &EM_PROPERTY_CATEGORICALBINS ne %then %do;
+16088 +      CategoricalBins = &EM_PROPERTY_CATEGORICALBINS
+16089 +    %end;
+16091 +    %if &EM_PROPERTY_INTERVALBINS ne %then %do;
+16092 +      IntervalBins = &EM_PROPERTY_INTERVALBINS
+16093 +    %end;
+16095 +    %if &TARGET_LEVEL eq INTERVAL %then %do;
+16096 +      %if &EM_PROPERTY_HUBER ne %then %do;
+16097 +        Huber=&EM_PROPERTY_HUBER
+16098 +      %end;
+16099 +    %end;
+16100 +    ;
+16102 +    %if %EM_INTERVAL_INPUT %EM_INTERVAL_REJECTED ne %then %do;
+16103 +      input %EM_INTERVAL_INPUT %EM_INTERVAL_REJECTED/ level = interval;
+16104 +    %end;
+16106 +    %if %EM_BINARY_INPUT %EM_NOMINAL_INPUT %EM_BINARY_REJECTED %EM_NOMINAL_REJECTED ne  %then %do;
+16107 +      input %EM_BINARY_INPUT %EM_BINARY_REJECTED %EM_NOMINAL_INPUT %EM_NOMINAL_REJECTED / level = nominal;
+16108 +    %end;
+16110 +    %if %EM_ORDINAL_INPUT %EM_ORDINAL_REJECTED ne %then %do;
+16111 +      input %EM_ORDINAL_INPUT %EM_ORDINAL_REJECTED/ level = ordinal;
+16112 +    %end;
+16114 +    %if %EM_FREQ ne %then %do;
+16115 +       freq %EM_FREQ;
+16116 +    %end;
+16118 +    target %EM_TARGET / level = &TARGET_LEVEL;
+16120 +    &EM_DEC_STATEMENT;
+16122 +    %if &EM_PROPERTY_PERFORMANCE ne %then %do;
+16123 +      performance  workdatalocation = &EM_PROPERTY_PERFORMANCE
+16124 +    %end;
+16125 +    %if &EM_PROPERTY_NODESIZE ne %then %do;
+16126 +       nodesize = &EM_PROPERTY_NODESIZE
+16127 +    %end;
+16128 +    ;
+16129 +    save model=&EM_USER_MODEL;
+16130 +  run;
+16131 +  quit;
+16132 +  %em_checkerror();
+16134 +%mend runBoostProcedure;
+NOTE: %INCLUDE (level 1) ending.
+NOTE: Fileref TEMP has been deassigned.
+
+NOTE: Variable orderString is uninitialized.
+NOTE: There were 1 observations read from the data set EMWS1.BOOST_VARIABLESET.
+      WHERE NAME='target10';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Records processed = 4743   Memory used = 511K.
+NOTE: Visualizza EMWS1.REPL_TRAIN.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.06 seconds
+      
+NOTE: There were 4743 observations read from the data set EMWS1.PART_TRAIN.
+NOTE: There were 4743 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: The data set WORK._TMP_DMDBOUT has 2 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.09 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK._TMP_DMDBOUT.
+NOTE: The data set WORK._TMP_DMDBOUT has 2 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: Deleting WORK._TMP_DMDBOUT (memtype=DATA).
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: Visualizza EMWS1.REPL_TRAIN.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+      
+NOTE: There were 4743 observations read from the data set EMWS1.PART_TRAIN.
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+
+NOTE: 1596463 kilobytes of physical memory.
+NOTE: Will use 4743 out of 4743 training cases.
+NOTE: Using memory pool with 280416256 bytes.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable REP_Anno.
+NOTE: Too few acceptable cases.
+NOTE: Will not search for split on variable Tagliandi_certificati.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Will not search for split on variable Veicolo_per_non_fumatori.
+NOTE: Acceptable cases have the same value.
+NOTE: Option MINCATSIZE=5 may apply.
+NOTE: Passed training data 514 times.
+NOTE: Current TREEBOOST model contains 50 trees.
+NOTE: Training used 1703304 bytes of work memory.
+NOTE: The data set EMWS1.BOOST_MODEL has 21211 observations and 4 variables.
+
+
+NOTE: Visualizza EMWS1.REPL_TRAIN.VIEW used (Total process time):
+      real time           18.43 seconds
+      cpu time            14.42 seconds
+      
+NOTE: There were 4743 observations read from the data set EMWS1.PART_TRAIN.
+NOTE: There were 4743 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: PROCEDURE ARBOR used (Total process time):
+      real time           18.44 seconds
+      cpu time            14.43 seconds
+      
+
+
+16137  %let SYSCC = 0;
+NOTE: PROCEDURE DISPLAY used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+16138  *------------------------------------------------------------*;
+16139  * End TRAIN: Boost;
+16140  *------------------------------------------------------------*;
+16141  
+
+16142  *------------------------------------------------------------*;
+16143  * Close any missing semi colons;
+16144  *------------------------------------------------------------*;
+16145  ;
+16146  ;
+16147  ;
+16148  ;
+16149  quit;
+16150  *------------------------------------------------------------*;
+16151  * Close any unbalanced quotes;
+16152  *------------------------------------------------------------*;
+16153  /*; *"; *'; */
+16154  ;
+16155  run;
+16156  quit;
+16157  /* Reset EM Options */
+16158  options formchar="|----|+|---+=|-/\<>*";
+16159  options nocenter ls=256 ps=10000;
+16160  goptions reset=all device=GIF NODISPLAY;
+

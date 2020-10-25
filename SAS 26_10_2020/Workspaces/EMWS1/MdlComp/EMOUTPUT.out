@@ -1,0 +1,287 @@
+*------------------------------------------------------------*
+Utente:             Maria Vallarelli
+Data:               25 ottobre 2020
+Ora:                22:54:23
+*------------------------------------------------------------*
+* Output di training
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Riepilogo delle variabili
+ 
+                         Conteggio
+          Livello di         di
+Ruolo     misurazione    frequenza
+ 
+TARGET      BINARY           1
+ 
+ 
+ 
+ 
+ 
+                                                                                       BINNED_KS_
+                                                              _KS_PROB_                   PROB_
+Oss     TARGET     TARGETLABEL    _AUR_    _GINI_      KS       CUTOFF     _KS_BIN_      CUTOFF
+ 
+ 1     target10     target10      0.974     0.948    0.845       0.41        0.828        0.736
+ 
+ 
+ 
+ 
+ 
+                                                                 _VKS_              _VBINNED_
+                                                                 PROB_     _VKS_     KS_PROB_
+Oss     TARGET     TARGETLABEL    _VAUR_    _VGINI_     VKS     CUTOFF_     BIN_     CUTOFF_
+ 
+ 1     target10     target10       0.967     0.933     0.837      0.61     0.824      0.736
+ 
+ 
+ 
+ 
+ 
+                                                                                      BINNED_KS_
+                                                             _KS_PROB_                   PROB_
+Oss     TARGET     TARGETLABEL    _AUR_    _GINI_     KS       CUTOFF     _KS_BIN_      CUTOFF
+ 
+ 1     target10     target10      0.987     0.975    0.89       0.41        0.887        0.658
+ 
+ 
+ 
+ 
+ 
+                                                                 _VKS_              _VBINNED_
+                                                                 PROB_     _VKS_     KS_PROB_
+Oss     TARGET     TARGETLABEL    _VAUR_    _VGINI_     VKS     CUTOFF_     BIN_     CUTOFF_
+ 
+ 1     target10     target10       0.974     0.948     0.874      0.43     0.869      0.658
+ 
+ 
+ 
+ 
+ 
+                                                                                       BINNED_KS_
+                                                              _KS_PROB_                   PROB_
+Oss     TARGET     TARGETLABEL    _AUR_    _GINI_      KS       CUTOFF     _KS_BIN_      CUTOFF
+ 
+ 1     target10     target10      0.936     0.873    0.713       0.41        0.703        0.432
+ 
+ 
+ 
+ 
+ 
+                                                                 _VKS_              _VBINNED_
+                                                                 PROB_     _VKS_     KS_PROB_
+Oss     TARGET     TARGETLABEL    _VAUR_    _VGINI_     VKS     CUTOFF_     BIN_     CUTOFF_
+ 
+ 1     target10     target10       0.926     0.852     0.692      0.5      0.687      0.518
+ 
+ 
+ 
+ 
+ 
+                                                                                      BINNED_KS_
+                                                             _KS_PROB_                   PROB_
+Oss     TARGET     TARGETLABEL    _AUR_    _GINI_     KS       CUTOFF     _KS_BIN_      CUTOFF
+ 
+ 1     target10     target10      0.936     0.872    0.71       0.47        0.705        0.347
+ 
+ 
+ 
+ 
+ 
+                                                                 _VKS_              _VBINNED_
+                                                                 PROB_     _VKS_     KS_PROB_
+Oss     TARGET     TARGETLABEL    _VAUR_    _VGINI_     VKS     CUTOFF_     BIN_     CUTOFF_
+ 
+ 1     target10     target10       0.912     0.824     0.686      0.41     0.686      0.338
+ 
+ 
+ 
+ 
+ 
+                                                                                       BINNED_KS_
+                                                              _KS_PROB_                   PROB_
+Oss     TARGET     TARGETLABEL    _AUR_    _GINI_      KS       CUTOFF     _KS_BIN_      CUTOFF
+ 
+ 1     target10     target10      0.905     0.81     0.636       0.41        0.634        0.444
+ 
+ 
+ 
+ 
+ 
+                                                                 _VKS_              _VBINNED_
+                                                                 PROB_     _VKS_     KS_PROB_
+Oss     TARGET     TARGETLABEL    _VAUR_    _VGINI_     VKS     CUTOFF_     BIN_     CUTOFF_
+ 
+ 1     target10     target10       0.887     0.775     0.614      0.45     0.614       0.5
+ 
+ 
+ 
+ 
+ 
+                                                                                       BINNED_KS_
+                                                              _KS_PROB_                   PROB_
+Oss     TARGET     TARGETLABEL    _AUR_    _GINI_      KS       CUTOFF     _KS_BIN_      CUTOFF
+ 
+ 1     target10     target10      0.856     0.711    0.537       0.43        0.534        0.478
+ 
+ 
+ 
+ 
+ 
+                                                                 _VKS_              _VBINNED_
+                                                                 PROB_     _VKS_     KS_PROB_
+Oss     TARGET     TARGETLABEL    _VAUR_    _VGINI_     VKS     CUTOFF_     BIN_     CUTOFF_
+ 
+ 1     target10     target10       0.825      0.65     0.483      0.4      0.478      0.439
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Statistiche di stima
+Selezione del modello basata su Train: Average Square Error (_ASE_)
+ 
+                                                         Train:                        Valid:
+                                                        Average     Train: Errore     Average     Valid: Errore
+  Modello      Nodo del                                  Square           di           Square           di
+selezionato    modello     Descrizione del modello       Error     classificazione     Error     classificazione
+ 
+     Y          Tree       Interactive Decision Tree    0.03864        0.05187        0.04750        0.06192
+                Tree2      Albero decisionale           0.05946        0.07696        0.06360        0.08256
+                Reg2       Regressione_BK               0.09981        0.13957        0.11275        0.15872
+                Boost      Gradient boosting            0.10246        0.13388        0.10794        0.14496
+                Reg3       Regressione_SW               0.12164        0.17731        0.12923        0.18477
+                Neural     Rete neurale                 0.15224        0.22665        0.16763        0.25897
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Tabella delle statistiche di stima
+Target: target10
+ 
+Ruolo dei dati=Train
+ 
+Statistiche                                                                                Tree      Tree2       Reg2      Boost       Reg3     Neural
+ 
+Train: Cutoff probabilità di Kolmogorov-Smirnov a due vie basato sul raggruppamento       0.66       0.74       0.35       0.43       0.44       0.48
+Train: Statistica di Kolmogorov-Smirnov                                                    0.89       0.85       0.71       0.71       0.64       0.54
+Train: Criterio di informazione di Akaike                                                   .          .      3521.97        .      4021.61    4616.44
+Train: Average Square Error                                                                0.04       0.06       0.10       0.10       0.12       0.15
+Train: Indice ROC                                                                          0.99       0.97       0.94       0.94       0.91       0.86
+Train: Funzione di errore della media                                                       .          .         0.32        .         0.38       0.46
+Train: Percentuale cumulativa di risposta catturata                                       24.46      24.33      24.20      24.36      24.05      22.19
+Train: Percentuale di risposta catturata                                                  12.20      12.08      11.95      12.10      11.87      10.50
+Criterio di selezione: Train: Average Square Error                                         0.04       0.06       0.10       0.10       0.12       0.15
+Train: Gradi di libertà dell'errore                                                        .          .      4487.00        .      4521.00    4600.00
+Train: Gradi di libertà del modello                                                        .          .       256.00        .       222.00     143.00
+Train: Gradi di libertà totali                                                         4743.00    4743.00    4743.00    4743.00    4743.00    4743.00
+Train: Divisore per ASE                                                                 9486.00    9486.00    9486.00    9486.00    9486.00    9486.00
+Train: Funzione di errore                                                                   .          .      3009.97        .      3577.61    4330.44
+Train: Errore di previsione finale                                                          .          .         0.11        .         0.13       0.16
+Train: Gain                                                                              144.23     142.98     141.66     143.20     140.14     121.61
+Train: Coefficiente di Gini                                                                0.98       0.95       0.87       0.87       0.81       0.71
+Train: Statistica di Kolmogorov-Smirnov a due vie basata sul raggruppamento                0.89       0.83       0.71       0.70       0.63       0.53
+Train: Cutoff prob. di Kolmogorov-Smirnov                                                  0.41       0.41       0.47       0.41       0.41       0.43
+Train: Lift cumulativo                                                                     2.44       2.43       2.42       2.43       2.40       2.22
+Train: Lift                                                                                2.44       2.42       2.39       2.42       2.38       2.10
+Train: Errore assoluto massimo                                                             0.99       1.00       1.00       0.97       0.99       1.00
+Train: Errore di classificazione                                                           0.05       0.08       0.14       0.13       0.18       0.23
+Train: Errore quadratico medio                                                              .          .         0.11        .         0.13       0.16
+Train: Somma di frequenze                                                               4743.00    4743.00    4743.00    4743.00    4743.00    4743.00
+Train: Numero di pesi della stima                                                           .          .       256.00        .       222.00     143.00
+Train: Root Average Square Error                                                           0.20       0.24       0.32       0.32       0.35       0.39
+Train: Percentuale cumulativa di risposta                                                100.00      99.49      98.95      99.58      98.32      90.74
+Train: Percentuale di risposta                                                           100.00      98.97      97.89      99.16      97.27      86.08
+Train: Radice dell'errore di previsione finale                                              .          .         0.33        .         0.37       0.40
+Train: Scarto quadratico medio                                                              .          .         0.32        .         0.36       0.40
+Train: Criterio bayesiano di Schwarz                                                        .          .      5176.86        .      5456.71    5540.86
+Train: Somma degli errori quadratici                                                     366.51     564.08     946.80     971.92    1153.86    1444.16
+Train: Somma dei casi ponderati per le frequenze                                            .          .      9486.00    9486.00    9486.00    9486.00
+Train: Numero di classificazioni errate                                                     .          .          .          .          .      1075.00
+ 
+ 
+Ruolo dei dati=Valid
+ 
+Statistiche                                                                                Tree      Tree2       Reg2      Boost       Reg3     Neural
+ 
+Valid: Statistica di Kolmogorov-Smirnov                                                    0.87       0.84       0.69       0.69       0.61       0.48
+Valid: Average Square Error                                                                0.05       0.06       0.11       0.11       0.13       0.17
+Valid: Indice ROC                                                                          0.97       0.97       0.91       0.93       0.89       0.83
+Valid: Funzione di errore della media                                                       .          .         0.40        .         0.45       0.50
+Valid: Cutoff probabilità di Kolmogorov-Smirnov a due vie basato sul raggruppamento       0.66       0.74       0.34       0.52       0.50       0.44
+Valid: Percentuale cumulativa di risposta catturata                                       24.07      24.26      24.49      24.49      24.06      21.85
+Valid: Percentuale di risposta catturata                                                  12.03      12.08      12.24      12.24      11.91      10.08
+Valid: Divisore per VASE                                                                4070.00    4070.00    4070.00    4070.00    4070.00    4070.00
+Valid: Funzione di errore                                                                   .          .      1619.45        .      1846.79    2030.48
+Valid: Gain                                                                              140.07     141.96     144.30     144.30     140.04     117.95
+Valid: Coefficiente di Gini                                                                0.95       0.93       0.82       0.85       0.78       0.65
+Valid: Statistica di Kolmogorov-Smirnov a due vie basata sul raggruppamento                0.87       0.82       0.69       0.69       0.61       0.48
+Valid: Cutoff prob. di Kolmogorov-Smirnov                                                  0.43       0.61       0.41       0.50       0.45       0.40
+Valid: Lift cumulativo                                                                     2.40       2.42       2.44       2.44       2.40       2.18
+Valid: Lift                                                                                2.40       2.41       2.44       2.44       2.38       2.01
+Valid: Errore assoluto massimo                                                             1.00       1.00       1.00       0.98       1.00       1.00
+Valid: Errore di classificazione                                                           0.06       0.08       0.16       0.14       0.18       0.26
+Valid: Errore quadratico medio                                                              .          .         0.11        .         0.13       0.17
+Valid: Somma di frequenze                                                               2035.00    2035.00    2035.00    2035.00    2035.00    2035.00
+Valid: Root Average Square Error                                                           0.22       0.25       0.34       0.33       0.36       0.41
+Valid: Percentuale cumulativa di risposta                                                 98.27      99.04     100.00     100.00      98.26      89.22
+Valid: Percentuale di risposta                                                            98.27      98.67     100.00     100.00      97.26      82.35
+Valid: Scarto quadratico medio                                                              .          .         0.34        .         0.36       0.41
+Valid: Somma degli errori quadratici                                                     193.34     258.85     458.89     439.33     525.95     682.26
+Valid: Somma dei casi ponderati per le frequenze                                            .          .      4070.00    4070.00    4070.00    4070.00
+Valid: Numero di classificazioni errate                                                     .          .          .          .          .       527.00
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Tabella di classificazione degli eventi
+Selezione del modello basata su Train: Average Square Error (_ASE_)
+ 
+Nodo del                                  Ruolo                  Etichetta      Falso       Vero        Falso       Vero
+modello     Descrizione del modello      dei dati     Target      target      negativo    negativo    positivo    positivo
+ 
+ Tree2      Albero decisionale           TRAIN       target10    target10        163        2599         202        1779
+ Tree2      Albero decisionale           VALIDATE    target10    target10         75        1109          93         758
+ Tree       Interactive Decision Tree    TRAIN       target10    target10        167        2722          79        1775
+ Tree       Interactive Decision Tree    VALIDATE    target10    target10         79        1155          47         754
+ Boost      Gradient boosting            TRAIN       target10    target10        386        2552         249        1556
+ Boost      Gradient boosting            VALIDATE    target10    target10        169        1076         126         664
+ Reg2       Regressione_BK               TRAIN       target10    target10        360        2499         302        1582
+ Reg2       Regressione_BK               VALIDATE    target10    target10        170        1049         153         663
+ Reg3       Regressione_SW               TRAIN       target10    target10        436        2396         405        1506
+ Reg3       Regressione_SW               VALIDATE    target10    target10        207        1033         169         626
+ Neural     Rete neurale                 TRAIN       target10    target10        556        2282         519        1386
+ Neural     Rete neurale                 VALIDATE    target10    target10        260         935         267         573
+
+
+*------------------------------------------------------------*
+* Output di scoring
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Output dei report
+*------------------------------------------------------------*

@@ -1,0 +1,2143 @@
+*------------------------------------------------------------*
+* Log di scoring
+Data:               25 ottobre 2020
+Ora:                22:51:57
+*------------------------------------------------------------*
+17150  %let EMEXCEPTIONSTRING=;
+17151  *------------------------------------------------------------*;
+17152  * SCORE: Tree2;
+17153  *------------------------------------------------------------*;
+17154  %let EM_ACTION = SCORE;
+17155  %let syscc = 0;
+17156  %macro main;
+17157  
+17158    %if %upcase(&EM_ACTION) = CREATE %then %do;
+17159      filename temp catalog 'sashelp.emmodl.tree_create.source';
+17160      %include temp;
+17161      filename temp;
+17162  
+17163      %em_tree_create;
+17164    %end;
+17165  
+17166     %else
+17167     %if %upcase(&EM_ACTION) = TRAIN %then %do;
+17168  
+17169         filename temp catalog 'sashelp.emmodl.tree_train.source';
+17170         %include temp;
+17171         filename temp;
+17172         %em_tree_train;
+17173     %end;
+17174  
+17175    %else
+17176    %if %upcase(&EM_ACTION) = SCORE %then %do;
+17177      filename temp catalog 'sashelp.emmodl.tree_score.source';
+17178      %include temp;
+17179      filename temp;
+17180  
+17181      %em_tree_score;
+17182  
+17183    %end;
+17184  
+17185    %else
+17186    %if %upcase(&EM_ACTION) = REPORT %then %do;
+17187  
+17188         filename temp catalog 'sashelp.emmodl.tree_report.source';
+17189         %include temp;
+17190         filename temp;
+17191  
+17192         %em_tree_report;
+17193     %end;
+17194  
+17195    %else
+17196    %if %upcase(&EM_ACTION) = OPENINT %then %do;
+17197  
+17198         filename temp catalog 'sashelp.emmodl.tree_actions.source';
+17199         %include temp;
+17200         filename temp;
+17201         %EM_TREE_OPENTREEVIEWER;
+17202  
+17203     %end;
+17204  
+17205    %else
+17206    %if %upcase(&EM_ACTION) = CLOSEINT %then %do;
+17207  
+17208         filename temp catalog 'sashelp.emmodl.tree_actions.source';
+17209         %include temp;
+17210         filename temp;
+17211         %EM_TREE_CLOSETREEVIEWER;
+17212  
+17213     %end;
+17214  
+17215  
+17216     %doendm:
+17217  %mend main;
+17218  
+17219  %main;
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMMODL.TREE_SCORE.SOURCE.
+17221 +%macro em_tree_score;
+17223 +   /* determine if multiple targets will be processed */
+17224 +   %let em_tree_multipleTargets=N;
+17225 +   %let em_tree_numTarget=1;
+17226 +   %if "&EM_PROPERTY_USEMULTIPLETARGET" eq "Y" %then %do;
+17227 +      /* determine if there are any ordinal target variables - if so, multiple targets are not supported */
+17228 +      %if &EM_NUM_ORDINAL_TARGET gt 0 %then %do;
+17229 +         %let em_tree_multipleTargets=N;
+17230 +      %end;
+17231 +      %else %do;
+17232 +         /* create macro array of targets  */
+17233 +         data _null_;
+17234 +           set &EM_DATA_VARIABLESET(where=(ROLE='TARGET' AND LEVEL^='ORDINAL')) end=eof;
+17235 +           call symput('em_tree_targetVars'!!strip(put(_N_, BEST.)), strip(Name));
+17236 +           if eof then
+17237 +             call symput('em_tree_numTarget', strip(put(_N_, BEST.)));
+17238 +        run;
+17240 +        %if &em_tree_numTarget gt 1 %then %do;
+17241 +           %let em_tree_multipleTargets=Y;
+17242 +        %end;
+17243 +      %end;
+17244 +   %end;
+17246 +   /* build flow and publish scoring code */
+17247 +   %EM_GETNAME(key=TREEFLOW, type=FILE, extension=sas);
+17248 +   %EM_GETNAME(key=TREEPUBLISH, type=FILE, extension=sas);
+17250 +   filename treeflow "&EM_USER_TREEFLOW";
+17251 +   filename treepub "&EM_USER_TREEPUBLISH";
+17253 +   filename flowref  "&EM_FILE_EMFLOWSCORECODE";
+17254 +   filename pubref   "&EM_FILE_EMPUBLISHSCORECODE";
+17256 +   %em_copyfile(infref=treeflow, outfref=flowref);
+17257 +   %em_copyfile(infref=treepub, outfref=pubref);
+17259 +   filename treeflow;
+17260 +   filename treepub;
+17262 +   /* if priors are used, add code to generate unadjusted residuals in export */
+17263 +   %let useAdjPriors = N;
+17264 +   data _null_;
+17265 +     set &EM_DEC_DECMETA(where=(_TYPE_="DECPRIOR"));
+17266 +     if USE="Y" then call symput('useAdjPriors', 'Y');
+17267 +   run;
+17268 +   %if (("&em_tree_multipleTargets" eq "N") AND ("&useAdjPriors" eq "Y")) %then %do;
+17269 +      filename temp catalog 'sashelp.emutil.em_makeunadjustedresidualvars.source';
+17270 +      %include temp;
+17271 +      filename temp;
+17273 +      %EM_GETNAME(key=adjResidualCode, type=FILE, extension=sas);
+17274 +      filename adjref "&EM_USER_adjResidualCode";
+17275 +      %makeUnadjustedResidualVars(target=%EM_TARGET, decmeta=&EM_DEC_DECMETA, fref=adjref);
+17277 +      %em_copyfile(infref=adjref, outfref=flowref, append=Y);
+17279 +      filename adjref;
+17280 +   %end;
+17282 +   /* LEAF */
+17283 +   %if "&EM_PROPERTY_LEAFID" eq "Y" %then %do;
+17284 +      data _null_;
+17285 +        file flowref mod;
+17286 +        put 'drop _LEAF_;';
+17287 +      run;
+17289 +      data _null_;
+17290 +        file pubref mod;
+17291 +        put 'drop _LEAF_;';
+17292 +      run;
+17294 +   %end;
+17296 +   filename flowref;
+17297 +   filename pubref;
+17299 +   /* em_metachange code */
+17300 +   %if "&EM_PROPERTY_LEAFID" eq "Y" %then %do;
+17301 +     %EM_METACHANGE(name=_NODE_, role=&EM_PROPERTY_NODEROLE, LEVEL=NOMINAL);
+17302 +   %end;
+17304 +   /* variable selection based on importance stat    */
+17305 +   %if "&EM_PROPERTY_VARSELECTION" eq "Y" %then %do;
+17306 +     %EM_GETNAME(key=OUTIMPORT, type=DATA);
+17307 +     %let dsid = %sysfunc(open(&EM_USER_OUTIMPORT(where=(IMPORTANCE<0.05))));
+17308 +     %let varnum = %sysfunc(varnum(&dsid, NAME));
+17309 +     %let obs = %sysfunc(fetch(&dsid));
+17310 +     %do %while(&obs=0);
+17311 +       %let temp = %nrbquote(%sysfunc(getvarc(&dsid, &varnum)));
+17312 +       %let varname = %nrbquote(%sysfunc(tranwrd(&temp,  %str(%"),"")));
+17313 +       %EM_METACHANGE(name=&varname, role=REJECTED);
+17314 +       %let obs = %sysfunc(fetch(&dsid));
+17315 +     %end;
+17316 +     %if &dsid %then %let dsid=%sysfunc(close(&dsid));
+17317 +   %end;
+17319 +   /* set Q_ varaibles to role of ASSESS when in the presense of prior probabilities */
+17320 +   %if %sysfunc(exist(&EM_DEC_DECMETA)) %then %do;
+17321 +    %let tree_pred_vars = ;
+17322 +    %let tree_pred_lvl =;
+17323 +    %let numpred= 0;
+17325 +    data _null_;
+17326 +     set &EM_DEC_DECMETA(where=(_TYPE_="PREDICTED")) end=eof;
+17327 +     call symput('tree_pred_vars'!!strip(put(_N_, BEST.)), strip(VARIABLE));
+17328 +     call symput('tree_pred_lvl'!!strip(put(_N_, BEST.)), strip(LEVEL));
+17329 +     if eof then
+17330 +       call symput('numpred', strip(put(_N_, BEST.)));
+17331 +    run;
+17332 +   %end;
+17334 +   %if &numpred ne 0 %then %do;
+17335 +    %do i=1 %to &numpred;
+17336 +      %let qpred = Q%substr(&&tree_pred_vars&i,2);
+17337 +      %EM_METACHANGE(name=&qpred, role=ASSESS);
+17338 +    %end;
+17339 +   %end;
+17341 +   /* determine if multiple targets will be processed */
+17342 +   %let em_tree_multipleTargets=N;
+17343 +   %let em_tree_numTarget=1;
+17344 +   %if "&EM_PROPERTY_USEMULTIPLETARGET" eq "Y" %then %do;
+17345 +      /* determine if there are any ordinal target variables - if so, multiple targets are not supported */
+17346 +      %if &EM_NUM_ORDINAL_TARGET gt 0 %then %do;
+17347 +         %let em_tree_multipleTargets=N;
+17348 +      %end;
+17349 +      %else %do;
+17350 +        data _null_;
+17351 +          set &EM_DATA_VARIABLESET(where=(ROLE='TARGET' AND LEVEL^='ORDINAL')) end=eof;
+17352 +          if eof then
+17353 +            call symput('em_tree_numTarget', strip(put(_N_, BEST.)));
+17354 +        run;
+17356 +        %if &em_tree_numTarget gt 1 %then %do;
+17357 +           %let em_tree_multipleTargets=Y;
+17358 +        %end;
+17359 +     %end;
+17360 +   %end;
+17362 +   /* need to include this code to do the %em_report for OUTIMPORT here instead of in Report code so _loop data set is created when group processing */
+17363 +   %if "&em_tree_multipleTargets" eq "N" %then %do;
+17365 +      /* variable importance */
+17366 +      %EM_GETNAME(key=OUTIMPORT, type=DATA);
+17367 +      %if %sysfunc(exist(&EM_USER_OUTIMPORT)) eq 1 %then %do;
+17369 +         %let validexist=0;
+17370 +         %if (("&EM_IMPORT_VALIDATE" ne "") AND (%sysfunc(exist(&EM_IMPORT_VALIDATE)) or %sysfunc(exist(&EM_IMPORT_VALIDATE,VIEW)))) %then %do;
+17371 +           %let validexist=1;
+17372 +         %end;
+17374 +         /* determine if vars exists - properties could indicate they are they but freeze=Y would mean the node wasn't retrained */
+17375 +         /* and the columns may not be generated                                                                                 */
+17376 +         %let em_tree_cvexists=;
+17377 +         %let em_tree_surrexists=.;
+17378 +         data _null_;
+17379 +            set &EM_USER_OUTIMPORT (obs=2) end=eof;
+17380 +            if eof then do ;
+17381 +               call symput("em_tree_cvexists" , strip(put(cvimportance,best.))) ;
+17382 +               call symput("em_tree_surrexists", strip(put(nsurrogates, best.)));
+17383 +            end;
+17384 +         run;
+17386 +         data &EM_USER_OUTIMPORT;
+17387 +            set &EM_USER_OUTIMPORT;
+17389 +            /* format columns based on Precison value specified */
+17390 +            format importance 15.&EM_PROPERTY_PRECISION
+17391 +                 %if &validexist %then %do;
+17392 +                   vimportance ratio 15.&EM_PROPERTY_PRECISION
+17393 +                 %end;
+17394 +                 %if "&EM_TREE_CVEXISTS" ne "." %then %do;
+17395 +                   cvimportance vimportance ratio 15.&EM_PROPERTY_PRECISION
+17396 +                 %end;
+17397 +            ;
+17398 +            label  NAME       = "%sysfunc(sasmsg(sashelp.dmine, meta_name_vlabel, noquote))"
+17399 +                 LABEL        = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel, noquote))"
+17400 +                 NRULES       = "%sysfunc(sasmsg(sashelp.dmine, rpt_nrules_vlabel, noquote))"
+17401 +                 IMPORTANCE   = "%sysfunc(sasmsg(sashelp.dmine, rpt_importance_vlabel, noquote))"
+17402 +                 %if "&em_tree_surrexists" ne "" %then %do;
+17403 +                   NSURROGATES  = "%sysfunc(sasmsg(sashelp.dmine, rpt_nsurrogates_vlabel, noquote))"
+17404 +                 %end;
+17405 +                 %if &validexist %then %do;
+17406 +                   VIMPORTANCE = "%sysfunc(sasmsg(sashelp.dmine, rpt_vimportance_vlabel, noquote))"
+17407 +                   RATIO       = "%sysfunc(sasmsg(sashelp.dmine, rpt_ratio_vlabel, noquote))"
+17408 +                 %end;
+17409 +                 %if "&EM_TREE_CVEXISTS" ne "" %then %do;
+17410 +                   VIMPORTANCE = "%sysfunc(sasmsg(sashelp.dmine, rpt_vimportance_vlabel, noquote))"
+17411 +                   CVIMPORTANCE =  "%sysfunc(sasmsg(sashelp.dmine, rpt_cvimport_vlabel, noquote))"
+17412 +                   CVRULES= "%sysfunc(sasmsg(sashelp.dmine, rpt_cvrules_vlabel, noquote))"
+17413 +                   RATIO = "%sysfunc(sasmsg(sashelp.dmine, rpt_ratio_vlabel, noquote))"
+17414 +                 %end;
+17415 +            ;
+17416 +         run;
+17418 +         %EM_REPORT(key=OUTIMPORT, viewtype=DATA, block=MODEL, description=IMPORTANCE, autodisplay=N);
+17419 +      %end;
+17420 +   %end;
+17422 +   %doendm:
+17423 +%mend em_tree_score;
+NOTE: %INCLUDE (level 1) ending.
+NOTE: Fileref TEMP has been deassigned.
+
+NOTE: The file FLOWREF is:
+      Nome file=C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Tree2\EMFLOWSCORE.sas,
+      RECFM=V,LRECL=20000,Dimensione (byte)=0,
+      Ultima modifica=25 ottobre 2020 22:51:57,
+      Create Time=25 ottobre 2020 22:51:57
+
+NOTE: 660 records were written to the file FLOWREF.
+      The minimum record length was 1.
+      The maximum record length was 78.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: The file PUBREF is:
+      Nome file=C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Tree2\EMPUBLISHSCORE.sas,
+      RECFM=V,LRECL=20000,Dimensione (byte)=0,
+      Ultima modifica=25 ottobre 2020 22:51:57,
+      Create Time=25 ottobre 2020 22:51:57
+
+NOTE: 638 records were written to the file PUBREF.
+      The minimum record length was 1.
+      The maximum record length was 78.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Fileref TREEFLOW has been deassigned.
+NOTE: Fileref TREEPUB has been deassigned.
+
+NOTE: There were 1 observations read from the data set EMWS1.IDS_TARGET10_DM.
+      WHERE _TYPE_='DECPRIOR';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: The file FLOWREF is:
+      Nome file=C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Tree2\EMFLOWSCORE.sas,
+      RECFM=V,LRECL=32767,Dimensione (byte)=27244,
+      Ultima modifica=25 ottobre 2020 22:51:57,
+      Create Time=25 ottobre 2020 22:51:57
+
+NOTE: 1 record was written to the file FLOWREF.
+      The minimum record length was 12.
+      The maximum record length was 12.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: The file PUBREF is:
+      Nome file=C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Tree2\EMPUBLISHSCORE.sas,
+      RECFM=V,LRECL=32767,Dimensione (byte)=26599,
+      Ultima modifica=25 ottobre 2020 22:51:57,
+      Create Time=25 ottobre 2020 22:51:57
+
+NOTE: 1 record was written to the file PUBREF.
+      The minimum record length was 12.
+      The maximum record length was 12.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: Fileref FLOWREF has been deassigned.
+NOTE: Fileref PUBREF has been deassigned.
+
+NOTE: The data set WORK.EM_METACHANGE has 1 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: There were 1 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 2 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 3 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 3 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 4 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: There were 4 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 5 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 5 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 6 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 6 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 7 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 7 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 8 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 8 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 9 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 9 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 10 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 10 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 11 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 11 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 12 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: There were 12 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 13 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 13 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 14 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 14 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 15 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 15 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 16 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 16 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 17 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 17 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 18 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set EMWS1.IDS_TARGET10_DM.
+      WHERE _TYPE_='PREDICTED';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 18 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 19 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 19 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 20 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: Variable cvimportance is uninitialized.
+NOTE: Variable nsurrogates is uninitialized.
+NOTE: There were 2 observations read from the data set EMWS1.TREE2_OUTIMPORT.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Variable NSURROGATES is uninitialized.
+NOTE: Variable CVIMPORTANCE is uninitialized.
+NOTE: Variable CVRULES is uninitialized.
+NOTE: There were 23 observations read from the data set EMWS1.TREE2_OUTIMPORT.
+NOTE: The data set EMWS1.TREE2_OUTIMPORT has 23 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.06 seconds
+      
+
+
+NOTE: The data set WORK.EM_USER_REPORT has 132 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.07 seconds
+      
+
+17424  
+17425  *------------------------------------------------------------*;
+17426  * End SCORE: Tree2;
+17427  *------------------------------------------------------------*;
+
+17428  proc sort data=WORK.EM_METACHANGE;
+17429  by key uname;
+17430  run;
+
+NOTE: There were 20 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 20 observations and 9 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17431  filename x "C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Tree2\CDELTA_TRAIN.sas";
+17432  data _null_;
+17433  file x;
+17434  put 'if upcase(NAME) = "ALIMENTAZIONE" then do;';
+17435  put 'ROLE = "REJECTED";';
+17436  put 'end;';
+17437  put 'else ';
+17438  put 'if upcase(NAME) = "CARROZZERIA" then do;';
+17439  put 'ROLE = "REJECTED";';
+17440  put 'end;';
+17441  put 'else ';
+17442  put 'if upcase(NAME) = "CILINDRI" then do;';
+17443  put 'ROLE = "REJECTED";';
+17444  put 'end;';
+17445  put 'else ';
+17446  put 'if upcase(NAME) = "CLASSE_EMISSIONI" then do;';
+17447  put 'ROLE = "REJECTED";';
+17448  put 'end;';
+17449  put 'else ';
+17450  put 'if upcase(NAME) = "COLORE_ESTERNO" then do;';
+17451  put 'ROLE = "REJECTED";';
+17452  put 'end;';
+17453  put 'else ';
+17454  put 'if upcase(NAME) = "CONDITIONAL_ON_PRICE" then do;';
+17455  put 'ROLE = "REJECTED";';
+17456  put 'end;';
+17457  put 'else ';
+17458  put 'if upcase(NAME) = "MARCE" then do;';
+17459  put 'ROLE = "REJECTED";';
+17460  put 'end;';
+17461  put 'else ';
+17462  put 'if upcase(NAME) = "PER_NEOPATENTATI" then do;';
+17463  put 'ROLE = "REJECTED";';
+17464  put 'end;';
+17465  put 'else ';
+17466  put 'if upcase(NAME) = "PORTE" then do;';
+17467  put 'ROLE = "REJECTED";';
+17468  put 'end;';
+17469  put 'else ';
+17470  put 'if upcase(NAME) = "POSTI_A_SEDERE" then do;';
+17471  put 'ROLE = "REJECTED";';
+17472  put 'end;';
+17473  put 'else ';
+17474  put 'if upcase(NAME) = "Q_TARGET100" then do;';
+17475  put 'ROLE = "ASSESS";';
+17476  put 'end;';
+17477  put 'else ';
+17478  put 'if upcase(NAME) = "Q_TARGET101" then do;';
+17479  put 'ROLE = "ASSESS";';
+17480  put 'end;';
+17481  put 'else ';
+17482  put 'if upcase(NAME) = "REP_ANNO" then do;';
+17483  put 'ROLE = "REJECTED";';
+17484  put 'end;';
+17485  put 'else ';
+17486  put 'if upcase(NAME) = "REP_CILINDRATA" then do;';
+17487  put 'ROLE = "REJECTED";';
+17488  put 'end;';
+17489  put 'else ';
+17490  put 'if upcase(NAME) = "REP_TIPO_DI_VERNICE" then do;';
+17491  put 'ROLE = "REJECTED";';
+17492  put 'end;';
+17493  put 'else ';
+17494  put 'if upcase(NAME) = "TAGLIANDI_CERTIFICATI" then do;';
+17495  put 'ROLE = "REJECTED";';
+17496  put 'end;';
+17497  put 'else ';
+17498  put 'if upcase(NAME) = "TIPO_DI_CAMBIO" then do;';
+17499  put 'ROLE = "REJECTED";';
+17500  put 'end;';
+17501  put 'else ';
+17502  put 'if upcase(NAME) = "USATO_GARANTITO" then do;';
+17503  put 'ROLE = "REJECTED";';
+17504  put 'end;';
+17505  put 'else ';
+17506  put 'if upcase(NAME) = "VEICOLO_PER_NON_FUMATORI" then do;';
+17507  put 'ROLE = "REJECTED";';
+17508  put 'end;';
+17509  put 'else ';
+17510  put 'if upcase(NAME) = "_NODE_" then do;';
+17511  put 'ROLE = "SEGMENT";';
+17512  put 'LEVEL = "NOMINAL";';
+17513  put 'end;';
+17514  run;
+
+NOTE: The file X is:
+      Nome file=C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Tree2\CDELTA_TRAIN.sas,
+      RECFM=V,LRECL=32767,Dimensione (byte)=0,
+      Ultima modifica=25 ottobre 2020 22:51:58,
+      Create Time=23 ottobre 2020 16:13:40
+
+NOTE: 80 records were written to the file X.
+      The minimum record length was 4.
+      The maximum record length was 53.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+17515  filename x;
+NOTE: Fileref X has been deassigned.
+
+17516  filename emflow "C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Tree2\EMFLOWSCORE.sas";
+17517  *------------------------------------------------------------*;
+17518  * Tree2: Scoring DATA data;
+17519  *------------------------------------------------------------*;
+17520  data EMWS1.Tree2_TRAIN
+17521  / view=EMWS1.Tree2_TRAIN
+17522  ;
+17523  set EMWS1.Repl_TRAIN
+17524  ;
+17525  %inc emflow;
+NOTE: %INCLUDE (level 1) file EMFLOW is file C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Tree2\EMFLOWSCORE.sas.
+17526 +****************************************************************;
+17527 +******             DECISION TREE SCORING CODE             ******;
+17528 +****************************************************************;
+17529 +
+17530 +******         LENGTHS OF NEW CHARACTER VARIABLES         ******;
+17531 +LENGTH F_target10  $   12;
+17532 +LENGTH I_target10  $   12;
+17533 +LENGTH _WARN_  $    4;
+17534 +
+17535 +******              LABELS FOR NEW VARIABLES              ******;
+17536 +label _NODE_ = 'Nodo' ;
+17537 +label _LEAF_ = 'Foglia' ;
+17538 +label P_target101 = 'Previsto: target10=1' ;
+17539 +label P_target100 = 'Previsto: target10=0' ;
+17540 +label Q_target101 = 'P non corretto: target10=1' ;
+17541 +label Q_target100 = 'P non corretto: target10=0' ;
+17542 +label V_target101 = 'Convalidato: target10=1' ;
+17543 +label V_target100 = 'Convalidato: target10=0' ;
+17544 +label R_target101 = 'Residuo: target10=1' ;
+17545 +label R_target100 = 'Residuo: target10=0' ;
+17546 +label F_target10 = 'Da: target10' ;
+17547 +label I_target10 = 'In: target10' ;
+17548 +label U_target10 = 'Non normalizzata in: target10' ;
+17549 +label _WARN_ = 'Avvertimenti' ;
+17550 +
+17551 +
+17552 +******      TEMPORARY VARIABLES FOR FORMATTED VALUES      ******;
+17553 +LENGTH _ARBFMT_12 $     12; DROP _ARBFMT_12;
+17554 +_ARBFMT_12 = ' '; /* Initialize to avoid warning. */
+17555 +LENGTH _ARBFMT_20 $     20; DROP _ARBFMT_20;
+17556 +_ARBFMT_20 = ' '; /* Initialize to avoid warning. */
+17557 +LENGTH _ARBFMT_10 $     10; DROP _ARBFMT_10;
+17558 +_ARBFMT_10 = ' '; /* Initialize to avoid warning. */
+17559 +
+17560 +
+17561 +_ARBFMT_12 = PUT( target10 , BEST.);
+17562 + %DMNORMCP( _ARBFMT_12, F_target10 );
+17563 +
+17564 +******             ASSIGN OBSERVATION TO NODE             ******;
+17565 +_ARBFMT_20 = PUT( Modello , $20.);
+17566 + %DMNORMIP( _ARBFMT_20);
+17567 +IF _ARBFMT_20 IN ('FORTWO' ,'Q3' ,'KONA' ,'A4' ,'COOPER' ,'NIRO' ,'CAPTUR' ,
+17568 +  'TIVOLI' ,'RENEGADE' ,'COMPASS' ,'GRANDLAND X' ,'OUTLANDER' ,'TIPO' ,
+17569 +  'CLIO' ,'GIULIETTA' ,'500C' ,'Q5' ,'NX 300' ,'3008' ,'PASSAT VARIANT' ,
+17570 +  '508' ,'520' ,'A6' ,'LEON' ,'COROLLA' ,'CAYENNE' ,'GOLF' ,'A5' ,'A3' ,
+17571 +  'POLO' ,'STELVIO' ,'KADJAR' ,'WRANGLER' ,'Q2' ,'OCTAVIA' ,'TALISMAN' ,
+17572 +  'ASTRA' ,'GOLF VARIANT' ,'318' ,'GIULIA' ,'E-PACE' ,'GRAND C4 SPACETOURER' ,
+17573 +  'SCENIC' ,'DOBLO' ,'CADDY' ,'218' ,'TOURAN' ,'FIORINO' ,'A4 ALLROAD' ,
+17574 +  'ESPACE' ) THEN DO;
+17575 +  IF  NOT MISSING(REP_price ) AND
+17576 +                   42550 <= REP_price  THEN DO;
+17577 +    _ARBFMT_20 = PUT( Modello , $20.);
+17578 +     %DMNORMIP( _ARBFMT_20);
+17579 +    IF _ARBFMT_20 IN ('Q5' ,'520' ,'A6' ,'CAYENNE' ,'WRANGLER' ) THEN DO;
+17580 +      IF  NOT MISSING(REP_price ) AND
+17581 +                       50740 <= REP_price  THEN DO;
+17582 +        _NODE_  =                   23;
+17583 +        _LEAF_  =                   20;
+17584 +        P_target101  =                 0.45;
+17585 +        P_target100  =                 0.55;
+17586 +        Q_target101  =                 0.45;
+17587 +        Q_target100  =                 0.55;
+17588 +        V_target101  =     0.57142857142857;
+17589 +        V_target100  =     0.42857142857142;
+17590 +        I_target10  = '0' ;
+17591 +        U_target10  =                    0;
+17592 +        END;
+17593 +      ELSE DO;
+17594 +        _NODE_  =                   22;
+17595 +        _LEAF_  =                   19;
+17596 +        P_target101  =                    1;
+17597 +        P_target100  =                    0;
+17598 +        Q_target101  =                    1;
+17599 +        Q_target100  =                    0;
+17600 +        V_target101  =     0.88888888888888;
+17601 +        V_target100  =     0.11111111111111;
+17602 +        I_target10  = '1' ;
+17603 +        U_target10  =                    1;
+17604 +        END;
+17605 +      END;
+17606 +    ELSE DO;
+17607 +      IF  NOT MISSING(REP_price ) AND
+17608 +        REP_price  <                45200 THEN DO;
+17609 +        IF  NOT MISSING(REP_Emissioni_di_CO2 ) AND
+17610 +          REP_Emissioni_di_CO2  <                  133 THEN DO;
+17611 +          _NODE_  =                   38;
+17612 +          _LEAF_  =                   14;
+17613 +          P_target101  =     0.07692307692307;
+17614 +          P_target100  =     0.92307692307692;
+17615 +          Q_target101  =     0.07692307692307;
+17616 +          Q_target100  =     0.92307692307692;
+17617 +          V_target101  =     0.11111111111111;
+17618 +          V_target100  =     0.88888888888888;
+17619 +          I_target10  = '0' ;
+17620 +          U_target10  =                    0;
+17621 +          END;
+17622 +        ELSE DO;
+17623 +          _ARBFMT_20 = PUT( Modello , $20.);
+17624 +           %DMNORMIP( _ARBFMT_20);
+17625 +          IF _ARBFMT_20 IN ('STELVIO' ) THEN DO;
+17626 +            _NODE_  =                   64;
+17627 +            _LEAF_  =                   15;
+17628 +            P_target101  =                    1;
+17629 +            P_target100  =                    0;
+17630 +            Q_target101  =                    1;
+17631 +            Q_target100  =                    0;
+17632 +            V_target101  =                    1;
+17633 +            V_target100  =                    0;
+17634 +            I_target10  = '1' ;
+17635 +            U_target10  =                    1;
+17636 +            END;
+17637 +          ELSE DO;
+17638 +            _NODE_  =                   65;
+17639 +            _LEAF_  =                   16;
+17640 +            P_target101  =                  0.5;
+17641 +            P_target100  =                  0.5;
+17642 +            Q_target101  =                  0.5;
+17643 +            Q_target100  =                  0.5;
+17644 +            V_target101  =                    0;
+17645 +            V_target100  =                    1;
+17646 +            I_target10  = '1' ;
+17647 +            U_target10  =                    1;
+17648 +            END;
+17649 +          END;
+17650 +        END;
+17651 +      ELSE DO;
+17652 +        _ARBFMT_12 = PUT( Posti_a_sedere , BEST12.);
+17653 +         %DMNORMIP( _ARBFMT_12);
+17654 +        IF _ARBFMT_12 IN ('4' ) THEN DO;
+17655 +          _NODE_  =                   40;
+17656 +          _LEAF_  =                   17;
+17657 +          P_target101  =                  0.4;
+17658 +          P_target100  =                  0.6;
+17659 +          Q_target101  =                  0.4;
+17660 +          Q_target100  =                  0.6;
+17661 +          V_target101  =                    1;
+17662 +          V_target100  =                    0;
+17663 +          I_target10  = '0' ;
+17664 +          U_target10  =                    0;
+17665 +          END;
+17666 +        ELSE DO;
+17667 +          _NODE_  =                   41;
+17668 +          _LEAF_  =                   18;
+17669 +          P_target101  =     0.01408450704225;
+17670 +          P_target100  =     0.98591549295774;
+17671 +          Q_target101  =     0.01408450704225;
+17672 +          Q_target100  =     0.98591549295774;
+17673 +          V_target101  =     0.03448275862068;
+17674 +          V_target100  =     0.96551724137931;
+17675 +          I_target10  = '0' ;
+17676 +          U_target10  =                    0;
+17677 +          END;
+17678 +        END;
+17679 +      END;
+17680 +    END;
+17681 +  ELSE DO;
+17682 +    _ARBFMT_20 = PUT( Modello , $20.);
+17683 +     %DMNORMIP( _ARBFMT_20);
+17684 +    IF _ARBFMT_20 IN ('KONA' ,'COOPER' ,'NIRO' ,'TIVOLI' ,'GRANDLAND X' ,
+17685 +    'CLIO' ,'COROLLA' ,'A3' ,'POLO' ,'KADJAR' ,'Q2' ,'ASTRA' ,'SCENIC' ,
+17686 +    'DOBLO' ,'218' ,'FIORINO' ) THEN DO;
+17687 +      IF  NOT MISSING(REP_price ) AND
+17688 +        REP_price  <                18450 THEN DO;
+17689 +        IF  NOT MISSING(REP_Emissioni_di_CO2 ) AND
+17690 +                            96 <= REP_Emissioni_di_CO2  THEN DO;
+17691 +          _NODE_  =                   35;
+17692 +          _LEAF_  =                    9;
+17693 +          P_target101  =     0.95238095238095;
+17694 +          P_target100  =     0.04761904761904;
+17695 +          Q_target101  =     0.95238095238095;
+17696 +          Q_target100  =     0.04761904761904;
+17697 +          V_target101  =                    1;
+17698 +          V_target100  =                    0;
+17699 +          I_target10  = '1' ;
+17700 +          U_target10  =                    1;
+17701 +          END;
+17702 +        ELSE DO;
+17703 +          IF  NOT MISSING(REP_price ) AND
+17704 +                           15770 <= REP_price  THEN DO;
+17705 +            _NODE_  =                   59;
+17706 +            _LEAF_  =                    8;
+17707 +            P_target101  =     0.33333333333333;
+17708 +            P_target100  =     0.66666666666666;
+17709 +            Q_target101  =     0.33333333333333;
+17710 +            Q_target100  =     0.66666666666666;
+17711 +            V_target101  =                    0;
+17712 +            V_target100  =                    1;
+17713 +            I_target10  = '0' ;
+17714 +            U_target10  =                    0;
+17715 +            END;
+17716 +          ELSE DO;
+17717 +            _NODE_  =                   58;
+17718 +            _LEAF_  =                    7;
+17719 +            P_target101  =                    1;
+17720 +            P_target100  =                    0;
+17721 +            Q_target101  =                    1;
+17722 +            Q_target100  =                    0;
+17723 +            V_target101  =                    1;
+17724 +            V_target100  =                    0;
+17725 +            I_target10  = '1' ;
+17726 +            U_target10  =                    1;
+17727 +            END;
+17728 +          END;
+17729 +        END;
+17730 +      ELSE DO;
+17731 +        _ARBFMT_20 = PUT( Modello , $20.);
+17732 +         %DMNORMIP( _ARBFMT_20);
+17733 +        IF _ARBFMT_20 IN ('TIVOLI' ,'CLIO' ,'POLO' ,'DOBLO' ) THEN DO;
+17734 +          IF  NOT MISSING(REP_Consumo_Carburante_Totale ) AND
+17735 +                            8.35 <= REP_Consumo_Carburante_Totale  THEN DO;
+17736 +            _NODE_  =                   63;
+17737 +            _LEAF_  =                   13;
+17738 +            P_target101  =                  0.2;
+17739 +            P_target100  =                  0.8;
+17740 +            Q_target101  =                  0.2;
+17741 +            Q_target100  =                  0.8;
+17742 +            V_target101  =     0.33333333333333;
+17743 +            V_target100  =     0.66666666666666;
+17744 +            I_target10  = '0' ;
+17745 +            U_target10  =                    0;
+17746 +            END;
+17747 +          ELSE DO;
+17748 +            _NODE_  =                   62;
+17749 +            _LEAF_  =                   12;
+17750 +            P_target101  =                    0;
+17751 +            P_target100  =                    1;
+17752 +            Q_target101  =                    0;
+17753 +            Q_target100  =                    1;
+17754 +            V_target101  =                    0;
+17755 +            V_target100  =                    1;
+17756 +            I_target10  = '0' ;
+17757 +            U_target10  =                    0;
+17758 +            END;
+17759 +          END;
+17760 +        ELSE DO;
+17761 +          IF  NOT MISSING(REP_price ) AND
+17762 +                           33400 <= REP_price  THEN DO;
+17763 +            _NODE_  =                   61;
+17764 +            _LEAF_  =                   11;
+17765 +            P_target101  =                    0;
+17766 +            P_target100  =                    1;
+17767 +            Q_target101  =                    0;
+17768 +            Q_target100  =                    1;
+17769 +            V_target101  =                    0;
+17770 +            V_target100  =                    1;
+17771 +            I_target10  = '0' ;
+17772 +            U_target10  =                    0;
+17773 +            END;
+17774 +          ELSE DO;
+17775 +            _NODE_  =                   60;
+17776 +            _LEAF_  =                   10;
+17777 +            P_target101  =     0.68032786885245;
+17778 +            P_target100  =     0.31967213114754;
+17779 +            Q_target101  =     0.68032786885245;
+17780 +            Q_target100  =     0.31967213114754;
+17781 +            V_target101  =     0.67647058823529;
+17782 +            V_target100  =      0.3235294117647;
+17783 +            I_target10  = '1' ;
+17784 +            U_target10  =                    1;
+17785 +            END;
+17786 +          END;
+17787 +        END;
+17788 +      END;
+17789 +    ELSE DO;
+17790 +      _ARBFMT_20 = PUT( Modello , $20.);
+17791 +       %DMNORMIP( _ARBFMT_20);
+17792 +      IF _ARBFMT_20 IN ('TIPO' ,'GIULIETTA' ,'PASSAT VARIANT' ,'GOLF' ,
+17793 +      'OCTAVIA' ,'GOLF VARIANT' ,'GRAND C4 SPACETOURER' ,'CADDY' ) THEN DO;
+17794 +        IF  NOT MISSING(REP_price ) AND
+17795 +                         25800 <= REP_price  THEN DO;
+17796 +          _ARBFMT_20 = PUT( Modello , $20.);
+17797 +           %DMNORMIP( _ARBFMT_20);
+17798 +          IF _ARBFMT_20 IN ('PASSAT VARIANT' ) THEN DO;
+17799 +            _NODE_  =                   54;
+17800 +            _LEAF_  =                    3;
+17801 +            P_target101  =     0.84210526315789;
+17802 +            P_target100  =      0.1578947368421;
+17803 +            Q_target101  =     0.84210526315789;
+17804 +            Q_target100  =      0.1578947368421;
+17805 +            V_target101  =                    1;
+17806 +            V_target100  =                    0;
+17807 +            I_target10  = '1' ;
+17808 +            U_target10  =                    1;
+17809 +            END;
+17810 +          ELSE DO;
+17811 +            _NODE_  =                   55;
+17812 +            _LEAF_  =                    4;
+17813 +            P_target101  =                    0;
+17814 +            P_target100  =                    1;
+17815 +            Q_target101  =                    0;
+17816 +            Q_target100  =                    1;
+17817 +            V_target101  =     0.08333333333333;
+17818 +            V_target100  =     0.91666666666666;
+17819 +            I_target10  = '0' ;
+17820 +            U_target10  =                    0;
+17821 +            END;
+17822 +          END;
+17823 +        ELSE DO;
+17824 +          IF  NOT MISSING(REP_price ) AND
+17825 +            REP_price  <                16190 THEN DO;
+17826 +            _NODE_  =                   52;
+17827 +            _LEAF_  =                    1;
+17828 +            P_target101  =                    1;
+17829 +            P_target100  =                    0;
+17830 +            Q_target101  =                    1;
+17831 +            Q_target100  =                    0;
+17832 +            V_target101  =                    1;
+17833 +            V_target100  =                    0;
+17834 +            I_target10  = '1' ;
+17835 +            U_target10  =                    1;
+17836 +            END;
+17837 +          ELSE DO;
+17838 +            _NODE_  =                   53;
+17839 +            _LEAF_  =                    2;
+17840 +            P_target101  =     0.79423868312757;
+17841 +            P_target100  =     0.20576131687242;
+17842 +            Q_target101  =     0.79423868312757;
+17843 +            Q_target100  =     0.20576131687242;
+17844 +            V_target101  =     0.77551020408163;
+17845 +            V_target100  =     0.22448979591836;
+17846 +            I_target10  = '1' ;
+17847 +            U_target10  =                    1;
+17848 +            END;
+17849 +          END;
+17850 +        END;
+17851 +      ELSE DO;
+17852 +        IF  NOT MISSING(REP_Emissioni_di_CO2 ) AND
+17853 +          REP_Emissioni_di_CO2  <                 64.5 THEN DO;
+17854 +          _NODE_  =                   32;
+17855 +          _LEAF_  =                    5;
+17856 +          P_target101  =                  0.6;
+17857 +          P_target100  =                  0.4;
+17858 +          Q_target101  =                  0.6;
+17859 +          Q_target100  =                  0.4;
+17860 +          V_target101  =     0.33333333333333;
+17861 +          V_target100  =     0.66666666666666;
+17862 +          I_target10  = '1' ;
+17863 +          U_target10  =                    1;
+17864 +          END;
+17865 +        ELSE DO;
+17866 +          _NODE_  =                   33;
+17867 +          _LEAF_  =                    6;
+17868 +          P_target101  =     0.97066326530612;
+17869 +          P_target100  =     0.02933673469387;
+17870 +          Q_target101  =     0.97066326530612;
+17871 +          Q_target100  =     0.02933673469387;
+17872 +          V_target101  =     0.97126436781609;
+17873 +          V_target100  =      0.0287356321839;
+17874 +          I_target10  = '1' ;
+17875 +          U_target10  =                    1;
+17876 +          END;
+17877 +        END;
+17878 +      END;
+17879 +    END;
+17880 +  END;
+17881 +ELSE DO;
+17882 +  _ARBFMT_20 = PUT( Modello , $20.);
+17883 +   %DMNORMIP( _ARBFMT_20);
+17884 +  IF _ARBFMT_20 IN ('E-TRON' ,'DS 3 CROSSBACK' ,'LEAF' ,'208' ,'PARTNER' ,
+17885 +    'KANGOO' ,'NEW PANDA' ,'500' ,'PANDA' ,'YPSILON' ,'TWINGO' ,'500X' ,
+17886 +    'STONIC' ,'SPORTAGE' ,'CROSSLAND X' ,'SANDERO' ,'FIESTA' ,'C3' ,'X1' ,
+17887 +    'C-HR' ,'XV' ,'YARIS' ,'A 250' ,'T-ROC' ,'ARONA' ,'ATECA' ,'KAMIQ' ,
+17888 +    'QASHQAI' ,'X-TRAIL' ,'T-CROSS' ,'MEGANE' ,'FOCUS' ,'308' ,'C4 CACTUS' ,
+17889 +    'IBIZA' ,'COMBO' ,'420' ,'C 220' ,'L200' ,'COOPER D COUNTRYMAN' ,
+17890 +    'CHEROKEE' ,'INSIGNIA' ,'COOPER D CLUBMAN' ,'320' ,'730' ) THEN DO;
+17891 +    IF  NOT MISSING(REP_price ) AND
+17892 +      REP_price  <                 9445 THEN DO;
+17893 +      _NODE_  =                   14;
+17894 +      _LEAF_  =                   31;
+17895 +      P_target101  =     0.87096774193548;
+17896 +      P_target100  =     0.12903225806451;
+17897 +      Q_target101  =     0.87096774193548;
+17898 +      Q_target100  =     0.12903225806451;
+17899 +      V_target101  =     0.83333333333333;
+17900 +      V_target100  =     0.16666666666666;
+17901 +      I_target10  = '1' ;
+17902 +      U_target10  =                    1;
+17903 +      END;
+17904 +    ELSE DO;
+17905 +      IF  NOT MISSING(REP_Peso_a_vuoto ) AND
+17906 +                      1263.5 <= REP_Peso_a_vuoto  THEN DO;
+17907 +        IF  NOT MISSING(REP_price ) AND
+17908 +          REP_price  <                17125 THEN DO;
+17909 +          _NODE_  =                   50;
+17910 +          _LEAF_  =                   36;
+17911 +          P_target101  =     0.79166666666666;
+17912 +          P_target100  =     0.20833333333333;
+17913 +          Q_target101  =     0.79166666666666;
+17914 +          Q_target100  =     0.20833333333333;
+17915 +          V_target101  =     0.83333333333333;
+17916 +          V_target100  =     0.16666666666666;
+17917 +          I_target10  = '1' ;
+17918 +          U_target10  =                    1;
+17919 +          END;
+17920 +        ELSE DO;
+17921 +          _ARBFMT_20 = PUT( Modello , $20.);
+17922 +           %DMNORMIP( _ARBFMT_20);
+17923 +          IF _ARBFMT_20 IN ('DS 3 CROSSBACK' ,'C-HR' ,'QASHQAI' ,'420' ) THEN
+17924 +           DO;
+17925 +            _NODE_  =                   78;
+17926 +            _LEAF_  =                   37;
+17927 +            P_target101  =     0.22666666666666;
+17928 +            P_target100  =     0.77333333333333;
+17929 +            Q_target101  =     0.22666666666666;
+17930 +            Q_target100  =     0.77333333333333;
+17931 +            V_target101  =     0.12903225806451;
+17932 +            V_target100  =     0.87096774193548;
+17933 +            I_target10  = '0' ;
+17934 +            U_target10  =                    0;
+17935 +            END;
+17936 +          ELSE DO;
+17937 +            _NODE_  =                   79;
+17938 +            _LEAF_  =                   38;
+17939 +            P_target101  =     0.02145922746781;
+17940 +            P_target100  =     0.97854077253218;
+17941 +            Q_target101  =     0.02145922746781;
+17942 +            Q_target100  =     0.97854077253218;
+17943 +            V_target101  =     0.02061855670103;
+17944 +            V_target100  =     0.97938144329896;
+17945 +            I_target10  = '0' ;
+17946 +            U_target10  =                    0;
+17947 +            END;
+17948 +          END;
+17949 +        END;
+17950 +      ELSE DO;
+17951 +        IF  NOT MISSING(REP_price ) AND
+17952 +          REP_price  <                11725 THEN DO;
+17953 +          _ARBFMT_20 = PUT( Modello , $20.);
+17954 +           %DMNORMIP( _ARBFMT_20);
+17955 +          IF _ARBFMT_20 IN ('500' ) THEN DO;
+17956 +            _NODE_  =                   72;
+17957 +            _LEAF_  =                   32;
+17958 +            P_target101  =                    1;
+17959 +            P_target100  =                    0;
+17960 +            Q_target101  =                    1;
+17961 +            Q_target100  =                    0;
+17962 +            V_target101  =                    1;
+17963 +            V_target100  =                    0;
+17964 +            I_target10  = '1' ;
+17965 +            U_target10  =                    1;
+17966 +            END;
+17967 +          ELSE DO;
+17968 +            _NODE_  =                   73;
+17969 +            _LEAF_  =                   33;
+17970 +            P_target101  =     0.03246753246753;
+17971 +            P_target100  =     0.96753246753246;
+17972 +            Q_target101  =     0.03246753246753;
+17973 +            Q_target100  =     0.96753246753246;
+17974 +            V_target101  =     0.04838709677419;
+17975 +            V_target100  =      0.9516129032258;
+17976 +            I_target10  = '0' ;
+17977 +            U_target10  =                    0;
+17978 +            END;
+17979 +          END;
+17980 +        ELSE DO;
+17981 +          _ARBFMT_20 = PUT( Modello , $20.);
+17982 +           %DMNORMIP( _ARBFMT_20);
+17983 +          IF _ARBFMT_20 IN ('LEAF' ,'PARTNER' ,'500' ,'PANDA' ,'YPSILON' ,
+17984 +          'TWINGO' ,'500X' ,'STONIC' ,'CROSSLAND X' ,'SANDERO' ,'FIESTA' ,
+17985 +          'C-HR' ,'KAMIQ' ,'X-TRAIL' ,'T-CROSS' ,'C4 CACTUS' ,'IBIZA' ,
+17986 +          'COMBO' ,'INSIGNIA' ,'COOPER D CLUBMAN' ,'320' ) THEN DO;
+17987 +            _NODE_  =                   75;
+17988 +            _LEAF_  =                   35;
+17989 +            P_target101  =     0.00173010380622;
+17990 +            P_target100  =     0.99826989619377;
+17991 +            Q_target101  =     0.00173010380622;
+17992 +            Q_target100  =     0.99826989619377;
+17993 +            V_target101  =     0.01239669421487;
+17994 +            V_target100  =     0.98760330578512;
+17995 +            I_target10  = '0' ;
+17996 +            U_target10  =                    0;
+17997 +            END;
+17998 +          ELSE DO;
+17999 +            _NODE_  =                   74;
+18000 +            _LEAF_  =                   34;
+18001 +            P_target101  =     0.12962962962962;
+18002 +            P_target100  =     0.87037037037037;
+18003 +            Q_target101  =     0.12962962962962;
+18004 +            Q_target100  =     0.87037037037037;
+18005 +            V_target101  =     0.09009009009009;
+18006 +            V_target100  =     0.90990990990991;
+18007 +            I_target10  = '0' ;
+18008 +            U_target10  =                    0;
+18009 +            END;
+18010 +          END;
+18011 +        END;
+18012 +      END;
+18013 +    END;
+18014 +  ELSE DO;
+18015 +    IF  NOT MISSING(REP_price ) AND
+18016 +      REP_price  <                15820 THEN DO;
+18017 +      _ARBFMT_20 = PUT( Modello , $20.);
+18018 +       %DMNORMIP( _ARBFMT_20);
+18019 +      IF _ARBFMT_20 IN ('CORSA' ,'DUSTER' ,'500L' ) THEN DO;
+18020 +        _ARBFMT_20 = PUT( Modello , $20.);
+18021 +         %DMNORMIP( _ARBFMT_20);
+18022 +        IF _ARBFMT_20 IN ('CORSA' ,'DUSTER' ) THEN DO;
+18023 +          IF  NOT MISSING(REP_price ) AND
+18024 +                           15045 <= REP_price  THEN DO;
+18025 +            _NODE_  =                   67;
+18026 +            _LEAF_  =                   22;
+18027 +            P_target101  =                  0.5;
+18028 +            P_target100  =                  0.5;
+18029 +            Q_target101  =                  0.5;
+18030 +            Q_target100  =                  0.5;
+18031 +            V_target101  =                 0.25;
+18032 +            V_target100  =                 0.75;
+18033 +            I_target10  = '1' ;
+18034 +            U_target10  =                    1;
+18035 +            END;
+18036 +          ELSE DO;
+18037 +            _NODE_  =                   66;
+18038 +            _LEAF_  =                   21;
+18039 +            P_target101  =                    1;
+18040 +            P_target100  =                    0;
+18041 +            Q_target101  =                    1;
+18042 +            Q_target100  =                    0;
+18043 +            V_target101  =                    1;
+18044 +            V_target100  =                    0;
+18045 +            I_target10  = '1' ;
+18046 +            U_target10  =                    1;
+18047 +            END;
+18048 +          END;
+18049 +        ELSE DO;
+18050 +          _NODE_  =                   43;
+18051 +          _LEAF_  =                   23;
+18052 +          P_target101  =                    1;
+18053 +          P_target100  =                    0;
+18054 +          Q_target101  =                    1;
+18055 +          Q_target100  =                    0;
+18056 +          V_target101  =                    1;
+18057 +          V_target100  =                    0;
+18058 +          I_target10  = '1' ;
+18059 +          U_target10  =                    1;
+18060 +          END;
+18061 +        END;
+18062 +      ELSE DO;
+18063 +        IF  NOT MISSING(REP_price ) AND
+18064 +          REP_price  <                12550 THEN DO;
+18065 +          _NODE_  =                   44;
+18066 +          _LEAF_  =                   24;
+18067 +          P_target101  =                 0.95;
+18068 +          P_target100  =                 0.05;
+18069 +          Q_target101  =                 0.95;
+18070 +          Q_target100  =                 0.05;
+18071 +          V_target101  =                    1;
+18072 +          V_target100  =                    0;
+18073 +          I_target10  = '1' ;
+18074 +          U_target10  =                    1;
+18075 +          END;
+18076 +        ELSE DO;
+18077 +          _NODE_  =                   45;
+18078 +          _LEAF_  =                   25;
+18079 +          P_target101  =     0.03703703703703;
+18080 +          P_target100  =     0.96296296296296;
+18081 +          Q_target101  =     0.03703703703703;
+18082 +          Q_target100  =     0.96296296296296;
+18083 +          V_target101  =     0.21052631578947;
+18084 +          V_target100  =     0.78947368421052;
+18085 +          I_target10  = '0' ;
+18086 +          U_target10  =                    0;
+18087 +          END;
+18088 +        END;
+18089 +      END;
+18090 +    ELSE DO;
+18091 +      _ARBFMT_20 = PUT( Modello , $20.);
+18092 +       %DMNORMIP( _ARBFMT_20);
+18093 +      IF _ARBFMT_20 IN ('CORSA' ,'DUSTER' ,'500L' ) THEN DO;
+18094 +        _NODE_  =                   27;
+18095 +        _LEAF_  =                   30;
+18096 +        P_target101  =                    0;
+18097 +        P_target100  =                    1;
+18098 +        Q_target101  =                    0;
+18099 +        Q_target100  =                    1;
+18100 +        V_target101  =                    0;
+18101 +        V_target100  =                    1;
+18102 +        I_target10  = '0' ;
+18103 +        U_target10  =                    0;
+18104 +        END;
+18105 +      ELSE DO;
+18106 +        IF  NOT MISSING(REP_price ) AND
+18107 +          REP_price  <                20620 THEN DO;
+18108 +          IF  NOT MISSING(REP_Consumo_Carburante_Totale ) AND
+18109 +                            4.15 <= REP_Consumo_Carburante_Totale  THEN DO;
+18110 +            _NODE_  =                   69;
+18111 +            _LEAF_  =                   27;
+18112 +            P_target101  =               0.8125;
+18113 +            P_target100  =               0.1875;
+18114 +            Q_target101  =               0.8125;
+18115 +            Q_target100  =               0.1875;
+18116 +            V_target101  =     0.77419354838709;
+18117 +            V_target100  =      0.2258064516129;
+18118 +            I_target10  = '1' ;
+18119 +            U_target10  =                    1;
+18120 +            END;
+18121 +          ELSE DO;
+18122 +            _NODE_  =                   68;
+18123 +            _LEAF_  =                   26;
+18124 +            P_target101  =     0.29411764705882;
+18125 +            P_target100  =     0.70588235294117;
+18126 +            Q_target101  =     0.29411764705882;
+18127 +            Q_target100  =     0.70588235294117;
+18128 +            V_target101  =     0.16666666666666;
+18129 +            V_target100  =     0.83333333333333;
+18130 +            I_target10  = '0' ;
+18131 +            U_target10  =                    0;
+18132 +            END;
+18133 +          END;
+18134 +        ELSE DO;
+18135 +          _ARBFMT_10 = PUT( Tipo_di_unita , $10.);
+18136 +           %DMNORMIP( _ARBFMT_10);
+18137 +          IF _ARBFMT_10 IN ('POSTERIORE' ) THEN DO;
+18138 +            _NODE_  =                   70;
+18139 +            _LEAF_  =                   28;
+18140 +            P_target101  =     0.70588235294117;
+18141 +            P_target100  =     0.29411764705882;
+18142 +            Q_target101  =     0.70588235294117;
+18143 +            Q_target100  =     0.29411764705882;
+18144 +            V_target101  =     0.58333333333333;
+18145 +            V_target100  =     0.41666666666666;
+18146 +            I_target10  = '1' ;
+18147 +            U_target10  =                    1;
+18148 +            END;
+18149 +          ELSE DO;
+18150 +            _NODE_  =                   71;
+18151 +            _LEAF_  =                   29;
+18152 +            P_target101  =     0.21813031161473;
+18153 +            P_target100  =     0.78186968838526;
+18154 +            Q_target101  =     0.21813031161473;
+18155 +            Q_target100  =     0.78186968838526;
+18156 +            V_target101  =     0.22077922077922;
+18157 +            V_target100  =     0.77922077922077;
+18158 +            I_target10  = '0' ;
+18159 +            U_target10  =                    0;
+18160 +            END;
+18161 +          END;
+18162 +        END;
+18163 +      END;
+18164 +    END;
+18165 +  END;
+18166 +
+18167 +*****  RESIDUALS R_ *************;
+18168 +IF  F_target10  NE '1'
+18169 +AND F_target10  NE '0'  THEN DO;
+18170 +        R_target101  = .;
+18171 +        R_target100  = .;
+18172 + END;
+18173 + ELSE DO;
+18174 +       R_target101  =  -P_target101 ;
+18175 +       R_target100  =  -P_target100 ;
+18176 +       SELECT( F_target10  );
+18177 +          WHEN( '1'  ) R_target101  = R_target101  +1;
+18178 +          WHEN( '0'  ) R_target100  = R_target100  +1;
+18179 +       END;
+18180 + END;
+18181 +
+18182 +****************************************************************;
+18183 +******          END OF DECISION TREE SCORING CODE         ******;
+18184 +****************************************************************;
+18185 +
+18186 +drop _LEAF_;
+NOTE: %INCLUDE (level 1) ending.
+18187  run;
+
+NOTE: DATA STEP view saved on file EMWS1.TREE2_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: Visualizza EMWS1.REPL_TRAIN.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.11 seconds
+      cpu time            0.11 seconds
+      
+
+18188  quit;
+18189  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+18190  filename emflow "C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Tree2\EMFLOWSCORE.sas";
+18191  *------------------------------------------------------------*;
+18192  * Tree2: Scoring VALIDATE data;
+18193  *------------------------------------------------------------*;
+18194  data EMWS1.Tree2_VALIDATE
+18195  / view=EMWS1.Tree2_VALIDATE
+18196  ;
+18197  set EMWS1.Repl_VALIDATE
+18198  ;
+18199  %inc emflow;
+NOTE: %INCLUDE (level 1) file EMFLOW is file C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Tree2\EMFLOWSCORE.sas.
+18200 +****************************************************************;
+18201 +******             DECISION TREE SCORING CODE             ******;
+18202 +****************************************************************;
+18203 +
+18204 +******         LENGTHS OF NEW CHARACTER VARIABLES         ******;
+18205 +LENGTH F_target10  $   12;
+18206 +LENGTH I_target10  $   12;
+18207 +LENGTH _WARN_  $    4;
+18208 +
+18209 +******              LABELS FOR NEW VARIABLES              ******;
+18210 +label _NODE_ = 'Nodo' ;
+18211 +label _LEAF_ = 'Foglia' ;
+18212 +label P_target101 = 'Previsto: target10=1' ;
+18213 +label P_target100 = 'Previsto: target10=0' ;
+18214 +label Q_target101 = 'P non corretto: target10=1' ;
+18215 +label Q_target100 = 'P non corretto: target10=0' ;
+18216 +label V_target101 = 'Convalidato: target10=1' ;
+18217 +label V_target100 = 'Convalidato: target10=0' ;
+18218 +label R_target101 = 'Residuo: target10=1' ;
+18219 +label R_target100 = 'Residuo: target10=0' ;
+18220 +label F_target10 = 'Da: target10' ;
+18221 +label I_target10 = 'In: target10' ;
+18222 +label U_target10 = 'Non normalizzata in: target10' ;
+18223 +label _WARN_ = 'Avvertimenti' ;
+18224 +
+18225 +
+18226 +******      TEMPORARY VARIABLES FOR FORMATTED VALUES      ******;
+18227 +LENGTH _ARBFMT_12 $     12; DROP _ARBFMT_12;
+18228 +_ARBFMT_12 = ' '; /* Initialize to avoid warning. */
+18229 +LENGTH _ARBFMT_20 $     20; DROP _ARBFMT_20;
+18230 +_ARBFMT_20 = ' '; /* Initialize to avoid warning. */
+18231 +LENGTH _ARBFMT_10 $     10; DROP _ARBFMT_10;
+18232 +_ARBFMT_10 = ' '; /* Initialize to avoid warning. */
+18233 +
+18234 +
+18235 +_ARBFMT_12 = PUT( target10 , BEST.);
+18236 + %DMNORMCP( _ARBFMT_12, F_target10 );
+18237 +
+18238 +******             ASSIGN OBSERVATION TO NODE             ******;
+18239 +_ARBFMT_20 = PUT( Modello , $20.);
+18240 + %DMNORMIP( _ARBFMT_20);
+18241 +IF _ARBFMT_20 IN ('FORTWO' ,'Q3' ,'KONA' ,'A4' ,'COOPER' ,'NIRO' ,'CAPTUR' ,
+18242 +  'TIVOLI' ,'RENEGADE' ,'COMPASS' ,'GRANDLAND X' ,'OUTLANDER' ,'TIPO' ,
+18243 +  'CLIO' ,'GIULIETTA' ,'500C' ,'Q5' ,'NX 300' ,'3008' ,'PASSAT VARIANT' ,
+18244 +  '508' ,'520' ,'A6' ,'LEON' ,'COROLLA' ,'CAYENNE' ,'GOLF' ,'A5' ,'A3' ,
+18245 +  'POLO' ,'STELVIO' ,'KADJAR' ,'WRANGLER' ,'Q2' ,'OCTAVIA' ,'TALISMAN' ,
+18246 +  'ASTRA' ,'GOLF VARIANT' ,'318' ,'GIULIA' ,'E-PACE' ,'GRAND C4 SPACETOURER' ,
+18247 +  'SCENIC' ,'DOBLO' ,'CADDY' ,'218' ,'TOURAN' ,'FIORINO' ,'A4 ALLROAD' ,
+18248 +  'ESPACE' ) THEN DO;
+18249 +  IF  NOT MISSING(REP_price ) AND
+18250 +                   42550 <= REP_price  THEN DO;
+18251 +    _ARBFMT_20 = PUT( Modello , $20.);
+18252 +     %DMNORMIP( _ARBFMT_20);
+18253 +    IF _ARBFMT_20 IN ('Q5' ,'520' ,'A6' ,'CAYENNE' ,'WRANGLER' ) THEN DO;
+18254 +      IF  NOT MISSING(REP_price ) AND
+18255 +                       50740 <= REP_price  THEN DO;
+18256 +        _NODE_  =                   23;
+18257 +        _LEAF_  =                   20;
+18258 +        P_target101  =                 0.45;
+18259 +        P_target100  =                 0.55;
+18260 +        Q_target101  =                 0.45;
+18261 +        Q_target100  =                 0.55;
+18262 +        V_target101  =     0.57142857142857;
+18263 +        V_target100  =     0.42857142857142;
+18264 +        I_target10  = '0' ;
+18265 +        U_target10  =                    0;
+18266 +        END;
+18267 +      ELSE DO;
+18268 +        _NODE_  =                   22;
+18269 +        _LEAF_  =                   19;
+18270 +        P_target101  =                    1;
+18271 +        P_target100  =                    0;
+18272 +        Q_target101  =                    1;
+18273 +        Q_target100  =                    0;
+18274 +        V_target101  =     0.88888888888888;
+18275 +        V_target100  =     0.11111111111111;
+18276 +        I_target10  = '1' ;
+18277 +        U_target10  =                    1;
+18278 +        END;
+18279 +      END;
+18280 +    ELSE DO;
+18281 +      IF  NOT MISSING(REP_price ) AND
+18282 +        REP_price  <                45200 THEN DO;
+18283 +        IF  NOT MISSING(REP_Emissioni_di_CO2 ) AND
+18284 +          REP_Emissioni_di_CO2  <                  133 THEN DO;
+18285 +          _NODE_  =                   38;
+18286 +          _LEAF_  =                   14;
+18287 +          P_target101  =     0.07692307692307;
+18288 +          P_target100  =     0.92307692307692;
+18289 +          Q_target101  =     0.07692307692307;
+18290 +          Q_target100  =     0.92307692307692;
+18291 +          V_target101  =     0.11111111111111;
+18292 +          V_target100  =     0.88888888888888;
+18293 +          I_target10  = '0' ;
+18294 +          U_target10  =                    0;
+18295 +          END;
+18296 +        ELSE DO;
+18297 +          _ARBFMT_20 = PUT( Modello , $20.);
+18298 +           %DMNORMIP( _ARBFMT_20);
+18299 +          IF _ARBFMT_20 IN ('STELVIO' ) THEN DO;
+18300 +            _NODE_  =                   64;
+18301 +            _LEAF_  =                   15;
+18302 +            P_target101  =                    1;
+18303 +            P_target100  =                    0;
+18304 +            Q_target101  =                    1;
+18305 +            Q_target100  =                    0;
+18306 +            V_target101  =                    1;
+18307 +            V_target100  =                    0;
+18308 +            I_target10  = '1' ;
+18309 +            U_target10  =                    1;
+18310 +            END;
+18311 +          ELSE DO;
+18312 +            _NODE_  =                   65;
+18313 +            _LEAF_  =                   16;
+18314 +            P_target101  =                  0.5;
+18315 +            P_target100  =                  0.5;
+18316 +            Q_target101  =                  0.5;
+18317 +            Q_target100  =                  0.5;
+18318 +            V_target101  =                    0;
+18319 +            V_target100  =                    1;
+18320 +            I_target10  = '1' ;
+18321 +            U_target10  =                    1;
+18322 +            END;
+18323 +          END;
+18324 +        END;
+18325 +      ELSE DO;
+18326 +        _ARBFMT_12 = PUT( Posti_a_sedere , BEST12.);
+18327 +         %DMNORMIP( _ARBFMT_12);
+18328 +        IF _ARBFMT_12 IN ('4' ) THEN DO;
+18329 +          _NODE_  =                   40;
+18330 +          _LEAF_  =                   17;
+18331 +          P_target101  =                  0.4;
+18332 +          P_target100  =                  0.6;
+18333 +          Q_target101  =                  0.4;
+18334 +          Q_target100  =                  0.6;
+18335 +          V_target101  =                    1;
+18336 +          V_target100  =                    0;
+18337 +          I_target10  = '0' ;
+18338 +          U_target10  =                    0;
+18339 +          END;
+18340 +        ELSE DO;
+18341 +          _NODE_  =                   41;
+18342 +          _LEAF_  =                   18;
+18343 +          P_target101  =     0.01408450704225;
+18344 +          P_target100  =     0.98591549295774;
+18345 +          Q_target101  =     0.01408450704225;
+18346 +          Q_target100  =     0.98591549295774;
+18347 +          V_target101  =     0.03448275862068;
+18348 +          V_target100  =     0.96551724137931;
+18349 +          I_target10  = '0' ;
+18350 +          U_target10  =                    0;
+18351 +          END;
+18352 +        END;
+18353 +      END;
+18354 +    END;
+18355 +  ELSE DO;
+18356 +    _ARBFMT_20 = PUT( Modello , $20.);
+18357 +     %DMNORMIP( _ARBFMT_20);
+18358 +    IF _ARBFMT_20 IN ('KONA' ,'COOPER' ,'NIRO' ,'TIVOLI' ,'GRANDLAND X' ,
+18359 +    'CLIO' ,'COROLLA' ,'A3' ,'POLO' ,'KADJAR' ,'Q2' ,'ASTRA' ,'SCENIC' ,
+18360 +    'DOBLO' ,'218' ,'FIORINO' ) THEN DO;
+18361 +      IF  NOT MISSING(REP_price ) AND
+18362 +        REP_price  <                18450 THEN DO;
+18363 +        IF  NOT MISSING(REP_Emissioni_di_CO2 ) AND
+18364 +                            96 <= REP_Emissioni_di_CO2  THEN DO;
+18365 +          _NODE_  =                   35;
+18366 +          _LEAF_  =                    9;
+18367 +          P_target101  =     0.95238095238095;
+18368 +          P_target100  =     0.04761904761904;
+18369 +          Q_target101  =     0.95238095238095;
+18370 +          Q_target100  =     0.04761904761904;
+18371 +          V_target101  =                    1;
+18372 +          V_target100  =                    0;
+18373 +          I_target10  = '1' ;
+18374 +          U_target10  =                    1;
+18375 +          END;
+18376 +        ELSE DO;
+18377 +          IF  NOT MISSING(REP_price ) AND
+18378 +                           15770 <= REP_price  THEN DO;
+18379 +            _NODE_  =                   59;
+18380 +            _LEAF_  =                    8;
+18381 +            P_target101  =     0.33333333333333;
+18382 +            P_target100  =     0.66666666666666;
+18383 +            Q_target101  =     0.33333333333333;
+18384 +            Q_target100  =     0.66666666666666;
+18385 +            V_target101  =                    0;
+18386 +            V_target100  =                    1;
+18387 +            I_target10  = '0' ;
+18388 +            U_target10  =                    0;
+18389 +            END;
+18390 +          ELSE DO;
+18391 +            _NODE_  =                   58;
+18392 +            _LEAF_  =                    7;
+18393 +            P_target101  =                    1;
+18394 +            P_target100  =                    0;
+18395 +            Q_target101  =                    1;
+18396 +            Q_target100  =                    0;
+18397 +            V_target101  =                    1;
+18398 +            V_target100  =                    0;
+18399 +            I_target10  = '1' ;
+18400 +            U_target10  =                    1;
+18401 +            END;
+18402 +          END;
+18403 +        END;
+18404 +      ELSE DO;
+18405 +        _ARBFMT_20 = PUT( Modello , $20.);
+18406 +         %DMNORMIP( _ARBFMT_20);
+18407 +        IF _ARBFMT_20 IN ('TIVOLI' ,'CLIO' ,'POLO' ,'DOBLO' ) THEN DO;
+18408 +          IF  NOT MISSING(REP_Consumo_Carburante_Totale ) AND
+18409 +                            8.35 <= REP_Consumo_Carburante_Totale  THEN DO;
+18410 +            _NODE_  =                   63;
+18411 +            _LEAF_  =                   13;
+18412 +            P_target101  =                  0.2;
+18413 +            P_target100  =                  0.8;
+18414 +            Q_target101  =                  0.2;
+18415 +            Q_target100  =                  0.8;
+18416 +            V_target101  =     0.33333333333333;
+18417 +            V_target100  =     0.66666666666666;
+18418 +            I_target10  = '0' ;
+18419 +            U_target10  =                    0;
+18420 +            END;
+18421 +          ELSE DO;
+18422 +            _NODE_  =                   62;
+18423 +            _LEAF_  =                   12;
+18424 +            P_target101  =                    0;
+18425 +            P_target100  =                    1;
+18426 +            Q_target101  =                    0;
+18427 +            Q_target100  =                    1;
+18428 +            V_target101  =                    0;
+18429 +            V_target100  =                    1;
+18430 +            I_target10  = '0' ;
+18431 +            U_target10  =                    0;
+18432 +            END;
+18433 +          END;
+18434 +        ELSE DO;
+18435 +          IF  NOT MISSING(REP_price ) AND
+18436 +                           33400 <= REP_price  THEN DO;
+18437 +            _NODE_  =                   61;
+18438 +            _LEAF_  =                   11;
+18439 +            P_target101  =                    0;
+18440 +            P_target100  =                    1;
+18441 +            Q_target101  =                    0;
+18442 +            Q_target100  =                    1;
+18443 +            V_target101  =                    0;
+18444 +            V_target100  =                    1;
+18445 +            I_target10  = '0' ;
+18446 +            U_target10  =                    0;
+18447 +            END;
+18448 +          ELSE DO;
+18449 +            _NODE_  =                   60;
+18450 +            _LEAF_  =                   10;
+18451 +            P_target101  =     0.68032786885245;
+18452 +            P_target100  =     0.31967213114754;
+18453 +            Q_target101  =     0.68032786885245;
+18454 +            Q_target100  =     0.31967213114754;
+18455 +            V_target101  =     0.67647058823529;
+18456 +            V_target100  =      0.3235294117647;
+18457 +            I_target10  = '1' ;
+18458 +            U_target10  =                    1;
+18459 +            END;
+18460 +          END;
+18461 +        END;
+18462 +      END;
+18463 +    ELSE DO;
+18464 +      _ARBFMT_20 = PUT( Modello , $20.);
+18465 +       %DMNORMIP( _ARBFMT_20);
+18466 +      IF _ARBFMT_20 IN ('TIPO' ,'GIULIETTA' ,'PASSAT VARIANT' ,'GOLF' ,
+18467 +      'OCTAVIA' ,'GOLF VARIANT' ,'GRAND C4 SPACETOURER' ,'CADDY' ) THEN DO;
+18468 +        IF  NOT MISSING(REP_price ) AND
+18469 +                         25800 <= REP_price  THEN DO;
+18470 +          _ARBFMT_20 = PUT( Modello , $20.);
+18471 +           %DMNORMIP( _ARBFMT_20);
+18472 +          IF _ARBFMT_20 IN ('PASSAT VARIANT' ) THEN DO;
+18473 +            _NODE_  =                   54;
+18474 +            _LEAF_  =                    3;
+18475 +            P_target101  =     0.84210526315789;
+18476 +            P_target100  =      0.1578947368421;
+18477 +            Q_target101  =     0.84210526315789;
+18478 +            Q_target100  =      0.1578947368421;
+18479 +            V_target101  =                    1;
+18480 +            V_target100  =                    0;
+18481 +            I_target10  = '1' ;
+18482 +            U_target10  =                    1;
+18483 +            END;
+18484 +          ELSE DO;
+18485 +            _NODE_  =                   55;
+18486 +            _LEAF_  =                    4;
+18487 +            P_target101  =                    0;
+18488 +            P_target100  =                    1;
+18489 +            Q_target101  =                    0;
+18490 +            Q_target100  =                    1;
+18491 +            V_target101  =     0.08333333333333;
+18492 +            V_target100  =     0.91666666666666;
+18493 +            I_target10  = '0' ;
+18494 +            U_target10  =                    0;
+18495 +            END;
+18496 +          END;
+18497 +        ELSE DO;
+18498 +          IF  NOT MISSING(REP_price ) AND
+18499 +            REP_price  <                16190 THEN DO;
+18500 +            _NODE_  =                   52;
+18501 +            _LEAF_  =                    1;
+18502 +            P_target101  =                    1;
+18503 +            P_target100  =                    0;
+18504 +            Q_target101  =                    1;
+18505 +            Q_target100  =                    0;
+18506 +            V_target101  =                    1;
+18507 +            V_target100  =                    0;
+18508 +            I_target10  = '1' ;
+18509 +            U_target10  =                    1;
+18510 +            END;
+18511 +          ELSE DO;
+18512 +            _NODE_  =                   53;
+18513 +            _LEAF_  =                    2;
+18514 +            P_target101  =     0.79423868312757;
+18515 +            P_target100  =     0.20576131687242;
+18516 +            Q_target101  =     0.79423868312757;
+18517 +            Q_target100  =     0.20576131687242;
+18518 +            V_target101  =     0.77551020408163;
+18519 +            V_target100  =     0.22448979591836;
+18520 +            I_target10  = '1' ;
+18521 +            U_target10  =                    1;
+18522 +            END;
+18523 +          END;
+18524 +        END;
+18525 +      ELSE DO;
+18526 +        IF  NOT MISSING(REP_Emissioni_di_CO2 ) AND
+18527 +          REP_Emissioni_di_CO2  <                 64.5 THEN DO;
+18528 +          _NODE_  =                   32;
+18529 +          _LEAF_  =                    5;
+18530 +          P_target101  =                  0.6;
+18531 +          P_target100  =                  0.4;
+18532 +          Q_target101  =                  0.6;
+18533 +          Q_target100  =                  0.4;
+18534 +          V_target101  =     0.33333333333333;
+18535 +          V_target100  =     0.66666666666666;
+18536 +          I_target10  = '1' ;
+18537 +          U_target10  =                    1;
+18538 +          END;
+18539 +        ELSE DO;
+18540 +          _NODE_  =                   33;
+18541 +          _LEAF_  =                    6;
+18542 +          P_target101  =     0.97066326530612;
+18543 +          P_target100  =     0.02933673469387;
+18544 +          Q_target101  =     0.97066326530612;
+18545 +          Q_target100  =     0.02933673469387;
+18546 +          V_target101  =     0.97126436781609;
+18547 +          V_target100  =      0.0287356321839;
+18548 +          I_target10  = '1' ;
+18549 +          U_target10  =                    1;
+18550 +          END;
+18551 +        END;
+18552 +      END;
+18553 +    END;
+18554 +  END;
+18555 +ELSE DO;
+18556 +  _ARBFMT_20 = PUT( Modello , $20.);
+18557 +   %DMNORMIP( _ARBFMT_20);
+18558 +  IF _ARBFMT_20 IN ('E-TRON' ,'DS 3 CROSSBACK' ,'LEAF' ,'208' ,'PARTNER' ,
+18559 +    'KANGOO' ,'NEW PANDA' ,'500' ,'PANDA' ,'YPSILON' ,'TWINGO' ,'500X' ,
+18560 +    'STONIC' ,'SPORTAGE' ,'CROSSLAND X' ,'SANDERO' ,'FIESTA' ,'C3' ,'X1' ,
+18561 +    'C-HR' ,'XV' ,'YARIS' ,'A 250' ,'T-ROC' ,'ARONA' ,'ATECA' ,'KAMIQ' ,
+18562 +    'QASHQAI' ,'X-TRAIL' ,'T-CROSS' ,'MEGANE' ,'FOCUS' ,'308' ,'C4 CACTUS' ,
+18563 +    'IBIZA' ,'COMBO' ,'420' ,'C 220' ,'L200' ,'COOPER D COUNTRYMAN' ,
+18564 +    'CHEROKEE' ,'INSIGNIA' ,'COOPER D CLUBMAN' ,'320' ,'730' ) THEN DO;
+18565 +    IF  NOT MISSING(REP_price ) AND
+18566 +      REP_price  <                 9445 THEN DO;
+18567 +      _NODE_  =                   14;
+18568 +      _LEAF_  =                   31;
+18569 +      P_target101  =     0.87096774193548;
+18570 +      P_target100  =     0.12903225806451;
+18571 +      Q_target101  =     0.87096774193548;
+18572 +      Q_target100  =     0.12903225806451;
+18573 +      V_target101  =     0.83333333333333;
+18574 +      V_target100  =     0.16666666666666;
+18575 +      I_target10  = '1' ;
+18576 +      U_target10  =                    1;
+18577 +      END;
+18578 +    ELSE DO;
+18579 +      IF  NOT MISSING(REP_Peso_a_vuoto ) AND
+18580 +                      1263.5 <= REP_Peso_a_vuoto  THEN DO;
+18581 +        IF  NOT MISSING(REP_price ) AND
+18582 +          REP_price  <                17125 THEN DO;
+18583 +          _NODE_  =                   50;
+18584 +          _LEAF_  =                   36;
+18585 +          P_target101  =     0.79166666666666;
+18586 +          P_target100  =     0.20833333333333;
+18587 +          Q_target101  =     0.79166666666666;
+18588 +          Q_target100  =     0.20833333333333;
+18589 +          V_target101  =     0.83333333333333;
+18590 +          V_target100  =     0.16666666666666;
+18591 +          I_target10  = '1' ;
+18592 +          U_target10  =                    1;
+18593 +          END;
+18594 +        ELSE DO;
+18595 +          _ARBFMT_20 = PUT( Modello , $20.);
+18596 +           %DMNORMIP( _ARBFMT_20);
+18597 +          IF _ARBFMT_20 IN ('DS 3 CROSSBACK' ,'C-HR' ,'QASHQAI' ,'420' ) THEN
+18598 +           DO;
+18599 +            _NODE_  =                   78;
+18600 +            _LEAF_  =                   37;
+18601 +            P_target101  =     0.22666666666666;
+18602 +            P_target100  =     0.77333333333333;
+18603 +            Q_target101  =     0.22666666666666;
+18604 +            Q_target100  =     0.77333333333333;
+18605 +            V_target101  =     0.12903225806451;
+18606 +            V_target100  =     0.87096774193548;
+18607 +            I_target10  = '0' ;
+18608 +            U_target10  =                    0;
+18609 +            END;
+18610 +          ELSE DO;
+18611 +            _NODE_  =                   79;
+18612 +            _LEAF_  =                   38;
+18613 +            P_target101  =     0.02145922746781;
+18614 +            P_target100  =     0.97854077253218;
+18615 +            Q_target101  =     0.02145922746781;
+18616 +            Q_target100  =     0.97854077253218;
+18617 +            V_target101  =     0.02061855670103;
+18618 +            V_target100  =     0.97938144329896;
+18619 +            I_target10  = '0' ;
+18620 +            U_target10  =                    0;
+18621 +            END;
+18622 +          END;
+18623 +        END;
+18624 +      ELSE DO;
+18625 +        IF  NOT MISSING(REP_price ) AND
+18626 +          REP_price  <                11725 THEN DO;
+18627 +          _ARBFMT_20 = PUT( Modello , $20.);
+18628 +           %DMNORMIP( _ARBFMT_20);
+18629 +          IF _ARBFMT_20 IN ('500' ) THEN DO;
+18630 +            _NODE_  =                   72;
+18631 +            _LEAF_  =                   32;
+18632 +            P_target101  =                    1;
+18633 +            P_target100  =                    0;
+18634 +            Q_target101  =                    1;
+18635 +            Q_target100  =                    0;
+18636 +            V_target101  =                    1;
+18637 +            V_target100  =                    0;
+18638 +            I_target10  = '1' ;
+18639 +            U_target10  =                    1;
+18640 +            END;
+18641 +          ELSE DO;
+18642 +            _NODE_  =                   73;
+18643 +            _LEAF_  =                   33;
+18644 +            P_target101  =     0.03246753246753;
+18645 +            P_target100  =     0.96753246753246;
+18646 +            Q_target101  =     0.03246753246753;
+18647 +            Q_target100  =     0.96753246753246;
+18648 +            V_target101  =     0.04838709677419;
+18649 +            V_target100  =      0.9516129032258;
+18650 +            I_target10  = '0' ;
+18651 +            U_target10  =                    0;
+18652 +            END;
+18653 +          END;
+18654 +        ELSE DO;
+18655 +          _ARBFMT_20 = PUT( Modello , $20.);
+18656 +           %DMNORMIP( _ARBFMT_20);
+18657 +          IF _ARBFMT_20 IN ('LEAF' ,'PARTNER' ,'500' ,'PANDA' ,'YPSILON' ,
+18658 +          'TWINGO' ,'500X' ,'STONIC' ,'CROSSLAND X' ,'SANDERO' ,'FIESTA' ,
+18659 +          'C-HR' ,'KAMIQ' ,'X-TRAIL' ,'T-CROSS' ,'C4 CACTUS' ,'IBIZA' ,
+18660 +          'COMBO' ,'INSIGNIA' ,'COOPER D CLUBMAN' ,'320' ) THEN DO;
+18661 +            _NODE_  =                   75;
+18662 +            _LEAF_  =                   35;
+18663 +            P_target101  =     0.00173010380622;
+18664 +            P_target100  =     0.99826989619377;
+18665 +            Q_target101  =     0.00173010380622;
+18666 +            Q_target100  =     0.99826989619377;
+18667 +            V_target101  =     0.01239669421487;
+18668 +            V_target100  =     0.98760330578512;
+18669 +            I_target10  = '0' ;
+18670 +            U_target10  =                    0;
+18671 +            END;
+18672 +          ELSE DO;
+18673 +            _NODE_  =                   74;
+18674 +            _LEAF_  =                   34;
+18675 +            P_target101  =     0.12962962962962;
+18676 +            P_target100  =     0.87037037037037;
+18677 +            Q_target101  =     0.12962962962962;
+18678 +            Q_target100  =     0.87037037037037;
+18679 +            V_target101  =     0.09009009009009;
+18680 +            V_target100  =     0.90990990990991;
+18681 +            I_target10  = '0' ;
+18682 +            U_target10  =                    0;
+18683 +            END;
+18684 +          END;
+18685 +        END;
+18686 +      END;
+18687 +    END;
+18688 +  ELSE DO;
+18689 +    IF  NOT MISSING(REP_price ) AND
+18690 +      REP_price  <                15820 THEN DO;
+18691 +      _ARBFMT_20 = PUT( Modello , $20.);
+18692 +       %DMNORMIP( _ARBFMT_20);
+18693 +      IF _ARBFMT_20 IN ('CORSA' ,'DUSTER' ,'500L' ) THEN DO;
+18694 +        _ARBFMT_20 = PUT( Modello , $20.);
+18695 +         %DMNORMIP( _ARBFMT_20);
+18696 +        IF _ARBFMT_20 IN ('CORSA' ,'DUSTER' ) THEN DO;
+18697 +          IF  NOT MISSING(REP_price ) AND
+18698 +                           15045 <= REP_price  THEN DO;
+18699 +            _NODE_  =                   67;
+18700 +            _LEAF_  =                   22;
+18701 +            P_target101  =                  0.5;
+18702 +            P_target100  =                  0.5;
+18703 +            Q_target101  =                  0.5;
+18704 +            Q_target100  =                  0.5;
+18705 +            V_target101  =                 0.25;
+18706 +            V_target100  =                 0.75;
+18707 +            I_target10  = '1' ;
+18708 +            U_target10  =                    1;
+18709 +            END;
+18710 +          ELSE DO;
+18711 +            _NODE_  =                   66;
+18712 +            _LEAF_  =                   21;
+18713 +            P_target101  =                    1;
+18714 +            P_target100  =                    0;
+18715 +            Q_target101  =                    1;
+18716 +            Q_target100  =                    0;
+18717 +            V_target101  =                    1;
+18718 +            V_target100  =                    0;
+18719 +            I_target10  = '1' ;
+18720 +            U_target10  =                    1;
+18721 +            END;
+18722 +          END;
+18723 +        ELSE DO;
+18724 +          _NODE_  =                   43;
+18725 +          _LEAF_  =                   23;
+18726 +          P_target101  =                    1;
+18727 +          P_target100  =                    0;
+18728 +          Q_target101  =                    1;
+18729 +          Q_target100  =                    0;
+18730 +          V_target101  =                    1;
+18731 +          V_target100  =                    0;
+18732 +          I_target10  = '1' ;
+18733 +          U_target10  =                    1;
+18734 +          END;
+18735 +        END;
+18736 +      ELSE DO;
+18737 +        IF  NOT MISSING(REP_price ) AND
+18738 +          REP_price  <                12550 THEN DO;
+18739 +          _NODE_  =                   44;
+18740 +          _LEAF_  =                   24;
+18741 +          P_target101  =                 0.95;
+18742 +          P_target100  =                 0.05;
+18743 +          Q_target101  =                 0.95;
+18744 +          Q_target100  =                 0.05;
+18745 +          V_target101  =                    1;
+18746 +          V_target100  =                    0;
+18747 +          I_target10  = '1' ;
+18748 +          U_target10  =                    1;
+18749 +          END;
+18750 +        ELSE DO;
+18751 +          _NODE_  =                   45;
+18752 +          _LEAF_  =                   25;
+18753 +          P_target101  =     0.03703703703703;
+18754 +          P_target100  =     0.96296296296296;
+18755 +          Q_target101  =     0.03703703703703;
+18756 +          Q_target100  =     0.96296296296296;
+18757 +          V_target101  =     0.21052631578947;
+18758 +          V_target100  =     0.78947368421052;
+18759 +          I_target10  = '0' ;
+18760 +          U_target10  =                    0;
+18761 +          END;
+18762 +        END;
+18763 +      END;
+18764 +    ELSE DO;
+18765 +      _ARBFMT_20 = PUT( Modello , $20.);
+18766 +       %DMNORMIP( _ARBFMT_20);
+18767 +      IF _ARBFMT_20 IN ('CORSA' ,'DUSTER' ,'500L' ) THEN DO;
+18768 +        _NODE_  =                   27;
+18769 +        _LEAF_  =                   30;
+18770 +        P_target101  =                    0;
+18771 +        P_target100  =                    1;
+18772 +        Q_target101  =                    0;
+18773 +        Q_target100  =                    1;
+18774 +        V_target101  =                    0;
+18775 +        V_target100  =                    1;
+18776 +        I_target10  = '0' ;
+18777 +        U_target10  =                    0;
+18778 +        END;
+18779 +      ELSE DO;
+18780 +        IF  NOT MISSING(REP_price ) AND
+18781 +          REP_price  <                20620 THEN DO;
+18782 +          IF  NOT MISSING(REP_Consumo_Carburante_Totale ) AND
+18783 +                            4.15 <= REP_Consumo_Carburante_Totale  THEN DO;
+18784 +            _NODE_  =                   69;
+18785 +            _LEAF_  =                   27;
+18786 +            P_target101  =               0.8125;
+18787 +            P_target100  =               0.1875;
+18788 +            Q_target101  =               0.8125;
+18789 +            Q_target100  =               0.1875;
+18790 +            V_target101  =     0.77419354838709;
+18791 +            V_target100  =      0.2258064516129;
+18792 +            I_target10  = '1' ;
+18793 +            U_target10  =                    1;
+18794 +            END;
+18795 +          ELSE DO;
+18796 +            _NODE_  =                   68;
+18797 +            _LEAF_  =                   26;
+18798 +            P_target101  =     0.29411764705882;
+18799 +            P_target100  =     0.70588235294117;
+18800 +            Q_target101  =     0.29411764705882;
+18801 +            Q_target100  =     0.70588235294117;
+18802 +            V_target101  =     0.16666666666666;
+18803 +            V_target100  =     0.83333333333333;
+18804 +            I_target10  = '0' ;
+18805 +            U_target10  =                    0;
+18806 +            END;
+18807 +          END;
+18808 +        ELSE DO;
+18809 +          _ARBFMT_10 = PUT( Tipo_di_unita , $10.);
+18810 +           %DMNORMIP( _ARBFMT_10);
+18811 +          IF _ARBFMT_10 IN ('POSTERIORE' ) THEN DO;
+18812 +            _NODE_  =                   70;
+18813 +            _LEAF_  =                   28;
+18814 +            P_target101  =     0.70588235294117;
+18815 +            P_target100  =     0.29411764705882;
+18816 +            Q_target101  =     0.70588235294117;
+18817 +            Q_target100  =     0.29411764705882;
+18818 +            V_target101  =     0.58333333333333;
+18819 +            V_target100  =     0.41666666666666;
+18820 +            I_target10  = '1' ;
+18821 +            U_target10  =                    1;
+18822 +            END;
+18823 +          ELSE DO;
+18824 +            _NODE_  =                   71;
+18825 +            _LEAF_  =                   29;
+18826 +            P_target101  =     0.21813031161473;
+18827 +            P_target100  =     0.78186968838526;
+18828 +            Q_target101  =     0.21813031161473;
+18829 +            Q_target100  =     0.78186968838526;
+18830 +            V_target101  =     0.22077922077922;
+18831 +            V_target100  =     0.77922077922077;
+18832 +            I_target10  = '0' ;
+18833 +            U_target10  =                    0;
+18834 +            END;
+18835 +          END;
+18836 +        END;
+18837 +      END;
+18838 +    END;
+18839 +  END;
+18840 +
+18841 +*****  RESIDUALS R_ *************;
+18842 +IF  F_target10  NE '1'
+18843 +AND F_target10  NE '0'  THEN DO;
+18844 +        R_target101  = .;
+18845 +        R_target100  = .;
+18846 + END;
+18847 + ELSE DO;
+18848 +       R_target101  =  -P_target101 ;
+18849 +       R_target100  =  -P_target100 ;
+18850 +       SELECT( F_target10  );
+18851 +          WHEN( '1'  ) R_target101  = R_target101  +1;
+18852 +          WHEN( '0'  ) R_target100  = R_target100  +1;
+18853 +       END;
+18854 + END;
+18855 +
+18856 +****************************************************************;
+18857 +******          END OF DECISION TREE SCORING CODE         ******;
+18858 +****************************************************************;
+18859 +
+18860 +drop _LEAF_;
+NOTE: %INCLUDE (level 1) ending.
+18861  run;
+
+NOTE: DATA STEP view saved on file EMWS1.TREE2_VALIDATE.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: Visualizza EMWS1.REPL_VALIDATE.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.04 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.07 seconds
+      
+
+18862  quit;
+18863  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+NOTE: Visualizza EMWS1.TREE2_TRAIN.VIEW used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.09 seconds
+      
+18865  proc sort data=WORK.EM_USER_REPORT;
+18866  by ID VIEW;
+18867  run;
+
+NOTE: There were 132 observations read from the data set WORK.EM_USER_REPORT.
+NOTE: The data set WORK.EM_USER_REPORT has 132 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+18868  *------------------------------------------------------------*;
+18869  * Tree2: Computing metadata for TRAIN data;
+18870  *------------------------------------------------------------*;
+
+NOTE: Visualizza EMWS1.TREE2_TRAIN.VIEW used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.10 seconds
+      
+19298  data WORK.MODELTEMP_INFO;
+19299  set EMWS1.Tree2_EMINFO;
+19300  where DATA='Tree2' and KEY ^in('DECDATA', 'DECMETA', 'IMPORTANCE', 'MODEL');
+19301  run;
+
+NOTE: There were 0 observations read from the data set EMWS1.TREE2_EMINFO.
+      WHERE (DATA='Tree2') and KEY not in ('DECDATA', 'DECMETA', 'IMPORTANCE', 'MODEL');
+NOTE: The data set WORK.MODELTEMP_INFO has 0 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+19302  data EMWS1.Tree2_EMINFO;
+19303  length TARGET KEY $32 DATA $43;
+19304  input TARGET KEY DATA $;
+19305  cards;
+
+NOTE: The data set EMWS1.TREE2_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+19309  run;
+19310  data EMWS1.Tree2_EMINFO;
+19311  set EMWS1.Tree2_EMINFO WORK.MODELTEMP_INFO;
+19312  run;
+
+NOTE: There were 3 observations read from the data set EMWS1.TREE2_EMINFO.
+NOTE: There were 0 observations read from the data set WORK.MODELTEMP_INFO.
+NOTE: The data set EMWS1.TREE2_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+19313  proc sort data = EMWS1.Tree2_EMINFO NOTHREADS;
+19314  by TARGET KEY;
+19315  run;
+
+NOTE: There were 3 observations read from the data set EMWS1.TREE2_EMINFO.
+NOTE: The data set EMWS1.TREE2_EMINFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+19316  proc sort data = EMWS1.Ids_EMINFO OUT=WORK.SORTEDEMINFO NOTHREADS;
+19317  by TARGET KEY;
+19318  run;
+
+NOTE: There were 4 observations read from the data set EMWS1.IDS_EMINFO.
+NOTE: The data set WORK.SORTEDEMINFO has 4 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+19319  proc sort data = EMWS1.Tree2_EMINFO OUT=WORK.TEMP_INFO NOTHREADS;
+19320  by TARGET KEY;
+19321  run;
+
+NOTE: Input data set is already sorted; it has been copied to the output data set.
+NOTE: There were 3 observations read from the data set EMWS1.TREE2_EMINFO.
+NOTE: The data set WORK.TEMP_INFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+19322  data EMWS1.Tree2_EMINFO;
+19323  merge WORK.SORTEDEMINFO WORK.TEMP_INFO;
+19324  by TARGET KEY;
+19325  run;
+
+NOTE: There were 4 observations read from the data set WORK.SORTEDEMINFO.
+NOTE: There were 3 observations read from the data set WORK.TEMP_INFO.
+NOTE: The data set EMWS1.TREE2_EMINFO has 5 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+19326  proc datasets lib=work nolist;
+19327  delete TEMP_INFO SORTEDEMINFO;
+19328  run;
+
+NOTE: Deleting WORK.TEMP_INFO (memtype=DATA).
+NOTE: Deleting WORK.SORTEDEMINFO (memtype=DATA).
+19329  quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Visualizza EMWS1.TREE2_TRAIN.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.09 seconds
+      
+NOTE: Visualizza EMWS1.TREE2_VALIDATE.VIEW used (Total process time):
+      real time           0.28 seconds
+      cpu time            0.07 seconds
+      

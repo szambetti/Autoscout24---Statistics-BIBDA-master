@@ -1,0 +1,780 @@
+*;
+* IMPUTE VARIABLE: Marce;
+*;
+length IMP_Marce 8;
+format IMP_Marce BEST.;
+label IMP_Marce = 'Imputed: Marce';
+IMP_Marce = Marce;
+if missing(IMP_Marce) then do;
+****************************************************************;
+****** DECISION TREE SCORING CODE ******;
+****************************************************************;
+****** LENGTHS OF NEW CHARACTER VARIABLES ******;
+LENGTH I_Marce $ 12;
+LENGTH _WARN_ $ 4;
+****** LABELS FOR NEW VARIABLES ******;
+label P_Marce1 = 'Previsto: Marce=1';
+label P_Marce5 = 'Previsto: Marce=5';
+label P_Marce6 = 'Previsto: Marce=6';
+label P_Marce7 = 'Previsto: Marce=7';
+label P_Marce8 = 'Previsto: Marce=8';
+label P_Marce4 = 'Previsto: Marce=4';
+label P_Marce9 = 'Previsto: Marce=9';
+label Q_Marce1 = 'P non corretto: Marce=1';
+label Q_Marce5 = 'P non corretto: Marce=5';
+label Q_Marce6 = 'P non corretto: Marce=6';
+label Q_Marce7 = 'P non corretto: Marce=7';
+label Q_Marce8 = 'P non corretto: Marce=8';
+label Q_Marce4 = 'P non corretto: Marce=4';
+label Q_Marce9 = 'P non corretto: Marce=9';
+label I_Marce = 'In: Marce';
+label U_Marce = 'Non normalizzata in: Marce';
+label _WARN_ = 'Avvertimenti';
+****** TEMPORARY VARIABLES FOR FORMATTED VALUES ******;
+LENGTH _ARBFMT_12 $ 12;
+DROP _ARBFMT_12;
+_ARBFMT_12 = ' ';
+/* Initialize to avoid warning. */
+LENGTH _ARBFMT_20 $ 20;
+DROP _ARBFMT_20;
+_ARBFMT_20 = ' ';
+/* Initialize to avoid warning. */
+LENGTH _ARBFMT_14 $ 14;
+DROP _ARBFMT_14;
+_ARBFMT_14 = ' ';
+/* Initialize to avoid warning. */
+LENGTH _ARBFMT_17 $ 17;
+DROP _ARBFMT_17;
+_ARBFMT_17 = ' ';
+/* Initialize to avoid warning. */
+LENGTH _ARBFMT_10 $ 10;
+DROP _ARBFMT_10;
+_ARBFMT_10 = ' ';
+/* Initialize to avoid warning. */
+LENGTH _ARBFMT_23 $ 23;
+DROP _ARBFMT_23;
+_ARBFMT_23 = ' ';
+/* Initialize to avoid warning. */
+****** ASSIGN OBSERVATION TO NODE ******;
+DROP _BRANCH_;
+_BRANCH_ = -1;
+_ARBFMT_17 = PUT( Alimentazione , $17.);
+%DMNORMIP( _ARBFMT_17);
+IF _ARBFMT_17 IN ('ELETTRICA' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_17 IN ('BENZINA' ,'DIESEL' ,'ELETTRICA/BENZINA' ,'METANO' ,
+'GPL' ) THEN DO;
+_BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(REP_Cilindrata ) THEN DO;
+IF REP_Cilindrata < 1 THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF 1 <= REP_Cilindrata THEN DO;
+_BRANCH_ = 2;
+END;
+ELSE _BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 THEN _BRANCH_ = 2;
+IF _BRANCH_ EQ 1 THEN DO;
+P_Marce1 = 0.86046511627906;
+P_Marce5 = 0.02325581395348;
+P_Marce6 = 0.02325581395348;
+P_Marce7 = 0.02325581395348;
+P_Marce8 = 0.06976744186046;
+P_Marce4 = 0;
+P_Marce9 = 0;
+Q_Marce1 = 0.86046511627906;
+Q_Marce5 = 0.02325581395348;
+Q_Marce6 = 0.02325581395348;
+Q_Marce7 = 0.02325581395348;
+Q_Marce8 = 0.06976744186046;
+Q_Marce4 = 0;
+Q_Marce9 = 0;
+I_Marce = '1';
+U_Marce = 1;
+END;
+ELSE DO;
+_BRANCH_ = -1;
+_ARBFMT_14 = PUT( Tipo_di_cambio , $14.);
+%DMNORMIP( _ARBFMT_14);
+IF _ARBFMT_14 IN ('AUTOMATICO' ,'SEMIAUTOMATICO' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_14 IN ('MANUALE' ) THEN DO;
+_BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(REP_price ) THEN DO;
+IF 27494.5 <= REP_price THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF REP_price < 27494.5 THEN DO;
+_BRANCH_ = 2;
+END;
+ELSE _BRANCH_ = 1;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(Modello ) THEN DO;
+_ARBFMT_20 = PUT( Modello , $20.);
+%DMNORMIP( _ARBFMT_20);
+IF _ARBFMT_20 IN ('FORTWO' ,'Q3' ,'KONA' ,'A4' ,'GRANDLAND X' ,'Q5' ,
+'X1' ,'C-HR' ,'X3' ,'PASSAT VARIANT' ,'508' ,'520' ,'A6' ,'CAYENNE' ,
+'GOLF' ,'A5' ,'A3' ,'POLO' ,'CLA 200' ,'STELVIO' ,'ATECA' ,'WRANGLER' ,
+'Q2' ,'TIGUAN' ,'OCTAVIA' ,'TALISMAN' ,'FOCUS' ,'308' ,'PASSAT' ,'318' ,
+'SCALA' ,'GIULIA' ,'E-PACE' ,'118' ,'B 180' ,'218' ,'216' ,'TOURAN' ,
+'420' ,'C 220' ,'COOPER D COUNTRYMAN' ,'CHEROKEE' ,'INSIGNIA' ,
+'COOPER D CLUBMAN' ,'A4 ALLROAD' ,'320' ,'730' ,'ESPACE' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_20 IN ('DS 3 CROSSBACK' ,'208' ,'CORSA' ,'PARTNER' ,
+'KANGOO' ,'NEW PANDA' ,'500' ,'PANDA' ,'YPSILON' ,'TWINGO' ,'DUSTER' ,
+'500X' ,'CAPTUR' ,'TIVOLI' ,'RENEGADE' ,'COMPASS' ,'STONIC' ,
+'SPORTAGE' ,'CROSSLAND X' ,'TIPO' ,'CLIO' ,'SANDERO' ,'GIULIETTA' ,
+'FIESTA' ,'C3' ,'VITARA' ,'500L' ,'500C' ,'PUMA' ,'CX-30' ,'3008' ,
+'LEON' ,'UP!' ,'T-ROC' ,'ARONA' ,'KADJAR' ,'KAMIQ' ,'QASHQAI' ,
+'X-TRAIL' ,'T-CROSS' ,'MEGANE' ,'ASTRA' ,'GOLF VARIANT' ,'C4 CACTUS' ,
+'IBIZA' ,'COMBO' ,'TUCSON' ,'GRAND C4 SPACETOURER' ,'SCENIC' ,'DOBLO' ,
+'CADDY' ,'FIORINO' ,'L200' ,'C4 SPACETOURER' ) THEN DO;
+_BRANCH_ = 2;
+END;
+END;
+IF _BRANCH_ LT 0 THEN _BRANCH_ = 1;
+IF _BRANCH_ EQ 2 THEN DO;
+IF NOT MISSING(REP_price ) AND
+43445 <= REP_price THEN DO;
+P_Marce1 = 0;
+P_Marce5 = 0;
+P_Marce6 = 0.375;
+P_Marce7 = 0;
+P_Marce8 = 0.625;
+P_Marce4 = 0;
+P_Marce9 = 0;
+Q_Marce1 = 0;
+Q_Marce5 = 0;
+Q_Marce6 = 0.375;
+Q_Marce7 = 0;
+Q_Marce8 = 0.625;
+Q_Marce4 = 0;
+Q_Marce9 = 0;
+I_Marce = '8';
+U_Marce = 8;
+END;
+ELSE DO;
+_ARBFMT_14 = PUT( Tipo_di_cambio , $14.);
+%DMNORMIP( _ARBFMT_14);
+IF _ARBFMT_14 IN ('MANUALE' ) THEN DO;
+_BRANCH_ = -1;
+IF NOT MISSING(REP_price ) AND
+REP_price < 12882.5 THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF NOT MISSING(REP_price ) AND
+12882.5 <= REP_price THEN DO;
+_BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(Modello ) THEN DO;
+_ARBFMT_20 = PUT( Modello , $20.);
+%DMNORMIP( _ARBFMT_20);
+IF _ARBFMT_20 IN ('NEW PANDA' ,'PANDA' ,'YPSILON' ,'TWINGO' ,
+'SANDERO' ,'UP!' ,'FIORINO' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_20 IN ('FORTWO' ,'KONA' ,'208' ,'CORSA' ,
+'PARTNER' ,'KANGOO' ,'500' ,'DUSTER' ,'500X' ,'CAPTUR' ,'TIVOLI' ,
+'RENEGADE' ,'COMPASS' ,'STONIC' ,'SPORTAGE' ,'GRANDLAND X' ,
+'CROSSLAND X' ,'TIPO' ,'CLIO' ,'GIULIETTA' ,'FIESTA' ,'C3' ,
+'VITARA' ,'500L' ,'500C' ,'PUMA' ,'CX-30' ,'LEON' ,'GOLF' ,'A3' ,
+'POLO' ,'T-ROC' ,'ARONA' ,'KADJAR' ,'KAMIQ' ,'QASHQAI' ,
+'X-TRAIL' ,'T-CROSS' ,'Q2' ,'MEGANE' ,'ASTRA' ,'GOLF VARIANT' ,
+'308' ,'C4 CACTUS' ,'IBIZA' ,'SCALA' ,'COMBO' ,'TUCSON' ,
+'GRAND C4 SPACETOURER' ,'SCENIC' ,'DOBLO' ,'CADDY' ,'218' ) THEN
+DO;
+_BRANCH_ = 2;
+END;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(REP_Anno ) THEN DO;
+IF REP_Anno < 2015.5 THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF 2015.5 <= REP_Anno THEN DO;
+_BRANCH_ = 2;
+END;
+ELSE _BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 THEN _BRANCH_ = 2;
+IF _BRANCH_ EQ 1 THEN DO;
+_BRANCH_ = -1;
+_ARBFMT_17 = PUT( Alimentazione , $17.);
+%DMNORMIP( _ARBFMT_17);
+IF _ARBFMT_17 IN ('ELETTRICA/BENZINA' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_17 IN ('BENZINA' ,'DIESEL' ,'METANO' ,'GPL' )
+THEN DO;
+_BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(REP_Consumo_Carburante_Totale )
+THEN DO;
+IF REP_Consumo_Carburante_Totale
+< 4.15 THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF 4.15 <= REP_Consumo_Carburante_Totale
+THEN DO;
+_BRANCH_ = 2;
+END;
+ELSE _BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(Cilindri ) THEN DO;
+_ARBFMT_12 = PUT( Cilindri , BEST.);
+%DMNORMIP( _ARBFMT_12);
+IF _ARBFMT_12 IN ('3' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_12 IN ('4' ,'1' ,'2' ) THEN DO;
+_BRANCH_ = 2;
+END;
+END;
+IF _BRANCH_ LT 0 THEN _BRANCH_ = 2;
+IF _BRANCH_ EQ 1 THEN DO;
+P_Marce1 = 0;
+P_Marce5 = 0.04651162790697;
+P_Marce6 = 0.95348837209302;
+P_Marce7 = 0;
+P_Marce8 = 0;
+P_Marce4 = 0;
+P_Marce9 = 0;
+Q_Marce1 = 0;
+Q_Marce5 = 0.04651162790697;
+Q_Marce6 = 0.95348837209302;
+Q_Marce7 = 0;
+Q_Marce8 = 0;
+Q_Marce4 = 0;
+Q_Marce9 = 0;
+I_Marce = '6';
+U_Marce = 6;
+END;
+ELSE DO;
+P_Marce1 = 0;
+P_Marce5 = 0.90989010989011;
+P_Marce6 = 0.09010989010989;
+P_Marce7 = 0;
+P_Marce8 = 0;
+P_Marce4 = 0;
+P_Marce9 = 0;
+Q_Marce1 = 0;
+Q_Marce5 = 0.90989010989011;
+Q_Marce6 = 0.09010989010989;
+Q_Marce7 = 0;
+Q_Marce8 = 0;
+Q_Marce4 = 0;
+Q_Marce9 = 0;
+I_Marce = '5';
+U_Marce = 5;
+END;
+END;
+ELSE DO;
+_BRANCH_ = -1;
+_ARBFMT_17 = PUT( Alimentazione , $17.);
+%DMNORMIP( _ARBFMT_17);
+IF _ARBFMT_17 IN ('BENZINA' ,'DIESEL' ,'ELETTRICA/BENZINA' ) THEN
+DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_17 IN ('METANO' ,'GPL' ) THEN DO;
+_BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(Modello ) THEN DO;
+_ARBFMT_20 = PUT( Modello , $20.);
+%DMNORMIP( _ARBFMT_20);
+IF _ARBFMT_20 IN ('FORTWO' ,'KONA' ,'208' ,'CORSA' ,'PARTNER' ,
+'KANGOO' ,'500' ,'PANDA' ,'500X' ,'CAPTUR' ,'RENEGADE' ,
+'COMPASS' ,'GRANDLAND X' ,'CROSSLAND X' ,'TIPO' ,'CLIO' ,
+'SANDERO' ,'GIULIETTA' ,'FIESTA' ,'C3' ,'VITARA' ,'500L' ,
+'500C' ,'PUMA' ,'CX-30' ,'LEON' ,'GOLF' ,'A3' ,'POLO' ,'T-ROC' ,
+'ARONA' ,'KADJAR' ,'KAMIQ' ,'QASHQAI' ,'X-TRAIL' ,'T-CROSS' ,
+'Q2' ,'MEGANE' ,'ASTRA' ,'GOLF VARIANT' ,'308' ,'C4 CACTUS' ,
+'COMBO' ,'TUCSON' ,'GRAND C4 SPACETOURER' ,'SCENIC' ,'DOBLO' ,
+'CADDY' ,'218' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_20 IN ('YPSILON' ,'DUSTER' ,'TIVOLI' ,'STONIC' ,
+'SPORTAGE' ,'UP!' ,'IBIZA' ,'SCALA' ) THEN DO;
+_BRANCH_ = 2;
+END;
+END;
+IF _BRANCH_ LT 0 THEN _BRANCH_ = 1;
+IF _BRANCH_ EQ 2 THEN DO;
+P_Marce1 = 0;
+P_Marce5 = 0.5752688172043;
+P_Marce6 = 0.42204301075268;
+P_Marce7 = 0.00268817204301;
+P_Marce8 = 0;
+P_Marce4 = 0;
+P_Marce9 = 0;
+Q_Marce1 = 0;
+Q_Marce5 = 0.5752688172043;
+Q_Marce6 = 0.42204301075268;
+Q_Marce7 = 0.00268817204301;
+Q_Marce8 = 0;
+Q_Marce4 = 0;
+Q_Marce9 = 0;
+I_Marce = '5';
+U_Marce = 5;
+END;
+ELSE DO;
+P_Marce1 = 0;
+P_Marce5 = 0.15189873417721;
+P_Marce6 = 0.84388185654008;
+P_Marce7 = 0.0014064697609;
+P_Marce8 = 0.00093764650726;
+P_Marce4 = 0;
+P_Marce9 = 0.00187529301453;
+Q_Marce1 = 0;
+Q_Marce5 = 0.15189873417721;
+Q_Marce6 = 0.84388185654008;
+Q_Marce7 = 0.0014064697609;
+Q_Marce8 = 0.00093764650726;
+Q_Marce4 = 0;
+Q_Marce9 = 0.00187529301453;
+I_Marce = '6';
+U_Marce = 6;
+END;
+END;
+END;
+ELSE DO;
+P_Marce1 = 0;
+P_Marce5 = 0.25;
+P_Marce6 = 0.2;
+P_Marce7 = 0.55;
+P_Marce8 = 0;
+P_Marce4 = 0;
+P_Marce9 = 0;
+Q_Marce1 = 0;
+Q_Marce5 = 0.25;
+Q_Marce6 = 0.2;
+Q_Marce7 = 0.55;
+Q_Marce8 = 0;
+Q_Marce4 = 0;
+Q_Marce9 = 0;
+I_Marce = '7';
+U_Marce = 7;
+END;
+END;
+END;
+ELSE DO;
+_BRANCH_ = -1;
+IF NOT MISSING(REP_price ) AND
+REP_price < 15695 THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF NOT MISSING(REP_price ) AND
+15695 <= REP_price THEN DO;
+_BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(Per_neopatentati ) THEN DO;
+_ARBFMT_12 = PUT( Per_neopatentati , BEST12.);
+%DMNORMIP( _ARBFMT_12);
+IF _ARBFMT_12 IN ('1' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_12 IN ('0' ) THEN DO;
+_BRANCH_ = 2;
+END;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(Carrozzeria ) THEN DO;
+_ARBFMT_23 = PUT( Carrozzeria , $23.);
+%DMNORMIP( _ARBFMT_23);
+IF _ARBFMT_23 IN ('CITY CAR' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_23 IN ('BERLINA' ,'CABRIO' ,'434F5550C383C2A9'x ,
+'SUV/FUORISTRADA/PICK-UP' ,'STATION WAGON' ,'ALTRO' ,'MONOVOLUME' )
+THEN DO;
+_BRANCH_ = 2;
+END;
+END;
+IF _BRANCH_ LT 0 THEN _BRANCH_ = 2;
+IF _BRANCH_ EQ 1 THEN DO;
+_BRANCH_ = -1;
+IF NOT MISSING(REP_Cilindrata ) AND
+REP_Cilindrata < 1120.5 THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF NOT MISSING(REP_Cilindrata ) AND
+1120.5 <= REP_Cilindrata THEN DO;
+_BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(Modello ) THEN DO;
+_ARBFMT_20 = PUT( Modello , $20.);
+%DMNORMIP( _ARBFMT_20);
+IF _ARBFMT_20 IN ('FORTWO' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_20 IN ('500' ,'500C' ) THEN DO;
+_BRANCH_ = 2;
+END;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(REP_Emissioni_di_CO2 ) THEN DO;
+IF REP_Emissioni_di_CO2 < 112 THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF 112 <= REP_Emissioni_di_CO2 THEN DO;
+_BRANCH_ = 2;
+END;
+ELSE _BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 THEN _BRANCH_ = 2;
+IF _BRANCH_ EQ 1 THEN DO;
+P_Marce1 = 0;
+P_Marce5 = 0;
+P_Marce6 = 1;
+P_Marce7 = 0;
+P_Marce8 = 0;
+P_Marce4 = 0;
+P_Marce9 = 0;
+Q_Marce1 = 0;
+Q_Marce5 = 0;
+Q_Marce6 = 1;
+Q_Marce7 = 0;
+Q_Marce8 = 0;
+Q_Marce4 = 0;
+Q_Marce9 = 0;
+I_Marce = '6';
+U_Marce = 6;
+END;
+ELSE DO;
+P_Marce1 = 0;
+P_Marce5 = 1;
+P_Marce6 = 0;
+P_Marce7 = 0;
+P_Marce8 = 0;
+P_Marce4 = 0;
+P_Marce9 = 0;
+Q_Marce1 = 0;
+Q_Marce5 = 1;
+Q_Marce6 = 0;
+Q_Marce7 = 0;
+Q_Marce8 = 0;
+Q_Marce4 = 0;
+Q_Marce9 = 0;
+I_Marce = '5';
+U_Marce = 5;
+END;
+END;
+ELSE DO;
+_BRANCH_ = -1;
+_ARBFMT_20 = PUT( Modello , $20.);
+%DMNORMIP( _ARBFMT_20);
+IF _ARBFMT_20 IN ('FORTWO' ,'500X' ,'TIVOLI' ,'X3' ,'508' ,'CAYENNE' ,
+'STELVIO' ,'GIULIA' ,'C 220' ,'CHEROKEE' ,'730' ,'ESPACE' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_20 IN ('Q3' ,'A4' ,'CLIO' ,'Q5' ,'LEON' ,'GOLF' ,
+'A5' ,'T-ROC' ,'ATECA' ,'QASHQAI' ,'Q2' ,'OCTAVIA' ,'PASSAT' ,
+'SCALA' ,'SCENIC' ,'B 180' ) THEN DO;
+_BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(Tipo_di_unita ) THEN DO;
+_ARBFMT_10 = PUT( Tipo_di_unita , $10.);
+%DMNORMIP( _ARBFMT_10);
+IF _ARBFMT_10 IN ('POSTERIORE' ,'4X4' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_10 IN ('ANTERIORE' ) THEN DO;
+_BRANCH_ = 2;
+END;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(Alimentazione ) THEN DO;
+_ARBFMT_17 = PUT( Alimentazione , $17.);
+%DMNORMIP( _ARBFMT_17);
+IF _ARBFMT_17 IN ('BENZINA' ,'DIESEL' ,'GPL' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_17 IN ('ELETTRICA/BENZINA' ,'METANO' ) THEN DO;
+_BRANCH_ = 2;
+END;
+END;
+IF _BRANCH_ LT 0 THEN _BRANCH_ = 1;
+IF _BRANCH_ EQ 2 THEN DO;
+_BRANCH_ = -1;
+_ARBFMT_20 = PUT( Modello , $20.);
+%DMNORMIP( _ARBFMT_20);
+IF _ARBFMT_20 IN ('Q3' ,'A4' ,'Q5' ,'PASSAT VARIANT' ,'A6' ,'LEON' ,
+'GOLF' ,'A5' ,'A3' ,'T-ROC' ,'ATECA' ,'QASHQAI' ,'Q2' ,'OCTAVIA' ,
+'PASSAT' ,'SCALA' ,'SCENIC' ,'B 180' ,'216' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_20 IN ('KONA' ,'RENEGADE' ,'COMPASS' ,
+'GRANDLAND X' ,'CLIO' ,'C-HR' ,'CLA 200' ,'TALISMAN' ,'TOURAN' )
+THEN DO;
+_BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(Carrozzeria ) THEN DO;
+_ARBFMT_23 = PUT( Carrozzeria , $23.);
+%DMNORMIP( _ARBFMT_23);
+IF _ARBFMT_23 IN ('BERLINA' ,'CABRIO' ,'434F5550C383C2A9'x ,
+'STATION WAGON' ,'MONOVOLUME' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_23 IN ('SUV/FUORISTRADA/PICK-UP' ,'ALTRO' ) THEN
+DO;
+_BRANCH_ = 2;
+END;
+END;
+IF _BRANCH_ LT 0 THEN _BRANCH_ = 2;
+IF _BRANCH_ EQ 1 THEN DO;
+_BRANCH_ = -1;
+_ARBFMT_20 = PUT( Modello , $20.);
+%DMNORMIP( _ARBFMT_20);
+IF _ARBFMT_20 IN ('POLO' ,'MEGANE' ,'ASTRA' ,'308' ,'218' ,
+'INSIGNIA' ,'COOPER D CLUBMAN' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_20 IN ('Q3' ,'A4' ,'Q5' ,'PASSAT VARIANT' ,'A6' ,
+'LEON' ,'GOLF' ,'A5' ,'A3' ,'T-ROC' ,'ATECA' ,'QASHQAI' ,'Q2' ,
+'OCTAVIA' ,'PASSAT' ,'SCALA' ,'SCENIC' ,'B 180' ,'216' ) THEN DO;
+_BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(REP_Cilindrata ) THEN DO;
+IF 1989.5 <= REP_Cilindrata THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF REP_Cilindrata < 1989.5 THEN DO;
+_BRANCH_ = 2;
+END;
+ELSE _BRANCH_ = 1;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(REP_price ) THEN DO;
+IF REP_price < 20925 THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF 20925 <= REP_price THEN DO;
+_BRANCH_ = 2;
+END;
+ELSE _BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 THEN _BRANCH_ = 1;
+IF _BRANCH_ EQ 2 THEN DO;
+P_Marce1 = 0.00479616306954;
+P_Marce5 = 0.00479616306954;
+P_Marce6 = 0.06235011990407;
+P_Marce7 = 0.8872901678657;
+P_Marce8 = 0.04076738609112;
+P_Marce4 = 0;
+P_Marce9 = 0;
+Q_Marce1 = 0.00479616306954;
+Q_Marce5 = 0.00479616306954;
+Q_Marce6 = 0.06235011990407;
+Q_Marce7 = 0.8872901678657;
+Q_Marce8 = 0.04076738609112;
+Q_Marce4 = 0;
+Q_Marce9 = 0;
+I_Marce = '7';
+U_Marce = 7;
+END;
+ELSE DO;
+P_Marce1 = 0;
+P_Marce5 = 0.03030303030303;
+P_Marce6 = 0.35353535353535;
+P_Marce7 = 0.28282828282828;
+P_Marce8 = 0.29292929292929;
+P_Marce4 = 0;
+P_Marce9 = 0.04040404040404;
+Q_Marce1 = 0;
+Q_Marce5 = 0.03030303030303;
+Q_Marce6 = 0.35353535353535;
+Q_Marce7 = 0.28282828282828;
+Q_Marce8 = 0.29292929292929;
+Q_Marce4 = 0;
+Q_Marce9 = 0.04040404040404;
+I_Marce = '6';
+U_Marce = 6;
+END;
+END;
+ELSE DO;
+_ARBFMT_20 = PUT( Modello , $20.);
+%DMNORMIP( _ARBFMT_20);
+IF _ARBFMT_20 IN ('C-HR' ) THEN DO;
+P_Marce1 = 0.8;
+P_Marce5 = 0;
+P_Marce6 = 0;
+P_Marce7 = 0;
+P_Marce8 = 0.2;
+P_Marce4 = 0;
+P_Marce9 = 0;
+Q_Marce1 = 0.8;
+Q_Marce5 = 0;
+Q_Marce6 = 0;
+Q_Marce7 = 0;
+Q_Marce8 = 0.2;
+Q_Marce4 = 0;
+Q_Marce9 = 0;
+I_Marce = '1';
+U_Marce = 1;
+END;
+ELSE DO;
+P_Marce1 = 0;
+P_Marce5 = 0.01176470588235;
+P_Marce6 = 0.60588235294117;
+P_Marce7 = 0.23529411764705;
+P_Marce8 = 0.10588235294117;
+P_Marce4 = 0.04117647058823;
+P_Marce9 = 0;
+Q_Marce1 = 0;
+Q_Marce5 = 0.01176470588235;
+Q_Marce6 = 0.60588235294117;
+Q_Marce7 = 0.23529411764705;
+Q_Marce8 = 0.10588235294117;
+Q_Marce4 = 0.04117647058823;
+Q_Marce9 = 0;
+I_Marce = '6';
+U_Marce = 6;
+END;
+END;
+END;
+ELSE DO;
+_BRANCH_ = -1;
+_ARBFMT_20 = PUT( Modello , $20.);
+%DMNORMIP( _ARBFMT_20);
+IF _ARBFMT_20 IN ('GRANDLAND X' ,'X3' ,'508' ,'520' ,'CAYENNE' ,
+'STELVIO' ,'TIGUAN' ,'318' ,'GIULIA' ,'218' ,'420' ,'320' ,'730' )
+THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_20 IN ('FORTWO' ,'500X' ,'TIVOLI' ,'RENEGADE' ,
+'COMPASS' ,'X1' ,'E-PACE' ,'C 220' ,'CHEROKEE' ,'ESPACE' ) THEN DO;
+_BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(REP_Cilindrata ) THEN DO;
+IF 1962 <= REP_Cilindrata THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF REP_Cilindrata < 1962 THEN DO;
+_BRANCH_ = 2;
+END;
+ELSE _BRANCH_ = 1;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(REP_price ) THEN DO;
+IF 31495 <= REP_price THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF REP_price < 31495 THEN DO;
+_BRANCH_ = 2;
+END;
+ELSE _BRANCH_ = 1;
+END;
+IF _BRANCH_ LT 0 THEN _BRANCH_ = 1;
+IF _BRANCH_ EQ 2 THEN DO;
+_BRANCH_ = -1;
+_ARBFMT_20 = PUT( Modello , $20.);
+%DMNORMIP( _ARBFMT_20);
+IF _ARBFMT_20 IN ('RENEGADE' ,'COMPASS' ,'E-PACE' ,'C 220' ,
+'CHEROKEE' ) THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF _ARBFMT_20 IN ('FORTWO' ,'500X' ,'TIVOLI' ,'X1' ,
+'ESPACE' ) THEN DO;
+_BRANCH_ = 2;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(REP_price ) THEN DO;
+IF 23875 <= REP_price THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF REP_price < 23875 THEN DO;
+_BRANCH_ = 2;
+END;
+ELSE _BRANCH_ = 1;
+END;
+IF _BRANCH_ LT 0 AND NOT MISSING(REP_Cilindrata ) THEN DO;
+IF 1774 <= REP_Cilindrata THEN DO;
+_BRANCH_ = 1;
+END;
+ELSE IF REP_Cilindrata < 1774 THEN DO;
+_BRANCH_ = 2;
+END;
+ELSE _BRANCH_ = 1;
+END;
+IF _BRANCH_ LT 0 THEN _BRANCH_ = 1;
+IF _BRANCH_ EQ 2 THEN DO;
+P_Marce1 = 0;
+P_Marce5 = 0;
+P_Marce6 = 0.93243243243243;
+P_Marce7 = 0.05405405405405;
+P_Marce8 = 0.01351351351351;
+P_Marce4 = 0;
+P_Marce9 = 0;
+Q_Marce1 = 0;
+Q_Marce5 = 0;
+Q_Marce6 = 0.93243243243243;
+Q_Marce7 = 0.05405405405405;
+Q_Marce8 = 0.01351351351351;
+Q_Marce4 = 0;
+Q_Marce9 = 0;
+I_Marce = '6';
+U_Marce = 6;
+END;
+ELSE DO;
+P_Marce1 = 0;
+P_Marce5 = 0;
+P_Marce6 = 0.1639344262295;
+P_Marce7 = 0.0655737704918;
+P_Marce8 = 0.08196721311475;
+P_Marce4 = 0;
+P_Marce9 = 0.68852459016393;
+Q_Marce1 = 0;
+Q_Marce5 = 0;
+Q_Marce6 = 0.1639344262295;
+Q_Marce7 = 0.0655737704918;
+Q_Marce8 = 0.08196721311475;
+Q_Marce4 = 0;
+Q_Marce9 = 0.68852459016393;
+I_Marce = '9';
+U_Marce = 9;
+END;
+END;
+ELSE DO;
+P_Marce1 = 0.01736111111111;
+P_Marce5 = 0.00694444444444;
+P_Marce6 = 0.09027777777777;
+P_Marce7 = 0.08680555555555;
+P_Marce8 = 0.77777777777777;
+P_Marce4 = 0;
+P_Marce9 = 0.02083333333333;
+Q_Marce1 = 0.01736111111111;
+Q_Marce5 = 0.00694444444444;
+Q_Marce6 = 0.09027777777777;
+Q_Marce7 = 0.08680555555555;
+Q_Marce8 = 0.77777777777777;
+Q_Marce4 = 0;
+Q_Marce9 = 0.02083333333333;
+I_Marce = '8';
+U_Marce = 8;
+END;
+END;
+END;
+END;
+END;
+****************************************************************;
+****** END OF DECISION TREE SCORING CODE ******;
+****************************************************************;
+*;
+* ASSIGN VALUE TO: Marce;
+*;
+length _format200 $200;
+drop _format200;
+_format200 = strip(I_Marce);
+if _format200="9" then IMP_Marce = 9;
+else
+if _format200="8" then IMP_Marce = 8;
+else
+if _format200="7" then IMP_Marce = 7;
+else
+if _format200="6" then IMP_Marce = 6;
+else
+if _format200="5" then IMP_Marce = 5;
+else
+if _format200="4" then IMP_Marce = 4;
+else
+if _format200="1" then IMP_Marce = 1;
+END;

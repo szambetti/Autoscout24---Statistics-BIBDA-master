@@ -1,0 +1,41 @@
+*------------------------------------------------------------*
+Utente:             Maria Vallarelli
+Data:               25 ottobre 2020
+Ora:                23:29:44
+*------------------------------------------------------------*
+* Output di training
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Riepilogo delle variabili
+ 
+                                 Conteggio
+                  Livello di         di
+Ruolo             misurazione    frequenza
+ 
+ASSESS             BINARY             1
+ASSESS             INTERVAL           2
+ASSESS             NOMINAL            1
+CLASSIFICATION     NOMINAL            3
+ID                 INTERVAL           1
+INPUT              INTERVAL           5
+INPUT              NOMINAL            2
+PREDICT            INTERVAL           4
+REJECTED           BINARY             4
+REJECTED           INTERVAL           9
+REJECTED           NOMINAL           13
+RESIDUAL           INTERVAL           2
+SEGMENT            NOMINAL            3
+TARGET             BINARY             1
+
+
+*------------------------------------------------------------*
+* Output di scoring
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Output dei report
+*------------------------------------------------------------*

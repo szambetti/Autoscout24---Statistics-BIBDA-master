@@ -1,0 +1,5 @@
+    L'Average Square Error calcolato per target_percentage è 0.
+    Ciò indica un possibile problema di duplicazione del target.
+    Rivedere l'elenco degli input utilizzati nel modello.
+
+

@@ -1,0 +1,96 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Riepilogo delle variabili
+
+                         Conteggio
+          Livello di         di
+Ruolo     misurazione    frequenza
+
+INPUT      INTERVAL          19   
+INPUT      NOMINAL           15   
+TARGET     INTERVAL           4   
+TEXT       NOMINAL            2   
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+La procedura CONTENTS
+
+Nome data set          EMWS1.FIMPORT_DATA        Osservazioni            6778
+Tipo elemento          DATA                      Variabili               40  
+Engine                 V9                        Indici                  0   
+Data di creazione      23/10/2020 19:03:08       Lunghezza osservazioni  848 
+Ultima modifica        23/10/2020 19:03:08       Osservazioni eliminate  0   
+Protezione                                       Compresso               NO  
+Tipo data set                                    Ordinato                NO  
+Etichetta                                                                    
+Rappresentazione dati  WINDOWS_64                                            
+Codifica               utf-8  Unicode (UTF-8)                                
+
+
+                                                               Informazioni relative a engine/host
+
+Dimensione pagina del data set   69632                                                                                                                           
+Numero pagine del data set       83                                                                                                                              
+Prima pagina di dati             1                                                                                                                               
+Oss max per pagina               82                                                                                                                              
+Oss nella prima pagina di dati   75                                                                                                                              
+Numero riparazioni del data set  0                                                                                                                               
+ExtendObsCounter                 YES                                                                                                                             
+Nome file                        C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\fimport_data.sas7bdat
+Release di creazione             9.0401M5                                                                                                                        
+Host di creazione                X64_10PRO                                                                                                                       
+Nome proprietario                DESKTOP-NN2L3RB\Maria Vallarelli                                                                                                
+Dimensione                       6MB                                                                                                                             
+Dimensione (byte)                5849088                                                                                                                         
+
+
+                            Elenco alfabetico di variabili e attributi
+ 
+                                                                  Formato
+                                                                  di
+N.    Variabile                    Tipo       Lungh    Formato    input      Etichetta
+
+ 2    Alimentazione                Alfanum       17    $17.       $17.       Alimentazione        
+ 3    Anno                         Num            8    BEST.                 Anno                 
+ 1    Carrozzeria                  Alfanum       23    $23.       $23.       Carrozzeria          
+ 9    Cilindrata                   Num            8    BEST.                 Cilindrata           
+10    Cilindri                     Num            8    BEST.                 Cilindri             
+36    Classe_emissioni             Alfanum       12                                               
+30    Colore_esterno               Alfanum       11                                               
+38    Consumo_Carburante_Totale    Num            8                                               
+31    Emissioni_di_CO2             Num            8                                               
+ 4    Marca                        Alfanum       14    $14.       $14.       Marca                
+ 8    Marce                        Num            8    BEST.                 Marce                
+ 5    Modello                      Alfanum       20    $20.       $20.       Modello              
+35    Per_neopatentati             Num            8                                               
+33    Peso_a_vuoto                 Num            8                                               
+ 6    Porte                        Num            8    BEST.                 Porte                
+27    Posti_a_sedere               Num            8                                               
+ 7    Rivestimenti                 Alfanum       27    $27.       $27.       Rivestimenti         
+39    Tagliandi_certificati        Num            8                                               
+28    Tipo_di_cambio               Alfanum       14                                               
+29    Tipo_di_unita                Alfanum       10                                               
+26    Tipo_di_veicolo              Alfanum        3                                               
+32    Tipo_di_vernice              Alfanum       12                                               
+34    Usato_Garantito              Num            8                                               
+40    VAR36                        Num            8                                               
+37    Veicolo_per_non_fumatori     Num            8                                               
+14    address                      Alfanum       66    $66.       $66.       address              
+15    conditional_on_price         Num            8    BEST.                 conditional_on_price 
+13    country                      Alfanum       91    $91.       $91.       country              
+20    discount                     Num            8    BEST.                 discount             
+17    link_annuncio                Alfanum      202    $202.      $202.      link_annuncio        
+19    median                       Num            8    BEST.                 median               
+16    price                        Num            8    BEST.                 price                
+11    seller                       Alfanum       51    $51.       $51.       seller               
+24    target10                     Num            8    BEST.                 target10             
+25    target20                     Num            8    BEST.                 target20             
+23    target_5                     Num            8    BEST.                 target_5             
+22    target_35                    Num            8    BEST.                 target_35            
+21    variazione_su_mediana        Num            8    BEST.                 variazione_su_mediana
+12    vehicle                      Alfanum       29    $29.       $29.       vehicle              
+18    vehicle_user_desc            Alfanum       60    $60.       $60.       vehicle_user_desc    

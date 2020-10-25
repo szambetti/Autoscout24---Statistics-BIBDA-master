@@ -1,0 +1,34 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Statistiche di riepilogo per target categorici
+
+Dati=DATA
+
+                                       Conteggio
+              Valore       Valore          di
+Variabile    numerico    formattato    frequenza    Percentuale    Etichetta
+
+target10         0           0            4003        59.0587      target10 
+target10         1           1            2775        40.9413      target10 
+
+
+Dati=TRAIN
+
+                                       Conteggio
+              Valore       Valore          di
+Variabile    numerico    formattato    frequenza    Percentuale    Etichetta
+
+target10         0           0            2801        59.0555      target10 
+target10         1           1            1942        40.9445      target10 
+
+
+Dati=VALIDATE
+
+                                       Conteggio
+              Valore       Valore          di
+Variabile    numerico    formattato    frequenza    Percentuale    Etichetta
+
+target10         0           0            1202        59.0663      target10 
+target10         1           1             833        40.9337      target10 

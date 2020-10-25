@@ -1,0 +1,74 @@
+*------------------------------------------------------------*
+Utente:             Maria Vallarelli
+Data:               25 ottobre 2020
+Ora:                22:51:18
+*------------------------------------------------------------*
+* Output di training
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Riepilogo delle variabili
+ 
+                         Conteggio
+          Livello di         di
+Ruolo     misurazione    frequenza
+ 
+INPUT      BINARY             4
+INPUT      INTERVAL           6
+INPUT      NOMINAL           13
+TARGET     BINARY             1
+
+
+*------------------------------------------------------------*
+* Output di scoring
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Valori di limitazione e di sostituzione per variabili continue
+ 
+                                                                             Valore di                    Valore di
+                                                                Limite     sostituzione      Limite     sostituzione
+Variabile                    Sostituisci variabile            inferiore      inferiore     superiore      superiore
+ 
+Anno                         REP_Anno                           2011.00        2011.00       2018.00       2018.00
+Cilindrata                   REP_Cilindrata                     -296.63        -296.63       3194.26       3194.26
+Consumo_Carburante_Totale    REP_Consumo_Carburante_Totale        -2.66          -2.66         12.80         12.80
+Emissioni_di_CO2             REP_Emissioni_di_CO2                 33.52          33.52        196.87        196.87
+Peso_a_vuoto                 REP_Peso_a_vuoto                    562.91         562.91       2065.71       2065.71
+price                        REP_price                        -17259.44      -17259.44      61906.15      61906.15
+ 
+ 
+ 
+ 
+Valori di sostituzione per variabili categoriche
+ 
+                                            Valore
+                                         alfanumerico
+                     Valore                  non          Valore      Valore di
+   Variabile       formattato    Tipo     formattato     numerico    sostituzione    Etichetta
+ 
+Tipo_di_vernice                   C                          .         _blank_
+
+
+*------------------------------------------------------------*
+* Output dei report
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Conteggi delle sostituzioni
+ 
+Oss    Variabile                    Etichetta                    Ruolo    Training    Validazione
+ 
+ 1     Anno                         Anno                         INPUT      4639          1995
+ 2     Cilindrata                   Cilindrata                   INPUT        99            43
+ 3     Consumo_Carburante_Totale    Consumo_Carburante_Totale    INPUT        11             5
+ 4     Emissioni_di_CO2             Emissioni_di_CO2             INPUT        98            48
+ 5     Peso_a_vuoto                 Peso_a_vuoto                 INPUT        38            16
+ 6     Tipo_di_vernice                                           INPUT         0             0
+ 7     price                        price                        INPUT        60            36

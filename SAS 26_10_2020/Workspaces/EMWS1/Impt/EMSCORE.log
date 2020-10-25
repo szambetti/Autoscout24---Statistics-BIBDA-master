@@ -1,0 +1,125 @@
+*------------------------------------------------------------*
+* Log di scoring
+Data:               25 ottobre 2020
+Ora:                22:52:03
+*------------------------------------------------------------*
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.
+14118  data _null_;
+14119  set EMWS1.Impt_META end=eof;
+14120  length string $34;
+14121  retain missTotal;
+14122  file #LN00254;
+14123  if _n_=1 then misstotal = percentmiss;
+14124  missTotal = percentmiss+misstotal;
+14125  if IMP ne '' and METHOD ne 'NONE' then do;
+14126  string = '"'!!strip(NAME)!!'"';
+14127  put 'if NAME = ' string 'then delete;';
+14128  put 'else ';
+14129  string = '"'!!strip(IMP)!!'"';
+14130  put 'if NAME    = ' string ' then do;';
+14131  string = '"'!!strip(ROLE)!!'"';
+14132  put '   ROLE    = ' string ';';
+14133  string = '"'!!strip(FAMILY)!!'"';
+14134  put '   FAMILY  = ' string ';';
+14135  string = '"'!!strip(REPORT)!!'"';
+14136  put '   REPORT  = ' string ';';
+14137  string = '"'!!strip(LEVEL)!!'"';
+14138  put '   LEVEL   = ' string ';';
+14139  string = '"'!!strip(ORDER)!!'"';
+14140  put '   ORDER   = ' string ';';
+14141  put 'end;';
+14142  end;
+14143  if percentmiss>50 and ROLE ne 'TARGET' then do;
+14144  string = '"'!!strip(NAME)!!'"';
+14145  put 'if NAME = ' string ' then do;';
+14146  put '   ROLE ="REJECTED";';
+14147  put '   COMMENT = "Percent of missing exceeds 50%";';
+14148  put 'end;';
+14149  end;
+14150  run;
+
+NOTE: The file #LN00254 is:
+      Nome file=C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Impt\CDELTA_TRAIN.sas,
+      RECFM=V,LRECL=32767,Dimensione (byte)=0,
+      Ultima modifica=25 ottobre 2020 22:52:03,
+      Create Time=21 ottobre 2020 23:46:46
+
+NOTE: 117 records were written to the file #LN00254.
+      The minimum record length was 4.
+      The maximum record length was 57.
+NOTE: There were 24 observations read from the data set EMWS1.IMPT_META.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+14151  filename emflow "C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Impt\EMFLOWSCORE.sas";
+14152  *------------------------------------------------------------*;
+14153  * Impt: Scoring DATA data;
+14154  *------------------------------------------------------------*;
+14155  data EMWS1.Impt_TRAIN
+14156  / view=EMWS1.Impt_TRAIN
+14157  ;
+14158  set EMWS1.Repl_TRAIN
+14159  ;
+14160  %inc emflow;
+19371  run;
+
+NOTE: DATA STEP view saved on file EMWS1.IMPT_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: Visualizza EMWS1.REPL_TRAIN.VIEW used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.15 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.21 seconds
+      cpu time            0.18 seconds
+      
+
+19372  quit;
+19373  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+19374  filename emflow "C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Impt\EMFLOWSCORE.sas";
+19375  *------------------------------------------------------------*;
+19376  * Impt: Scoring VALIDATE data;
+19377  *------------------------------------------------------------*;
+19378  data EMWS1.Impt_VALIDATE
+19379  / view=EMWS1.Impt_VALIDATE
+19380  ;
+19381  set EMWS1.Repl_VALIDATE
+19382  ;
+19383  %inc emflow;
+24594  run;
+
+NOTE: DATA STEP view saved on file EMWS1.IMPT_VALIDATE.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: Visualizza EMWS1.REPL_VALIDATE.VIEW used (Total process time):
+      real time           0.23 seconds
+      cpu time            0.17 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.26 seconds
+      cpu time            0.20 seconds
+      
+
+24595  quit;
+24596  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+24597  *------------------------------------------------------------*;
+24598  * Impt: Computing metadata for TRAIN data;
+24599  *------------------------------------------------------------*;
+
+NOTE: Visualizza EMWS1.IMPT_TRAIN.VIEW used (Total process time):
+      real time           0.16 seconds
+      cpu time            0.07 seconds
+      
+NOTE: Visualizza EMWS1.IMPT_TRAIN.VIEW used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.14 seconds
+      
+NOTE: Visualizza EMWS1.IMPT_VALIDATE.VIEW used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.07 seconds
+      

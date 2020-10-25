@@ -1,0 +1,699 @@
+*------------------------------------------------------------*
+Utente:             Maria Vallarelli
+Data:               25 ottobre 2020
+Ora:                22:53:39
+*------------------------------------------------------------*
+* Output di training
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Riepilogo delle variabili
+ 
+                         Conteggio
+          Livello di         di
+Ruolo     misurazione    frequenza
+ 
+INPUT      BINARY             1
+INPUT      INTERVAL           2
+INPUT      NOMINAL           11
+TARGET     BINARY             1
+ 
+ 
+ 
+ 
+Eventi del modello
+ 
+                                      Numero
+                      Livello di        di
+ Target     Evento    misurazione    livelli      Ordine      Etichetta
+ 
+target10      1         BINARY          2       Descending    target10
+ 
+ 
+ 
+ 
+Variabili previste e decisionali
+ 
+Tipo          Variabile     Etichetta
+ 
+TARGET       target10       target10
+PREDICTED    P_target101    Previsto: target10=1
+RESIDUAL     R_target101    Residual: target10=1
+PREDICTED    P_target100    Previsto: target10=0
+RESIDUAL     R_target100    Residual: target10=0
+FROM         F_target10     Da: target10
+INTO         I_target10     In: target10
+ 
+ 
+ 
+ 
+ 
+La procedura NEURAL
+ 
+Esecuzione          Seme             Valore          Numero
+ training         casuale           funzione           di        Criteri
+preliminare       iniziale         obiettivo       iterazioni    termine
+ 
+        1               12345    0.543636119906           10
+        2           267208285    0.543946062643           10
+        3          1099492053    0.544304321957           10
+        4           689094822     0.53767236386           10
+        5           891921759    0.539096246422           10
+ 
+ 
+ 
+ 
+ 
+La procedura NEURAL
+ 
+                        Inizio ottimizzazione
+                         Stime dei parametri
+                                                            Funzione
+                                                           obiettivo
+  N Parametro                                  Stima       gradiente
+ 
+  1 IMP_REP_Cilindrata_H11                  0.174516    -0.000093055
+  2 LG10_REP_price_H11                     -0.313122        0.000347
+  3 IMP_REP_Cilindrata_H12                  0.205170        0.000536
+  4 LG10_REP_price_H12                      0.117235        0.001298
+  5 IMP_REP_Cilindrata_H13                  0.313829        0.001660
+  6 LG10_REP_price_H13                      0.049847        0.002070
+  7 Per_neopatentati0_H11                   0.138082     0.000044790
+  8 Per_neopatentati0_H12                   0.010130        0.001629
+  9 Per_neopatentati0_H13                   0.140067        0.001252
+ 10 G_Alimentazione0_H11                    0.288100        0.000322
+ 11 G_Alimentazione1_H11                    0.348651        0.000195
+ 12 G_Alimentazione2_H11                    0.072306        0.000162
+ 13 G_Carrozzeria0_H11                     -0.210987        0.000785
+ 14 G_Carrozzeria1_H11                     -0.109372        0.000159
+ 15 G_Carrozzeria2_H11                     -0.291260    -0.000087114
+ 16 G_IMP_Cilindri0_H11                     0.185397        0.000104
+ 17 G_IMP_Cilindri1_H11                    -0.043840     0.000098237
+ 18 G_IMP_Cilindri2_H11                    -0.125595     0.000031105
+ 19 G_IMP_Colore_esterno0_H11              -0.191542    -0.000086237
+ 20 G_IMP_Colore_esterno1_H11              -0.073399        0.000161
+ 21 G_IMP_Colore_esterno2_H11               0.135546     0.000093004
+ 22 G_IMP_Colore_esterno3_H11              -0.110561        0.000140
+ 23 G_IMP_Colore_esterno4_H11              -0.049434    -0.000080990
+ 24 G_IMP_Marce0_H11                        0.131808    -0.000038419
+ 25 G_IMP_Marce1_H11                       -0.156448     0.000046274
+ 26 G_IMP_Marce2_H11                        0.067463        0.000142
+ 27 G_IMP_Marce3_H11                        0.250513        0.000167
+ 28 G_IMP_Posti_a_sedere0_H11               0.040103       -0.000138
+ 29 G_IMP_Posti_a_sedere1_H11              -0.089092       -0.000296
+ 30 G_IMP_Tipo_di_cambio0_H11               0.198131       -0.000289
+ 31 IMP_Tipo_di_unita4x4_H11               -0.241841       -0.000171
+ 32 IMP_Tipo_di_unitaanteriore_H11          0.179378       -0.000114
+ 33 OPT_IMP_REP_Con01_low4_35_H11          -0.086930        0.000223
+ 34 OPT_IMP_REP_Con02_4_356_15_MISSI        0.274691       -0.000206
+ 35 OPT_IMP_REP_Con03_6_157_05_H11         -0.194877        0.000139
+ 36 OPT_IMP_REP_Emi01_low92_5_H11          -0.006088       -0.000252
+ 37 OPT_IMP_REP_Emi02_92_5121_5_MISS       -0.398841       -0.000398
+ 38 OPT_IMP_REP_Pes01_low1030_H11          -0.389875        0.000158
+ 39 OPT_IMP_REP_Pes02_10301077_5_H11       -0.284175     0.000099727
+ 40 OPT_IMP_REP_Pes03_1077_51332_MIS       -0.225515        0.000487
+ 41 G_Alimentazione0_H12                    0.011685       -0.000635
+ 42 G_Alimentazione1_H12                    0.060807        0.001063
+ 43 G_Alimentazione2_H12                   -0.273468    -0.000087981
+ 44 G_Carrozzeria0_H12                      0.092704        0.000756
+ 45 G_Carrozzeria1_H12                     -0.286964        0.001693
+ 46 G_Carrozzeria2_H12                     -0.171988        0.000398
+ 47 G_IMP_Cilindri0_H12                    -0.051580        0.001349
+ 48 G_IMP_Cilindri1_H12                     0.201684       -0.000786
+ 49 G_IMP_Cilindri2_H12                     0.051959       -0.000109
+ 50 G_IMP_Colore_esterno0_H12              -0.083108       -0.000122
+ 51 G_IMP_Colore_esterno1_H12              -0.155158    -0.000053247
+ 52 G_IMP_Colore_esterno2_H12              -0.073505        0.000994
+ 53 G_IMP_Colore_esterno3_H12              -0.069416       -0.000358
+ 54 G_IMP_Colore_esterno4_H12               0.049431        0.000126
+ 55 G_IMP_Marce0_H12                       -0.090797        0.000825
+ 56 G_IMP_Marce1_H12                        0.183086        0.000281
+ 57 G_IMP_Marce2_H12                       -0.054349        0.000306
+ 58 G_IMP_Marce3_H12                       -0.297162        0.000135
+ 59 G_IMP_Posti_a_sedere0_H12               0.248016       -0.000226
+ 60 G_IMP_Posti_a_sedere1_H12               0.021414        0.001383
+ 61 G_IMP_Tipo_di_cambio0_H12              -0.284528        0.000762
+ 62 IMP_Tipo_di_unita4x4_H12               -0.246656        0.000295
+ 63 IMP_Tipo_di_unitaanteriore_H12          0.201803        0.000705
+ 64 OPT_IMP_REP_Con01_low4_35_H12           0.105639        0.000263
+ 65 _DUP                                    0.271190        0.000826
+ 66 OPT_IMP_REP_Con03_6_157_05_H12          0.273332        0.000146
+ 67 OPT_IMP_REP_Emi01_low92_5_H12           0.032023       -0.000994
+ 68 _DUP1                                  -0.091247    -0.000076178
+ 69 OPT_IMP_REP_Pes01_low1030_H12           0.065087       -0.001780
+ 70 OPT_IMP_REP_Pes02_10301077_5_H12        0.041634       -0.001103
+ 71 _DUP2                                  -0.002333       -0.001118
+ 72 G_Alimentazione0_H13                    0.195718       -0.000769
+ 73 G_Alimentazione1_H13                   -0.015466        0.004653
+ 74 G_Alimentazione2_H13                    0.112347        0.000720
+ 75 G_Carrozzeria0_H13                     -0.305351        0.006047
+ 76 G_Carrozzeria1_H13                      0.036754        0.002997
+ 77 G_Carrozzeria2_H13                      0.200369       -0.002149
+ 78 G_IMP_Cilindri0_H13                     0.097150        0.003031
+ 79 G_IMP_Cilindri1_H13                    -0.198380        0.001267
+ 80 G_IMP_Cilindri2_H13                     0.071842       -0.000288
+ 81 G_IMP_Colore_esterno0_H13               0.024423        0.000834
+ 82 G_IMP_Colore_esterno1_H13              -0.169860       -0.000304
+ 83 G_IMP_Colore_esterno2_H13               0.090505        0.002321
+ 84 G_IMP_Colore_esterno3_H13              -0.051319        0.000437
+ 85 G_IMP_Colore_esterno4_H13               0.079431        0.000384
+ 86 G_IMP_Marce0_H13                        0.353679        0.001659
+ 87 G_IMP_Marce1_H13                        0.115122     0.000027194
+ 88 G_IMP_Marce2_H13                       -0.108752        0.000215
+ 89 G_IMP_Marce3_H13                        0.085019        0.001093
+ 90 G_IMP_Posti_a_sedere0_H13               0.255659       -0.001871
+ 91 G_IMP_Posti_a_sedere1_H13               0.086098        0.002151
+ 92 G_IMP_Tipo_di_cambio0_H13               0.408918        0.002649
+ 93 IMP_Tipo_di_unita4x4_H13                0.181102     0.000092611
+ 94 IMP_Tipo_di_unitaanteriore_H13         -0.013686        0.002573
+ 95 OPT_IMP_REP_Con01_low4_35_H13          -0.311264        0.002310
+ 96 _DUP3                                  -0.009856        0.002172
+ 97 OPT_IMP_REP_Con03_6_157_05_H13          0.166220        0.000624
+ 98 OPT_IMP_REP_Emi01_low92_5_H13           0.157988       -0.001846
+ 99 _DUP4                                   0.212701        0.000533
+100 OPT_IMP_REP_Pes01_low1030_H13          -0.145074       -0.003539
+101 OPT_IMP_REP_Pes02_10301077_5_H13       -0.124018       -0.003560
+102 _DUP5                                  -0.227288       -0.002867
+103 BIAS_H11                                0.773732     0.000066041
+104 BIAS_H12                                0.382242        0.001167
+105 BIAS_H13                               -1.121449        0.005217
+106 H11_target101                          -0.106144        0.006853
+107 H12_target101                           0.208473       -0.000253
+108 H13_target101                           0.747681       -0.003768
+109 IMP_REP_Cilindrata_target101            0.207499        0.011490
+110 LG10_REP_price_target101               -0.782351        0.008744
+111 Per_neopatentati0_target101             0.481115        0.006608
+112 G_Alimentazione0_target101              0.304114       -0.004679
+113 G_Alimentazione1_target101              0.078329        0.003830
+114 G_Alimentazione2_target101             -0.281466       -0.000783
+115 G_Carrozzeria0_target101                0.852304        0.002604
+116 G_Carrozzeria1_target101               -0.034744        0.008148
+117 G_Carrozzeria2_target101               -0.210677        0.002194
+118 G_IMP_Cilindri0_target101               0.346181        0.007318
+119 G_IMP_Cilindri1_target101               0.548807       -0.003668
+120 G_IMP_Cilindri2_target101               0.247400       -0.000576
+121 G_IMP_Colore_esterno0_target101         0.407742       -0.000171
+122 G_IMP_Colore_esterno1_target101         0.274582       -0.000916
+123 G_IMP_Colore_esterno2_target101         0.199072        0.003796
+124 G_IMP_Colore_esterno3_target101        -0.086682       -0.002444
+125 G_IMP_Colore_esterno4_target101        -0.116240        0.001123
+126 G_IMP_Marce0_target101                  0.315442        0.002842
+127 G_IMP_Marce1_target101                  0.243288        0.001843
+128 G_IMP_Marce2_target101                 -0.107522        0.001682
+129 G_IMP_Marce3_target101                 -0.261591       -0.001179
+130 G_IMP_Posti_a_sedere0_target101         0.733291       -0.001083
+131 G_IMP_Posti_a_sedere1_target101         0.013296        0.007785
+132 G_IMP_Tipo_di_cambio0_target101         0.103370        0.007098
+133 IMP_Tipo_di_unita4x4_target101         -0.547668        0.001614
+134 IMP_Tipo_di_unitaanteriore_targe       -0.181878        0.002461
+135 OPT_IMP_REP_Con01_low4_35_target       -0.358551        0.001001
+136 _DUP6                                   0.056317        0.002730
+137 OPT_IMP_REP_Con03_6_157_05_targe        0.374539        0.000146
+138 OPT_IMP_REP_Emi01_low92_5_target       -0.231304       -0.003284
+139 _DUP7                                  -0.094722        0.000321
+140 OPT_IMP_REP_Pes01_low1030_target        0.141906       -0.009814
+141 OPT_IMP_REP_Pes02_10301077_5_tar       -0.480202       -0.007211
+142 _DUP8                                   0.032428       -0.010514
+143 BIAS_target101                         -0.760273        0.006581
+ 
+Valore della funzione obiettivo = 0.5376723639
+ 
+ 
+ 
+ 
+ 
+ 
+La procedura NEURAL
+ 
+Ottimizzazione quasi-Newton duale
+ 
+ 
+Iterazioni minime                                        0
+Iterazioni massime                                      50
+Chiamate di funzioni massime                    2147483647
+Tempo CPU massimo                                    14400
+Criterio gradiente ABSGCONV                        0.00001
+Criterio gradiente GCONV                              1E-8
+Criterio funzione ABSFCONV                               0
+Criterio funzione FCONV                             0.0001
+Criterio funzione FCONV2                                 0
+Parametro FSIZE                                          0
+Criterio di cambio parametro ABSXCONV                    0
+Criterio di cambio parametro XCONV                       0
+Parametro XSIZE                                          0
+Criterio funzione ABSCONV                     0.0014196448
+Metodo di ricerca lineare                                2
+Alfa iniziale per ricerca lineare                        1
+Precisione per ricerca lineare LSPRECISION             0.4
+Parametro DAMPSTEP per ricerca lineare                   .
+Tolleranza singolarità (SINGULAR)                    1E-8
+ 
+Ottimizzazione quasi-Newton duale
+ 
+Dual Broyden - Fletcher - Goldfarb - Shanno Update (DBFGS)
+ 
+Stime dei parametri             143
+ 
+                                           Inizio ottimizzazione
+ 
+Vincoli attivi                                      0  Funzione obiettivo                       0.5376723639
+Elemento gradiente ass max               0.0114902702
+ 
+ 
+                                                                  Cambiamento     Elemento                  Inclinaz.
+                       Chiam.        Vincoli         Funzione        funzione    gradiente    Dimensione       direz.
+Iter      Riavvii       funz.         attivi        obiettivo       obiettivo      ass max         passo      ricerca
+ 
+   1            0           5              0          0.53685        0.000824      0.00842        0.0137       -0.120
+   2            0           9              0          0.53619        0.000661       0.0142         2.000      -0.0008
+   3            0          13              0          0.53344         0.00275       0.0134         4.005      -0.0014
+   4            0          17              0          0.52939         0.00405       0.0198         5.394      -0.0020
+   5            0          19              0          0.52669         0.00269      0.00777         1.000      -0.0042
+   6            0          21              0          0.52349         0.00321       0.0169         2.243      -0.0030
+   7            0          23              0          0.52097         0.00252       0.0235         2.347      -0.0034
+   8            0          25              0          0.51699         0.00397      0.00823         0.892      -0.0071
+   9            0          28              0          0.51427         0.00272       0.0120         1.890      -0.0026
+  10            0          30              0          0.50965         0.00463      0.00911         1.818      -0.0037
+  11            0          33              0          0.50730         0.00235      0.00827         0.855      -0.0046
+  12            0          35              0          0.50507         0.00223       0.0124         2.834      -0.0021
+  13            0          37              0          0.50328         0.00179       0.0104         2.031      -0.0027
+  14            0          39              0          0.50138         0.00190       0.0109         2.272      -0.0020
+  15            0          41              0          0.49859         0.00279      0.00754         2.256      -0.0021
+  16            0          43              0          0.49704         0.00155       0.0162         2.558      -0.0027
+  17            0          45              0          0.49456         0.00249      0.00937         1.068      -0.0036
+  18            0          47              0          0.49162         0.00294       0.0108         1.870      -0.0033
+  19            0          49              0          0.48784         0.00379       0.0133         1.530      -0.0048
+  20            0          52              0          0.48551         0.00232      0.00913         1.301      -0.0033
+  21            0          54              0          0.48418         0.00133       0.0159         2.899      -0.0020
+  22            0          58              0          0.48139         0.00279       0.0144         1.501      -0.0044
+  23            0          61              0          0.48023         0.00116      0.00620         1.300      -0.0017
+  24            0          63              0          0.47884         0.00139       0.0112         2.404      -0.0012
+  25            0          65              0          0.47791        0.000932      0.00987         1.981      -0.0018
+  26            0          67              0          0.47642         0.00150      0.00638         0.994      -0.0023
+  27            0          69              0          0.47539         0.00103       0.0131         2.900      -0.0013
+  28            0          71              0          0.47403         0.00135      0.00418         1.546      -0.0017
+  29            0          73              0          0.47314        0.000896       0.0100         3.678      -0.0009
+  30            0          75              0          0.47192         0.00122      0.00410         1.177      -0.0019
+  31            0          77              0          0.47147        0.000447       0.0127         3.528      -0.0009
+  32            0          81              0          0.47007         0.00140      0.00533         1.269      -0.0022
+  33            0          84              0          0.46928        0.000792      0.00497         1.652      -0.0009
+  34            0          86              0          0.46844        0.000845      0.00303         2.054      -0.0010
+  35            0          88              0          0.46798        0.000459      0.00630         4.534      -0.0005
+  36            0          92              0          0.46680         0.00118      0.00476         1.750      -0.0014
+  37            0          94              0          0.46572         0.00108      0.00772         3.206      -0.0009
+  38            0          96              0          0.46467         0.00104      0.00669         1.830      -0.0015
+  39            0          98              0          0.46374        0.000932      0.00849         2.515      -0.0010
+  40            0         100              0          0.46258         0.00116      0.00565         1.650      -0.0014
+  41            0         102              0          0.46191        0.000676      0.00620         3.079      -0.0009
+  42            0         104              0          0.46095        0.000956      0.00444         1.185      -0.0014
+  43            0         107              0          0.46034        0.000616      0.00534         1.512      -0.0008
+  44            0         109              0          0.45932         0.00101      0.00448         1.550      -0.0010
+  45            0         111              0          0.45890        0.000423      0.00956         2.158      -0.0012
+  46            0         113              0          0.45817        0.000726      0.00510         0.749      -0.0014
+  47            0         115              0          0.45793        0.000244      0.00296         2.450      -0.0007
+  48            0         119              0          0.45720        0.000726      0.00497         1.390      -0.0010
+  49            0         121              0          0.45651        0.000695      0.00986         4.192      -0.0004
+  50            0         123              0          0.45557        0.000944      0.00349         1.594      -0.0011
+ 
+                                          Risultati ottimizzazione
+ 
+Iterazioni                                         50  Chiamate di funzioni                              125
+Chiamate gradiente                                 59  Vincoli attivi                                      0
+Funzione obiettivo                       0.4555653644  Elemento gradiente ass max               0.0034874714
+Inclinazione della direzione di ricerca  -0.001090496
+ 
+QUANEW needs more than 50 iterations or 2147483647 function calls.
+ 
+WARNING: QUANEW Optimization cannot be completed.
+ 
+ 
+ 
+ 
+ 
+ 
+La procedura NEURAL
+ 
+                      Risultati ottimizzazione
+                         Stime dei parametri
+                                                            Funzione
+                                                           obiettivo
+  N Parametro                                  Stima       gradiente
+ 
+  1 IMP_REP_Cilindrata_H11                 -0.276810        0.000965
+  2 LG10_REP_price_H11                     -0.853188     0.000005447
+  3 IMP_REP_Cilindrata_H12                  1.383929       -0.000366
+  4 LG10_REP_price_H12                     -1.090406       -0.002125
+  5 IMP_REP_Cilindrata_H13                  0.086476        0.000399
+  6 LG10_REP_price_H13                      0.594614        0.000154
+  7 Per_neopatentati0_H11                   0.012743       -0.001511
+  8 Per_neopatentati0_H12                  -0.451108    -0.000013644
+  9 Per_neopatentati0_H13                   0.956374        0.000500
+ 10 G_Alimentazione0_H11                    0.273796        0.001439
+ 11 G_Alimentazione1_H11                   -0.104226       -0.001778
+ 12 G_Alimentazione2_H11                    1.166622    -0.000019408
+ 13 G_Carrozzeria0_H11                     -0.889260       -0.000975
+ 14 G_Carrozzeria1_H11                     -0.504819    -0.000016088
+ 15 G_Carrozzeria2_H11                     -0.463309       -0.000273
+ 16 G_IMP_Cilindri0_H11                    -0.033810       -0.001772
+ 17 G_IMP_Cilindri1_H11                     0.742542        0.000655
+ 18 G_IMP_Cilindri2_H11                     0.019354        0.000734
+ 19 G_IMP_Colore_esterno0_H11              -0.094286       -0.000165
+ 20 G_IMP_Colore_esterno1_H11              -0.344496       -0.000116
+ 21 G_IMP_Colore_esterno2_H11               0.239645       -0.000625
+ 22 G_IMP_Colore_esterno3_H11               0.274774       -0.000170
+ 23 G_IMP_Colore_esterno4_H11              -0.082547        0.000148
+ 24 G_IMP_Marce0_H11                       -0.478431    -0.000001935
+ 25 G_IMP_Marce1_H11                       -0.236883       -0.000966
+ 26 G_IMP_Marce2_H11                       -0.049506        0.000787
+ 27 G_IMP_Marce3_H11                        0.129050        0.000363
+ 28 G_IMP_Posti_a_sedere0_H11              -0.467871       -0.000485
+ 29 G_IMP_Posti_a_sedere1_H11               0.780685       -0.000790
+ 30 G_IMP_Tipo_di_cambio0_H11               0.350590        0.000555
+ 31 IMP_Tipo_di_unita4x4_H11               -0.223261        0.001359
+ 32 IMP_Tipo_di_unitaanteriore_H11          0.266666       -0.001435
+ 33 OPT_IMP_REP_Con01_low4_35_H11          -0.847943        0.000510
+ 34 OPT_IMP_REP_Con02_4_356_15_MISSI       -0.247517       -0.003290
+ 35 OPT_IMP_REP_Con03_6_157_05_H11         -0.334909        0.000478
+ 36 OPT_IMP_REP_Emi01_low92_5_H11           0.270356        0.000766
+ 37 OPT_IMP_REP_Emi02_92_5121_5_MISS       -0.261802        0.000454
+ 38 OPT_IMP_REP_Pes01_low1030_H11          -0.584560       -0.000307
+ 39 OPT_IMP_REP_Pes02_10301077_5_H11       -1.169577        0.000605
+ 40 OPT_IMP_REP_Pes03_1077_51332_MIS       -0.506151       -0.001212
+ 41 G_Alimentazione0_H12                   -0.652385       -0.000899
+ 42 G_Alimentazione1_H12                    0.149652       -0.000234
+ 43 G_Alimentazione2_H12                   -0.954609        0.000231
+ 44 G_Carrozzeria0_H12                      0.513164       -0.000798
+ 45 G_Carrozzeria1_H12                     -0.573684       -0.001242
+ 46 G_Carrozzeria2_H12                      0.233899       -0.000423
+ 47 G_IMP_Cilindri0_H12                    -1.529721        0.000545
+ 48 G_IMP_Cilindri1_H12                     2.936922    -0.000006337
+ 49 G_IMP_Cilindri2_H12                    -0.115559       -0.000163
+ 50 G_IMP_Colore_esterno0_H12               0.228945       -0.000631
+ 51 G_IMP_Colore_esterno1_H12              -0.330933       -0.000300
+ 52 G_IMP_Colore_esterno2_H12              -0.220659        0.000128
+ 53 G_IMP_Colore_esterno3_H12              -0.325560        0.001446
+ 54 G_IMP_Colore_esterno4_H12               0.390408     0.000080696
+ 55 G_IMP_Marce0_H12                       -0.688930       -0.000685
+ 56 G_IMP_Marce1_H12                        0.030994       -0.000871
+ 57 G_IMP_Marce2_H12                       -1.020809       -0.000481
+ 58 G_IMP_Marce3_H12                       -1.579451        0.000823
+ 59 G_IMP_Posti_a_sedere0_H12              -0.015937       -0.001071
+ 60 G_IMP_Posti_a_sedere1_H12               0.015242       -0.001191
+ 61 G_IMP_Tipo_di_cambio0_H12               0.323239       -0.000804
+ 62 IMP_Tipo_di_unita4x4_H12               -1.089884        0.001729
+ 63 IMP_Tipo_di_unitaanteriore_H12          1.152975    -0.000003621
+ 64 OPT_IMP_REP_Con01_low4_35_H12           0.468199       -0.001674
+ 65 _DUP                                   -0.048956        0.000226
+ 66 OPT_IMP_REP_Con03_6_157_05_H12         -0.532921       -0.001725
+ 67 OPT_IMP_REP_Emi01_low92_5_H12           0.293250       -0.001138
+ 68 _DUP1                                   0.047063       -0.003487
+ 69 OPT_IMP_REP_Pes01_low1030_H12           0.402793       -0.000460
+ 70 OPT_IMP_REP_Pes02_10301077_5_H12       -0.431678        0.000681
+ 71 _DUP2                                   0.375958     0.000085577
+ 72 G_Alimentazione0_H13                    0.613421       -0.002400
+ 73 G_Alimentazione1_H13                   -0.406638        0.000514
+ 74 G_Alimentazione2_H13                    0.806687    -0.000020965
+ 75 G_Carrozzeria0_H13                     -1.413369       -0.001155
+ 76 G_Carrozzeria1_H13                      0.291314       -0.001169
+ 77 G_Carrozzeria2_H13                      0.647923        0.000773
+ 78 G_IMP_Cilindri0_H13                     0.134531        0.001669
+ 79 G_IMP_Cilindri1_H13                    -0.463688       -0.001846
+ 80 G_IMP_Cilindri2_H13                     0.495955       -0.000214
+ 81 G_IMP_Colore_esterno0_H13              -0.131410       -0.000759
+ 82 G_IMP_Colore_esterno1_H13               0.146813        0.000845
+ 83 G_IMP_Colore_esterno2_H13               0.067297        0.000183
+ 84 G_IMP_Colore_esterno3_H13               0.061620        0.000675
+ 85 G_IMP_Colore_esterno4_H13              -0.399386     0.000079952
+ 86 G_IMP_Marce0_H13                       -0.044534        0.000378
+ 87 G_IMP_Marce1_H13                        0.505034        0.001028
+ 88 G_IMP_Marce2_H13                        0.291081       -0.001300
+ 89 G_IMP_Marce3_H13                       -0.300056       -0.002046
+ 90 G_IMP_Posti_a_sedere0_H13              -0.676159     0.000032061
+ 91 G_IMP_Posti_a_sedere1_H13               0.734829        0.000959
+ 92 G_IMP_Tipo_di_cambio0_H13               0.240641       -0.000286
+ 93 IMP_Tipo_di_unita4x4_H13                0.108246     0.000086717
+ 94 IMP_Tipo_di_unitaanteriore_H13          0.164730        0.002277
+ 95 OPT_IMP_REP_Con01_low4_35_H13          -0.162623       -0.001469
+ 96 _DUP3                                   0.187167        0.002743
+ 97 OPT_IMP_REP_Con03_6_157_05_H13         -0.376283       -0.003101
+ 98 OPT_IMP_REP_Emi01_low92_5_H13           0.202192       -0.002277
+ 99 _DUP4                                  -0.153494       -0.003033
+100 OPT_IMP_REP_Pes01_low1030_H13          -0.327086        0.001144
+101 OPT_IMP_REP_Pes02_10301077_5_H13        0.098433        0.001065
+102 _DUP5                                  -0.285134        0.003259
+103 BIAS_H11                                1.257732       -0.001229
+104 BIAS_H12                                2.022112       -0.000712
+105 BIAS_H13                               -2.725450        0.001579
+106 H11_target101                          -1.523158        0.000500
+107 H12_target101                           2.147533        0.001461
+108 H13_target101                           3.169179       -0.002075
+109 IMP_REP_Cilindrata_target101           -0.313551        0.000831
+110 LG10_REP_price_target101               -1.736522     0.000098008
+111 Per_neopatentati0_target101            -0.015931        0.001801
+112 G_Alimentazione0_target101              0.390313       -0.000843
+113 G_Alimentazione1_target101              0.091023        0.001317
+114 G_Alimentazione2_target101             -0.094776        0.000211
+115 G_Carrozzeria0_target101                1.735269       -0.000689
+116 G_Carrozzeria1_target101               -0.531723        0.000132
+117 G_Carrozzeria2_target101               -1.521857        0.000177
+118 G_IMP_Cilindri0_target101               1.678902        0.002872
+119 G_IMP_Cilindri1_target101               0.820462    -0.000088511
+120 G_IMP_Cilindri2_target101              -0.219466        0.000188
+121 G_IMP_Colore_esterno0_target101         0.921530       -0.000457
+122 G_IMP_Colore_esterno1_target101         0.626460       -0.000228
+123 G_IMP_Colore_esterno2_target101         0.895361        0.001687
+124 G_IMP_Colore_esterno3_target101         0.845398        0.001157
+125 G_IMP_Colore_esterno4_target101        -0.150961     0.000066018
+126 G_IMP_Marce0_target101                  0.506177       -0.000387
+127 G_IMP_Marce1_target101                 -0.946109        0.001005
+128 G_IMP_Marce2_target101                 -0.438521       -0.000486
+129 G_IMP_Marce3_target101                  0.474604        0.000249
+130 G_IMP_Posti_a_sedere0_target101         1.458371        0.000796
+131 G_IMP_Posti_a_sedere1_target101        -0.303958        0.002777
+132 G_IMP_Tipo_di_cambio0_target101        -0.306348       -0.000815
+133 IMP_Tipo_di_unita4x4_target101         -0.198626       -0.001394
+134 IMP_Tipo_di_unitaanteriore_targe       -1.601185        0.002434
+135 OPT_IMP_REP_Con01_low4_35_target       -0.732775    -0.000002217
+136 _DUP6                                  -0.186703        0.001999
+137 OPT_IMP_REP_Con03_6_157_05_targe        1.604467       -0.001096
+138 OPT_IMP_REP_Emi01_low92_5_target       -0.511983       -0.001996
+139 _DUP7                                  -0.097732        0.000786
+140 OPT_IMP_REP_Pes01_low1030_target       -1.035157       -0.000496
+141 OPT_IMP_REP_Pes02_10301077_5_tar       -0.917879       -0.001370
+142 _DUP8                                   0.371731       -0.000542
+143 BIAS_target101                          0.616067        0.001951
+ 
+Valore della funzione obiettivo = 0.4555653644
+ 
+
+
+*------------------------------------------------------------*
+* Output di scoring
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Output dei report
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Statistiche di stima
+ 
+Target=target10 Etichetta target=target10
+ 
+Statistiche
+ di stima      Etichetta statistiche                        Training    Validazione
+ 
+  _DFT_        Gradi di libertà totali                      4743.00          .
+  _DFE_        Gradi di libertà dell'errore                 4600.00          .
+  _DFM_        Gradi di libertà del modello                  143.00          .
+  _NW_         Numero di pesi stimati                         143.00          .
+  _AIC_        Criterio di informazione di Akaike            4616.44          .
+  _SBC_        Criterio bayesiano di Schwarz                 5540.86          .
+  _ASE_        Average Square Error                             0.15         0.17
+  _MAX_        Errore assoluto massimo                          1.00         1.00
+  _DIV_        Divisore per ASE                              9486.00      4070.00
+  _NOBS_       Somma delle frequenze                         4743.00      2035.00
+  _RASE_       Root Average Square Error                        0.39         0.41
+  _SSE_        Somma degli errori quadratici                 1444.16       682.26
+  _SUMW_       Somma dei casi ponderati per le frequenze     9486.00      4070.00
+  _FPE_        Errore di previsione finale                      0.16          .
+  _MSE_        Errore quadratico medio                          0.16         0.17
+  _RFPE_       Radice dell'errore di previsione finale          0.40          .
+  _RMSE_       Scarto quadratico medio                          0.40         0.41
+  _AVERR_      Funzione di errore della media                   0.46         0.50
+  _ERR_        Funzione di errore                            4330.44      2030.48
+  _MISC_       Errore di classificazione                        0.23         0.26
+  _WRONG_      Numero di classificazioni errate              1075.00       527.00
+ 
+ 
+ 
+ 
+Tabella di classificazione
+ 
+Ruolo dei dati=TRAIN Variabile target=target10 Etichetta target=target10
+ 
+                                                  Conteggio
+                    Percentuale    Percentuale        di       Percentuale
+Target    Valore       target         valore      frequenza       totale
+ 
+  0         0         80.4087        81.4709         2282        48.1130
+  1         0         19.5913        28.6303          556        11.7225
+  0         1         27.2441        18.5291          519        10.9424
+  1         1         72.7559        71.3697         1386        29.2220
+ 
+ 
+Ruolo dei dati=VALIDATE Variabile target=target10 Etichetta target=target10
+ 
+                                                  Conteggio
+                    Percentuale    Percentuale        di       Percentuale
+Target    Valore       target         valore      frequenza       totale
+ 
+  0         0         78.2427        77.7870         935         45.9459
+  1         0         21.7573        31.2125         260         12.7764
+  0         1         31.7857        22.2130         267         13.1204
+  1         1         68.2143        68.7875         573         28.1572
+ 
+ 
+ 
+ 
+Tabella di classificazione degli eventi
+ 
+Ruolo dei dati=TRAIN Target=target10 Etichetta target=target10
+ 
+  Falso       Vero        Falso       Vero
+negativo    negativo    positivo    positivo
+ 
+   556        2282         519        1386
+ 
+ 
+Ruolo dei dati=VALIDATE Target=target10 Etichetta target=target10
+ 
+  Falso       Vero        Falso       Vero
+negativo    negativo    positivo    positivo
+ 
+   260         935         267         573
+ 
+ 
+ 
+ 
+Classificazioni degli score di valutazione
+ 
+Ruolo dei dati=TRAIN Variabile target=target10 Etichetta target=target10
+ 
+                                                                                             Probabilità
+                                        Lift           %       % risposta      Numero di     a posteriori
+Profondità       Gain      Lift     cumulativo    risposta    cumulativa    osservazioni        media
+ 
+      5        132.945    2.32945      2.32945      95.3782      95.3782          238           0.95522
+     10        121.609    2.10226      2.21609      86.0759      90.7368          237           0.87746
+     15        113.704    1.97859      2.13704      81.0127      87.5000          237           0.81328
+     20        104.342    1.76219      2.04342      72.1519      83.6670          237           0.73887
+     25         98.104    1.73127      1.98104      70.8861      81.1130          237           0.66839
+     30         90.855    1.54578      1.90855      63.2911      78.1448          237           0.60035
+     35         83.652    1.40588      1.83652      57.5630      75.1957          238           0.56036
+     40         77.834    1.37059      1.77834      56.1181      72.8135          237           0.52152
+     45         70.105    1.08204      1.70105      44.3038      69.6487          237           0.47559
+     50         62.993    0.98930      1.62993      40.5063      66.7369          237           0.42403
+     55         54.740    0.72136      1.54740      29.5359      63.3576          237           0.37217
+     60         50.007    0.97899      1.50007      40.0844      61.4195          237           0.32171
+     65         44.337    0.76258      1.44337      31.2236      59.0983          237           0.26063
+     70         38.406    0.61571      1.38406      25.2101      56.6697          238           0.19578
+     75         30.903    0.25763      1.30903      10.5485      53.5975          237           0.13857
+     80         23.693    0.15458      1.23693       6.3291      50.6456          237           0.09168
+     85         17.149    0.12366      1.17149       5.0633      47.9663          237           0.05524
+     90         10.932    0.05153      1.10932       2.1097      45.4205          237           0.03196
+     95          5.151    0.01031      1.05151       0.4219      43.0537          237           0.01973
+    100          0.000    0.02061      1.00000       0.8439      40.9445          237           0.00559
+ 
+ 
+Ruolo dei dati=VALIDATE Variabile target=target10 Etichetta target=target10
+ 
+                                                                                             Probabilità
+                                        Lift           %       % risposta      Numero di     a posteriori
+Profondità       Gain      Lift     cumulativo    risposta    cumulativa    osservazioni        media
+ 
+      5        134.717    2.34717      2.34717      96.0784      96.0784          102           0.95408
+     10        117.952    2.01186      2.17952      82.3529      89.2157          102           0.87875
+     15        108.372    1.89211      2.08372      77.4510      85.2941          102           0.81821
+     20         96.879    1.62059      1.96879      66.3366      80.5897          101           0.74461
+     25         84.783    1.36519      1.84783      55.8824      75.6385          102           0.66924
+     30         82.324    1.70050      1.82324      69.6078      74.6318          102           0.60168
+     35         73.715    1.22149      1.73715      50.0000      71.1080          102           0.56350
+     40         66.867    1.18521      1.66867      48.5149      68.3047          101           0.52775
+     45         62.154    1.24544      1.62154      50.9804      66.3755          102           0.48804
+     50         56.466    1.05383      1.56466      43.1373      64.0472          102           0.43995
+     55         50.505    0.91013      1.50505      37.2549      61.6071          102           0.38210
+     60         43.657    0.67726      1.43657      27.7228      58.8043          101           0.32522
+     65         40.337    1.00593      1.40337      41.1765      57.4452          102           0.27030
+     70         35.264    0.69457      1.35264      28.4314      55.3684          102           0.20006
+     75         29.268    0.45506      1.29268      18.6275      52.9142          102           0.13959
+     80         22.749    0.24188      1.22749       9.9010      50.2457          101           0.09025
+     85         16.642    0.19161      1.16642       7.8431      47.7457          102           0.05596
+     90         10.281    0.02395      1.10281       0.9804      45.1419          102           0.03125
+     95          4.970    0.09580      1.04970       3.9216      42.9679          102           0.01898
+    100          0.000    0.04838      1.00000       1.9802      40.9337          101           0.00550
+ 
+ 
+ 
+ 
+Distribuzione degli score di valutazione
+ 
+Ruolo dei dati=TRAIN Variabile target=target10 Etichetta target=target10
+ 
+Range della     Numero                  Probabilità
+probabilità      di       Numero di    a posteriori
+a posteriori    eventi    non eventi        media       Percentuale
+ 
+ 0.95-1.00        116           2          0.98155         2.4879
+ 0.90-0.95        143          11          0.92411         3.2469
+ 0.85-0.90        161          26          0.87489         3.9427
+ 0.80-0.85        143          29          0.82894         3.6264
+ 0.75-0.80        122          46          0.77483         3.5421
+ 0.70-0.75        129          48          0.72130         3.7318
+ 0.65-0.70        108          39          0.67379         3.0993
+ 0.60-0.65        104          68          0.62476         3.6264
+ 0.55-0.60        205         132          0.57180         7.1052
+ 0.50-0.55        155         118          0.52369         5.7559
+ 0.45-0.50        105         141          0.47330         5.1866
+ 0.40-0.45         81         111          0.42583         4.0481
+ 0.35-0.40         84         189          0.37424         5.7559
+ 0.30-0.35         81         126          0.32349         4.3643
+ 0.25-0.30         67         107          0.27673         3.6686
+ 0.20-0.25         49         132          0.22504         3.8162
+ 0.15-0.20         34         173          0.17574         4.3643
+ 0.10-0.15         23         231          0.12330         5.3553
+ 0.05-0.10         22         287          0.07276         6.5149
+ 0.00-0.05         10         785          0.02184        16.7615
+ 
+ 
+Ruolo dei dati=VALIDATE Variabile target=target10 Etichetta target=target10
+ 
+Range della     Numero                  Probabilità
+probabilità      di       Numero di    a posteriori
+a posteriori    eventi    non eventi        media       Percentuale
+ 
+ 0.95-1.00        49            2          0.97888         2.5061
+ 0.90-0.95        58            2          0.92562         2.9484
+ 0.85-0.90        75           18          0.87622         4.5700
+ 0.80-0.85        61           16          0.82754         3.7838
+ 0.75-0.80        50           19          0.77431         3.3907
+ 0.70-0.75        45           24          0.72422         3.3907
+ 0.65-0.70        37           26          0.67452         3.0958
+ 0.60-0.65        44           33          0.62507         3.7838
+ 0.55-0.60        88           63          0.57208         7.4201
+ 0.50-0.55        66           64          0.52383         6.3882
+ 0.45-0.50        53           62          0.47383         5.6511
+ 0.40-0.45        37           47          0.42285         4.1278
+ 0.35-0.40        31           57          0.37419         4.3243
+ 0.30-0.35        25           70          0.32304         4.6683
+ 0.25-0.30        37           48          0.27429         4.1769
+ 0.20-0.25        19           43          0.22699         3.0467
+ 0.15-0.20        23           66          0.17424         4.3735
+ 0.10-0.15        12           90          0.12238         5.0123
+ 0.05-0.10        14          118          0.07328         6.4865
+ 0.00-0.05         9          334          0.02147        16.8550

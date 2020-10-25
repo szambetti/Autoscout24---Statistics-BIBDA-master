@@ -1,0 +1,77 @@
+*------------------------------------------------------------*
+* Log di scoring
+Data:               25 ottobre 2020
+Ora:                22:50:28
+*------------------------------------------------------------*
+12264  *------------------------------------------------------------*;
+12265  * Ids2: Computing metadata for DATA data;
+12266  *------------------------------------------------------------*;
+
+NOTE: Visualizza EMWS1.IDS2_DATA.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+12267  data EMWS1.Ids2_EMINFO;
+12268  length TARGET KEY $32 DATA $43;
+12269  TARGET="";
+12270  KEY="IDSTABLE";
+12271  DATA="LIB.AUTOSCOUT_TRAIN";
+12272  output;
+12273  TARGET="target10";
+12274  KEY="DECDATA";
+12275  DATA="EMWS1.Ids2_target10_DD";
+12276  output;
+12277  TARGET="target10";
+12278  KEY="DECMETA";
+12279  DATA="EMWS1.Ids2_target10_DM";
+12280  output;
+12281  TARGET="target20";
+12282  KEY="DECDATA";
+12283  DATA="EMWS1.Ids2_target20_DD";
+12284  output;
+12285  TARGET="target20";
+12286  KEY="DECMETA";
+12287  DATA="EMWS1.Ids2_target20_DM";
+12288  output;
+12289  TARGET="target_35";
+12290  KEY="DECDATA";
+12291  DATA="EMWS1.Ids2_target_35_DD";
+12292  output;
+12293  TARGET="target_35";
+12294  KEY="DECMETA";
+12295  DATA="EMWS1.Ids2_target_35_DM";
+12296  output;
+12297  TARGET="target_5";
+12298  KEY="DECDATA";
+12299  DATA="EMWS1.Ids2_target_5_DD";
+12300  output;
+12301  TARGET="target_5";
+12302  KEY="DECMETA";
+12303  DATA="EMWS1.Ids2_target_5_DM";
+12304  output;
+12305  run;
+
+NOTE: The data set EMWS1.IDS2_EMINFO has 9 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: Visualizza EMWS1.IDS2_DATA.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+12306  data EMWS1.Ids2_CMeta_DATA;
+12307  set EMWS1.Ids2_VariableSet;
+12308  drop DROP;
+12309  where DROP='N';
+12310  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.IDS2_VARIABLESET.
+      WHERE DROP='N';
+NOTE: The data set EMWS1.IDS2_CMETA_DATA has 40 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+

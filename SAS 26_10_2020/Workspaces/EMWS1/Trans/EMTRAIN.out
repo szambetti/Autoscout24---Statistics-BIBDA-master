@@ -1,0 +1,29 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Riepilogo delle variabili
+
+                           Conteggio
+            Livello di         di
+Ruolo       misurazione    frequenza
+
+INPUT        BINARY             4   
+INPUT        INTERVAL           6   
+INPUT        NOMINAL           13   
+REJECTED     INTERVAL           6   
+REJECTED     NOMINAL            1   
+TARGET       BINARY             1   
+ 
+                                                                                                                                                                                                                                                                
+ 
+Trasformazioni calcolate
+(massimo 500 osservazioni stampate)
+
+                                              Input
+Input Name                          Role      Level      Name                                 Level             Formula
+
+IMP_REP_Consumo_Carburante_Total    INPUT    INTERVAL    OPT_IMP_REP_Consumo_Carburante_T    NOMINAL     Optimal Binning(4)   
+IMP_REP_Emissioni_di_CO2            INPUT    INTERVAL    OPT_IMP_REP_Emissioni_di_CO2        NOMINAL     Optimal Binning(4)   
+IMP_REP_Peso_a_vuoto                INPUT    INTERVAL    OPT_IMP_REP_Peso_a_vuoto            NOMINAL     Optimal Binning(4)   
+REP_price                           INPUT    INTERVAL    LG10_REP_price                      INTERVAL    log10(REP_price  + 1)

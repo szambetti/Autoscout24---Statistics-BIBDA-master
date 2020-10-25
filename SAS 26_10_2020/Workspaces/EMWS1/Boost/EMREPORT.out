@@ -1,0 +1,188 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Statistiche di stima
+
+Target=target10 Etichetta target=target10
+
+Statistiche
+ di stima      Etichetta statistiche                        Training    Validazione
+
+  _NOBS_       Somma di frequenze                            4743.00      2035.00  
+  _SUMW_       Somma dei casi ponderati per le frequenze     9486.00      4070.00  
+  _MISC_       Errore di classificazione                        0.13         0.14  
+  _MAX_        Errore assoluto massimo                          0.97         0.98  
+  _SSE_        Somma degli errori quadratici                  971.92       439.33  
+  _ASE_        Average Square Error                             0.10         0.11  
+  _RASE_       Root Average Square Error                        0.32         0.33  
+  _DIV_        Divisore per ASE                              9486.00      4070.00  
+  _DFT_        Gradi di libertà totali                      4743.00          .    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Tabella di classificazione
+
+Ruolo dei dati=TRAIN Variabile target=target10 Etichetta target=target10
+
+                                                  Conteggio
+                    Percentuale    Percentuale        di       Percentuale
+Target    Valore       target         valore      frequenza       totale
+
+  0         0         86.8618        91.1103         2552        53.8056  
+  1         0         13.1382        19.8764          386         8.1383  
+  0         1         13.7950         8.8897          249         5.2498  
+  1         1         86.2050        80.1236         1556        32.8062  
+
+
+Ruolo dei dati=VALIDATE Variabile target=target10 Etichetta target=target10
+
+                                                  Conteggio
+                    Percentuale    Percentuale        di       Percentuale
+Target    Valore       target         valore      frequenza       totale
+
+  0         0         86.4257        89.5175         1076        52.8747  
+  1         0         13.5743        20.2881          169         8.3047  
+  0         1         15.9494        10.4825          126         6.1916  
+  1         1         84.0506        79.7119          664        32.6290  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Tabella di classificazione degli eventi
+
+Ruolo dei dati=TRAIN Target=target10 Etichetta target=target10
+
+  Falso       Vero        Falso       Vero
+negativo    negativo    positivo    positivo
+
+   386        2552         249        1556  
+
+
+Ruolo dei dati=VALIDATE Target=target10 Etichetta target=target10
+
+  Falso       Vero        Falso       Vero
+negativo    negativo    positivo    positivo
+
+   169        1076         126         664  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Classificazioni degli score di valutazione
+
+Ruolo dei dati=TRAIN Variabile target=target10 Etichetta target=target10
+
+                                                                                             Probabilità
+                                        Lift           %       % risposta      Numero di     a posteriori
+Profondità       Gain      Lift     cumulativo    risposta    cumulativa    osservazioni        media
+
+      5        144.233    2.44233      2.44233      100.000      100.000          238           0.95711  
+     10        143.204    2.42172      2.43204       99.156       99.579          237           0.91934  
+     15        140.116    2.33928      2.40116       95.781       98.315          237           0.86851  
+     20        138.571    2.33928      2.38571       95.781       97.682          237           0.80295  
+     25        133.113    2.11256      2.33113       86.498       95.447          237           0.74412  
+     30        124.323    1.80341      2.24323       73.840       91.848          237           0.68815  
+     35        117.913    1.79583      2.17913       73.529       89.223          238           0.60866  
+     40        103.313    1.00991      2.03313       41.350       83.246          237           0.50966  
+     45         92.183    1.03052      1.92183       42.194       78.689          237           0.43561  
+     50         80.806    0.78319      1.80806       32.068       74.030          237           0.34933  
+     55         70.092    0.62862      1.70092       25.738       69.644          237           0.27500  
+     60         60.133    0.50495      1.60133       20.675       65.566          237           0.21536  
+     65         50.200    0.30916      1.50200       12.658       61.499          237           0.17811  
+     70         40.097    0.09236      1.40097        3.782       57.362          238           0.14929  
+     75         31.658    0.13397      1.31658        5.485       53.907          237           0.12716  
+     80         24.208    0.12366      1.24208        5.063       50.856          237           0.10502  
+     85         17.154    0.04193      1.17154        1.717       47.968          237           0.08683  
+     90         10.817    0.03020      1.10817        1.237       45.374          237           0.07348  
+     95          5.205    0.04122      1.05205        1.688       43.076          237           0.05687  
+    100          0.000    0.01031      1.00000        0.422       40.945          237           0.02834  
+
+
+Ruolo dei dati=VALIDATE Variabile target=target10 Etichetta target=target10
+
+                                                                                             Probabilità
+                                        Lift           %       % risposta      Numero di     a posteriori
+Profondità       Gain      Lift     cumulativo    risposta    cumulativa    osservazioni        media
+
+      5        144.298    2.44298      2.44298      100.000      100.000          102           0.95778  
+     10        144.298    2.44298      2.44298      100.000      100.000          102           0.91907  
+     15        141.903    2.37112      2.41903       97.059       99.020          102           0.86725  
+     20        134.694    2.12853      2.34694       87.129       96.069          101           0.79769  
+     25        131.339    2.17952      2.31339       89.216       94.695          102           0.73679  
+     30        123.506    1.84421      2.23506       75.490       91.489          102           0.68889  
+     35        113.803    1.55680      2.13803       63.725       87.518          102           0.61440  
+     40        101.381    1.13683      2.01381       46.535       82.432          101           0.51868  
+     45         89.891    0.98198      1.89891       40.196       77.729          102           0.44258  
+     50         79.744    0.88618      1.79744       36.275       73.576          102           0.34538  
+     55         69.263    0.64667      1.69263       26.471       69.286          102           0.27201  
+     60         58.663    0.41119      1.58663       16.832       64.947          101           0.21520  
+     65         48.277    0.23951      1.48277        9.804       60.695          102           0.17871  
+     70         38.864    0.16766      1.38864        6.863       56.842          102           0.15230  
+     75         30.228    0.09580      1.30228        3.922       53.307          102           0.12851  
+     80         23.349    0.19350      1.23349        7.921       50.491          101           0.10550  
+     85         16.359    0.04790      1.16359        1.961       47.630          102           0.08765  
+     90         10.147    0.04790      1.10147        1.961       45.087          102           0.07470  
+     95          4.843    0.09580      1.04843        3.922       42.916          102           0.05939  
+    100          0.000    0.07256      1.00000        2.970       40.934          101           0.03170  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Distribuzione degli score di valutazione
+
+Ruolo dei dati=TRAIN Variabile target=target10 Etichetta target=target10
+
+Range della     Numero                  Probabilità
+probabilità      di       Numero di    a posteriori
+a posteriori    eventi    non eventi        media       Percentuale
+
+ 0.95-1.00        173           0          0.96259         3.6475  
+ 0.90-0.95        315           2          0.92332         6.6835  
+ 0.85-0.90        157           5          0.87554         3.4156  
+ 0.80-0.85        177           8          0.82490         3.9005  
+ 0.75-0.80        194          22          0.77665         4.5541  
+ 0.70-0.75        198          27          0.72098         4.7438  
+ 0.65-0.70        123          57          0.66911         3.7951  
+ 0.60-0.65         64          37          0.62602         2.1295  
+ 0.55-0.60         83          22          0.57592         2.2138  
+ 0.50-0.55         72          69          0.52486         2.9728  
+ 0.45-0.50         67         108          0.47450         3.6896  
+ 0.40-0.45         55          78          0.42595         2.8041  
+ 0.35-0.40         56         100          0.36822         3.2891  
+ 0.30-0.35         30          94          0.32557         2.6144  
+ 0.25-0.30         55         183          0.27050         5.0179  
+ 0.20-0.25         30         113          0.21954         3.0150  
+ 0.15-0.20         51         348          0.17710         8.4124  
+ 0.10-0.15         26         510          0.12669        11.3009  
+ 0.05-0.10         15         766          0.07553        16.4664  
+ 0.00-0.05          1         252          0.02960         5.3342  
+
+
+Ruolo dei dati=VALIDATE Variabile target=target10 Etichetta target=target10
+
+Range della     Numero                  Probabilità
+probabilità      di       Numero di    a posteriori
+a posteriori    eventi    non eventi        media       Percentuale
+
+ 0.95-1.00         80           0          0.96209         3.9312  
+ 0.90-0.95        134           0          0.92161         6.5848  
+ 0.85-0.90         63           1          0.87375         3.1450  
+ 0.80-0.85         68           3          0.82519         3.4889  
+ 0.75-0.80         81          15          0.77529         4.7174  
+ 0.70-0.75         90          11          0.71824         4.9631  
+ 0.65-0.70         62          26          0.67017         4.3243  
+ 0.60-0.65         21          19          0.62960         1.9656  
+ 0.55-0.60         27          17          0.57334         2.1622  
+ 0.50-0.55         38          34          0.52633         3.5381  
+ 0.45-0.50         18          44          0.47484         3.0467  
+ 0.40-0.45         29          32          0.42998         2.9975  
+ 0.35-0.40         19          30          0.37325         2.4079  
+ 0.30-0.35         17          36          0.32514         2.6044  
+ 0.25-0.30         29          84          0.27135         5.5528  
+ 0.20-0.25         14          49          0.22005         3.0958  
+ 0.15-0.20         16         170          0.17600         9.1400  
+ 0.10-0.15         15         203          0.12591        10.7125  
+ 0.05-0.10          9         337          0.07561        17.0025  
+ 0.00-0.05          3          91          0.03033         4.6192  

@@ -1,0 +1,256 @@
+*------------------------------------------------------------*
+Utente:             Maria Vallarelli
+Data:               25 ottobre 2020
+Ora:                22:54:45
+*------------------------------------------------------------*
+* Output di training
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Riepilogo delle variabili
+ 
+                          Conteggio
+           Livello di         di
+ Ruolo     misurazione    frequenza
+ 
+SEGMENT      NOMINAL          2
+TARGET       BINARY           1
+
+
+*------------------------------------------------------------*
+* Output di scoring
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variabili di input di scoring
+ 
+                                                                                                                            Utilizzato
+                                                                                                               Variabile    nel codice
+Nome variabile               Ruolo       Autore    Commento                                   Etichetta        nascosta     di scoring
+ 
+Alimentazione                REJECTED                                                         Alimentazione        N            Y
+Cilindrata                   REJECTED              Replaced by Repl                           Cilindrata           N            Y
+Consumo_Carburante_Totale    REJECTED              Replaced by Repl                                                N            Y
+Emissioni_di_CO2             REJECTED              Replaced by Repl                                                N            Y
+Modello                      INPUT                 Exceeds maximum number of levels cutoff    Modello              N            Y
+Peso_a_vuoto                 REJECTED              Replaced by Repl                                                N            Y
+Posti_a_sedere               REJECTED                                                                              N            Y
+Tipo_di_unita                INPUT                                                                                 N            Y
+price                        REJECTED              Replaced by Repl                           price                N            Y
+target10                     TARGET                                                           target10             N            N
+ 
+ 
+ 
+ 
+Variabili di output di scoring
+ 
+Nome variabile                   Funzione          Autore    Etichetta
+ 
+EM_CLASSIFICATION                CLASSIFICATION    Score     Prediction for target10
+EM_EVENTPROBABILITY              PREDICT           Score     Probability for level 1 of target10
+EM_PROBABILITY                   PREDICT           Score     Probability of Classification
+EM_SEGMENT                       TRANSFORM         Score     Nodo
+I_target10                       CLASSIFICATION    Tree      In: target10
+P_target100                      PREDICT           Tree      Previsto: target10=0
+P_target101                      PREDICT           Tree      Previsto: target10=1
+Q_target100                      TRANSFORM         Tree      P non corretto: target10=0
+Q_target101                      TRANSFORM         Tree      P non corretto: target10=1
+REP_Cilindrata                   TRANSFORM         Repl      Replacement: Cilindrata
+REP_Consumo_Carburante_Totale    TRANSFORM         Repl      Replacement: Consumo_Carburante_Totale
+REP_Emissioni_di_CO2             TRANSFORM         Repl      Replacement: Emissioni_di_CO2
+REP_Peso_a_vuoto                 TRANSFORM         Repl      Replacement: Peso_a_vuoto
+REP_price                        TRANSFORM         Repl      Replacement: price
+U_target10                       CLASSIFICATION    Tree      Non normalizzata in: target10
+V_target100                      PREDICT           Tree      Convalidato: target10=0
+V_target101                      PREDICT           Tree      Convalidato: target10=1
+_NODE_                           TRANSFORM         Tree      Nodo
+_WARN_                           ASSESS            Tree      Avvertimenti
+
+
+*------------------------------------------------------------*
+* Output dei report
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Statistiche di riepilogo delle variabili categoriche
+ 
+Ruolo dei dati=TRAIN Tipo di output=CLASSIFICATION
+ 
+                                        Conteggio
+               Valore       Valore          di
+Variabile     numerico    formattato    frequenza    Percentuale
+ 
+I_target10        .           0            2889        60.9108
+I_target10        .           1            1854        39.0892
+ 
+ 
+Ruolo dei dati=TRAIN Tipo di output=SEGMENT
+ 
+                                       Conteggio
+              Valore       Valore          di
+Variabile    numerico    formattato    frequenza    Percentuale
+ 
+ _NODE_          14         14              31         0.6536
+ _NODE_          22         22              23         0.4849
+ _NODE_          23         23              20         0.4217
+ _NODE_          27         27             251         5.2920
+ _NODE_          32         32              10         0.2108
+ _NODE_          33         33             784        16.5296
+ _NODE_          35         35             105         2.2138
+ _NODE_          38         38              26         0.5482
+ _NODE_          40         40              10         0.2108
+ _NODE_          41         41              71         1.4969
+ _NODE_          43         43             133         2.8041
+ _NODE_          44         44              20         0.4217
+ _NODE_          45         45              27         0.5693
+ _NODE_          50         50              48         1.0120
+ _NODE_          52         52             150         3.1626
+ _NODE_          54         54              19         0.4006
+ _NODE_          55         55              34         0.7168
+ _NODE_          58         58              18         0.3795
+ _NODE_          59         59              15         0.3163
+ _NODE_          61         61              42         0.8855
+ _NODE_          62         62              52         1.0964
+ _NODE_          63         63              10         0.2108
+ _NODE_          64         64              16         0.3373
+ _NODE_          65         65              10         0.2108
+ _NODE_          66         66              21         0.4428
+ _NODE_          67         67              10         0.2108
+ _NODE_          68         68              17         0.3584
+ _NODE_          69         69              48         1.0120
+ _NODE_          70         70              17         0.3584
+ _NODE_          72         72              31         0.6536
+ _NODE_          79         79             233         4.9125
+ _NODE_          81         81              38         0.8012
+ _NODE_          85         85              54         1.1385
+ _NODE_          90         90              15         0.3163
+ _NODE_          91         91             139         2.9306
+ _NODE_          92         92              40         0.8433
+ _NODE_          93         93             176         3.7107
+ _NODE_          94         94              54         1.1385
+ _NODE_          95         95            1102        23.2342
+ _NODE_          96         96              10         0.2108
+ _NODE_          97         97              65         1.3704
+ _NODE_          98         98             165         3.4788
+ _NODE_         102         102             15         0.3163
+ _NODE_         103         103             78         1.6445
+ _NODE_         104         104            101         2.1295
+ _NODE_         105         105            159         3.3523
+ _NODE_         108         108             29         0.6114
+ _NODE_         109         109             11         0.2319
+ _NODE_         111         111             42         0.8855
+ _NODE_         112         112             65         1.3704
+ _NODE_         116         116             24         0.5060
+ _NODE_         117         117             12         0.2530
+ _NODE_         118         118             36         0.7590
+ _NODE_         119         119             11         0.2319
+ 
+ 
+Ruolo dei dati=VALIDATE Tipo di output=CLASSIFICATION
+ 
+                                        Conteggio
+               Valore       Valore          di
+Variabile     numerico    formattato    frequenza    Percentuale
+ 
+I_target10        .           0            1234        60.6388
+I_target10        .           1             801        39.3612
+ 
+ 
+Ruolo dei dati=VALIDATE Tipo di output=SEGMENT
+ 
+                                       Conteggio
+              Valore       Valore          di
+Variabile    numerico    formattato    frequenza    Percentuale
+ 
+ _NODE_          14         14             12          0.5897
+ _NODE_          22         22              9          0.4423
+ _NODE_          23         23              7          0.3440
+ _NODE_          27         27            115          5.6511
+ _NODE_          32         32              6          0.2948
+ _NODE_          33         33            348         17.1007
+ _NODE_          35         35             28          1.3759
+ _NODE_          38         38              9          0.4423
+ _NODE_          40         40              2          0.0983
+ _NODE_          41         41             29          1.4251
+ _NODE_          43         43             72          3.5381
+ _NODE_          44         44              7          0.3440
+ _NODE_          45         45             19          0.9337
+ _NODE_          50         50             18          0.8845
+ _NODE_          52         52             60          2.9484
+ _NODE_          54         54             11          0.5405
+ _NODE_          55         55             12          0.5897
+ _NODE_          58         58              9          0.4423
+ _NODE_          59         59              7          0.3440
+ _NODE_          61         61             16          0.7862
+ _NODE_          62         62             17          0.8354
+ _NODE_          63         63              6          0.2948
+ _NODE_          64         64              5          0.2457
+ _NODE_          65         65              3          0.1474
+ _NODE_          66         66              5          0.2457
+ _NODE_          67         67              4          0.1966
+ _NODE_          68         68              6          0.2948
+ _NODE_          69         69             31          1.5233
+ _NODE_          70         70             12          0.5897
+ _NODE_          72         72             11          0.5405
+ _NODE_          79         79             97          4.7666
+ _NODE_          81         81             18          0.8845
+ _NODE_          85         85             19          0.9337
+ _NODE_          90         90              6          0.2948
+ _NODE_          91         91             56          2.7518
+ _NODE_          92         92             15          0.7371
+ _NODE_          93         93             96          4.7174
+ _NODE_          94         94             32          1.5725
+ _NODE_          95         95            452         22.2113
+ _NODE_          96         96              4          0.1966
+ _NODE_          97         97             27          1.3268
+ _NODE_          98         98             71          3.4889
+ _NODE_         102         102             5          0.2457
+ _NODE_         103         103            36          1.7690
+ _NODE_         104         104            42          2.0639
+ _NODE_         105         105            71          3.4889
+ _NODE_         108         108             8          0.3931
+ _NODE_         109         109             1          0.0491
+ _NODE_         111         111            17          0.8354
+ _NODE_         112         112            21          1.0319
+ _NODE_         116         116            12          0.5897
+ _NODE_         117         117             4          0.1966
+ _NODE_         118         118            19          0.9337
+ _NODE_         119         119            10          0.4914
+ 
+ 
+ 
+ 
+Statistiche di riepilogo delle variabili continue
+ 
+Nome variabile=P_target100
+ 
+Statistiche    Etichetta                TRAIN    VALIDATE
+ 
+  MEAN         Media                     0.59        0.59
+  STD          Deviazione standard       0.45        0.45
+  N            Non mancanti           4743.00     2035.00
+  MIN          Minimo                    0.00        0.00
+  P25          25° percentile           0.03        0.03
+  MEDIAN       Mediana                   0.89        0.92
+  P75          75° percentile           1.00        1.00
+  MAX          Massimo                   1.00        1.00
+ 
+ 
+Nome variabile=P_target101
+ 
+Statistiche    Etichetta                TRAIN    VALIDATE
+ 
+  MEAN         Media                     0.41        0.41
+  STD          Deviazione standard       0.45        0.45
+  N            Non mancanti           4743.00     2035.00
+  MIN          Minimo                    0.00        0.00
+  P25          25° percentile           0.00        0.00
+  MEDIAN       Mediana                   0.11        0.08
+  P75          75° percentile           0.97        0.97
+  MAX          Massimo                   1.00        1.00
