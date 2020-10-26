@@ -1,0 +1,2239 @@
+*------------------------------------------------------------*
+* Log dei report
+Data:               25 ottobre 2020
+Ora:                22:52:16
+*------------------------------------------------------------*
+19860  data EMWS1.Tree_EMOUTFIT;
+19861  set EMWS1.Tree_EMOUTFIT;
+19862  length TargetLabel $200;
+19863  label targetLabel = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+19864  if upcase(TARGET) eq "TARGET10" then TargetLabel = 'target10';
+19865  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.TREE_EMOUTFIT.
+NOTE: The data set EMWS1.TREE_EMOUTFIT has 1 observations and 17 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+19866  proc sort data=EMWS1.Tree_EMREPORTFIT nothreads;
+19867  by TARGET;
+19868  run;
+
+NOTE: There were 8 observations read from the data set EMWS1.TREE_EMREPORTFIT.
+NOTE: The data set EMWS1.TREE_EMREPORTFIT has 8 observations and 7 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+19869  %let _EMwarndup = 0;
+19870  %let _EMtargetdup =;
+19871  %let _EMASEtargetdup =;
+19872  data _null_;
+19873  set EMWS1.Tree_EMOUTFIT;
+19874  if .<_ASE_<0.000001 then do;
+19875  call symput('_EMwarndup', '1');
+19876  call symput('_EMtargetdup', target);
+19877  call symput('_EMASEtargetdup', put(_ASE_, best.));
+19878  end;
+19879  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.TREE_EMOUTFIT.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+19880  %let EMEXCEPTIONSTRING=;
+19881  *------------------------------------------------------------*;
+19882  * REPORT: Tree;
+19883  *------------------------------------------------------------*;
+19884  %let EM_ACTION = REPORT;
+19885  %let syscc = 0;
+19886  %macro main;
+19887  
+19888    %if %upcase(&EM_ACTION) = CREATE %then %do;
+19889      filename temp catalog 'sashelp.emmodl.tree_create.source';
+19890      %include temp;
+19891      filename temp;
+19892  
+19893      %em_tree_create;
+19894    %end;
+19895  
+19896     %else
+19897     %if %upcase(&EM_ACTION) = TRAIN %then %do;
+19898  
+19899         filename temp catalog 'sashelp.emmodl.tree_train.source';
+19900         %include temp;
+19901         filename temp;
+19902         %em_tree_train;
+19903     %end;
+19904  
+19905    %else
+19906    %if %upcase(&EM_ACTION) = SCORE %then %do;
+19907      filename temp catalog 'sashelp.emmodl.tree_score.source';
+19908      %include temp;
+19909      filename temp;
+19910  
+19911      %em_tree_score;
+19912  
+19913    %end;
+19914  
+19915    %else
+19916    %if %upcase(&EM_ACTION) = REPORT %then %do;
+19917  
+19918         filename temp catalog 'sashelp.emmodl.tree_report.source';
+19919         %include temp;
+19920         filename temp;
+19921  
+19922         %em_tree_report;
+19923     %end;
+19924  
+19925    %else
+19926    %if %upcase(&EM_ACTION) = OPENINT %then %do;
+19927  
+19928         filename temp catalog 'sashelp.emmodl.tree_actions.source';
+19929         %include temp;
+19930         filename temp;
+19931         %EM_TREE_OPENTREEVIEWER;
+19932  
+19933     %end;
+19934  
+19935    %else
+19936    %if %upcase(&EM_ACTION) = CLOSEINT %then %do;
+19937  
+19938         filename temp catalog 'sashelp.emmodl.tree_actions.source';
+19939         %include temp;
+19940         filename temp;
+19941         %EM_TREE_CLOSETREEVIEWER;
+19942  
+19943     %end;
+19944  
+19945  
+19946     %doendm:
+19947  %mend main;
+19948  
+19949  %main;
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMMODL.TREE_REPORT.SOURCE.
+19951 +%macro em_tree_makePlotDs( multipleTar= );
+19953 +  %EM_GETNAME(key=OUTSTATS, type=DATA);
+19954 +  %EM_GETNAME(key=OUTNODES, type=DATA);
+19955 +  %EM_GETNAME(key=TREE_PLOT, type=DATA);
+19956 +  %EM_GETNAME(key=OUTRULES, type=DATA);
+19958 +  /* determine if validation statistics will be displayed */
+19959 +  %let validflag=N;
+19960 +  %if "&EM_PROPERTY_SHOWVALID" eq "Y" %then %do;
+19961 +    /* determine if validation data exists */
+19962 +    %if &validexist AND ("&EM_PROPERTY_CV" ne "Y") %then %do;
+19963 +      %let validflag=Y;
+19964 +    %end;
+19965 +  %end;
+19967 +   /* retrieve name of decmeta even in presence of multiple targets */
+19968 +   %let decmeta = ;
+19969 +   %if &EM_DEC_DECMETA eq %then %do;
+19970 +     data _Target;
+19971 +       set &em_data_variableset;
+19972 +       where ROLE='TARGET' and USE in('D', 'Y');
+19973 +       keep NAME;
+19974 +     run;
+19975 +     proc sort data=_Target;
+19976 +       by NAME;
+19977 +     run;
+19978 +     proc sort data=EM_TARGETDECINFO;
+19979 +       by TARGET;
+19980 +     run;
+19981 +     data _Target;
+19982 +       merge _Target(in=_a) EM_TARGETDECINFO(rename=(TARGET=NAME) );
+19983 +       by NAME;
+19984 +       if _a then do;
+19985 +         call symput('decmeta', trim(DECMETA));
+19986 +       end;
+19987 +     run;
+19988 +     proc delete data=_Target;run;
+19989 +   %end;
+19990 +   %else %let decmeta = &EM_DEC_DECMETA;
+19993 +  /* retrieve targetEvent from decmeta */
+19994 +  %let targetEvent=;
+19995 +  %if "%EM_TARGET_LEVEL" ne "INTERVAL" %then %do;
+19996 +    %if %sysfunc(exist(&DECMETA)) %then %do;
+19997 +      data _null_;
+19998 +       set &DECMETA(where=(_TYPE_="TARGET"));
+19999 +       call symput('targetEvent', strip(tranwrd(EVENT,'"','""')));
+20000 +      run;
+20001 +    %end;
+20002 +  %end;
+20004 +  /* retrieve predicted var for targetEvent from decmeta */
+20005 +  %let predTarget=;
+20006 +  %let predLvl=;
+20007 +  %if "%EM_TARGET_LEVEL" ne "INTERVAL" %then %do;
+20008 +    %if %sysfunc(exist(&DECMETA)) %then %do;
+20009 +      data _null_;
+20010 +       set &DECMETA(where=(_TYPE_="PREDICTED" AND LEVEL="&targetEvent"));
+20011 +       call symput('predTarget', strip(VARIABLE));
+20012 +       call symput('predLvl', strip(LEVEL));
+20013 +      run;
+20014 +    %end;
+20015 +  %end;
+20016 +  %else %do;
+20017 +    %if %sysfunc(exist(&DECMETA)) %then %do;
+20018 +      data _null_;
+20019 +       set &DECMETA(where=(_TYPE_="PREDICTED"));
+20020 +       call symput('predTarget', strip(VARIABLE));
+20021 +      run;
+20022 +    %end;
+20023 +  %end;
+20025 +  /* create BelowText value */
+20026 +  data belowtext;
+20027 +    set &EM_USER_OUTRULES(where=(ROLE="PRIMARY" AND STAT="VARIABLE") rename=(character_value=belowtext));
+20028 +    keep node belowtext;
+20029 +  run;
+20031 +  /* replace belowtext with variable label if it exists */
+20032 +  data belowtext2;
+20033 +    set &EM_USER_OUTRULES(where=(ROLE="PRIMARY" AND STAT="LABEL") rename=(character_value=belowtextlbl));
+20034 +    keep node belowtextlbl;
+20035 +  run;
+20037 +  proc sort data=belowtext; by node; run;
+20038 +  proc sort data=belowtext2; by node; run;
+20040 +  data belowtext;
+20041 +    merge belowtext belowtext2(in=_a);
+20042 +    by node;
+20043 +    if _a then belowtext=belowtextlbl;
+20044 +    keep node belowtext;
+20045 +  run;
+20047 +  /* create AboveText value */
+20048 +  data abovetext;
+20049 +    set &EM_USER_OUTRULES(where=(ROLE="PRIMARY" AND STAT in ("INTERVAL", "ORDINAL", "NOMINAL")) );
+20050 +  run;
+20051 +  proc sort data=abovetext; by node numeric_value; run;
+20053 +  %let sp_precision = %sysevalf(1 / 10**&EM_PROPERTY_SPLITPRECISION);
+20054 +  data abovetext;
+20055 +    set abovetext(rename=(node=parent));
+20056 +    by parent numeric_value;
+20057 +    retain abovetext tempstring flag branch origval origchar ;
+20058 +    length abovetext $256;
+20059 +    length tempstring origchar $64;
+20061 +    if STAT in ("INTERVAL", "ORDINAL") then do;
+20062 +      if first.parent then do;
+20063 +        if missing(character_value) then do;
+20064 +          numeric_value = round(numeric_value, &sp_precision);
+20065 +          abovetext = "< "||strip(NUMERIC_VALUE);
+20066 +          branch = 1;
+20067 +          origval = numeric_value;
+20068 +          output;
+20069 +        end;
+20070 +        else do;
+20071 +          abovetext = "< "||strip(CHARACTER_VALUE);
+20072 +          branch = 1;
+20073 +          origchar = character_value;
+20074 +          output;
+20075 +        end;
+20077 +        if first.parent AND last.parent then do;
+20078 +          if missing(character_value) then do;
+20079 +            numeric_value = round(numeric_value, &sp_precision);
+20080 +            branch = branch + 1;
+20081 +            abovetext = ">= "||strip(NUMERIC_VALUE);
+20082 +            output;
+20083 +          end;
+20084 +          else do;
+20085 +            branch = branch + 1;
+20086 +            abovetext = ">= "||strip(CHARACTER_VALUE);
+20087 +            output;
+20088 +          end;
+20089 +        end;
+20090 +      end;
+20091 +      else if last.parent then do;
+20092 +        if ( missing(character_value) AND (origval ne numeric_value)) or ( ^missing(character_value) AND (origchar ne character_value)) then do;
+20093 +          if missing(character_value) then do;
+20094 +            numeric_value = round(numeric_value, &sp_precision);
+20095 +            abovetext= "[ "||strip(origval)||", "|| strip(numeric_value)||" )";
+20096 +          end;
+20097 +          else do;
+20098 +            abovetext= ">= "||strip(origchar)||" AND < "|| strip(character_value);
+20099 +          end;
+20100 +          branch = branch + 1;
+20101 +          output;
+20103 +          if missing(character_value) then do;
+20104 +            numeric_value = round(numeric_value, &sp_precision);
+20105 +            abovetext = ">= "||strip(NUMERIC_VALUE);
+20106 +          end;
+20107 +          else do;
+20108 +            abovetext = ">= "||strip(CHARACTER_VALUE);
+20109 +          end;
+20110 +          branch = branch + 1;
+20111 +          output;
+20112 +        end;
+20113 +        else do;
+20114 +          if missing(character_value) then do;
+20115 +            numeric_value = round(numeric_value, &sp_precision);
+20116 +            abovetext = ">= "||strip(NUMERIC_VALUE);
+20117 +          end;
+20118 +          else do;
+20119 +            abovetext = ">= "||strip(CHARACTER_VALUE);
+20120 +          end;
+20121 +          branch = branch + 1;
+20122 +          output;
+20123 +        end;
+20124 +      end;
+20125 +      else do;
+20126 +        if ( missing(character_value) AND (origval ne numeric_value)) or ( ^missing(character_value) AND (origchar ne character_value)) then do;
+20127 +          if missing(character_value) then do;
+20128 +            numeric_value = round(numeric_value,&sp_precision);
+20129 +            abovetext= "[ "||strip(origval)||", "|| strip(numeric_value)||" )";
+20130 +            origval = numeric_value;
+20131 +          end;
+20132 +          else do;
+20133 +            abovetext= ">= "||strip(origchar)||" AND < "|| strip(character_value);
+20134 +            origchar = character_value;
+20135 +          end;
+20136 +          branch = branch + 1;
+20137 +          output;
+20139 +        end;
+20140 +        else do;
+20141 +          if missing(character_value) then do;
+20142 +            numeric_value = round(numeric_value, &sp_precision);
+20143 +            abovetext = ">= "||strip(NUMERIC_VALUE);
+20144 +            origval = numeric_value;
+20145 +          end;
+20146 +          else do;
+20147 +            abovetext = ">= "||strip(CHARACTER_VALUE);
+20148 +            origval = character_value;
+20149 +          end;
+20150 +          branch = branch + 1;
+20151 +          output;
+20152 +        end;
+20153 +      end;
+20154 +    end;
+20155 +    else do;
+20156 +       if first.numeric_value then do;
+20157 +         flag = 0;
+20158 +         abovetext = strip(CHARACTER_VALUE);
+20159 +         branch = numeric_value;
+20160 +         if first.numeric_value AND last.numeric_value then do;
+20161 +           output;
+20162 +         end;
+20163 +       end;
+20164 +       else if last.numeric_value then do;
+20165 +         if flag=0 then do;
+20166 +           tempstring = strip(abovetext)||", "||strip(CHARACTER_VALUE);
+20167 +           length = length(strip(tempstring));
+20168 +           if length < 32 then do;
+20169 +             abovetext = strip(tempstring);
+20170 +           end;
+20171 +           else do;
+20172 +             abovetext = strip(abovetext)||", ...";
+20173 +             flag = 1;
+20174 +           end;
+20175 +         end;
+20176 +         branch = numeric_value;
+20177 +         output;
+20178 +       end;
+20179 +       else do;
+20180 +         if flag=0 then do;
+20181 +           tempstring = strip(abovetext)||", "||strip(CHARACTER_VALUE);
+20182 +           length = length(strip(tempstring));
+20183 +           if length < 32 then do;
+20184 +             abovetext = strip(tempstring);
+20185 +           end;
+20186 +           else do;
+20187 +             abovetext = strip(abovetext)||", ...";
+20188 +             flag=1;
+20189 +           end;
+20190 +         end;
+20191 +         branch = numeric_value;
+20192 +       end;
+20193 +    end;
+20194 +    keep parent branch abovetext;
+20195 +  run;
+20197 +  /* Missing value to abovetext */
+20198 +  data tempmissing;
+20199 +    set &EM_USER_OUTRULES;
+20200 +    if ((ROLE="PRIMARY") AND (STAT in ("MISSING")));
+20201 +    rename node=parent numeric_value=branch character_value=misschar;
+20202 +  run;
+20205 +  proc sort data=abovetext; by parent branch; run;
+20206 +  proc sort data=tempmissing; by parent branch; run;
+20207 +  proc sort data=&EM_USER_OUTNODES out=tempoutnodes; by parent branch; run;
+20209 +  data tempoutnodes;
+20210 +    merge abovetext tempoutNodes(drop=abovetext) tempmissing(in=_a);
+20211 +    by parent branch;
+20212 +    length traintotal validtotal 8;
+20213 +    retain traintotal validtotal;
+20215 +    if _a then do;
+20216 +      if ^MISSING(abovetext) then do;
+20217 +        abovetext= strip(abovetext)||" %sysfunc(sasmsg(sashelp.dmine, tree_ormiss_vlabel, noquote))";
+20218 +      end;
+20219 +      else do;
+20220 +        abovetext = " %sysfunc(sasmsg(sashelp.dmine, tree_missonly_vlabel, noquote))";
+20221 +      end;
+20222 +    end;
+20223 +    if MISSING(abovetext) then abovetext="%sysfunc(sasmsg(sashelp.dmine, tree_nonmiss_vlabel, noquote))";
+20225 +    if node=1 then do;
+20226 +      traintotal = N;
+20227 +      validtotal=VN;
+20228 +    end;
+20230 +    drop role rank stat misschar belowtext;
+20231 +  run;
+20232 +  proc sort data=tempoutnodes; by node; run;
+20233 +  proc sort data=belowtext; by node; run;
+20235 +  data tempoutnodes;
+20236 +    merge tempoutnodes belowtext;
+20237 +    by node;
+20239 +  run;
+20241 +  /* determine if adjusted counts exists; if so, use these vs true counts */
+20242 +  %let adjusted = N;
+20243 +  %let npriors = 0;
+20244 +  data _null_ ;
+20245 +    set &EM_USER_outstats(where=(STATNAME="NPRIORS")) end=eof ;
+20246 +    if eof then do ;
+20247 +      call symput("npriors" , strip(put(_N_,best.))) ;
+20248 +    end;
+20249 +  run;
+20250 +  %if &npriors gt 0 %then %let adjusted=Y;
+20253 +  /* create a table with targetUsed and targetLevel columns for each node */
+20254 +  data temptarmeta;
+20255 +    set &EM_DATA_VARIABLESET(where=(ROLE='TARGET' AND LEVEL^='ORDINAL'
+20256 +    %if &multipleTar eq N %then %do;
+20257 +      AND USE in ('D', 'Y')
+20258 +    %end;
+20259 +    ));
+20260 +    length TARGET $32;
+20261 +    Target=name;
+20262 +    keep target level;
+20263 +  run;
+20265 +  %if &multipleTar eq Y %then %do;
+20266 +    data temptargetused;
+20267 +      set &EM_USER_OUTSTATS(where=(STATNAME="TARGET"));
+20268 +      keep node target;
+20269 +    run;
+20270 +    proc sort data=temptargetused; by target; run;
+20271 +    proc sort data=temptarmeta; by target; run;
+20272 +    data temptargetused;
+20273 +      merge temptargetused(in=_a) temptarmeta(in=_b rename=(level=tarlevel));
+20274 +      by target;
+20275 +      if _a and _b;
+20276 +    run;
+20277 +  %end;
+20278 +  %else %do;
+20279 +    data temptargetused;
+20280 +      set &EM_USER_OUTSTATS;
+20281 +      length target $32 tarlevel $10;
+20282 +      target="%EM_TARGET";
+20283 +      tarlevel="%EM_TARGET_LEVEL";
+20284 +      keep node target tarlevel;
+20285 +    run;
+20286 +    proc sort data=temptargetused nodupkey; by node; run;
+20287 +  %end;
+20289 +  /* merge this information back into outstats, keeping only stats for the target used in the tree */
+20290 +  proc sort data=&EM_USER_OUTSTATS out=tempoutstats; by node; run;
+20291 +  proc sort data=temptargetused; by node; run;
+20294 +  /* create tables for all interval targets as well as all class targets */
+20295 +  data tempinterval tempclass;
+20296 +    merge tempoutstats temptargetused( rename=(target=targetused));
+20297 +    by node;
+20298 +    %if "&multipleTar" eq "Y" %then %do;
+20299 +      if ((missing(Target)) OR (target=targetused ));
+20300 +    %end;
+20302 +    if tarlevel="INTERVAL" then output tempinterval;
+20303 +    else output tempclass;
+20304 +  run;
+20306 +  /* initialize intTarget and classTarget flags */
+20307 +  %let em_intNobs =0;
+20308 +  %let em_classNobs = 0;
+20309 +  %let em_intTarget= N;
+20310 +  %let em_classTarget= N;
+20312 +  proc sql;
+20313 +    reset noprint;
+20314 +    select count(*) into :em_intNobs from tempinterval;
+20315 +  quit;
+20316 +  proc sql;
+20317 +    reset noprint;
+20318 +    select count(*) into :em_classNobs from tempclass;
+20319 +  quit;
+20321 +  %if &em_intNobs gt 0 %then %let em_intTarget=Y;
+20322 +  %if &em_classNobs gt 0 %then %let em_classTarget=Y;
+20324 +  /* retrieve all information for interval targets */
+20325 +  %if &em_intTarget eq Y %then %do;
+20327 +    /* determine if leaf variable exists */
+20328 +    %let dsid=%sysfunc(open(tempinterval,i));
+20329 +    %let leafexists=%sysfunc(varnum(&dsid,LEAF));
+20330 +    %let rc=%sysfunc(close(&dsid));
+20332 +    proc transpose data=tempinterval
+20333 +      %if &leafexists %then %do;
+20334 +        (drop=leaf)
+20335 +      %end;
+20336 +      %if &validexist %then %do;
+20337 +       out=tempinterval(keep=NODE N VALID: N PREDICTION VALID: PREDICTION RASE VALID: RASE rename=(VALID__N=VN VALID__PREDICTION=VPREDICTION VALID__RASE=VRASE)) ;
+20338 +      %end;
+20339 +      %else %do;
+20340 +         out=tempinterval(keep=NODE N PREDICTION RASE ) ;
+20341 +      %end;
+20342 +      by node;
+20343 +      id statname;
+20344 +    run;
+20345 +    data tempinterval;
+20346 +      set tempinterval;
+20347 +      if missing(N) then delete;
+20348 +    run;
+20349 +  %end;
+20351 +  /* retrieve all information for class targets */
+20352 +  %if &em_classTarget eq Y %then %do;
+20353 +    proc sort data=tempclass; by node category; run;
+20354 +    %if &validflag eq N %then %do;
+20355 +      data tempn(keep=NODE STATVALUE) temppredict(Keep=NODE CATEGORY) tempprob(keep=NODE STATVALUE CATEGORY TARGET )
+20356 +           tempprofit(KEEP=NODE STATVALUE CATEGORY  ) temploss(KEEP=NODE STATVALUE CATEGORY  );
+20357 +    %end;
+20358 +    %else %do;
+20359 +     data tempn(keep=NODE STATVALUE STATNAME) temppredict(Keep=NODE CATEGORY) tempprob(keep=NODE STATVALUE CATEGORY TARGET ) tempvprob(keep=NODE STATVALUE CATEGORY TARGET )
+20360 +          tempprofit(KEEP=NODE STATVALUE STATNAME CATEGORY ) temploss(KEEP=NODE STATVALUE STATNAME CATEGORY );
+20361 +    %end;
+20362 +      set tempclass;
+20364 +      %if &validflag eq N %then %do;
+20365 +        %if "&adjusted" eq "N" %then %do;
+20366 +          if statname="N" then output tempn;
+20367 +        %end;
+20368 +        %else %do;
+20369 +          if statname="NPRIORS" then output tempn;
+20370 +        %end;
+20371 +        else if statname="PREDICTION" then output temppredict;
+20372 +        else if statname="PROBABILITY" then output tempprob;
+20373 +        else if statname="ALTERNATIVE PROFIT" then output tempprofit;
+20374 +        else if statname="ALTERNATIVE LOSS" then output temploss;
+20375 +      %end;
+20376 +      %else %do;
+20377 +        %if "&adjusted" eq "N" %then %do;
+20378 +          if ((statname="N") OR (statname="VALID: N")) then output tempn;
+20379 +        %end;
+20380 +        %else %do;
+20381 +          if ((statname="NPRIORS") or (statname="VALID: NPRIORS") ) then output tempn;
+20382 +        %end;
+20383 +        else if statname="PREDICTION" then output temppredict;
+20384 +        else if statname="PROBABILITY" then output tempprob;
+20385 +        else if statname="VALID: PROBABILITY" then output tempvprob;
+20386 +        else if ((statname="ALTERNATIVE PROFIT") or (statname="VALID: ALTERNATIVE PROFIT")) then output tempprofit;
+20387 +        else if ((statname="ALTERNATIVE LOSS") OR (statname="VALID: ALTERNATIVE LOSS")) then output temploss;
+20388 +      %end;
+20389 +    run;
+20392 +    /* determine if profit/loss exists in tempprofit */
+20393 +    %let em_profitflag=0;
+20394 +    %let em_lossflag=0;
+20395 +    proc sql;
+20396 +      reset noprint;
+20397 +      select count(*) into :em_profitflag from tempprofit;
+20398 +    quit;
+20399 +    proc sql;
+20400 +      reset noprint;
+20401 +      select count(*) into :em_lossflag from temploss;
+20402 +    quit;
+20404 +    %if &validFlag eq Y %then %do;
+20405 +      proc transpose data=tempn
+20406 +        %if "&adjusted" eq "N" %then %do;
+20407 +           out=tempn(keep=node N VALID__N rename=(VALID__N=VN));
+20408 +        %end;
+20409 +        %else %do;
+20410 +           out=tempn(keep=node NPRIORS VALID__NPRIORS rename=( VALID__NPRIORS=VNPRIORS));
+20411 +        %end;
+20412 +        by node;
+20413 +        id statname;
+20414 +      run;
+20415 +      %if &em_profitflag ne 0 %then %do;
+20416 +        proc transpose data=tempprofit out=tempprofit;
+20417 +          by node category;
+20418 +          id statname ;
+20419 +        run;
+20420 +      %end;
+20421 +      %if &em_lossflag ne 0 %then %do;
+20422 +        proc transpose data=temploss out=temploss;
+20423 +          by node category;
+20424 +          id statname ;
+20425 +        run;
+20426 +      %end;
+20427 +      data tempprob;
+20428 +        merge tempprob tempvprob(rename=(statvalue=vstatvalue));
+20429 +        by node
+20430 +        %if &multipleTar eq Y %then %do;
+20431 +          target
+20432 +        %end;
+20433 +        category;
+20434 +      run;
+20435 +    %end;
+20437 +    /* store percentcorrect value */
+20438 +    data temppredict;
+20439 +      merge tempprob temppredict(in=_a);
+20440 +      by node category;
+20441 +      if _a then do;
+20442 +        percentCorrect = statvalue;
+20443 +        %if &validFlag eq Y %then %do;
+20444 +          vpercentCorrect= vstatvalue;
+20445 +        %end;
+20446 +      end;
+20447 +      label percentCorrect="%sysfunc(sasmsg(sashelp.dmine, rpt_percentcorrect_vlabel, noquote))"
+20448 +      %if &validFlag eq Y %then %do;
+20449 +         vpercentCorrect="%sysfunc(sasmsg(sashelp.dmine, rpt_vpercentcorrect_vlabel, noquote))"
+20450 +      %end;
+20451 +      ;
+20452 +      if missing(percentCorrect) then delete;
+20453 +      drop target;
+20454 +    run;
+20456 +    /* build profittext */
+20457 +    %if ((&em_profitflag ne 0) OR (&em_lossflag ne 0)) %then %do;
+20458 +      data tempprofittext(keep= node profittext profitloss);
+20459 +        length profittext $800 profitloss 8.;
+20460 +        retain profittext profitloss;
+20462 +        merge tempprob
+20463 +        %if &em_profitflag ne 0 %then %do;
+20464 +          tempprofit
+20465 +        %end;
+20466 +        %else %if &em_lossflag ne 0 %then %do;
+20467 +          temploss
+20468 +        %end;
+20469 +        ;
+20470 +        by node category;
+20472 +        /* EVENT ONLY IS NOT AVAILABLE FOR MULTIPLE TARGETS AS ONLY PRIMARY TARGET IS IN EM_TARGETDECINFO TO RETRIEVE EVENT LEVEL */
+20473 +        %let profittype = &EM_PROPERTY_PROFITLOSS;
+20474 +        %if ((&multipleTar eq Y) AND ("&EM_PROPERTY_PROFITLOSS" eq "EVENT"))  %then %do;
+20475 +          %let profittype = ALL;
+20476 +        %end;
+20478 +        /* create the profitloss variable for nodecolor if selected */
+20479 +        label profitloss="%sysfunc(sasmsg(sashelp.dmine, rpt_profitloss_vlabel, noquote))";
+20481 +        %if "&profittype" eq "ALL" %then %do;
+20482 +          if strip(CATEGORY)="&targetEvent" then do;
+20483 +            profitloss=statvalue;
+20484 +          end;
+20485 +          if first.node then do;
+20486 +            %if &validFlag eq N %then %do;
+20487 +             %if &em_profitflag ne 0 %then %do;
+20488 +                 profittext="%sysfunc(sasmsg(sashelp.dmine, rpt_profit_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(STATVALUE, 14.&EM_PROPERTY_SPLITPRECISION);
+20489 +             %end;
+20490 +             %if &em_lossflag ne 0 %then %do;
+20491 +                 profittext="%sysfunc(sasmsg(sashelp.dmine, rpt_loss_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(STATVALUE, 14.&EM_PROPERTY_SPLITPRECISION);
+20492 +             %end;
+20493 +            %end;
+20494 +            %else %do;
+20495 +             %if &em_profitflag ne 0 %then %do;
+20496 +                profittext="%sysfunc(sasmsg(sashelp.dmine, rpt_profit_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(ALTERNATIVE_PROFIT, 14.&EM_PROPERTY_SPLITPRECISION)||"09"x||put(VALID__ALTERNATIVE_PROFIT, 14.&EM_PROPERTY_SPLITPRECISION)
+20496!+;
+20497 +             %end;
+20498 +             %if &em_lossflag ne 0 %then %do;
+20499 +                profittext="%sysfunc(sasmsg(sashelp.dmine, rpt_loss_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(ALTERNATIVE_LOSS, 14.&EM_PROPERTY_SPLITPRECISION)||"09"x||put(VALID__ALTERNATIVE_LOSS, 14.&EM_PROPERTY_SPLITPRECISION);
+20500 +             %end;
+20501 +            %end;
+20502 +          end;
+20503 +          else if last.node then do;
+20504 +            %if &validFlag eq N %then %do;
+20505 +             %if &em_profitflag ne 0 %then %do;
+20506 +                 profittext=strip(profittext)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_profit_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(STATVALUE, 14.&EM_PROPERTY_SPLITPRECISION);
+20507 +             %end;
+20508 +             %if &em_lossflag ne 0 %then %do;
+20509 +                 profittext=strip(profittext)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_loss_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(STATVALUE, 14.&EM_PROPERTY_SPLITPRECISION);
+20510 +             %end;
+20511 +             /*if CATEGORY="&targetEvent" then do;
+20512 +               profitloss=statvalue;
+20513 +             end;*/
+20514 +            %end;
+20515 +            %else %do;
+20516 +             %if &em_profitflag ne 0 %then %do;
+20517 +                profittext=strip(profittext)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_profit_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(ALTERNATIVE_PROFIT, 14.&EM_PROPERTY_SPLITPRECISION)||"09"x||put(VALID__ALTERNATIVE_PROFIT,
+20517!+14.&EM_PROPERTY_SPLITPRECISION);
+20518 +                if CATEGORY="&targetEvent" then do;
+20519 +                 profitloss=ALTERNATIVE_PROFIT;
+20520 +                end;
+20521 +             %end;
+20522 +             %if &em_lossflag ne 0 %then %do;
+20523 +                profittext=strip(profittext)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_loss_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(ALTERNATIVE_LOSS, 14.&EM_PROPERTY_SPLITPRECISION)||"09"x||put(VALID__ALTERNATIVE_LOSS,
+20523!+14.&EM_PROPERTY_SPLITPRECISION);
+20524 +                if CATEGORY="&targetEvent" then do;
+20525 +                  profitloss=ALTERNATIVE_LOSS;
+20526 +                end;
+20527 +             %end;
+20528 +            %end;
+20529 +            output;
+20530 +          end;
+20531 +          else do;
+20532 +            %if &validFlag eq N %then %do;
+20533 +             %if &em_profitflag ne 0 %then %do;
+20534 +                 profittext=strip(profittext)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_profit_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(STATVALUE, 14.&EM_PROPERTY_SPLITPRECISION);
+20535 +             %end;
+20536 +             %if &em_lossflag ne 0 %then %do;
+20537 +                 profittext=strip(profittext)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_loss_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(STATVALUE, 14.&EM_PROPERTY_SPLITPRECISION);
+20538 +             %end;
+20539 +            %end;
+20540 +            %else %do;
+20541 +             %if &em_profitflag ne 0 %then %do;
+20542 +                profittext=strip(profittext)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_profit_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(ALTERNATIVE_PROFIT, 14.&EM_PROPERTY_SPLITPRECISION)||"09"x||put(VALID__ALTERNATIVE_PROFIT,
+20542!+14.&EM_PROPERTY_SPLITPRECISION);
+20543 +             %end;
+20544 +             %if &em_lossflag ne 0 %then %do;
+20545 +                profittext=strip(profittext)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_loss_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(ALTERNATIVE_LOSS, 14.&EM_PROPERTY_SPLITPRECISION)||"09"x||put(VALID__ALTERNATIVE_LOSS,
+20545!+14.&EM_PROPERTY_SPLITPRECISION);
+20546 +             %end;
+20547 +            %end;
+20548 +          end;
+20549 +        %end;
+20550 +        %else %if (("&profittype" eq "EVENT") AND ("&targetEvent" ne "" )) %then %do;
+20551 +          if strip(CATEGORY) = "&targetevent" then do;
+20552 +            %if &validFlag eq N %then %do;
+20553 +             %if &em_profitflag ne 0 %then %do;
+20554 +                 profittext="%sysfunc(sasmsg(sashelp.dmine, rpt_profit_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(STATVALUE, 14.&EM_PROPERTY_SPLITPRECISION);
+20555 +             %end;
+20556 +             %if &em_lossflag ne 0 %then %do;
+20557 +                 profittext="%sysfunc(sasmsg(sashelp.dmine, rpt_loss_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(STATVALUE, 14.&EM_PROPERTY_SPLITPRECISION);
+20558 +             %end;
+20559 +             profitloss=statvalue;
+20560 +            %end;
+20561 +            %else %do;
+20562 +             %if &em_profitflag ne 0 %then %do;
+20563 +                profittext="%sysfunc(sasmsg(sashelp.dmine, rpt_profit_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(ALTERNATIVE_PROFIT, 14.&EM_PROPERTY_SPLITPRECISION)||"09"x||put(VALID__ALTERNATIVE_PROFIT, 14.&EM_PROPERTY_SPLITPRECISION)
+20563!+;
+20564 +                profitloss=ALTERNATIVE_PROFIT;
+20565 +             %end;
+20566 +             %if &em_lossflag ne 0 %then %do;
+20567 +                profittext="%sysfunc(sasmsg(sashelp.dmine, rpt_loss_vlabel, noquote )): "||strip(CATEGORY)||": "||"09"x||put(ALTERNATIVE_LOSS, 14.&EM_PROPERTY_SPLITPRECISION)||"09"x||put(VALID__ALTERNATIVE_LOSS, 14.&EM_PROPERTY_SPLITPRECISION);
+20568 +                profitloss=ALTERNATIVE_LOSS;
+20569 +             %end;
+20570 +            %end;
+20571 +            output;
+20572 +          end;
+20573 +        %end;
+20574 +        %else %if (("&profittype" eq "NONE") AND ("&targetEvent" ne "" )) %then %do;
+20575 +          if strip(CATEGORY) = "&targetevent" then do;
+20576 +            %if &validFlag eq N %then %do;
+20577 +             profitloss=statvalue;
+20578 +            %end;
+20579 +            %else %do;
+20580 +             %if &em_profitflag ne 0 %then %do;
+20581 +                profitloss=ALTERNATIVE_PROFIT;
+20582 +             %end;
+20583 +             %if &em_lossflag ne 0 %then %do;
+20584 +                profitloss=ALTERNATIVE_LOSS;
+20585 +             %end;
+20586 +            %end;
+20587 +            output;
+20588 +          end;
+20589 +        %end;
+20590 +      run;
+20591 +    %end;
+20593 +    data tempprob(keep= node probtext);
+20594 +      length probtext $800;
+20595 +      retain probtext;
+20596 +      set tempprob ;
+20597 +      by node;
+20599 +      /* EVENT ONLY IS NOT AVAILABLE FOR MULTIPLE TARGETS AS ONLY PRIMARY TARGET IS IN EM_TARGETDECINFO TO RETRIEVE EVENT LEVEL */
+20600 +      %let probtype = &EM_PROPERTY_TARGET;
+20601 +      %if ((&multipleTar eq Y) AND ("&EM_PROPERTY_TARGET" eq "EVENT"))  %then %do;
+20602 +        %let probtype = ALL;
+20603 +      %end;
+20605 +      %if "&probtype" eq "ALL" %then %do;
+20606 +        if first.node then do;
+20607 +          %if &validFlag eq N %then %do;
+20608 +            probtext=strip(CATEGORY)||": "||"09"x||put(statvalue, percent10.2);
+20609 +          %end;
+20610 +          %else %do;
+20611 +            probtext=strip(CATEGORY)||": "||"09"x||put(statvalue, percent10.2)||"09"x||put(vstatvalue, percent10.2);
+20612 +          %end;
+20613 +        end;
+20614 +        else if last.node then do;
+20615 +          %if &validFlag eq N %then %do;
+20616 +            probtext=strip(probtext)||"0A"x||strip(CATEGORY)||": "||"09"x||put(statvalue, percent10.2);
+20617 +          %end;
+20618 +          %else %do;
+20619 +            probtext=strip(probtext)||"0A"x||strip(CATEGORY)||": "||"09"x||put(statvalue, percent10.2)||"09"x||put(vstatvalue, percent10.2);
+20620 +          %end;
+20621 +          output;
+20622 +        end;
+20623 +        else do;
+20624 +          %if &validFlag eq N %then %do;
+20625 +            probtext=strip(probtext)||"0A"x||strip(CATEGORY)||": "||"09"x||put(statvalue, percent10.2);
+20626 +          %end;
+20627 +          %else %do;
+20628 +            probtext=strip(probtext)||"0A"x||strip(CATEGORY)||": "||"09"x||put(statvalue, percent10.2)||"09"x||put(vstatvalue, percent10.2);
+20629 +          %end;
+20630 +        end;
+20631 +      %end;
+20632 +      %else %if (("&probtype" eq "EVENT") AND ("&targetEvent" ne "" )) %then %do;
+20633 +        if strip(CATEGORY) = "&targetevent" then do;
+20634 +          %if &validFlag eq N %then %do;
+20635 +            probtext=strip(CATEGORY)||": "||"09"x||put(statvalue, percent10.2);
+20636 +          %end;
+20637 +          %else %do;
+20638 +            probtext=strip(CATEGORY)||": "||"09"x||put(statvalue, percent10.2)||"09"x||put(vstatvalue, percent10.2);
+20639 +          %end;
+20640 +          output;
+20641 +        end;
+20642 +      %end;
+20643 +      %else %if "&probtype" eq "NONE" %then %do;
+20644 +        if last.node then do;
+20645 +          output;
+20646 +        end;
+20647 +      %end;
+20648 +    run;
+20649 +  %end;
+20651 +  proc sort data=tempoutnodes out=tempoutnodes; by node; run;
+20653 +  %let oldexists=0;
+20654 +  %if %sysfunc(exist(&EM_USER_TREE_PLOT)) %then %do;
+20655 +     data old_tree_plot;
+20656 +        set &EM_USER_TREE_PLOT(keep=node nodecolor);
+20657 +        rename nodecolor=oldnodecolor;
+20658 +     run;
+20660 +     proc sort data=old_tree_plot;
+20661 +        by node;
+20662 +     run;
+20664 +     %let oldexists=1;
+20665 +  %end;
+20667 +  data &EM_USER_TREE_PLOT;
+20668 +    length textall $800;
+20669 +    merge tempoutnodes temptargetused
+20671 +    %if &em_intTarget eq Y %then %do;
+20672 +      tempinterval
+20673 +    %end;
+20675 +    %if &em_classTarget eq Y %then %do;
+20677 +      %if &validFlag eq N %then %do;
+20678 +        tempn(rename=(statvalue=N))
+20679 +      %end;
+20680 +      %else %do;
+20681 +        tempn
+20682 +      %end;
+20684 +      temppredict tempprob
+20686 +      %if ((&em_profitflag ne 0) OR (&em_lossflag ne 0)) %then %do;
+20687 +        tempprofittext
+20688 +      %end;
+20689 +    %end;
+20690 +    ;
+20691 +    by node;
+20693 +    /* build nodetext based on user selection */
+20694 +    textall="";
+20696 +    %if &em_intTarget eq Y %then %do;
+20697 +    if tarlevel="INTERVAL" then do;
+20698 +      /* Nodeid */
+20699 +      %if "&EM_PROPERTY_SHOWNODEID" eq "Y" %then %do;
+20700 +        textall=strip(textall)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_nodeId_vlabel, noquote )): "||"09"x||strip(Node);
+20701 +      %end;
+20703 +      /* Target identifier if multiple targets are used */
+20704 +      %if "&multipleTar" eq "Y" %then %do;
+20705 +        textall=strip(textall)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_target_title, noquote, )) "||"09"x||strip(target);
+20706 +      %end;
+20708 +      %if &validFlag eq Y %then %do;
+20709 +         /* Column labels displayed in validflag eq Y only */
+20710 +         %if (("&EM_PROPERTY_AVG" eq "Y") OR ("&EM_PROPERTY_RASE" eq "Y") OR ("&EM_PROPERTY_COUNT" eq "Y")) %then %do;
+20711 +           textall=strip(textall)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_rptstatistic_vlabel, noquote)) "||"09"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_train_vlabel , noquote ))" ||"09"x|| "%sysfunc(sasmsg(sashelp.dmine, rpt_validate_vlabel ,
+20711!+noquote ))";
+20712 +         %end;
+20714 +         /* Average values */
+20715 +         %if "&EM_PROPERTY_AVG" eq "Y" %then %do;
+20716 +           textall=strip(textall)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_average_vlabel, noquote)): "||"09"x||put(PREDICTION, 14.&EM_PROPERTY_SPLITPRECISION)||"09"x||put(VPREDICTION, 14.&EM_PROPERTY_SPLITPRECISION);
+20717 +         %end;
+20719 +         /* RASE */
+20720 +         %if "&EM_PROPERTY_RASE" eq "Y" %then %do;
+20721 +           textall=strip(textall)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_rase_vlabel, noquote)): "||"09"x||put(RASE, 14.&EM_PROPERTY_SPLITPRECISION)||"09"x||put(VRASE, 14.&EM_PROPERTY_SPLITPRECISION);
+20722 +         %end;
+20724 +         /* Count */
+20725 +         %if "&EM_PROPERTY_COUNT" eq "Y" %then %do;
+20726 +           textall=strip(textall)||"0A"x||" %sysfunc(sasmsg(sashelp.dmine, rpt_rptcount_vlabel, noquote )): "||"09"x||strip(N)||"09"x||strip(VN);
+20727 +         %end;
+20728 +      %end;
+20729 +      %else %do;
+20730 +         /* Average values */
+20731 +         %if "&EM_PROPERTY_AVG" eq "Y" %then %do;
+20732 +           textall=strip(textall)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_average_vlabel, noquote)): "||"09"x||put(PREDICTION, 14.&EM_PROPERTY_SPLITPRECISION);
+20733 +         %end;
+20735 +         /* RASE */
+20736 +         %if "&EM_PROPERTY_RASE" eq "Y" %then %do;
+20737 +           textall=strip(textall)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_rase_vlabel, noquote)): "||"09"x||put(RASE, 14.&EM_PROPERTY_SPLITPRECISION);
+20738 +         %end;
+20740 +         /* Count */
+20741 +         %if "&EM_PROPERTY_COUNT" eq "Y" %then %do;
+20742 +           textall=strip(textall)||"0A"x||" %sysfunc(sasmsg(sashelp.dmine, rpt_rptcount_vlabel, noquote )): "||"09"x||strip(N);
+20743 +         %end;
+20744 +      %end;
+20746 +      /* nodecolor */
+20747 +      %if "&EM_PROPERTY_INTCOLORBY" eq "AVG" %then %do;
+20748 +        nodecolor=PREDICTION;
+20749 +      %end;
+20750 +      %else %if "&EM_PROPERTY_INTCOLORBY" eq "RASE" %then %do;
+20751 +        nodecolor=RASE;
+20752 +      %end;
+20753 +      %else %if "&EM_PROPERTY_INTCOLORBY" eq "SINGLE" %then %do;
+20754 +        nodecolor=1;
+20755 +      %end;
+20757 +    end;
+20758 +    %end;
+20759 +    %if &em_classTarget eq Y %then %do;
+20760 +    if tarlevel^="INTERVAL" then  do;
+20762 +      /* Nodeid */
+20763 +      %if "&EM_PROPERTY_SHOWNODEID" eq "Y" %then %do;
+20764 +        textall=strip(textall)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_nodeId_vlabel, noquote )): "||"09"x||strip(Node);
+20765 +      %end;
+20766 +      /* Target identifier if multiple targets are used */
+20767 +      %if "&multipleTar" eq "Y" %then %do;
+20768 +        textall=strip(textall)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_target_title, noquote, )) "||"09"x||strip(target);
+20769 +      %end;
+20771 +      /* Predicted values */
+20772 +      %if "&EM_PROPERTY_PRED" eq "Y" %then %do;
+20773 +        textall=strip(textall)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_pls_score_predvalue, noquote, )): "||"09"x||strip(CATEGORY);
+20774 +      %end;
+20776 +      /* Column labels displayed in validflag eq Y only */
+20777 +      %if "&ValidFlag" eq "Y" %then %do;
+20778 +        %if (("&EM_PROPERTY_TARGET" ne "NONE") OR ("&EM_PROPERTY_PROFITLOSS" ne "NONE") OR ("&EM_PROPERTY_PERCENTCORRECT" eq "Y") OR ("&EM_PROPERTY_COUNT" eq "Y")) %then %do;
+20779 +           textall=strip(textall)||"0A"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_rptstatistic_vlabel, noquote)) "||"09"x||"%sysfunc(sasmsg(sashelp.dmine, rpt_train_vlabel , noquote ))" ||"09"x|| "%sysfunc(sasmsg(sashelp.dmine, rpt_validate_vlabel ,
+20779!+noquote ))";
+20780 +        %end;
+20781 +      %end;
+20783 +      /* Target Values */
+20784 +      %if "&EM_PROPERTY_TARGET" ne "NONE" %then %do;
+20785 +        textall=strip(textall)||"0A"x||strip(probtext);
+20786 +      %end;
+20788 +      /* include profit or loss for all target levels */
+20789 +      %if ( "&EM_PROPERTY_PROFITLOSS" ne "NONE" AND ((&em_profitflag ne 0) OR (&em_lossflag ne 0))) %then %do;
+20790 +        textall=strip(textall)||"0A"x||strip(profittext);
+20791 +      %end;
+20793 +      %if &validFlag eq N %then %do;
+20794 +        /* Percent Correct */
+20795 +        %if "&EM_PROPERTY_PERCENTCORRECT" eq "Y" %then %do;
+20796 +          textall=strip(textall)||"0A"x||"Percent Correct: "||"09"x||strip(put(percentcorrect, percent10.2));
+20797 +        %end;
+20799 +         /* Count */
+20800 +         %if "&EM_PROPERTY_COUNT" eq "Y" %then %do;
+20801 +          %if "&adjusted" eq "N" %then %do;
+20802 +            textall=strip(textall)||"0A"x||" %sysfunc(sasmsg(sashelp.dmine, rpt_rptcount_vlabel, noquote )): "||"09"x||strip(put(N, best12.));
+20803 +          %end;
+20804 +          %else %do;
+20805 +            textall=strip(textall)||"0A"x||" %sysfunc(sasmsg(sashelp.dmine, rpt_rptcount_vlabel, noquote )): "||"09"x||strip(put(NPRIORS, 15.&EM_PROPERTY_SPLITPRECISION));
+20806 +          %end;
+20807 +         %end;
+20808 +      %end;
+20809 +      %else %do;
+20810 +        /* Percent Correct */
+20811 +        %if "&EM_PROPERTY_PERCENTCORRECT" eq "Y" %then %do;
+20812 +          textall=strip(textall)||"0A"x||"Percent Correct: "||"09"x||strip(put(percentcorrect, percent10.2))||"09"x||strip(put(vpercentcorrect, percent10.2));
+20813 +        %end;
+20815 +         /* Count */
+20816 +         %if "&EM_PROPERTY_COUNT" eq "Y" %then %do;
+20817 +          %if "&adjusted" eq "N" %then %do;
+20818 +           textall=strip(textall)||"0A"x||" %sysfunc(sasmsg(sashelp.dmine, rpt_rptcount_vlabel, noquote )): "||"09"x||strip(put(N, best12.))||"09"x||strip(put(VN, best12.));
+20819 +          %end;
+20820 +          %else %do;
+20821 +           textall=strip(textall)||"0A"x||" %sysfunc(sasmsg(sashelp.dmine, rpt_rptcount_vlabel, noquote )): "||"09"x||strip(put(NPRIORS,15.&EM_PROPERTY_SPLITPRECISION))||"09"x||strip(put(VNPRIORS,15.&EM_PROPERTY_SPLITPRECISION));
+20822 +          %end;
+20823 +         %end;
+20824 +      %end;
+20826 +      /* nodecolor */
+20827 +      %if "&EM_PROPERTY_CLASSCOLORBY" eq "PERCENTEVENT" %then %do;
+20828 +       %if &multipleTar ne Y %then %do;
+20829 +        nodecolor=&predTarget;
+20830 +       %end;
+20831 +       %else %do;
+20832 +         nodecolor=percentcorrect;
+20833 +       %end;
+20834 +      %end;
+20835 +      %else %if "&EM_PROPERTY_CLASSCOLORBY" eq "PERCENTCORRECT" %then %do;
+20836 +        nodecolor=percentcorrect;
+20837 +      %end;
+20838 +      %else %if "&EM_PROPERTY_CLASSCOLORBY" eq "SINGLE" %then %do;
+20839 +        nodecolor=1;
+20840 +      %end;
+20841 +      %else %if "&EM_PROPERTY_CLASSCOLORBY" eq "PROFITLOSS" %then %do;
+20842 +        %if ((&em_profitflag eq 0) AND (&em_lossflag eq 0)) %then %do;
+20843 +          nodecolor=percentcorrect;
+20844 +        %end;
+20845 +        %else %do;
+20846 +          nodecolor=profitloss;
+20847 +        %end;
+20848 +      %end;
+20850 +    end;
+20851 +    %end;
+20852 +    %if &em_intTarget eq Y %then %do;
+20853 +     drop  PREDICTION  TARGET TARLEVEL
+20854 +     %if &ValidFlag eq Y %then %do;
+20855 +         VPREDICTION
+20856 +     %end;
+20857 +     ;
+20858 +    %end;
+20859 +    %if &em_classTarget eq Y %then %do;
+20860 +     drop CATEGORY PROBTEXT  TARGET TARLEVEL STATVALUE
+20861 +     %if &ValidFlag eq Y %then %do;
+20862 +         VSTATVALUE
+20863 +     %end;
+20864 +     ;
+20865 +    %end;
+20867 +  run;
+20869 +  /* add leaf index information to plotds - based on primary target only*/
+20870 +  %if "%EM_TARGET_LEVEL" ne "INTERVAL" %then %do;
+20871 +    data tempprob(keep=node statname statvalue rename=(statvalue=&predTarget));
+20872 +      set &EM_USER_OUTSTATS;
+20873 +      if ((statname="PROBABILITY"
+20874 +      %if &validexist %then %do;
+20875 +       or statname="VALID: PROBABILITY"
+20876 +      %end;
+20877 +      ) AND (CATEGORY="&TARGETEVENT")
+20878 +      %if "&multipleTar" eq "Y" %then %do;
+20879 +        AND (Target="%EM_TARGET")
+20880 +      %end;
+20881 +      );
+20882 +    run;
+20884 +    %if &validexist %then %do;
+20885 +      proc sort data=tempprob; by node; run;
+20886 +      %let vpredTarget = V%substr(&predTarget, 2);
+20887 +      proc transpose data=tempprob out=tempprob(keep=NODE PROBABILITY VALID__PROBABILITY rename=(PROBABILITY=&predTarget VALID__PROBABILITY=&vpredTarget));
+20888 +         by node;
+20889 +         id statname;
+20890 +      run;
+20891 +    %end;
+20892 +  %end;
+20893 +  %else %do;
+20894 +    data tempprob(keep=node statname statvalue rename=(statvalue=&predTarget));
+20895 +      set &EM_USER_OUTSTATS;
+20896 +      if ((statname="PREDICTION"
+20897 +      %if &validexist %then %do;
+20898 +       or statname="VALID: PREDICTION"
+20899 +      %end;
+20900 +      )
+20901 +      %if "&multipleTar" eq "Y" %then %do;
+20902 +        AND (Target="%EM_TARGET")
+20903 +      %end;
+20904 +      );
+20905 +    run;
+20906 +    %if &validexist %then %do;
+20907 +      proc sort data=tempprob; by node; run;
+20908 +      %let vpredTarget = V%substr(&predTarget, 2);
+20909 +      proc transpose data=tempprob out=tempprob(keep=NODE PREDICTION VALID__PREDICTION rename=(PREDICTION=&predTarget VALID__PREDICTION=&vpredTarget));
+20910 +         by node;
+20911 +         id statname;
+20912 +      run;
+20913 +    %end;
+20914 +  %end;
+20916 +  proc sort data=tempprob; by node; run;
+20917 +  data tempoutnodes;
+20918 +    merge tempoutnodes tempprob;
+20919 +    by node;
+20920 +  run;
+20922 +  proc sort data=tempoutnodes out=tempnodes; by descending &predTarget; run;
+20923 +  data tempnodes;
+20924 +    retain traintotal validtotal;
+20925 +    set tempnodes(where=(leaf ne . ));
+20926 +    tprob=round(&predTarget, .01);
+20927 +    %if "%EM_TARGET_LEVEL" ne "INTERVAL" %then %do;
+20928 +      percevent_train=round(tprob*100, .01);
+20929 +    %end;
+20930 +    %else %do;
+20931 +      percevent_train=tprob;
+20932 +    %end;
+20934 +    perc_train=round((n/traintotal)*100, 0.01);
+20935 +    /* leafwidth already has a *10 multiplier */
+20936 +    if missing(perc_train) then perc_train = round(linkwidth*10, 0.01);
+20938 +    %if &validexist %then %do;
+20939 +      %let vpredTarget = V%substr(&predTarget,2);
+20940 +      vprob=round(&vpredTarget, .01);
+20941 +      %if "%EM_TARGET_LEVEL" ne "INTERVAL" %then %do;
+20942 +        percevent_valid=round(vprob*100, .01);
+20943 +      %end;
+20944 +      %else %do;
+20945 +        percevent_valid=vprob;
+20946 +      %end;
+20947 +      perc_valid=round((vn/validtotal)*100, .01);
+20948 +    %end;
+20950 +    index=_N_;
+20951 +    keep node index tprob perc_train percevent_train
+20952 +    %if &validexist %then %do;
+20953 +        vprob percevent_valid perc_valid
+20954 +    %end;
+20955 +    ;
+20956 +  run;
+20957 +  proc sort data=tempnodes; by node; run;
+20958 +  data &EM_USER_TREE_PLOT;
+20959 +    merge &EM_USER_TREE_PLOT tempnodes %if &oldexists %then old_tree_plot;;
+20960 +    by node;
+20961 +    if missing(node) then delete;
+20962 +    %if &oldexists %then %do;
+20963 +      if missing(nodecolor) then nodecolor=oldnodecolor;
+20964 +      drop oldnodecolor;
+20965 +    %end;
+20966 +    abovetext = compbl(abovetext);
+20968 +    /* add variable labels */
+20969 +    label textall      = "%sysfunc(sasmsg(sashelp.dmine, rpt_textall_vlabel, noquote))"
+20970 +          parent       = "%sysfunc(sasmsg(sashelp.dmine, rpt_parentId_vlabel, noquote))"
+20971 +          node         = "%sysfunc(sasmsg(sashelp.dmine, rpt_nodeid_vlabel, noquote))"
+20972 +          abovetext    = "%sysfunc(sasmsg(sashelp.dmine, rpt_abovetext_vlabel, noquote))"
+20973 +          traintotal   = "%sysfunc(sasmsg(sashelp.dmine, rpt_traintotal_vlabel, noquote))"
+20974 +          nodecolor    = "%sysfunc(sasmsg(sashelp.dmine, rpt_nodecolor_vlabel, noquote))"
+20976 +          %if "%EM_TARGET_LEVEL" ne "INTERVAL" %then %do;
+20977 +            tprob        = "%sysfunc(sasmsg(sashelp.dmine, rpt_prob_vlabel, noquote, %nrbquote(&targetEvent)))"
+20978 +            percevent_train = "%sysfunc(sasmsg(sashelp.dmine, rpt_percevent_train_vlabel, noquote))"
+20979 +            perc_train      = "%sysfunc(sasmsg(sashelp.dmine, rpt_perc_train_vlabel, noquote))"
+20980 +          %end;
+20981 +          %else %do;
+20982 +            tprob           = "%sysfunc(sasmsg(sashelp.dmine, rpt_average_vlabel, noquote))"
+20983 +            percevent_train = "%sysfunc(sasmsg(sashelp.dmine, rpt_perc_int_train_vlabel, noquote))"
+20984 +            perc_train = "%sysfunc(sasmsg(sashelp.dmine, rpt_perc_train_vlabel, noquote))"
+20985 +          %end;
+20986 +          index           = "%sysfunc(sasmsg(sashelp.dmine, meta_index_vlabel, noquote))"
+20988 +          validtotal      = "%sysfunc(sasmsg(sashelp.dmine, rpt_validtotal_vlabel, noquote))"
+20989 +          VN              = "%sysfunc(sasmsg(sashelp.dmine, rpt_validn_vlabel, noquote))"
+20990 +          %if "%EM_TARGET_LEVEL" ne "INTERVAL" %then %do;
+20991 +            vprob           = "%sysfunc(sasmsg(sashelp.dmine, rpt_vprob_vlabel, noquote, %nrbquote(&targetEvent)))"
+20992 +            perc_valid      = "%sysfunc(sasmsg(sashelp.dmine, rpt_perc_valid_vlabel, noquote))"
+20993 +            percevent_valid = "%sysfunc(sasmsg(sashelp.dmine, rpt_percevent_valid_vlabel, noquote))"
+20994 +          %end;
+20995 +          %else %do;
+20996 +            vprob           = "%sysfunc(sasmsg(sashelp.dmine, rpt_validaverage_vlabel, noquote))"
+20997 +            perc_valid = "%sysfunc(sasmsg(sashelp.dmine, rpt_perc_valid_vlabel, noquote))"
+20998 +            percevent_valid = "%sysfunc(sasmsg(sashelp.dmine, rpt_perc_int_valid_vlabel, noquote))"
+20999 +          %end;
+21000 +    ;
+21001 +  run;
+21003 +  /* delete temporary tables */
+21004 +  proc datasets lib=work nolist;
+21005 +    delete abovetext belowtext tempoutnodes tempmissing temp tempnodes tempstats;
+21006 +  run;
+21008 +%mend em_tree_makePlotDs;
+21012 +%macro em_tree_report;
+21014 +   /* report properties */
+21015 +   %em_checkmacro(name=EM_PROPERTY_Precision, value=4, global=Y);
+21016 +   %em_checkmacro(name=EM_PROPERTY_SplitPrecision, value=4, global=Y);
+21017 +   %em_checkmacro(name=EM_PROPERTY_ClassColorBy, value=PERCENTCORRECT, global=Y);
+21018 +   %em_checkmacro(name=EM_PROPERTY_IntColorBy, value=AVG, global=Y);
+21019 +   %em_checkmacro(name=EM_PROPERTY_ShowNodeId, value=Y, global=Y);
+21020 +   %em_checkmacro(name=EM_PROPERTY_ShowValid, value=Y, global=Y);
+21021 +   %em_checkmacro(name=EM_PROPERTY_Pred, value=N, global=Y);
+21022 +   %em_checkmacro(name=EM_PROPERTY_Target, value=ALL, global=Y);
+21023 +   %em_checkmacro(name=EM_PROPERTY_Count, value=Y, global=Y);
+21024 +   %em_checkmacro(name=EM_PROPERTY_PercentCorrect, value=N, global=Y);
+21025 +   %em_checkmacro(name=EM_PROPERTY_ProfitLoss, value=NONE, global=Y);
+21026 +   %em_checkmacro(name=EM_PROPERTY_AVG, value=Y, global=Y);
+21027 +   %em_checkmacro(name=EM_PROPERTY_RASE, value=N, global=Y);
+21029 +   %let validexist=0;
+21030 +   %if (("&EM_IMPORT_VALIDATE" ne "") AND (%sysfunc(exist(&EM_IMPORT_VALIDATE)) or %sysfunc(exist(&EM_IMPORT_VALIDATE,VIEW)))) %then %do;
+21031 +     %let validexist=1;
+21032 +   %end;
+21034 +   /* determine if multiple targets will be processed */
+21035 +   %let em_tree_multipleTargets=N;
+21036 +   %let em_tree_numTarget=1;
+21037 +   %if "&EM_PROPERTY_USEMULTIPLETARGET" eq "Y" %then %do;
+21038 +      /* determine if there are any ordinal target variables - if so, multiple targets are not supported */
+21039 +      %if &EM_NUM_ORDINAL_TARGET gt 0 %then %do;
+21040 +         %let em_tree_multipleTargets=N;
+21041 +      %end;
+21042 +      %else %do;
+21043 +        data _null_;
+21044 +          set &EM_DATA_VARIABLESET(where=(ROLE='TARGET' AND LEVEL^='ORDINAL')) end=eof;
+21045 +          if eof then
+21046 +            call symput('em_tree_numTarget', strip(put(_N_, BEST.)));
+21047 +        run;
+21049 +        %if &em_tree_numTarget gt 1 %then %do;
+21050 +           %let em_tree_multipleTargets=Y;
+21051 +        %end;
+21052 +     %end;
+21053 +   %end;
+21055 +  %if "&em_tree_multipleTargets" eq "N" %then %do;
+21057 +   /* variable importance */
+21058 +   %EM_GETNAME(key=OUTIMPORT, type=DATA);
+21059 +   %if %sysfunc(exist(&EM_USER_OUTIMPORT)) eq 1 %then %do;
+21061 +     /* determine if vars exists - properties could indicate they are they but freeze=Y would mean the node wasn't retrained */
+21062 +     /* and the columns may not be generated                                                                                 */
+21063 +     %let em_tree_cvexists=;
+21064 +     %let em_tree_surrexists=.;
+21065 +     data _null_;
+21066 +       set &EM_USER_OUTIMPORT (obs=2) end=eof;
+21067 +       if eof then do ;
+21068 +        call symput("em_tree_cvexists" , strip(put(cvimportance,best.))) ;
+21069 +        call symput("em_tree_surrexists", strip(put(nsurrogates, best.)));
+21070 +       end;
+21071 +     run;
+21073 +     data &EM_USER_OUTIMPORT;
+21074 +         set &EM_USER_OUTIMPORT;
+21075 +         /* format columns based on Precison value specified */
+21076 +         format importance 15.&EM_PROPERTY_PRECISION
+21077 +              %if &validexist %then %do;
+21078 +                vimportance ratio 15.&EM_PROPERTY_PRECISION
+21079 +              %end;
+21080 +              %if "&EM_TREE_CVEXISTS" ne "." %then %do;
+21081 +                cvimportance vimportance ratio 15.&EM_PROPERTY_PRECISION
+21082 +              %end;
+21083 +         ;
+21084 +     run;
+21086 +     title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_variableImportance_title  , NOQUOTE))";
+21087 +     proc print data=&EM_USER_OUTIMPORT
+21088 +        %if "&EM_TREE_SURREXISTS" ne "." %then %do;
+21089 +          (where=((nrules>0) OR (nsurrogates>0)))
+21090 +        %end;
+21091 +        %else %do;
+21092 +           (where=(nrules>0))
+21093 +        %end;
+21094 +        label noobs
+21095 +        ;
+21096 +     run;
+21097 +     title10;
+21099 +   %end;
+21101 +   /* Sequence */
+21102 +   %EM_GETNAME(key=OUTSEQ, type=DATA);
+21103 +   %EM_GETNAME(key=OUTOBSIMP, type=DATA);
+21104 +   data _null_ ;
+21105 +      set &EM_USER_outseq (obs=2) end=eof ;
+21106 +      if eof then do ;
+21107 +        call symput("em_tree_xase" , strip(put(_XASE_,best.))) ;
+21108 +        call symput("em_tree_vase" , strip(put(_VASE_, best.)));
+21109 +        call symput("em_tree_seq"  , strip(put(_SEQUENCE_, best.)));
+21110 +        call symput("em_tree_vseq"  , strip(put(_VSEQUENCE_, best.)));
+21111 +        call symput("em_tree_aprof" , strip(put(_APROF_, best.)));
+21112 +        call symput("em_tree_aloss" , strip(put(_ALOSS_, best.)));
+21113 +        call symput("em_tree_prior" , strip(put(_PASE_, best.)));
+21114 +      end;
+21115 +    run;
+21117 +   %if %sysfunc(exist(&EM_USER_OUTSEQ)) eq 1 %then %do;
+21118 +      data &EM_USER_OUTSEQ;
+21119 +      %if (("&EM_PROPERTY_CV" eq "Y") AND ("&em_tree_xase" ne ".")) %then %do;
+21120 +        set &EM_USER_OUTSEQ(rename=(_XASE_=_VASE_ _XMAX_=_VMAX_ _XSSE_=_VSSE_ _XRASE_=_VRASE_
+21121 +        %if "%EM_TARGET_LEVEL" ne "INTERVAL" %then %do;
+21122 +           _XMISC_=_VMISC_
+21123 +        %end;
+21124 +        %if "&em_tree_aprof" ne "."  %then %do;
+21125 +           _XAPROF_=_VAPROF_
+21126 +           _XPROF_ = _VPROF_
+21127 +        %end;
+21128 +        %if "&em_tree_aloss" ne "."  %then %do;
+21129 +           _XALOSS_=_VALOSS_
+21130 +        %end;
+21131 +        %if "&EM_TREE_PRIOR" ne "." %then %do;
+21132 +           _XPASE_ = _VPASE_
+21133 +           _XPMISC_ = _VPMISC_
+21134 +        %end;
+21136 +        ));
+21137 +     %end;
+21138 +     %else %do;
+21139 +        set &EM_USER_OUTSEQ;
+21140 +     %end;
+21142 +     format _ASE_  _ASSESS_ _MAX_ _SSE_ _RASE_  15.&EM_PROPERTY_PRECISION
+21143 +         %if "%EM_TARGET_LEVEL" ne "INTERVAL" %then %do;
+21144 +            _MISC_   15.&EM_PROPERTY_PRECISION
+21145 +         %end;
+21146 +         %if "&EM_TREE_PRIOR" ne "." %then %do;
+21147 +            _PASE_  15.&EM_PROPERTY_PRECISION
+21148 +            _PMISC_ 15.&EM_PROPERTY_PRECISION
+21149 +         %end;
+21150 +         %if (("&EM_PROPERTY_CV" eq "Y") AND (("&em_tree_xase" ne ".") or ("&em_tree_vase" ne "."))) %then %do;
+21151 +            _VASE_  _VASSESS_ _VMAX_ _VSSE_ _VRASE_ _COST_COMPLEXITY_ 15.&EM_PROPERTY_PRECISION
+21152 +            %if "%EM_TARGET_LEVEL" ne "INTERVAL" %then %do;
+21153 +               _VMISC_ 15.&EM_PROPERTY_PRECISION
+21154 +            %end;
+21155 +            %if "&EM_TREE_PRIOR" ne "." %then %do;
+21156 +              _VPASE_  15.&EM_PROPERTY_PRECISION
+21157 +              _VPMISC_ 15.&EM_PROPERTY_PRECISION
+21158 +            %end;
+21159 +         %end;
+21160 +         %if (("&EM_PROPERTY_CV" eq "N") AND &validexist) %then %do;
+21161 +            _VASE_  _VASSESS_ _VMAX_ _VSSE_ _VRASE_  15.&EM_PROPERTY_PRECISION
+21162 +            %if "%EM_TARGET_LEVEL" ne "INTERVAL" %then %do;
+21163 +               _VMISC_ 15.&EM_PROPERTY_PRECISION
+21164 +            %end;
+21165 +         %end;
+21166 +         %if "&em_tree_seq" ne "." %then %do;
+21167 +           _SEQUENCE_ 15.&EM_PROPERTY_PRECISION
+21168 +         %end;
+21169 +         %if "&em_tree_vseq" ne "." %then %do;
+21170 +           _VSEQUENCE_  15.&EM_PROPERTY_PRECISION
+21171 +         %end;
+21172 +         %if "&em_tree_aprof" ne "." %then %do;
+21173 +           _APROF_ 15.&EM_PROPERTY_PRECISION
+21174 +           _PROF_ 15.&EM_PROPERTY_PRECISION
+21175 +           %if (("&EM_PROPERTY_CV" eq "Y") OR &validexist) %then %do;
+21176 +             _VAPROF_ 15.&EM_PROPERTY_PRECISION
+21177 +             _VPROF_ 15.&EM_PROPERTY_PRECISION
+21178 +           %end;
+21179 +         %end;
+21180 +         %else %if "&em_tree_aloss" ne "." %then %do;
+21181 +           _ALOSS_  15.&EM_PROPERTY_PRECISION
+21182 +           %if (("&EM_PROPERTY_CV" eq "Y") OR &validexist) %then %do;
+21183 +             _VALOSS_ 15.&EM_PROPERTY_PRECISION
+21184 +           %end;
+21185 +         %end;
+21186 +      ;
+21187 +    run;
+21188 +   %end;
+21190 +   /* Observation Based Importance */
+21191 +   %if (  ("&EM_PROPERTY_OBSIMPORTANCE" eq "Y") AND ( %sysfunc(exist(&EM_USER_OUTOBSIMP)) eq 1)) %then %do;
+21193 +      /* need to check for 0 obs */
+21194 +      %let dsid = %sysfunc(open(&EM_USER_OUTOBSIMP));
+21195 +      %let onobs=%sysfunc(attrn(&dsid,NOBS));
+21196 +      %let rc=%sysfunc(close(&dsid));
+21198 +      %if &onobs %then %do;
+21199 +         proc sort data=&EM_USER_OUTOBSIMP; by _INPUT1_; run;
+21200 +         proc sort data=&em_data_variableset out=_tempvars; by NAME; run;
+21202 +         data &EM_USER_OUTOBSIMP;
+21203 +           merge _tempvars(rename=(NAME=_INPUT1_) keep=NAME LABEL) &EM_USER_OUTOBSIMP(in=_a)  ;
+21204 +           if _a;
+21205 +           by _INPUT1_;
+21206 +           format  _ASE_ _MAX_ _SSE_ _RASE_ 15.&EM_PROPERTY_PRECISION
+21207 +                   %if "%EM_TARGET_LEVEL" ne "INTERVAL" %then %do;
+21208 +                     _MISC_ 15.&EM_PROPERTY_PRECISION
+21209 +                   %end;
+21210 +                   ;
+21211 +         run;
+21212 +         %EM_REPORT(key=OUTOBSIMP, viewtype=DATA, block=MODEL, description=OBSIMPFIT, autodisplay=N);
+21213 +      %end;
+21214 +   %end;
+21216 +  %end;
+21218 +  /* create dataset to support tree diagram and icicle plot */
+21219 +  %EM_GETNAME(key=TREE_PLOT, type=DATA);
+21220 +  %em_tree_makePlotDs(multipleTar = &em_tree_multipleTargets);
+21222 +  /* display tree diagram */
+21223 +  %em_report(key=TREE_PLOT, viewtype=DTree, id=NODE, parent=PARENT, nodetext=NODETEXT, tipText=TEXTALL, abovetext=ABOVETEXT, belowText=BELOWTEXT,
+21224 +             nodesize=N, nodecolor=NODECOLOR, linkwidth=LINKWIDTH,  block=MODEL, description=TREE, autodisplay=Y);
+21226 +  /* display icicle diagram */
+21227 +  %em_report(key=TREE_PLOT, viewtype=Icicle, id=NODE, parent=PARENT, nodetext=NODETEXT, tipText=TEXTALL,
+21228 +             nodesize=N, nodecolor=NODECOLOR, block=MODEL, description=ICICLE, autodisplay=Y);
+21230 +  /* Leaf Statistics Plot */
+21231 +  %em_report(key=TREE_PLOT, viewtype=AREABAR, x=NODE, y=PERCEVENT_TRAIN, WIDTH=PERC_TRAIN,block=MODEL, description=VARWIDTH, autodisplay=N);
+21233 +  /* print leaf information to output window */
+21234 +  %if %sysfunc(exist(&EM_USER_TREE_PLOT)) eq 1 %then %do;
+21236 +     proc sort data=&EM_USER_TREE_PLOT out=t;
+21237 +       by descending N;
+21238 +     run;
+21240 +     /* determine if vn is present in the data -- combinations of decisions/partition/cv cause the proc not to generate this stat */
+21241 +     %local vn;
+21242 +     data _null_;
+21243 +       set t (obs=2) end=eof;
+21244 +       if eof then do;
+21245 +         call symput("vn", strip(put(vn, best.)));
+21246 +       end;
+21247 +     run;
+21249 +     data t;
+21250 +       set t;
+21251 +       label N="%sysfunc(sasmsg(sashelp.dmine, rpt_trainingobs_vlabel  , NOQUOTE))"
+21252 +             DEPTH="%sysfunc(sasmsg(sashelp.dmine, rpt_depth_vlabel  , NOQUOTE))"
+21253 +       %if "%EM_TARGET_LEVEL" eq "INTERVAL" %then %do;
+21254 +            tprob = "%sysfunc(sasmsg(sashelp.dmine, rpt_trainaverage_vlabel  , NOQUOTE))"
+21255 +            RASE="%sysfunc(sasmsg(sashelp.dmine, rpt_trainrase_vlabel  , NOQUOTE))"
+21256 +       %end;
+21257 +       %if (("&EM_IMPORT_VALIDATE" ne "") AND (%sysfunc(exist(&EM_IMPORT_VALIDATE)) eq 1)) %then %do;
+21258 +            VN="%sysfunc(sasmsg(sashelp.dmine, rpt_validobs_vlabel  , NOQUOTE))"
+21259 +           %if "%EM_TARGET_LEVEL" eq "INTERVAL" %then %do;
+21260 +              vprob = "%sysfunc(sasmsg(sashelp.dmine, rpt_validaverage_vlabel  , NOQUOTE))"
+21261 +              VRASE="%sysfunc(sasmsg(sashelp.dmine, rpt_validrase_vlabel  , NOQUOTE))"
+21262 +          %end;
+21263 +       %end;
+21264 +       ;
+21265 +     run;
+21267 +     /* determine if rase is found in t */
+21268 +    %let dsid=%sysfunc(open(t,i));
+21269 +    %let raseexists=%sysfunc(varnum(&dsid,RASE));
+21270 +    %let rc=%sysfunc(close(&dsid));
+21272 +     title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_treeleafreport_title  , NOQUOTE))";
+21273 +     proc print data=t noobs label;
+21274 +       where tprob ne .;
+21275 +       var node depth N tprob
+21276 +       %if (("&EM_IMPORT_VALIDATE" ne "") AND (%sysfunc(exist(&EM_IMPORT_VALIDATE)) eq 1)) %then %do;
+21277 +         %if "&vn" ne "." %then %do;
+21278 +           VN
+21279 +         %end;
+21280 +         vprob
+21281 +       %end;
+21282 +       %if &raseexists %then %do;
+21283 +            RASE
+21284 +            %if ( ("&EM_IMPORT_VALIDATE" ne "") AND (%sysfunc(exist(&EM_IMPORT_VALIDATE)) eq 1) AND ("&EM_PROPERTY_CV" eq "N")) %then %do;
+21285 +              VRASE
+21286 +            %end;
+21287 +       %end;
+21288 +       ;
+21289 +     run;
+21290 +     title10;
+21291 +  %end;
+21293 +  /* create plots that are done during training of node */
+21294 +  /* display iterative plot, including reference line */
+21295 +  %if "&em_Tree_multipleTargets" eq "N" %then %do;
+21296 +   /* %if &nleaves eq  %then %do; */
+21297 +      %EM_GETNAME(key=OUTTOPOLOGY, type=DATA);
+21298 +      data _null_;
+21299 +        set &EM_USER_OUTTOPOLOGY end=eof;
+21300 +        if eof then do;
+21301 +          call symput('nleaves', LEAF);
+21302 +        end;
+21303 +      run;
+21304 +   /* %end; */
+21306 +    %EM_REPORT(KEY=OUTSEQ, VIEWTYPE=ITERATIONPLOT, block=MODEL,  X=_NW_, XRef=&Nleaves, autodisplay=N, Description=SUBTREE);
+21307 +    /*%EM_REPORT(view=1, Y=_ASE_); */
+21308 +  %end;
+21310 +  /* display leaf statistics */
+21311 +  %EM_REPORT(KEY=TREE_PLOT, VIEWTYPE=RESPONSEBAR, block=MODEL, view=1, X=INDEX, Y1=tprob, y2=vprob, where=%nrbquote(INDEX ne .), autodisplay=Y, Description=LEAFSTATS);
+21313 +  /* stats by node if multiple targets = Y */
+21314 +  %EM_GETNAME(key=OUTSTATS, type=DATA);
+21315 +  %if "&em_tree_multipleTargets" eq "Y" %then %do;
+21316 +    data &EM_USER_OUTSTATS;
+21317 +      set &EM_USER_OUTSTATS;
+21319 +     * if STATNAME="TARGET" then delete;
+21320 +     * if STATNAME="PREDICTION" and STATVALUE=. then delete;
+21321 +      drop leaf;
+21322 +    run;
+21323 +    %EM_REPORT(key=OUTSTATS, viewtype=DATA, block=MODEL, description=OUTSTATS, autodisplay=N);
+21325 +  %end;
+21326 +  %else %do;
+21327 +    /* add outstats and outdescribe to spk but not results */
+21328 +    %EM_REPORT(viewtype=, key=OUTSTATS);
+21329 +  %end;
+21331 +%mend em_tree_report;
+NOTE: %INCLUDE (level 1) ending.
+NOTE: Fileref TEMP has been deassigned.
+
+NOTE: Variable cvimportance is uninitialized.
+NOTE: Variable nsurrogates is uninitialized.
+NOTE: There were 2 observations read from the data set EMWS1.TREE_OUTIMPORT.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 23 observations read from the data set EMWS1.TREE_OUTIMPORT.
+NOTE: The data set EMWS1.TREE_OUTIMPORT has 23 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 9 observations read from the data set EMWS1.TREE_OUTIMPORT.
+      WHERE nrules>0;
+NOTE: The PROCEDURE PRINT printed page 4.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: Variable _XASE_ is uninitialized.
+NOTE: Variable _SEQUENCE_ is uninitialized.
+NOTE: Variable _VSEQUENCE_ is uninitialized.
+NOTE: Variable _APROF_ is uninitialized.
+NOTE: Variable _ALOSS_ is uninitialized.
+NOTE: Variable _PASE_ is uninitialized.
+NOTE: There were 2 observations read from the data set EMWS1.TREE_OUTSEQ.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 60 observations read from the data set EMWS1.TREE_OUTSEQ.
+NOTE: The data set EMWS1.TREE_OUTSEQ has 60 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: There were 1 observations read from the data set EMWS1.IDS_TARGET10_DM.
+      WHERE _TYPE_='TARGET';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 1 observations read from the data set EMWS1.IDS_TARGET10_DM.
+      WHERE (_TYPE_='PREDICTED') and (LEVEL='1');
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 53 observations read from the data set EMWS1.TREE_OUTRULES.
+      WHERE (ROLE='PRIMARY') and (STAT='VARIABLE');
+NOTE: The data set WORK.BELOWTEXT has 53 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 51 observations read from the data set EMWS1.TREE_OUTRULES.
+      WHERE (ROLE='PRIMARY') and (STAT='LABEL');
+NOTE: The data set WORK.BELOWTEXT2 has 51 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 53 observations read from the data set WORK.BELOWTEXT.
+NOTE: The data set WORK.BELOWTEXT has 53 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 51 observations read from the data set WORK.BELOWTEXT2.
+NOTE: The data set WORK.BELOWTEXT2 has 51 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 53 observations read from the data set WORK.BELOWTEXT.
+NOTE: There were 51 observations read from the data set WORK.BELOWTEXT2.
+NOTE: The data set WORK.BELOWTEXT has 53 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 434 observations read from the data set EMWS1.TREE_OUTRULES.
+      WHERE (ROLE='PRIMARY') and STAT in ('INTERVAL', 'NOMINAL', 'ORDINAL');
+NOTE: The data set WORK.ABOVETEXT has 434 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 434 observations read from the data set WORK.ABOVETEXT.
+NOTE: The data set WORK.ABOVETEXT has 434 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: Numeric values have been converted to character values at the places given by: (Line):(Column).
+      172:103   221:136   264:102   264:125   296:104   330:104   372:103   372:126   415:104   
+NOTE: Character values have been converted to numeric values at the places given by: (Line):(Column).
+      431:99   
+NOTE: There were 434 observations read from the data set WORK.ABOVETEXT.
+NOTE: The data set WORK.ABOVETEXT has 105 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 1996 observations read from the data set EMWS1.TREE_OUTRULES.
+NOTE: The data set WORK.TEMPMISSING has 53 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 105 observations read from the data set WORK.ABOVETEXT.
+NOTE: The data set WORK.ABOVETEXT has 105 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 53 observations read from the data set WORK.TEMPMISSING.
+NOTE: The data set WORK.TEMPMISSING has 53 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 107 observations read from the data set EMWS1.TREE_OUTNODES.
+NOTE: The data set WORK.TEMPOUTNODES has 107 observations and 24 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 105 observations read from the data set WORK.ABOVETEXT.
+NOTE: There were 107 observations read from the data set WORK.TEMPOUTNODES.
+NOTE: There were 53 observations read from the data set WORK.TEMPMISSING.
+NOTE: The data set WORK.TEMPOUTNODES has 107 observations and 25 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: There were 107 observations read from the data set WORK.TEMPOUTNODES.
+NOTE: The data set WORK.TEMPOUTNODES has 107 observations and 25 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 53 observations read from the data set WORK.BELOWTEXT.
+NOTE: The data set WORK.BELOWTEXT has 53 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 107 observations read from the data set WORK.TEMPOUTNODES.
+NOTE: There were 53 observations read from the data set WORK.BELOWTEXT.
+NOTE: The data set WORK.TEMPOUTNODES has 107 observations and 26 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 0 observations read from the data set EMWS1.TREE_OUTSTATS.
+      WHERE STATNAME='NPRIORS';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 1 observations read from the data set EMWS1.TREE_VARIABLESET.
+      WHERE (ROLE='TARGET') and (LEVEL not = 'ORDINAL') and USE in ('D', 'Y');
+NOTE: The data set WORK.TEMPTARMETA has 1 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 749 observations read from the data set EMWS1.TREE_OUTSTATS.
+NOTE: The data set WORK.TEMPTARGETUSED has 749 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 749 observations read from the data set WORK.TEMPTARGETUSED.
+NOTE: 642 observations with duplicate key values were deleted.
+NOTE: The data set WORK.TEMPTARGETUSED has 107 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 749 observations read from the data set EMWS1.TREE_OUTSTATS.
+NOTE: The data set WORK.TEMPOUTSTATS has 749 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: Input data set is already sorted, no sorting done.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 749 observations read from the data set WORK.TEMPOUTSTATS.
+NOTE: There were 107 observations read from the data set WORK.TEMPTARGETUSED.
+NOTE: The data set WORK.TEMPINTERVAL has 0 observations and 7 variables.
+NOTE: The data set WORK.TEMPCLASS has 749 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 749 observations read from the data set WORK.TEMPCLASS.
+NOTE: The data set WORK.TEMPCLASS has 749 observations and 7 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+WARNING: The variable TARGET in the DROP, KEEP, or RENAME list has never been referenced.
+WARNING: The variable TARGET in the DROP, KEEP, or RENAME list has never been referenced.
+NOTE: There were 749 observations read from the data set WORK.TEMPCLASS.
+NOTE: The data set WORK.TEMPN has 214 observations and 3 variables.
+NOTE: The data set WORK.TEMPPREDICT has 107 observations and 2 variables.
+NOTE: The data set WORK.TEMPPROB has 214 observations and 3 variables.
+NOTE: The data set WORK.TEMPVPROB has 214 observations and 3 variables.
+NOTE: The data set WORK.TEMPPROFIT has 0 observations and 4 variables.
+NOTE: The data set WORK.TEMPLOSS has 0 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.06 seconds
+      
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 214 observations read from the data set WORK.TEMPN.
+NOTE: The data set WORK.TEMPN has 107 observations and 3 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 214 observations read from the data set WORK.TEMPPROB.
+NOTE: There were 214 observations read from the data set WORK.TEMPVPROB.
+NOTE: The data set WORK.TEMPPROB has 214 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+WARNING: The variable target in the DROP, KEEP, or RENAME list has never been referenced.
+NOTE: There were 214 observations read from the data set WORK.TEMPPROB.
+NOTE: There were 107 observations read from the data set WORK.TEMPPREDICT.
+NOTE: The data set WORK.TEMPPREDICT has 107 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+
+
+NOTE: There were 214 observations read from the data set WORK.TEMPPROB.
+NOTE: The data set WORK.TEMPPROB has 107 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 107 observations read from the data set WORK.TEMPOUTNODES.
+NOTE: The data set WORK.TEMPOUTNODES has 107 observations and 26 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: Numeric values have been converted to character values at the places given by: (Line):(Column).
+      1141:196   
+NOTE: There were 107 observations read from the data set WORK.TEMPOUTNODES.
+NOTE: There were 107 observations read from the data set WORK.TEMPTARGETUSED.
+NOTE: There were 107 observations read from the data set WORK.TEMPN.
+NOTE: There were 107 observations read from the data set WORK.TEMPPREDICT.
+NOTE: There were 107 observations read from the data set WORK.TEMPPROB.
+NOTE: The data set EMWS1.TREE_TREE_PLOT has 107 observations and 30 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.06 seconds
+      
+
+
+NOTE: There were 749 observations read from the data set EMWS1.TREE_OUTSTATS.
+NOTE: The data set WORK.TEMPPROB has 214 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 214 observations read from the data set WORK.TEMPPROB.
+NOTE: The data set WORK.TEMPPROB has 214 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 214 observations read from the data set WORK.TEMPPROB.
+NOTE: The data set WORK.TEMPPROB has 107 observations and 3 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 107 observations read from the data set WORK.TEMPPROB.
+NOTE: The data set WORK.TEMPPROB has 107 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 107 observations read from the data set WORK.TEMPOUTNODES.
+NOTE: There were 107 observations read from the data set WORK.TEMPPROB.
+NOTE: The data set WORK.TEMPOUTNODES has 107 observations and 26 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 107 observations read from the data set WORK.TEMPOUTNODES.
+NOTE: The data set WORK.TEMPNODES has 107 observations and 26 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 54 observations read from the data set WORK.TEMPNODES.
+      WHERE leaf not = .;
+NOTE: The data set WORK.TEMPNODES has 54 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 54 observations read from the data set WORK.TEMPNODES.
+NOTE: The data set WORK.TEMPNODES has 54 observations and 8 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 107 observations read from the data set EMWS1.TREE_TREE_PLOT.
+NOTE: There were 54 observations read from the data set WORK.TEMPNODES.
+NOTE: The data set EMWS1.TREE_TREE_PLOT has 107 observations and 37 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.09 seconds
+      
+
+
+NOTE: The file WORK.TEMP (memtype=DATA) was not found, but appears on a DELETE statement.
+NOTE: The file WORK.TEMPSTATS (memtype=DATA) was not found, but appears on a DELETE statement.
+NOTE: Deleting WORK.ABOVETEXT (memtype=DATA).
+NOTE: Deleting WORK.BELOWTEXT (memtype=DATA).
+NOTE: Deleting WORK.TEMPOUTNODES (memtype=DATA).
+NOTE: Deleting WORK.TEMPMISSING (memtype=DATA).
+NOTE: Deleting WORK.TEMPNODES (memtype=DATA).
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: The data set WORK.EM_USER_REPORT has 132 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.17 seconds
+      cpu time            0.06 seconds
+      
+
+
+NOTE: There were 132 observations read from the data set WORK.EM_USER_REPORT.
+NOTE: The data set WORK.EM_USER_REPORT has 264 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.06 seconds
+      
+
+
+NOTE: There were 264 observations read from the data set WORK.EM_USER_REPORT.
+NOTE: The data set WORK.EM_USER_REPORT has 397 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.09 seconds
+      
+
+
+NOTE: There were 107 observations read from the data set EMWS1.TREE_TREE_PLOT.
+NOTE: The data set WORK.T has 107 observations and 37 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.T.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 107 observations read from the data set WORK.T.
+NOTE: The data set WORK.T has 107 observations and 37 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: There were 54 observations read from the data set WORK.T.
+      WHERE tprob not = .;
+NOTE: The PROCEDURE PRINT printed page 5.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Numeric values have been converted to character values at the places given by: (Line):(Column).
+      297:141   
+NOTE: There were 107 observations read from the data set EMWS1.TREE_OUTTOPOLOGY.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 397 observations read from the data set WORK.EM_USER_REPORT.
+NOTE: The data set WORK.EM_USER_REPORT has 529 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.13 seconds
+      cpu time            0.06 seconds
+      
+
+
+NOTE: There were 529 observations read from the data set WORK.EM_USER_REPORT.
+NOTE: The data set WORK.EM_USER_REPORT has 662 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.07 seconds
+      
+
+
+NOTE: There were 662 observations read from the data set WORK.EM_USER_REPORT.
+NOTE: The data set WORK.EM_USER_REPORT has 794 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.07 seconds
+      
+
+21332  
+21333  *------------------------------------------------------------*;
+21334  * End REPORT: Tree;
+21335  *------------------------------------------------------------*;
+
+21336  /* Reset EM Options */
+21337  options formchar="|----|+|---+=|-/\<>*";
+21338  options nocenter ls=256 ps=10000;
+21339  goptions reset=all device=GIF NODISPLAY;
+
+21340  proc sort data=WORK.EM_USER_REPORT;
+21341  by ID VIEW;
+21342  run;
+
+NOTE: There were 794 observations read from the data set WORK.EM_USER_REPORT.
+NOTE: The data set WORK.EM_USER_REPORT has 794 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+21343  proc sort data=EMWS1.Repl_CMeta_TRAIN out=WORK.SUBSETINMETA;
+21344  by NAME;
+21345  run;
+
+NOTE: There were 32 observations read from the data set EMWS1.REPL_CMETA_TRAIN.
+NOTE: The data set WORK.SUBSETINMETA has 32 observations and 20 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+21346  proc sort data=EMWS1.Tree_VariableSet out=WORK.SUBSETVARSET(keep=NAME REPORT);
+21347  by NAME;
+21348  run;
+
+NOTE: There were 32 observations read from the data set EMWS1.TREE_VARIABLESET.
+NOTE: The data set WORK.SUBSETVARSET has 32 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+21349  data WORK.ASSESS_META;
+21350  merge WORK.SUBSETINMETA WORK.SUBSETVARSET;
+21351  by NAME;
+21352  run;
+
+NOTE: There were 32 observations read from the data set WORK.SUBSETINMETA.
+NOTE: There were 32 observations read from the data set WORK.SUBSETVARSET.
+NOTE: The data set WORK.ASSESS_META has 32 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+21353  data EM_temp_assessMeta;
+21354  set EMWS1.Tree_CMeta_TRAIN;
+21355  where role in('DECISION', 'PREDICT', 'RESIDUAL', 'CLASSIFICATION', 'ASSESS', 'COST');
+21356  run;
+
+NOTE: There were 12 observations read from the data set EMWS1.TREE_CMETA_TRAIN.
+      WHERE role in ('ASSESS', 'CLASSIFICATION', 'COST', 'DECISION', 'PREDICT', 'RESIDUAL');
+NOTE: The data set WORK.EM_TEMP_ASSESSMETA has 12 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+21357  data EM_temp_assessdata;
+21358  set EMWS1.Tree_TRAIN(keep=
+21359  F_target10
+21360  I_target10
+21361  P_target100
+21362  P_target101
+21363  Q_target100
+21364  Q_target101
+21365  R_target100
+21366  R_target101
+21367  U_target10
+21368  V_target100
+21369  V_target101
+21370  _WARN_
+21371  target10
+21372  );
+21373  run;
+
+NOTE: Variable _WARN_ is uninitialized.
+NOTE: There were 4743 observations read from the data set EMWS1.PART_TRAIN.
+NOTE: Visualizza EMWS1.TREE_TRAIN.VIEW used (Total process time):
+      real time           0.11 seconds
+      cpu time            0.10 seconds
+      
+NOTE: There were 4743 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: There were 4743 observations read from the data set EMWS1.TREE_TRAIN.
+NOTE: The data set WORK.EM_TEMP_ASSESSDATA has 4743 observations and 13 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.14 seconds
+      cpu time            0.14 seconds
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+25655   data EM_temp_assessMeta;
+25656   set EMWS1.Tree_CMeta_TRAIN;
+25657   where role in('DECISION', 'PREDICT', 'RESIDUAL', 'CLASSIFICATION', 'ASSESS', 'COST');
+25658   run;
+
+NOTE: There were 12 observations read from the data set EMWS1.TREE_CMETA_TRAIN.
+      WHERE role in ('ASSESS', 'CLASSIFICATION', 'COST', 'DECISION', 'PREDICT', 'RESIDUAL');
+NOTE: The data set WORK.EM_TEMP_ASSESSMETA has 12 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+25659   data EM_temp_assessdata;
+25660   set EMWS1.Tree_VALIDATE(keep=
+25661   F_target10
+25662   I_target10
+25663   P_target100
+25664   P_target101
+25665   Q_target100
+25666   Q_target101
+25667   R_target100
+25668   R_target101
+25669   U_target10
+25670   V_target100
+25671   V_target101
+25672   _WARN_
+25673   target10
+25674   );
+25675   run;
+
+NOTE: Variable _WARN_ is uninitialized.
+NOTE: There were 2035 observations read from the data set EMWS1.PART_VALIDATE.
+NOTE: Visualizza EMWS1.TREE_VALIDATE.VIEW used (Total process time):
+      real time           0.13 seconds
+      cpu time            0.12 seconds
+      
+NOTE: There were 2035 observations read from the data set EMWS1.REPL_VALIDATE.
+NOTE: There were 2035 observations read from the data set EMWS1.TREE_VALIDATE.
+NOTE: The data set WORK.EM_TEMP_ASSESSDATA has 2035 observations and 13 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.19 seconds
+      cpu time            0.15 seconds
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+29966   %let _cn = %sysfunc(getoption(CENTER));
+29967   options nocenter;
+29968   proc print data=EMWS1.Tree_EMREPORTFIT noobs label;
+29969   var STAT LABEL TRAIN
+29970   VALIDATE
+29971   ;
+29972   by TARGET TARGETLABEL;
+29973   title9 ' ';
+29974   title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_fitstat_title  , NOQUOTE))";
+29975   run;
+
+NOTE: There were 8 observations read from the data set EMWS1.TREE_EMREPORTFIT.
+NOTE: The PROCEDURE PRINT printed page 6.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+29976   title10;
+29977   options &_cn;
+
+29978   proc sort data=EMWS1.Tree_EMCLASSIFICATION nothreads;
+29979   by DATAROLE TARGET TARGETLABEL;
+29980   run;
+
+NOTE: There were 8 observations read from the data set EMWS1.TREE_EMCLASSIFICATION.
+NOTE: The data set EMWS1.TREE_EMCLASSIFICATION has 8 observations and 12 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+29981   %let _cn = %sysfunc(getoption(CENTER));
+29982   options nocenter;
+29983   proc print data=EMWS1.Tree_EMCLASSIFICATION noobs label;
+29984   var from into pct_row pct_col count percent
+29985   ;
+29986   by DATAROLE TARGET TARGETLABEL;
+29987   label FROM = "%sysfunc(sasmsg(sashelp.dmine, rpt_target_vlabel ,     NOQUOTE))";
+29988   label INTO = "%sysfunc(sasmsg(sashelp.dmine, rpt_outcome_vlabel ,    NOQUOTE))";
+29989   label PCT_ROW = "%sysfunc(sasmsg(sashelp.dmine, rpt_targetpct_vlabel ,  NOQUOTE))";
+29990   label PCT_COL = "%sysfunc(sasmsg(sashelp.dmine, rpt_outcomepct_vlabel , NOQUOTE))";
+29991   label COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel ,      NOQUOTE))";
+29992   label PERCENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_totalpct_vlabel ,   NOQUOTE))";
+29993   where _TYPE_='PREDICTION';
+29994   title9 ' ';
+29995   title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_classification_title    , NOQUOTE))";
+29996   run;
+
+NOTE: There were 8 observations read from the data set EMWS1.TREE_EMCLASSIFICATION.
+      WHERE _TYPE_='PREDICTION';
+NOTE: The PROCEDURE PRINT printed page 7.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+29997   title9;
+29998   title10;
+29999   options &_cn;
+
+30000   %let _cn = %sysfunc(getoption(CENTER));
+30001   options nocenter;
+30002   data EMWS1.Tree_EMEVENTREPORT;
+30003   length DATAROLE TARGET $32 TARGETLABEL $200 FALSENEVENT TRUENEVENT FALSEEVENT TRUEEVENT 8;
+30004   label DATAROLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel ,    NOQUOTE))" TARGET = "%sysfunc(sasmsg(sashelp.dmine, rpt_target_vlabel ,      NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))"
+30004 ! FALSEEVENT
+30005   = "%sysfunc(sasmsg(sashelp.dmine, rpt_falseevent_vlabel ,  NOQUOTE))" FALSENEVENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_falsenevent_vlabel , NOQUOTE))" TRUEEVENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_trueevent_vlabel ,   NOQUOTE))" TRUENEVENT =
+30006      "%sysfunc(sasmsg(sashelp.dmine, rpt_truenevent_vlabel ,  NOQUOTE))";
+30007   FALSEEVENT=0;
+30008   FALSENEVENT=0;
+30009   TRUEEVENT=0;
+30010   TRUENEVENT=0;
+30011   set EMWS1.Tree_EMEVENTREPORT;
+30012   run;
+
+NOTE: There were 2 observations read from the data set EMWS1.TREE_EMEVENTREPORT.
+NOTE: The data set EMWS1.TREE_EMEVENTREPORT has 2 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+30013   proc print data=EMWS1.Tree_EMEVENTREPORT noobs label;
+30014   title9 ' ';
+30015   title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_eventtable_title    , NOQUOTE))";
+30016   by notsorted DATAROLE notsorted TARGET notsorted TARGETLABEL;
+30017   run;
+
+NOTE: There were 2 observations read from the data set EMWS1.TREE_EMEVENTREPORT.
+NOTE: The PROCEDURE PRINT printed page 8.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+30018   title10;
+30019   options &_cn;
+
+30020   proc datasets library=EMWS1 nolist;
+30021   modify Tree_EMRANK;
+30022   label target = "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel ,   NOQUOTE))";
+30023   label datarole = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel ,    NOQUOTE))";
+30024   run;
+
+NOTE: MODIFY was successful for EMWS1.TREE_EMRANK.DATA.
+30025   quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.04 seconds
+      
+
+30026   %let _cn = %sysfunc(getoption(CENTER));
+30027   options nocenter;
+30028   proc print data=EMWS1.Tree_EMRANK label noobs;
+30029   var
+30030   decile gain lift liftc resp respc N _meanP_;
+30031   by
+30032   notsorted DATAROLE
+30033   notsorted TARGET
+30034   notsorted TARGETLABEL
+30035   ;
+30036   title9 ' ';
+30037   title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_scoreranking_title , NOQUOTE))";
+30038   run;
+
+NOTE: There were 40 observations read from the data set EMWS1.TREE_EMRANK.
+NOTE: The PROCEDURE PRINT printed page 9.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+30039   title10;
+30040   options &_cn;
+
+30041   proc datasets library=EMWS1 nolist;
+30042   modify Tree_EMSCOREDIST;
+30043   label target = "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel ,      NOQUOTE))";
+30044   label datarole = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel ,    NOQUOTE))";
+30045   run;
+
+NOTE: MODIFY was successful for EMWS1.TREE_EMSCOREDIST.DATA.
+30046   quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+      
+

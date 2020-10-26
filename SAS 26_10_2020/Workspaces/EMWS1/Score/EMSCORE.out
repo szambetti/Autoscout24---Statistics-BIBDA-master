@@ -1,0 +1,47 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variabili di input di scoring
+
+                                                                                                                            Utilizzato
+                                                                                                               Variabile    nel codice
+Nome variabile               Ruolo       Autore    Commento                                   Etichetta        nascosta     di scoring
+
+Alimentazione                REJECTED                                                         Alimentazione        N            Y     
+Cilindrata                   REJECTED              Replaced by Repl                           Cilindrata           N            Y     
+Consumo_Carburante_Totale    REJECTED              Replaced by Repl                                                N            Y     
+Emissioni_di_CO2             REJECTED              Replaced by Repl                                                N            Y     
+Modello                      INPUT                 Exceeds maximum number of levels cutoff    Modello              N            Y     
+Peso_a_vuoto                 REJECTED              Replaced by Repl                                                N            Y     
+Posti_a_sedere               REJECTED                                                                              N            Y     
+Tipo_di_unita                INPUT                                                                                 N            Y     
+price                        REJECTED              Replaced by Repl                           price                N            Y     
+target10                     TARGET                                                           target10             N            N     
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variabili di output di scoring
+
+Nome variabile                   Funzione          Autore    Etichetta
+
+EM_CLASSIFICATION                CLASSIFICATION    Score     Prediction for target10               
+EM_EVENTPROBABILITY              PREDICT           Score     Probability for level 1 of target10   
+EM_PROBABILITY                   PREDICT           Score     Probability of Classification         
+EM_SEGMENT                       TRANSFORM         Score     Nodo                                  
+I_target10                       CLASSIFICATION    Tree      In: target10                          
+P_target100                      PREDICT           Tree      Previsto: target10=0                  
+P_target101                      PREDICT           Tree      Previsto: target10=1                  
+Q_target100                      TRANSFORM         Tree      P non corretto: target10=0            
+Q_target101                      TRANSFORM         Tree      P non corretto: target10=1            
+REP_Cilindrata                   TRANSFORM         Repl      Replacement: Cilindrata               
+REP_Consumo_Carburante_Totale    TRANSFORM         Repl      Replacement: Consumo_Carburante_Totale
+REP_Emissioni_di_CO2             TRANSFORM         Repl      Replacement: Emissioni_di_CO2         
+REP_Peso_a_vuoto                 TRANSFORM         Repl      Replacement: Peso_a_vuoto             
+REP_price                        TRANSFORM         Repl      Replacement: price                    
+U_target10                       CLASSIFICATION    Tree      Non normalizzata in: target10         
+V_target100                      PREDICT           Tree      Convalidato: target10=0               
+V_target101                      PREDICT           Tree      Convalidato: target10=1               
+_NODE_                           TRANSFORM         Tree      Nodo                                  
+_WARN_                           ASSESS            Tree      Avvertimenti                          

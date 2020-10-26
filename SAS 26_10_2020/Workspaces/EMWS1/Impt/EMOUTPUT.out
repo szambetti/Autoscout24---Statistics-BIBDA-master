@@ -1,0 +1,79 @@
+*------------------------------------------------------------*
+Utente:             Maria Vallarelli
+Data:               25 ottobre 2020
+Ora:                22:52:07
+*------------------------------------------------------------*
+* Output di training
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Riepilogo delle variabili
+ 
+                           Conteggio
+            Livello di         di
+Ruolo       misurazione    frequenza
+ 
+INPUT        BINARY             4
+INPUT        INTERVAL           6
+INPUT        NOMINAL           13
+REJECTED     INTERVAL           6
+REJECTED     NOMINAL            1
+TARGET       BINARY             1
+
+
+*------------------------------------------------------------*
+* Output di scoring
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Output dei report
+*------------------------------------------------------------*
+ 
+ 
+ 
+Riepilogo dell'imputazione
+Numero di osservazioni
+ 
+                                                                                                                                                                 Numero di
+                                  Metodo di                                         Imputa             Livello di                                                 mancanti
+Nome variabile                   imputazione    Variabile imputata                  valore    Ruolo    misurazione    Etichetta                                  per TRAIN
+ 
+Cilindri                          TREESURR      IMP_Cilindri                            .     INPUT     NOMINAL       Cilindri                                         335
+Classe_emissioni                  TREESURR      IMP_Classe_emissioni                    .     INPUT     NOMINAL                                                        653
+Colore_esterno                    TREESURR      IMP_Colore_esterno                      .     INPUT     NOMINAL                                                         84
+Marce                             TREESURR      IMP_Marce                               .     INPUT     NOMINAL       Marce                                            465
+Porte                             TREESURR      IMP_Porte                               .     INPUT     NOMINAL       Porte                                            195
+Posti_a_sedere                    TREESURR      IMP_Posti_a_sedere                      .     INPUT     NOMINAL                                                        202
+REP_Cilindrata                    MEDIAN        IMP_REP_Cilindrata                  1368.0    INPUT     INTERVAL      Replacement: Cilindrata                           63
+REP_Consumo_Carburante_Totale     MEDIAN        IMP_REP_Consumo_Carburante_Total       4.9    INPUT     INTERVAL      Replacement: Consumo_Carburante_Totale           568
+REP_Emissioni_di_CO2              MEDIAN        IMP_REP_Emissioni_di_CO2             116.0    INPUT     INTERVAL      Replacement: Emissioni_di_CO2                    561
+REP_Peso_a_vuoto                  MEDIAN        IMP_REP_Peso_a_vuoto                1320.0    INPUT     INTERVAL      Replacement: Peso_a_vuoto                       2073
+REP_Tipo_di_vernice               TREESURR      IMP_REP_Tipo_di_vernice                 .     INPUT     NOMINAL       Replacement: Tipo_di_vernice                    1779
+Tipo_di_cambio                    TREESURR      IMP_Tipo_di_cambio                      .     INPUT     NOMINAL                                                         47
+Tipo_di_unita                     TREESURR      IMP_Tipo_di_unita                       .     INPUT     NOMINAL                                                        433
+ 
+ 
+ 
+ 
+Dati di training della distribuzione delle variabili
+ 
+        Numero di                 Percentuale
+         mancanti    Numero di         di
+Oss     per TRAIN    variabili     variabili
+ 
+  1          2073        1          7.69231
+  2          1779        1          7.69231
+  3           653        1          7.69231
+  4           568        1          7.69231
+  5           561        1          7.69231
+  6           465        1          7.69231
+  7           433        1          7.69231
+  8           335        1          7.69231
+  9           202        1          7.69231
+ 10           195        1          7.69231
+ 11            84        1          7.69231
+ 12            63        1          7.69231
+ 13            47        1          7.69231

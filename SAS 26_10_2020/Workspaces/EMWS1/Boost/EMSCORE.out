@@ -1,0 +1,24 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+Importanza della variabile (VIP)
+
+Oss    NAME                             LABEL                                     NRULES    NSURROGATES    IMPORTANCE    VIMPORTANCE     RATIO
+
+  1    Modello                          Modello                                     77           60          1.00000       1.00000      1.00000
+  2    REP_price                        Replacement: price                          57           75          0.84197       0.83052      0.98640
+  3    Carrozzeria                      Carrozzeria                                  6           78          0.74528       0.75007      1.00642
+  4    REP_Cilindrata                   Replacement: Cilindrata                      0           64          0.50710       0.51278      1.01121
+  5    Alimentazione                    Alimentazione                               16           21          0.32515       0.30433      0.93596
+  6    Tipo_di_cambio                                                                3           10          0.13796       0.14950      1.08358
+  7    Per_neopatentati                                                              0            7          0.12190       0.13192      1.08221
+  8    Posti_a_sedere                                                                0            3          0.09492       0.08048      0.84792
+  9    Marce                            Marce                                        1            7          0.08464       0.11017      1.30170
+ 10    Porte                            Porte                                        0            7          0.08251       0.08161      0.98916
+ 11    Cilindri                         Cilindri                                     6            0          0.08191       0.09239      1.12784
+ 12    REP_Consumo_Carburante_Totale    Replacement: Consumo_Carburante_Totale       1            6          0.07287       0.03283      0.45055
+ 13    Colore_esterno                                                                3            0          0.04072       0.04633      1.13801
+ 14    REP_Emissioni_di_CO2             Replacement: Emissioni_di_CO2                0            2          0.02639       0.00000      0.00000
+ 15    REP_Anno                         Replacement: Anno                            0            1          0.02204       0.03175      1.44099
+ 16    Usato_Garantito                                                               1            0          0.01999       0.02775      1.38825
+ 17    Veicolo_per_non_fumatori                                                      0            1          0.01521       0.02111      1.38825

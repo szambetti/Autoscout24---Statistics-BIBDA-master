@@ -1,0 +1,28 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Valori di limitazione e di sostituzione per variabili continue
+
+                                                                             Valore di                    Valore di
+                                                                Limite     sostituzione      Limite     sostituzione
+Variabile                    Sostituisci variabile            inferiore      inferiore     superiore      superiore
+
+Anno                         REP_Anno                           2011.00        2011.00       2018.00       2018.00  
+Cilindrata                   REP_Cilindrata                     -296.63        -296.63       3194.26       3194.26  
+Consumo_Carburante_Totale    REP_Consumo_Carburante_Totale        -2.66          -2.66         12.80         12.80  
+Emissioni_di_CO2             REP_Emissioni_di_CO2                 33.52          33.52        196.87        196.87  
+Peso_a_vuoto                 REP_Peso_a_vuoto                    562.91         562.91       2065.71       2065.71  
+price                        REP_price                        -17259.44      -17259.44      61906.15      61906.15  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Valori di sostituzione per variabili categoriche
+
+                                            Valore
+                                         alfanumerico
+                     Valore                  non          Valore      Valore di
+   Variabile       formattato    Tipo     formattato     numerico    sostituzione    Etichetta
+
+Tipo_di_vernice                   C                          .         _blank_                

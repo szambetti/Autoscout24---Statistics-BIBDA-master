@@ -1,0 +1,43 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Riepilogo delle variabili
+
+                           Conteggio
+            Livello di         di
+Ruolo       misurazione    frequenza
+
+ID           INTERVAL           1   
+INPUT        BINARY             4   
+INPUT        INTERVAL           6   
+INPUT        NOMINAL           13   
+REJECTED     INTERVAL           6   
+REJECTED     NOMINAL            1   
+TARGET       BINARY             1   
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Eventi del modello
+
+                                      Numero
+                      Livello di        di
+ Target     Evento    misurazione    livelli      Ordine      Etichetta
+
+target10      1         BINARY          2       Descending    target10 
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variabili previste e decisionali
+
+Tipo          Variabile     Etichetta
+
+TARGET       target10       target10            
+PREDICTED    P_target101    Previsto: target10=1
+RESIDUAL     R_target101    Residual: target10=1
+PREDICTED    P_target100    Previsto: target10=0
+RESIDUAL     R_target100    Residual: target10=0
+FROM         F_target10     Da: target10        
+INTO         I_target10     In: target10        

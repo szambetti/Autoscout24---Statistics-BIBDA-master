@@ -1,0 +1,15 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Conteggi delle sostituzioni
+
+Oss    Variabile                    Etichetta                    Ruolo    Training    Validazione
+
+ 1     Anno                         Anno                         INPUT      4639          1995   
+ 2     Cilindrata                   Cilindrata                   INPUT        99            43   
+ 3     Consumo_Carburante_Totale    Consumo_Carburante_Totale    INPUT        11             5   
+ 4     Emissioni_di_CO2             Emissioni_di_CO2             INPUT        98            48   
+ 5     Peso_a_vuoto                 Peso_a_vuoto                 INPUT        38            16   
+ 6     Tipo_di_vernice                                           INPUT         0             0   
+ 7     price                        price                        INPUT        60            36   

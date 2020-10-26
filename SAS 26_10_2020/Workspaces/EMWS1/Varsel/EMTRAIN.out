@@ -1,0 +1,522 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Riepilogo delle variabili
+
+                           Conteggio
+            Livello di         di
+Ruolo       misurazione    frequenza
+
+INPUT        BINARY             4   
+INPUT        INTERVAL           3   
+INPUT        NOMINAL           16   
+REJECTED     INTERVAL           6   
+REJECTED     NOMINAL            1   
+TARGET       BINARY             1   
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMINE Procedure
+
+                  R-quadro per la variabile target: target10
+ 
+Effetto                                      DF        R-quadro
+
+Class: Alimentazione*Carrozzeria             40        0.161218                
+Group: Alimentazione*Carrozzeria              7        0.158703                
+Class: Carrozzeria*IMP_Marce                 44        0.153675                
+Group: Carrozzeria*IMP_Marce                  5        0.150755                
+Class: Carrozzeria*IMP_Posti_a_sedere        35        0.148492                
+Group: Carrozzeria*IMP_Posti_a_sedere         4        0.145902                
+Class: Alimentazione*IMP_Marce               29        0.144271                
+Class: Alimentazione*IMP_Posti_a_sedere      26        0.143398                
+Group: Alimentazione*IMP_Marce                4        0.142353                
+Group: Alimentazione*IMP_Posti_a_sedere       5        0.140647                
+Class: Carrozzeria*OPT_IMP_REP_Emissioni     23        0.137298                
+Group: Carrozzeria*OPT_IMP_REP_Emissioni      6        0.135526                
+Class: Carrozzeria*OPT_IMP_REP_Peso_a_vu     24        0.133012                
+Class: Alimentazione*IMP_Cilindri            26        0.132856                
+Group: Alimentazione*IMP_Cilindri             6        0.132224                
+Class: IMP_Marce*IMP_Posti_a_sedere          30        0.130484                
+Group: Carrozzeria*OPT_IMP_REP_Peso_a_vu      5        0.130405                
+Group: IMP_Marce*IMP_Posti_a_sedere           5        0.129330                
+Class: Carrozzeria*OPT_IMP_REP_Consumo_C     30        0.127240                
+Class: IMP_Posti_a_sedere*OPT_IMP_REP_Em     18        0.126338                
+Group: Carrozzeria*OPT_IMP_REP_Consumo_C      6        0.125919                
+Class: IMP_Posti_a_sedere*OPT_IMP_REP_Co     23        0.124864                
+Group: IMP_Posti_a_sedere*OPT_IMP_REP_Em      3        0.124102                
+Group: IMP_Posti_a_sedere*OPT_IMP_REP_Co      5        0.123591                
+Class: Alimentazione*OPT_IMP_REP_Peso_a_     21        0.122743                
+Class: IMP_Marce*OPT_IMP_REP_Emissioni_d     19        0.122133                
+Group: Alimentazione*OPT_IMP_REP_Peso_a_      5        0.120666                
+Group: IMP_Marce*OPT_IMP_REP_Emissioni_d      3        0.120660                
+Class: Carrozzeria*Per_neopatentati          14        0.118606                
+Class: Alimentazione*Per_neopatentati        11        0.117942                
+Class: IMP_Posti_a_sedere*OPT_IMP_REP_Pe     19        0.117152                
+Group: Carrozzeria*Per_neopatentati           4        0.116523                
+Group: IMP_Posti_a_sedere*OPT_IMP_REP_Pe      4        0.116472                
+Group: Alimentazione*Per_neopatentati         4        0.115743                
+Class: IMP_Marce*OPT_IMP_REP_Consumo_Car     25        0.113601                
+Class: IMP_Marce*OPT_IMP_REP_Peso_a_vuot     17        0.113112                
+Group: IMP_Marce*OPT_IMP_REP_Consumo_Car      6        0.112366                
+Group: IMP_Marce*OPT_IMP_REP_Peso_a_vuot      4        0.111041                
+Class: Carrozzeria*IMP_Cilindri              39        0.110763                
+Class: OPT_IMP_REP_Consumo_Carburante_T*     14        0.110234                
+Group: OPT_IMP_REP_Consumo_Carburante_T*      3        0.109166                
+Class: Carrozzeria*IMP_Tipo_di_unita         23        0.109051                
+Group: Carrozzeria*IMP_Cilindri               6        0.109032                
+Class: Alimentazione*IMP_Colore_esterno      68        0.108262                
+Class: Carrozzeria*IMP_Tipo_di_cambio        21        0.107598                
+Group: Carrozzeria*IMP_Tipo_di_unita          5        0.107304                
+Class: IMP_Cilindri*IMP_Posti_a_sedere       28        0.107115                
+Class: Alimentazione*OPT_IMP_REP_Emissio     16        0.107059                
+Class: OPT_IMP_REP_Emissioni_di_CO2*OPT_     11        0.106639                
+Group: Alimentazione*IMP_Colore_esterno       6        0.106201                
+Class: Carrozzeria*IMP_Colore_esterno        76        0.105650                
+Group: Carrozzeria*IMP_Tipo_di_cambio         4        0.105600                
+Group: IMP_Cilindri*IMP_Posti_a_sedere        3        0.105468                
+Group: OPT_IMP_REP_Emissioni_di_CO2*OPT_      3        0.105386                
+Group: Alimentazione*OPT_IMP_REP_Emissio      3        0.105340                
+Class: IMP_Cilindri*OPT_IMP_REP_Peso_a_v     19        0.105237                
+Group: IMP_Cilindri*OPT_IMP_REP_Peso_a_v      3        0.104327                
+Class: Alimentazione*IMP_Tipo_di_cambio      14        0.104324                
+Class: IMP_Tipo_di_unita*OPT_IMP_REP_Pes      8        0.104257                
+Group: Carrozzeria*IMP_Colore_esterno         8        0.103934                
+Class: IMP_Posti_a_sedere*Per_neopatenta     11        0.103616                
+Group: Alimentazione*IMP_Tipo_di_cambio       5        0.103529                
+Group: IMP_Tipo_di_unita*OPT_IMP_REP_Pes      4        0.103498                
+Class: IMP_Colore_esterno*IMP_Posti_a_se     45        0.103006                
+Class: Alimentazione*OPT_IMP_REP_Consumo     20        0.102594                
+Class: Carrozzeria*IMP_Porte                 14        0.102499                
+Group: IMP_Posti_a_sedere*Per_neopatenta      3        0.102182                
+Class: OPT_IMP_REP_Consumo_Carburante_T*      7        0.101900                
+Class: IMP_Posti_a_sedere*IMP_Tipo_di_un     15        0.101625                
+Group: OPT_IMP_REP_Consumo_Carburante_T*      4        0.101437                
+Group: IMP_Posti_a_sedere*IMP_Tipo_di_un      4        0.101108                
+Group: Carrozzeria*IMP_Porte                  3        0.101103                
+Group: IMP_Colore_esterno*IMP_Posti_a_se      5        0.100977                
+Group: Alimentazione*OPT_IMP_REP_Consumo      4        0.100899                
+Class: IMP_Classe_emissioni*IMP_Posti_a_     26        0.099611                
+Group: IMP_Classe_emissioni*IMP_Posti_a_      3        0.098175                
+Class: IMP_Cilindri*IMP_Marce                29        0.097264                
+Class: OPT_IMP_REP_Emissioni_di_CO2*Per_      5        0.096568                
+Class: IMP_Colore_esterno*OPT_IMP_REP_Pe     48        0.096451                
+Group: IMP_Cilindri*IMP_Marce                 3        0.095439                
+Group: OPT_IMP_REP_Emissioni_di_CO2*Per_      3        0.094963                
+Group: IMP_Colore_esterno*OPT_IMP_REP_Pe      6        0.094865                
+Class: IMP_Posti_a_sedere*conditional_on     35        0.094768                
+Group: IMP_Posti_a_sedere*conditional_on      4        0.093343                
+AOV16: LG10_REP_price                        15        0.093129                
+Class: IMP_Posti_a_sedere*Tagliandi_cert     11        0.090768                
+Class: IMP_Posti_a_sedere*Usato_Garantit     14        0.090684                
+Class: IMP_Posti_a_sedere*IMP_REP_Tipo_d     17        0.090682                
+Class: IMP_Tipo_di_cambio*OPT_IMP_REP_Em      8        0.090649                
+Group: IMP_Posti_a_sedere*Tagliandi_cert      3        0.090543                
+Group: IMP_Posti_a_sedere*Usato_Garantit      4        0.090240                
+Class: IMP_Posti_a_sedere*IMP_Tipo_di_ca     17        0.090134                
+Group: IMP_Tipo_di_cambio*OPT_IMP_REP_Em      3        0.089990                
+Group: IMP_Posti_a_sedere*IMP_Tipo_di_ca      3        0.089675                
+Class: IMP_Tipo_di_unita*OPT_IMP_REP_Emi      8        0.089352                
+Group: IMP_Posti_a_sedere*IMP_REP_Tipo_d      2        0.089173                
+Class: IMP_Cilindri*OPT_IMP_REP_Consumo_     20        0.088817                
+Class: IMP_Cilindri*Per_neopatentati         12        0.088663                
+Class: IMP_Cilindri*OPT_IMP_REP_Emission     19        0.088657                
+Class: Alimentazione*IMP_Tipo_di_unita       14        0.088573                
+Class: IMP_Colore_esterno*OPT_IMP_REP_Em     36        0.088485                
+Group: IMP_Cilindri*OPT_IMP_REP_Consumo_      6        0.088159                
+Group: IMP_Tipo_di_unita*OPT_IMP_REP_Emi      3        0.088097                
+Class: IMP_Posti_a_sedere*Veicolo_per_no     12        0.087988                
+Group: IMP_Cilindri*Per_neopatentati          3        0.087929                
+Class: IMP_Porte*IMP_Posti_a_sedere          12        0.087782                
+Group: IMP_Cilindri*OPT_IMP_REP_Emission      5        0.087559                
+Group: Alimentazione*IMP_Tipo_di_unita        5        0.087350                
+Class: IMP_Marce*Per_neopatentati             9        0.087229                
+Group: IMP_Posti_a_sedere*Veicolo_per_no      2        0.087085                
+Group: IMP_Porte*IMP_Posti_a_sedere           2        0.086999                
+Class: IMP_Posti_a_sedere                     7        0.086891                
+Class: Carrozzeria*IMP_Classe_emissioni      34        0.086890                
+Group: IMP_Colore_esterno*OPT_IMP_REP_Em      6        0.086796                
+Group: IMP_Posti_a_sedere                     2        0.086792                
+Group: IMP_Marce*Per_neopatentati             4        0.085889                
+Group: Carrozzeria*IMP_Classe_emissioni       6        0.085767                
+Class: Carrozzeria*Usato_Garantito           15        0.084732                
+Class: Carrozzeria*IMP_REP_Tipo_di_verni     19        0.083903                
+Class: OPT_IMP_REP_Consumo_Carburante_T*     11        0.083816                
+Group: Carrozzeria*Usato_Garantito            6        0.083782                
+Class: Carrozzeria*conditional_on_price      41        0.083720                
+Class: IMP_Tipo_di_cambio*OPT_IMP_REP_Pe      9        0.083584                
+Class: IMP_Classe_emissioni*OPT_IMP_REP_     18        0.083180                
+Group: OPT_IMP_REP_Consumo_Carburante_T*      5        0.083104                
+Group: Carrozzeria*IMP_REP_Tipo_di_verni      6        0.082774                
+Class: Alimentazione*conditional_on_pric     33        0.082773                
+Class: Alimentazione*IMP_Porte               11        0.082714                
+Group: IMP_Tipo_di_cambio*OPT_IMP_REP_Pe      4        0.082661                
+Group: IMP_Classe_emissioni*OPT_IMP_REP_      4        0.082643                
+Class: OPT_IMP_REP_Peso_a_vuoto*Per_neop      7        0.082556                
+Group: Carrozzeria*conditional_on_price       7        0.082435                
+Group: Alimentazione*conditional_on_pric      6        0.081457                
+Group: Alimentazione*IMP_Porte                3        0.081181                
+Group: OPT_IMP_REP_Peso_a_vuoto*Per_neop      3        0.081039                
+Class: OPT_IMP_REP_Peso_a_vuoto*conditio     23        0.080586                
+Class: IMP_Colore_esterno*OPT_IMP_REP_Co     48        0.080365                
+Class: IMP_Tipo_di_unita*OPT_IMP_REP_Con     11        0.080256                
+Class: Carrozzeria*Tagliandi_certificati     15        0.080109                
+Class: IMP_Marce*IMP_Porte                   12        0.080030                
+Class: Alimentazione*IMP_Classe_emission     23        0.079929                
+Group: IMP_Marce*IMP_Porte                    4        0.079715                
+Class: IMP_Porte*OPT_IMP_REP_Peso_a_vuot      7        0.079659                
+Group: OPT_IMP_REP_Peso_a_vuoto*conditio      4        0.079592                
+Group: IMP_Colore_esterno*OPT_IMP_REP_Co      7        0.079228                
+Group: IMP_Tipo_di_unita*OPT_IMP_REP_Con      4        0.079133                
+Group: Alimentazione*IMP_Classe_emission      5        0.079037                
+Group: IMP_Porte*OPT_IMP_REP_Peso_a_vuot      3        0.079032                
+Class: IMP_Colore_esterno*IMP_Marce          58        0.078845                
+Group: Carrozzeria*Tagliandi_certificati      4        0.078837                
+Class: IMP_Marce*IMP_Tipo_di_unita           18        0.078682                
+Class: OPT_IMP_REP_Peso_a_vuoto*Tagliand      7        0.078421                
+Group: IMP_Colore_esterno*IMP_Marce           7        0.077746                
+Group: IMP_Marce*IMP_Tipo_di_unita            5        0.077675                
+Class: OPT_IMP_REP_Peso_a_vuoto*Veicolo_      7        0.077613                
+Class: OPT_IMP_REP_Peso_a_vuoto*Usato_Ga      7        0.077381                
+Group: OPT_IMP_REP_Peso_a_vuoto*Veicolo_      3        0.077319                
+Group: OPT_IMP_REP_Peso_a_vuoto*Tagliand      3        0.077200                
+Group: OPT_IMP_REP_Peso_a_vuoto*Usato_Ga      4        0.077178                
+Class: Alimentazione*IMP_REP_Tipo_di_ver     16        0.076911                
+Class: Alimentazione*Usato_Garantito         11        0.076547                
+Class: IMP_REP_Tipo_di_vernice*OPT_IMP_R      8        0.076175                
+Group: IMP_REP_Tipo_di_vernice*OPT_IMP_R      3        0.075889                
+Group: Alimentazione*IMP_REP_Tipo_di_ver      4        0.075822                
+Class: Carrozzeria*Veicolo_per_non_fumat     15        0.075692                
+Class: OPT_IMP_REP_Peso_a_vuoto               3        0.075299                
+Group: Alimentazione*Usato_Garantito          4        0.075222                
+Class: Alimentazione*Tagliandi_certifica     10        0.074740                
+Group: Carrozzeria*Veicolo_per_non_fumat      5        0.074644                
+Class: Alimentazione*Veicolo_per_non_fum     11        0.073861                
+Group: Alimentazione*Tagliandi_certifica      3        0.073559                
+Group: Alimentazione*Veicolo_per_non_fum      3        0.073201                
+Class: IMP_Colore_esterno*Per_neopatenta     27        0.072929                
+Class: IMP_Porte*OPT_IMP_REP_Emissioni_d      5        0.072634                
+Class: Carrozzeria                            7        0.072618                
+Class: OPT_IMP_REP_Emissioni_di_CO2*cond     20        0.072462                
+Group: IMP_Porte*OPT_IMP_REP_Emissioni_d      3        0.072146                
+Class: IMP_Tipo_di_unita*Per_neopatentat      5        0.072032                
+Group: IMP_Colore_esterno*Per_neopatenta      6        0.071729                
+Class: Alimentazione                          5        0.071693                
+Group: IMP_Tipo_di_unita*Per_neopatentat      3        0.071678                
+Group: OPT_IMP_REP_Emissioni_di_CO2*cond      5        0.071655                
+Group: Alimentazione                          3        0.071567                
+Group: Carrozzeria                            3        0.071300                
+Class: IMP_Classe_emissioni*OPT_IMP_REP_     13        0.069824                
+Class: IMP_REP_Tipo_di_vernice*OPT_IMP_R      7        0.069789                
+Class: OPT_IMP_REP_Emissioni_di_CO2*Usat      5        0.069656                
+Group: IMP_REP_Tipo_di_vernice*OPT_IMP_R      3        0.069140                
+Class: IMP_Tipo_di_cambio*OPT_IMP_REP_Co     10        0.068816                
+Group: OPT_IMP_REP_Emissioni_di_CO2*Usat      3        0.068764                
+Group: IMP_Classe_emissioni*OPT_IMP_REP_      4        0.068747                
+Group: IMP_Tipo_di_cambio*OPT_IMP_REP_Co      4        0.068447                
+Class: IMP_Porte*OPT_IMP_REP_Consumo_Car      7        0.067744                
+Class: OPT_IMP_REP_Emissioni_di_CO2*Tagl      5        0.067426                
+Class: OPT_IMP_REP_Emissioni_di_CO2*Veic      5        0.067324                
+Group: OPT_IMP_REP_Emissioni_di_CO2*Tagl      2        0.067158                
+Group: IMP_Porte*OPT_IMP_REP_Consumo_Car      3        0.067103                
+Group: OPT_IMP_REP_Emissioni_di_CO2*Veic      3        0.066416                
+Class: OPT_IMP_REP_Emissioni_di_CO2           2        0.065405                
+Class: OPT_IMP_REP_Consumo_Carburante_T*     25        0.064168                
+Group: OPT_IMP_REP_Consumo_Carburante_T*      5        0.062909                
+Class: IMP_Classe_emissioni*Per_neopaten     11        0.062029                
+Group: IMP_Classe_emissioni*Per_neopaten      2        0.061538                
+Class: IMP_Porte*Per_neopatentati             3        0.061460                
+Class: IMP_Classe_emissioni*OPT_IMP_REP_     16        0.059545                
+Class: IMP_REP_Tipo_di_vernice*OPT_IMP_R      9        0.058933                
+Class: Per_neopatentati*Usato_Garantito       3        0.058821                
+Class: IMP_Porte*IMP_Tipo_di_unita            5        0.058765                
+Group: IMP_Classe_emissioni*OPT_IMP_REP_      5        0.058729                
+Class: OPT_IMP_REP_Consumo_Carburante_T*      7        0.058589                
+Group: IMP_REP_Tipo_di_vernice*OPT_IMP_R      3        0.058228                
+Class: OPT_IMP_REP_Consumo_Carburante_T*      7        0.058205                
+Group: IMP_Porte*IMP_Tipo_di_unita            3        0.057696                
+Group: Per_neopatentati*Usato_Garantito       2        0.057692                
+Group: OPT_IMP_REP_Consumo_Carburante_T*      3        0.057425                
+Group: OPT_IMP_REP_Consumo_Carburante_T*      3        0.057312                
+Class: Per_neopatentati*conditional_on_p     13        0.056679                
+Class: Per_neopatentati*Tagliandi_certif      3        0.056672                
+Group: Per_neopatentati*Tagliandi_certif      2        0.056560                
+Group: Per_neopatentati*conditional_on_p      2        0.055735                
+Class: IMP_REP_Tipo_di_vernice*Per_neopa      4        0.055182                
+Class: Per_neopatentati*Veicolo_per_non_      3        0.054933                
+Group: Per_neopatentati*Veicolo_per_non_      2        0.054883                
+Class: IMP_Tipo_di_cambio*Per_neopatenta      5        0.054837                
+Class: OPT_IMP_REP_Consumo_Carburante_T*      7        0.054671                
+Group: IMP_REP_Tipo_di_vernice*Per_neopa      1        0.054480                
+Group: IMP_Tipo_di_cambio*Per_neopatenta      2        0.054455                
+Group: OPT_IMP_REP_Consumo_Carburante_T*      3        0.054067                
+Class: OPT_IMP_REP_Consumo_Carburante_T       3        0.054067                
+Class: IMP_Cilindri*IMP_Porte                14        0.054037                
+Group: IMP_Cilindri*IMP_Porte                 3        0.053702                
+Class: Per_neopatentati                       1        0.053674                
+Class: IMP_Marce*IMP_Tipo_di_cambio          14        0.052226                
+Class: IMP_Marce*conditional_on_price        42        0.051601                
+Group: IMP_Marce*IMP_Tipo_di_cambio           4        0.051191                
+Group: IMP_Marce*conditional_on_price         7        0.050706                
+Class: IMP_Marce*IMP_REP_Tipo_di_vernice     16        0.049479                
+Group: IMP_Marce*IMP_REP_Tipo_di_vernice      5        0.048849                
+Class: IMP_Classe_emissioni*IMP_Marce        26        0.048344                
+Class: IMP_Cilindri*IMP_Tipo_di_unita        17        0.048272                
+Group: IMP_Cilindri*IMP_Tipo_di_unita         4        0.047723                
+Group: IMP_Classe_emissioni*IMP_Marce         5        0.047552                
+Class: IMP_Marce*Tagliandi_certificati       12        0.047332                
+Group: IMP_Marce*Tagliandi_certificati        5        0.046881                
+Class: IMP_Marce*Veicolo_per_non_fumator     12        0.046629                
+Class: IMP_Cilindri*IMP_Colore_esterno       60        0.046189                
+Class: IMP_Colore_esterno*IMP_Porte          22        0.046126                
+Group: IMP_Marce*Veicolo_per_non_fumator      5        0.046027                
+Class: IMP_Marce*Usato_Garantito             13        0.045486                
+Group: IMP_Cilindri*IMP_Colore_esterno        7        0.045474                
+Group: IMP_Colore_esterno*IMP_Porte           6        0.045360                
+Group: IMP_Marce*Usato_Garantito              5        0.044867                
+Class: IMP_Marce                              6        0.044719                
+Group: IMP_Marce                              4        0.044569                
+Class: IMP_Colore_esterno*IMP_Tipo_di_ca     30        0.040855                
+Class: IMP_Colore_esterno*IMP_Tipo_di_un     34        0.040360                
+Group: IMP_Colore_esterno*IMP_Tipo_di_ca      7        0.040200                
+Group: IMP_Colore_esterno*IMP_Tipo_di_un      8        0.039719                
+Class: IMP_Porte*IMP_Tipo_di_cambio           4        0.036673                
+Group: IMP_Porte*IMP_Tipo_di_cambio           2        0.036440                
+Class: IMP_Classe_emissioni*IMP_Porte        11        0.036324                
+Group: IMP_Classe_emissioni*IMP_Porte         3        0.035905                
+Class: IMP_Porte*conditional_on_price        13        0.034777                
+Group: IMP_Porte*conditional_on_price         4        0.034268                
+Class: IMP_Cilindri*IMP_Tipo_di_cambio       14        0.034233                
+Group: IMP_Cilindri*IMP_Tipo_di_cambio        5        0.033914                
+Class: IMP_Colore_esterno*conditional_on     66        0.032199                
+Group: IMP_Colore_esterno*conditional_on      9        0.031726                
+Class: IMP_Cilindri*IMP_Classe_emissioni     25        0.030999                
+Group: IMP_Cilindri*IMP_Classe_emissioni      6        0.030644                
+Class: IMP_Cilindri*conditional_on_price     35        0.030267                
+Class: IMP_Porte*Veicolo_per_non_fumator      3        0.030105                
+Class: IMP_Porte*Usato_Garantito              3        0.030000                
+Group: IMP_Porte*Usato_Garantito              2        0.029922                
+Class: IMP_Porte*Tagliandi_certificati        3        0.029882                
+Class: IMP_Porte*IMP_REP_Tipo_di_vernice      5        0.029849                
+Group: IMP_Porte*Tagliandi_certificati        2        0.029837                
+Group: IMP_Cilindri*conditional_on_price      6        0.029737                
+Group: IMP_Porte*Veicolo_per_non_fumator      2        0.029674                
+Group: IMP_Porte*IMP_REP_Tipo_di_vernice      2        0.029468                
+Class: IMP_Cilindri*Tagliandi_certificat     13        0.029284                
+Class: IMP_Classe_emissioni*IMP_Colore_e     47        0.029046                
+Group: IMP_Cilindri*Tagliandi_certificat      5        0.028783                
+Group: IMP_Classe_emissioni*IMP_Colore_e      8        0.028594                
+Class: IMP_Porte                              1        0.027876                
+Class: IMP_Cilindri*Usato_Garantito          14        0.026220                
+Group: IMP_Cilindri*Usato_Garantito           4        0.025744                
+Class: IMP_Tipo_di_cambio*IMP_Tipo_di_un      7        0.025732                
+Class: IMP_Cilindri*Veicolo_per_non_fuma     14        0.025731                
+Group: IMP_Tipo_di_cambio*IMP_Tipo_di_un      4        0.025693                
+Class: IMP_Cilindri*IMP_REP_Tipo_di_vern     17        0.025571                
+Group: IMP_Cilindri*Veicolo_per_non_fuma      5        0.025356                
+Group: IMP_Cilindri*IMP_REP_Tipo_di_vern      4        0.025161                
+AOV16: IMP_REP_Cilindrata                    13        0.024367                
+Class: IMP_Colore_esterno*Tagliandi_cert     23        0.024102                
+Class: IMP_Colore_esterno*IMP_REP_Tipo_d     26        0.024101                
+Class: IMP_Cilindri                           7        0.023825                
+Group: IMP_Colore_esterno*IMP_REP_Tipo_d      7        0.023819                
+Group: IMP_Colore_esterno*Tagliandi_cert      5        0.023708                
+Group: IMP_Cilindri                           3        0.023430                
+Class: IMP_Classe_emissioni*IMP_Tipo_di_     15        0.023011                
+Group: IMP_Classe_emissioni*IMP_Tipo_di_      5        0.022629                
+Class: IMP_Colore_esterno*Usato_Garantit     27        0.022443                
+Class: IMP_Colore_esterno*Veicolo_per_no     25        0.022180                
+Group: IMP_Colore_esterno*Usato_Garantit      7        0.022005                
+Group: IMP_Colore_esterno*Veicolo_per_no      6        0.021893                
+Class: IMP_Tipo_di_unita*conditional_on_     20        0.021271                
+Group: IMP_Tipo_di_unita*conditional_on_      7        0.021066                
+Class: IMP_Colore_esterno                    13        0.020024                
+Group: IMP_Colore_esterno                     5        0.019635                
+Class: IMP_Tipo_di_unita*Tagliandi_certi      5        0.017751                
+Group: IMP_Tipo_di_unita*Tagliandi_certi      4        0.017716                
+Class: IMP_Tipo_di_unita*Veicolo_per_non      5        0.017627                
+Group: IMP_Tipo_di_unita*Veicolo_per_non      3        0.017424                
+Class: IMP_REP_Tipo_di_vernice*IMP_Tipo_      7        0.017384                
+Group: IMP_REP_Tipo_di_vernice*IMP_Tipo_      3        0.017063                
+Class: IMP_Tipo_di_unita*Usato_Garantito      5        0.016997                
+Group: IMP_Tipo_di_unita*Usato_Garantito      4        0.016991                
+Class: IMP_Classe_emissioni*IMP_Tipo_di_     11        0.016734                
+Group: IMP_Classe_emissioni*IMP_Tipo_di_      4        0.016620                
+Var:   IMP_REP_Cilindrata                     1        0.015277                
+Class: IMP_Tipo_di_unita                      2        0.015241                
+Class: IMP_Tipo_di_cambio*Usato_Garantit      5        0.012945                
+Group: IMP_Tipo_di_cambio*Usato_Garantit      3        0.012909                
+Class: IMP_Tipo_di_cambio*Tagliandi_cert      5        0.012900                
+Group: IMP_Tipo_di_cambio*Tagliandi_cert      2        0.012743                
+Class: IMP_Tipo_di_cambio*conditional_on     18        0.012114                
+Group: IMP_Tipo_di_cambio*conditional_on      7        0.011918                
+Class: IMP_Tipo_di_cambio*Veicolo_per_no      5        0.011316                
+Group: IMP_Tipo_di_cambio*Veicolo_per_no      3        0.011282                
+Class: IMP_REP_Tipo_di_vernice*IMP_Tipo_      6        0.010143                
+Group: IMP_REP_Tipo_di_vernice*IMP_Tipo_      3        0.010088                
+Class: IMP_Tipo_di_cambio                     2        0.009213                
+Group: IMP_Tipo_di_cambio                     1        0.009174                
+Class: IMP_Classe_emissioni*conditional_     29        0.008289                
+Group: IMP_Classe_emissioni*conditional_      7        0.008161                
+Var:   LG10_REP_price                         1        0.007477                
+Class: Usato_Garantito*conditional_on_pr     15        0.007442                
+Group: Usato_Garantito*conditional_on_pr      8        0.007352                
+Class: IMP_Classe_emissioni*Tagliandi_ce     10        0.006785                
+Group: IMP_Classe_emissioni*Tagliandi_ce      6        0.006709                
+Class: IMP_Classe_emissioni*Usato_Garant     10        0.006053                
+Group: IMP_Classe_emissioni*Usato_Garant      3        0.005939                
+Class: Tagliandi_certificati*conditional     14        0.005418                
+Group: Tagliandi_certificati*conditional      7        0.005366                
+Class: IMP_Classe_emissioni*IMP_REP_Tipo     13        0.005346                
+Group: IMP_Classe_emissioni*IMP_REP_Tipo      5        0.005312                
+Class: IMP_REP_Tipo_di_vernice*Usato_Gar      5        0.005286                
+Group: IMP_REP_Tipo_di_vernice*Usato_Gar      4        0.005198                
+Class: Veicolo_per_non_fumatori*conditio     14        0.004151    R2 < MINR2  
+Group: Veicolo_per_non_fumatori*conditio      7        0.004069    R2 < MINR2  
+Class: IMP_Classe_emissioni*Veicolo_per_     10        0.003949    R2 < MINR2  
+Group: IMP_Classe_emissioni*Veicolo_per_      5        0.003914    R2 < MINR2  
+Class: IMP_REP_Tipo_di_vernice*condition     18        0.003870    R2 < MINR2  
+Group: IMP_REP_Tipo_di_vernice*condition      7        0.003829    R2 < MINR2  
+Class: IMP_Classe_emissioni                   6        0.003592    R2 < MINR2  
+Group: IMP_Classe_emissioni                   2        0.003541    R2 < MINR2  
+Class: IMP_REP_Tipo_di_vernice*Tagliandi      4        0.003390    R2 < MINR2  
+Class: Tagliandi_certificati*Usato_Garan      3        0.002509    R2 < MINR2  
+Group: Tagliandi_certificati*Usato_Garan      2        0.002509    R2 < MINR2  
+Class: conditional_on_price                   8        0.002178    R2 < MINR2  
+Group: conditional_on_price                   5        0.002170    R2 < MINR2  
+Class: Tagliandi_certificati*Veicolo_per      3        0.001940    R2 < MINR2  
+Group: Tagliandi_certificati*Veicolo_per      2        0.001934    R2 < MINR2  
+Class: Tagliandi_certificati                  1        0.001876    R2 < MINR2  
+AOV16: REP_Anno                               4        0.001696    R2 < MINR2  
+Var:   REP_Anno                               1        0.001594    R2 < MINR2  
+Class: Usato_Garantito*Veicolo_per_non_f      3        0.001267    R2 < MINR2  
+Class: Usato_Garantito                        1        0.001128    R2 < MINR2  
+Class: IMP_REP_Tipo_di_vernice*Veicolo_p      4        0.001122    R2 < MINR2  
+Group: IMP_REP_Tipo_di_vernice*Veicolo_p      2        0.001100    R2 < MINR2  
+Class: IMP_REP_Tipo_di_vernice                2        0.001046    R2 < MINR2  
+Class: Veicolo_per_non_fumatori               1     0.000079003    R2 < MINR2  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMINE Procedure
+
+                                          Effetti scelti per il target: target10
+ 
+                                                                                                                    Errore
+                                                                                                 Somma dei      quadratico
+Effetto                                      DF        R-quadro        Valore F    p-value        quadrati           medio
+
+Group: IMP_Posti_a_sedere                     2        0.086792      225.245571     <.0001       99.537565        0.220953
+Group: Alimentazione                          3        0.039208       70.834181     <.0001       44.965733        0.211601
+Group: Carrozzeria                            3        0.026897       50.103312     <.0001       30.846466        0.205219
+Group: IMP_Marce                              4        0.018194       25.954964     <.0001       20.865843        0.200981
+Group: IMP_Cilindri                           3        0.011264       21.706647     <.0001       12.918229        0.198376
+Class: OPT_IMP_REP_Peso_a_vuoto               3        0.011867       23.190948     <.0001       13.609902        0.195621
+Var:   LG10_REP_price                         1        0.007277       43.043759     <.0001        8.345979        0.193895
+Class: OPT_IMP_REP_Consumo_Carburante_T       3        0.007941       15.803424     <.0001        9.106992        0.192089
+Class: Per_neopatentati                       1        0.006967       41.958582     <.0001        7.990444        0.190436
+Group: IMP_Colore_esterno                     5        0.004423        5.351680     <.0001        5.072387        0.189562
+Var:   IMP_REP_Cilindrata                     1        0.003832       23.295224     <.0001        4.395112        0.188670
+Class: IMP_Tipo_di_unita                      2        0.003072        9.368426     <.0001        3.522574        0.188002
+Class: OPT_IMP_REP_Emissioni_di_CO2           2        0.001473        4.499521     0.0112        1.689332        0.187724
+Group: IMP_Tipo_di_cambio                     1        0.000993        6.072674     0.0138        1.138757        0.187522
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMINE Procedure
+
+La tabella ANOVA definitiva per il target: target10
+ 
+                                           Somma dei
+Effetto           DF        R-quadro        quadrati
+
+Model             34        0.230199      264.005315
+Error           4708               .      882.851527
+Total           4742               .     1146.856842
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMINE Procedure
+
+                                Effetti non scelti per il target: target10
+ 
+                                                                                                 Somma dei
+Effetto                                      DF        R-quadro        Valore F    p-value        quadrati
+
+Class: IMP_Porte                              1     0.000059366        0.363028     0.5469        0.068085
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMINE Procedure
+
+           Stima logistica
+ 
+ Iter            Alfa            Beta
+
+    0       -2.013169        4.024864
+    1       -2.634992        5.284177
+    2       -2.745370        5.510728
+    3       -2.748470        5.517142
+    3       -2.748470        5.517142
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMINE Procedure
+
+Tabella di classificazione per CUTOFF = 0.5000
+ 
+        Accuratezza =  70.25
+ 
+                      Previsto
+Osservato              1           0
+
+1                   1163         779
+0                    632        2169
+Missing                0           0
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------
+Riepilogo della selezione delle variabili dal training
+-------------------------------------------------------------------
+
+
+Nome target: target10
+Livello target: BINARY
+Modello di selezione delle variabili: R-quadro
+
+Numero totale di input: 23
+Numero totale di input utilizzati: 23
+Numero totale di input non utilizzati: 0
+Numero totale di input rifiutati: 16
+
+Percentuale massima valori mancanti: 50
+NOTE: non vi sono variabili rifiutate dalla percentuale massima dei valori mancanti
+
+Livello massimo di classificazione: 100
+NOTE: la variabile 1 è stata rifiutata dal livello massimo di classificazione
+
+NOTE: le variabili di raggruppamento 7 sono state create

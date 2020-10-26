@@ -1,0 +1,16 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Riepilogo delle variabili
+
+                           Conteggio
+            Livello di         di
+Ruolo       misurazione    frequenza
+
+INPUT        BINARY             4   
+INPUT        INTERVAL           6   
+INPUT        NOMINAL           13   
+REJECTED     INTERVAL           6   
+REJECTED     NOMINAL            1   
+TARGET       BINARY             1   

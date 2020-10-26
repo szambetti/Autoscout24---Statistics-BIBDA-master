@@ -1,0 +1,96 @@
+*------------------------------------------------------------*
+* Log di training
+Data:               25 ottobre 2020
+Ora:                23:29:43
+*------------------------------------------------------------*
+15207  proc freq data=EMWS1.EMCODE_VariableSet noprint;
+15208  table ROLE*LEVEL/out=WORK.EMCODEMETA;
+15209  run;
+
+NOTE: There were 51 observations read from the data set EMWS1.EMCODE_VARIABLESET.
+NOTE: The data set WORK.EMCODEMETA has 14 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+      
+
+15210  proc print data=WORK.EMCODEMETA label noobs;
+15211  var ROLE LEVEL COUNT;
+15212  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+15213  title9 ' ';
+15214  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+15215  run;
+
+NOTE: There were 14 observations read from the data set WORK.EMCODEMETA.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+15216  title10;
+
+15217  %let EMEXCEPTIONSTRING=;
+15218  %let syscc = 0;
+PERFORMANCE  DETAILS
+15560  *------------------------------------------------------------*;
+15561  * EMCODE: Generation of macros and macro variables;
+15562  * To see the code generated, set the EM_DEBUG macro variable to SOURCE or _ALL_;
+15563  *------------------------------------------------------------*;
+
+15564  %let syscc = 0;
+15565  %inc "C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\EMCODE\EMTRAINCODE.sas";
+NOTE: %INCLUDE (level 1) file C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\EMCODE\EMTRAINCODE.sas is file C:\Users\Maria Vallarelli\Desktop\MASTER 
+      SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\EMCODE\EMTRAINCODE.sas.
+15566 +proc sort data= EMWS1.Score_SCORE out= bestlist;
+ERROR: File EMWS1.SCORE_SCORE.DATA does not exist.
+15567 +by descending ep_target_b;
+15568 +run;
+
+NOTE: The SAS System stopped processing this step because of errors.
+WARNING: The data set WORK.BESTLIST may be incomplete.  When this step was stopped there were 0 observations and 0 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+15569 +proc print data= bestlist;
+15570 +var control_number ep_target_b;
+ERROR: Variable CONTROL_NUMBER not found.
+ERROR: Variable EP_TARGET_B not found.
+15571 +run;
+
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+NOTE: %INCLUDE (level 1) ending.
+15572  *------------------------------------------------------------*;
+15573  * Close any missing semi colons;
+15574  *------------------------------------------------------------*;
+15575  ;
+15576  ;
+15577  ;
+15578  ;
+15579  quit;
+15580  *------------------------------------------------------------*;
+15581  * Close any unbalanced quotes;
+15582  *------------------------------------------------------------*;
+15583  /*; *"; *'; */
+15584  ;
+15585  run;
+15586  quit;
+15587  /* Reset EM Options */
+15588  options formchar="|----|+|---+=|-/\<>*";
+15589  options nocenter ls=256 ps=10000;
+15590  goptions reset=all device=GIF NODISPLAY;
+
+
+*------------------------------------------------------------* 
+* 
+* ERROR: Rilevato errore di esecuzione. L'errore di sistema restituito è 3000. 
+* Comunicare i problemi non risolti al Supporto Tecnico Clienti. 
+* 
+*------------------------------------------------------------* 

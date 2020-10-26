@@ -1,0 +1,40 @@
+*------------------------------------------------------------*
+* Log di scoring
+Data:               25 ottobre 2020
+Ora:                22:50:45
+*------------------------------------------------------------*
+12729  *------------------------------------------------------------*;
+12730  * Stat: Scoring DATA data;
+12731  *------------------------------------------------------------*;
+12732  data EMWS1.Stat_TRAIN
+12733  / view=EMWS1.Stat_TRAIN
+12734  ;
+12735  set EMWS1.Ids_DATA
+12736  ;
+12737  run;
+
+NOTE: DATA STEP view saved on file EMWS1.STAT_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: Visualizza EMWS1.IDS_DATA.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.06 seconds
+      
+
+12738  quit;
+
+12739  *------------------------------------------------------------*;
+12740  * Stat: Computing metadata for TRAIN data;
+12741  *------------------------------------------------------------*;
+
+NOTE: Visualizza EMWS1.STAT_TRAIN.VIEW used (Total process time):
+      real time           0.13 seconds
+      cpu time            0.11 seconds
+      
+NOTE: Visualizza EMWS1.STAT_TRAIN.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.04 seconds
+      

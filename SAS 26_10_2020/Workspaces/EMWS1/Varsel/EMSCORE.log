@@ -1,0 +1,144 @@
+*------------------------------------------------------------*
+* Log di scoring
+Data:               25 ottobre 2020
+Ora:                22:53:10
+*------------------------------------------------------------*
+11760  filename emflow "C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Varsel\EMFLOWSCORE.sas";
+11761  *------------------------------------------------------------*;
+11762  * Varsel: Scoring DATA data;
+11763  *------------------------------------------------------------*;
+11764  data EMWS1.Varsel_TRAIN
+11765  / view=EMWS1.Varsel_TRAIN
+11766  ;
+11767  set EMWS1.Trans_TRAIN
+11768  ;
+11769  %inc emflow;
+11911  run;
+
+NOTE: DATA STEP view saved on file EMWS1.VARSEL_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: Visualizza EMWS1.TRANS_TRAIN.VIEW used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.15 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.18 seconds
+      
+
+11912  quit;
+11913  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+11914  filename emflow "C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Varsel\EMFLOWSCORE.sas";
+11915  *------------------------------------------------------------*;
+11916  * Varsel: Scoring VALIDATE data;
+11917  *------------------------------------------------------------*;
+11918  data EMWS1.Varsel_VALIDATE
+11919  / view=EMWS1.Varsel_VALIDATE
+11920  ;
+11921  set EMWS1.Trans_VALIDATE
+11922  ;
+11923  %inc emflow;
+12065  run;
+
+NOTE: DATA STEP view saved on file EMWS1.VARSEL_VALIDATE.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: Visualizza EMWS1.TRANS_VALIDATE.VIEW used (Total process time):
+      real time           0.16 seconds
+      cpu time            0.17 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.20 seconds
+      
+
+12066  quit;
+12067  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+12068  options nosource;
+
+NOTE: There were 373 observations read from the data set EMWS1.VARSEL_OUTRSQUARE.
+NOTE: The data set EMWS1.VARSEL_R2DS has 370 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 370 observations read from the data set EMWS1.VARSEL_R2DS.
+NOTE: The data set EMWS1.VARSEL_R2DS has 370 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 14 observations read from the data set EMWS1.VARSEL_OUTEFFECT.
+NOTE: The data set EMWS1.VARSEL_EFFECTDS has 14 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 14 observations read from the data set EMWS1.VARSEL_EFFECTDS.
+NOTE: The data set EMWS1.VARSEL_EFFECTDS has 14 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: Visualizza EMWS1.VARSEL_TRAIN.VIEW used (Total process time):
+      real time           0.21 seconds
+      cpu time            0.20 seconds
+      
+NOTE: Visualizza EMWS1.VARSEL_TRAIN.VIEW used (Total process time):
+      real time           0.24 seconds
+      cpu time            0.18 seconds
+      
+NOTE: Visualizza EMWS1.VARSEL_VALIDATE.VIEW used (Total process time):
+      real time           0.23 seconds
+      cpu time            0.18 seconds
+      
+12558  run;
+
+12559  data EMWS1.Varsel_CMETA_NONREJECTS EMWS1.Varsel_CMETA_REJECTS;
+12560  set EMWS1.Varsel_CMETA_TRAIN;
+12561  if ROLE ='REJECTED' then output EMWS1.Varsel_CMETA_REJECTS;
+12562  else output EMWS1.Varsel_CMETA_NONREJECTS;
+12563  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.VARSEL_CMETA_TRAIN.
+NOTE: The data set EMWS1.VARSEL_CMETA_NONREJECTS has 17 observations and 20 variables.
+NOTE: The data set EMWS1.VARSEL_CMETA_REJECTS has 23 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.04 seconds
+      
+
+12564  data EMWS1.Varsel_CMETA_TRAIN;
+12565  set EMWS1.Varsel_CMETA_NONREJECTS;
+12566  run;
+
+NOTE: There were 17 observations read from the data set EMWS1.VARSEL_CMETA_NONREJECTS.
+NOTE: The data set EMWS1.VARSEL_CMETA_TRAIN has 17 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12567  data WORK._tmp_meta_;
+12568  set EMWS1.Varsel_CMETA_TRAIN;
+12569  if ROLE ^= 'INPUT' then delete;
+12570  run;
+
+NOTE: There were 17 observations read from the data set EMWS1.VARSEL_CMETA_TRAIN.
+NOTE: The data set WORK._TMP_META_ has 14 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+

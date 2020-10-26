@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  DataSource="autoscouttrain" Scope="LOCAL" Role="RAW" Library="LIB" Table="AUTOSCOUT_TRAIN"
+ NCols="40" NObs="6778" NBytes="5780480" Segment="" DataSourceRole="RAW" OutputType="VIEW"
+ ForceRun="N" ComputeStatistics="N" DataSelection="DATASOURCE" NewTable="" MetaAdvisor="BASIC"
+ ApplyIntervalLevelLowerLimit="Y" IntervalLowerLimit="20" ApplyMaxPercentMissing="Y"
+ MaxPercentMissing="50" ApplyMaxClassLevels="Y" MaxClassLevels="20" IdentifyEmptyColumns="Y"
+ VariableValidation="STRICT" NewVariableRole="REJECT" DropMapVariables="Y" DsId="autoscouttrain"
+ DsSampleName="" DsSampleSizeType="" DsSampleSize="" DsCreatedBy="Maria Vallarelli"
+ DsCreateDate="1919099178.5" DsModifiedBy="Maria Vallarelli" DsModifyDate="1919099178.5"
+ DsScope="LOCAL" Sample="D" SampleSizeType="PERCENT" SampleSizePercent="20" SampleSizeObs="10000"
+ DBPassThrough="Y" RunAction="Train" Component="DataSource" RawCreateTime="1919099187"
+ CreateTime="23OCT2020:19:06:27" Description="" Data="LIB.AUTOSCOUT_TRAIN" CMeta="WORK.M1FN_XU5"
+ RunId="6971509f-0b15-4eb2-a6e5-43ab8db0c075">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>

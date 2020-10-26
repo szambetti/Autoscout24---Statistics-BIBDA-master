@@ -1,0 +1,40 @@
+*------------------------------------------------------------*
+Utente:             Maria Vallarelli
+Data:               23 ottobre 2020
+Ora:                19:03:21
+*------------------------------------------------------------*
+* Output di training
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Riepilogo delle variabili
+ 
+                         Conteggio
+          Livello di         di
+Ruolo     misurazione    frequenza
+ 
+INPUT      INTERVAL          19
+INPUT      NOMINAL           15
+TARGET     INTERVAL           4
+TEXT       NOMINAL            2
+ 
+ 
+ 
+Proprietà dei dati salvati
+ 
+Libreria                                                                                                                          Osservazioni    Osservazioni    Numero di
+di dati                                                     Percorso di output                                                       totali         salvate       variabili
+ 
+  LIB       C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\autoscout_TRAIN.sas7bdat        6778            MAX            40
+
+
+*------------------------------------------------------------*
+* Output di scoring
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Output dei report
+*------------------------------------------------------------*

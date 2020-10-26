@@ -1,0 +1,177 @@
+*------------------------------------------------------------*
+* Log di scoring
+Data:               25 ottobre 2020
+Ora:                22:52:30
+*------------------------------------------------------------*
+12105  proc sort data=EMWS1.Trans_RESULT out=WORK.TransRESULT NOTHREADS;
+12106  by INPUTNAME;
+12107  run;
+
+NOTE: There were 4 observations read from the data set EMWS1.TRANS_RESULT.
+NOTE: The data set WORK.TRANSRESULT has 4 observations and 11 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+12108  proc sort data=EMWS1.Trans_VariableSet(KEEP= NAME FAMILY REPORT rename=(NAME=INPUTNAME)) out=WORK.TransVARSET NOTHREADS;
+12109  by INPUTNAME;
+12110  run;
+
+NOTE: There were 31 observations read from the data set EMWS1.TRANS_VARIABLESET.
+NOTE: The data set WORK.TRANSVARSET has 31 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+12111  data WORK.TransRESULT;
+12112  merge WORK.TransRESULT WORK.TransVARSET;
+12113  by INPUTNAME;
+12114  if NAME ne '' then output;
+12115  run;
+
+WARNING: Multiple lengths were specified for the BY variable INPUTNAME by input data sets. This might cause unexpected results.
+NOTE: There were 4 observations read from the data set WORK.TRANSRESULT.
+NOTE: There were 31 observations read from the data set WORK.TRANSVARSET.
+NOTE: The data set WORK.TRANSRESULT has 4 observations and 13 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12116  filename _code "C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Trans\TRAINDELTACODE.sas";
+12117  data _null_;
+12118  set WORK.TransRESULT;
+12119  length String $200;
+12120  file _code;
+12121  String = 'if NAME="'!!strip(name)!!'" then do;';
+12122  put / String;
+12123  if family ne '' then do;
+12124  String = '   FAMILY ="'!!strip(family)!!'";';
+12125  put String;
+12126  end;
+12127  select(formula);
+12128  when('Interaction') put '   FAMILY  ="INTERACTION";';
+12129  when('') put '   COMMENT = "' method 'transformation of ' INPUTVAR '";';
+12130  otherwise put '   COMMENT = "' formula '";';
+12131  end;
+12132  String = '   ROLE ="'!!strip(role)!!'";';
+12133  put String;
+12134  if REPORT="" then REPORT = "N";
+12135  String = '   REPORT ="'!!strip(report)!!'";';
+12136  put String;
+12137  String = '   LEVEL  ="'!!strip(level)!!'";';
+12138  put String;
+12139  put 'end;';
+12140  if formula ne 'Interaction' and INPUTNAME ne '' then do;
+12141  String = 'if NAME="'!!strip(INPUTNAME)!!'" then delete;';
+12142  put String;
+12143  end;
+12144  run;
+
+NOTE: Variable method is uninitialized.
+NOTE: Variable INPUTVAR is uninitialized.
+NOTE: The file _CODE is:
+      Nome file=C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Trans\TRAINDELTACODE.sas,
+      RECFM=V,LRECL=32767,Dimensione (byte)=0,
+      Ultima modifica=25 ottobre 2020 22:52:30,
+      Create Time=25 ottobre 2020 19:46:56
+
+NOTE: 32 records were written to the file _CODE.
+      The minimum record length was 0.
+      The maximum record length was 55.
+NOTE: There were 4 observations read from the data set WORK.TRANSRESULT.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12145  filename _code;
+NOTE: Fileref _CODE has been deassigned.
+
+12146  proc print data = EMWS1.Trans_FORMULA(obs=500) noobs label;
+12147  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_formulatransformations_title, NOQUOTE))";
+12148  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE))";
+12149  var Name ROLE LEVEL FORMULA;
+12150  run;
+
+NOTE: No observations in data set EMWS1.TRANS_FORMULA.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12151  title9;
+12152  title10;
+
+12153  filename emflow "C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Trans\EMFLOWSCORE.sas";
+12154  *------------------------------------------------------------*;
+12155  * Trans: Scoring DATA data;
+12156  *------------------------------------------------------------*;
+12157  data EMWS1.Trans_TRAIN
+12158  / view=EMWS1.Trans_TRAIN
+12159  ;
+12160  set EMWS1.Impt_TRAIN
+12161  ;
+12162  %inc emflow;
+12227  run;
+
+NOTE: DATA STEP view saved on file EMWS1.TRANS_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: Visualizza EMWS1.IMPT_TRAIN.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.07 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.10 seconds
+      
+
+12228  quit;
+12229  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+12230  filename emflow "C:\Users\Maria Vallarelli\Desktop\MASTER SLIDE\STATISTICA\LABORATORIO\AUTOSCOUT\autoscout\Workspaces\EMWS1\Trans\EMFLOWSCORE.sas";
+12231  *------------------------------------------------------------*;
+12232  * Trans: Scoring VALIDATE data;
+12233  *------------------------------------------------------------*;
+12234  data EMWS1.Trans_VALIDATE
+12235  / view=EMWS1.Trans_VALIDATE
+12236  ;
+12237  set EMWS1.Impt_VALIDATE
+12238  ;
+12239  %inc emflow;
+12304  run;
+
+NOTE: DATA STEP view saved on file EMWS1.TRANS_VALIDATE.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: Visualizza EMWS1.IMPT_VALIDATE.VIEW used (Total process time):
+      real time           0.11 seconds
+      cpu time            0.10 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.16 seconds
+      cpu time            0.15 seconds
+      
+
+12305  quit;
+12306  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+12307  *------------------------------------------------------------*;
+12308  * Trans: Computing metadata for TRAIN data;
+12309  *------------------------------------------------------------*;
+
+NOTE: Visualizza EMWS1.TRANS_TRAIN.VIEW used (Total process time):
+      real time           0.19 seconds
+      cpu time            0.17 seconds
+      
+NOTE: Visualizza EMWS1.TRANS_TRAIN.VIEW used (Total process time):
+      real time           0.17 seconds
+      cpu time            0.14 seconds
+      
+NOTE: Visualizza EMWS1.TRANS_VALIDATE.VIEW used (Total process time):
+      real time           0.16 seconds
+      cpu time            0.14 seconds
+      

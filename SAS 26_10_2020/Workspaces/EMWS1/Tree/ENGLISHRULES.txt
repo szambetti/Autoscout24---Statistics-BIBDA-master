@@ -1,0 +1,636 @@
+*------------------------------------------------------------*
+ Node = 14
+*------------------------------------------------------------*
+if Replacement: price < 9445
+AND Modello IS ONE OF: E-TRON, DS 3 CROSSBACK, LEAF, 208, PARTNER, KANGOO, NEW PANDA, 500, PANDA, YPSILON, TWINGO, 500X, STONIC, SPORTAGE, CROSSLAND X, SANDERO, FIESTA, C3, X1, C-HR, XV, YARIS, A 250,
+then 
+ Tree Node Identifier   = 14
+ Number of Observations = 31
+ Previsto: target10=1 = 0.87
+ Previsto: target10=0 = 0.13
+ 
+*------------------------------------------------------------*
+ Node = 22
+*------------------------------------------------------------*
+if Replacement: price < 50740 AND Replacement: price >= 42550 or MISSING
+AND Modello IS ONE OF: Q5, 520, A6, CAYENNE, WRANGLER
+then 
+ Tree Node Identifier   = 22
+ Number of Observations = 23
+ Previsto: target10=1 = 1.00
+ Previsto: target10=0 = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 23
+*------------------------------------------------------------*
+if Replacement: price >= 50740
+AND Modello IS ONE OF: Q5, 520, A6, CAYENNE, WRANGLER
+then 
+ Tree Node Identifier   = 23
+ Number of Observations = 20
+ Previsto: target10=1 = 0.45
+ Previsto: target10=0 = 0.55
+ 
+*------------------------------------------------------------*
+ Node = 27
+*------------------------------------------------------------*
+if Replacement: price >= 15820 or MISSING
+AND Modello IS ONE OF: CORSA, DUSTER, 500L
+then 
+ Tree Node Identifier   = 27
+ Number of Observations = 251
+ Previsto: target10=1 = 0.00
+ Previsto: target10=0 = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 32
+*------------------------------------------------------------*
+if Replacement: price < 42550 or MISSING
+AND Replacement: Emissioni_di_CO2 < 64.5
+AND Modello IS ONE OF: FORTWO, Q3, A4, CAPTUR, RENEGADE, COMPASS, 500C, NX 300, 3008, 508, LEON, A5, STELVIO, TALISMAN, 318, GIULIA, TOURAN or MISSING
+then 
+ Tree Node Identifier   = 32
+ Number of Observations = 10
+ Previsto: target10=1 = 0.60
+ Previsto: target10=0 = 0.40
+ 
+*------------------------------------------------------------*
+ Node = 33
+*------------------------------------------------------------*
+if Replacement: price < 42550 or MISSING
+AND Replacement: Emissioni_di_CO2 >= 64.5 or MISSING
+AND Modello IS ONE OF: FORTWO, Q3, A4, CAPTUR, RENEGADE, COMPASS, 500C, NX 300, 3008, 508, LEON, A5, STELVIO, TALISMAN, 318, GIULIA, TOURAN or MISSING
+then 
+ Tree Node Identifier   = 33
+ Number of Observations = 784
+ Previsto: target10=1 = 0.97
+ Previsto: target10=0 = 0.03
+ 
+*------------------------------------------------------------*
+ Node = 35
+*------------------------------------------------------------*
+if Replacement: price < 18450
+AND Replacement: Emissioni_di_CO2 >= 96
+AND Modello IS ONE OF: KONA, COOPER, NIRO, TIVOLI, GRANDLAND X, CLIO, COROLLA, A3, POLO, KADJAR, Q2, ASTRA, SCENIC, DOBLO, 218, FIORINO
+then 
+ Tree Node Identifier   = 35
+ Number of Observations = 105
+ Previsto: target10=1 = 0.95
+ Previsto: target10=0 = 0.05
+ 
+*------------------------------------------------------------*
+ Node = 38
+*------------------------------------------------------------*
+if Replacement: price < 45200 AND Replacement: price >= 42550
+AND Replacement: Emissioni_di_CO2 < 133
+AND Modello IS ONE OF: A4, 508, A5, A3, STELVIO, 318 or MISSING
+then 
+ Tree Node Identifier   = 38
+ Number of Observations = 26
+ Previsto: target10=1 = 0.08
+ Previsto: target10=0 = 0.92
+ 
+*------------------------------------------------------------*
+ Node = 40
+*------------------------------------------------------------*
+if Replacement: price >= 45200 or MISSING
+AND Posti_a_sedere IS ONE OF: 4
+AND Modello IS ONE OF: A4, 508, A5, A3, STELVIO, 318 or MISSING
+then 
+ Tree Node Identifier   = 40
+ Number of Observations = 10
+ Previsto: target10=1 = 0.40
+ Previsto: target10=0 = 0.60
+ 
+*------------------------------------------------------------*
+ Node = 41
+*------------------------------------------------------------*
+if Replacement: price >= 45200 or MISSING
+AND Posti_a_sedere IS ONE OF: 5 or MISSING
+AND Modello IS ONE OF: A4, 508, A5, A3, STELVIO, 318 or MISSING
+then 
+ Tree Node Identifier   = 41
+ Number of Observations = 71
+ Previsto: target10=1 = 0.01
+ Previsto: target10=0 = 0.99
+ 
+*------------------------------------------------------------*
+ Node = 43
+*------------------------------------------------------------*
+if Replacement: price < 15820
+AND Modello IS ONE OF: 500L or MISSING
+then 
+ Tree Node Identifier   = 43
+ Number of Observations = 133
+ Previsto: target10=1 = 1.00
+ Previsto: target10=0 = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 44
+*------------------------------------------------------------*
+if Replacement: price < 12550
+AND Modello IS ONE OF: UP! or MISSING
+then 
+ Tree Node Identifier   = 44
+ Number of Observations = 20
+ Previsto: target10=1 = 0.95
+ Previsto: target10=0 = 0.05
+ 
+*------------------------------------------------------------*
+ Node = 45
+*------------------------------------------------------------*
+if Replacement: price < 15820 AND Replacement: price >= 12550 or MISSING
+AND Modello IS ONE OF: UP! or MISSING
+then 
+ Tree Node Identifier   = 45
+ Number of Observations = 27
+ Previsto: target10=1 = 0.04
+ Previsto: target10=0 = 0.96
+ 
+*------------------------------------------------------------*
+ Node = 50
+*------------------------------------------------------------*
+if Replacement: price < 17125 AND Replacement: price >= 9445
+AND Replacement: Peso_a_vuoto >= 1263.5
+AND Modello IS ONE OF: E-TRON, DS 3 CROSSBACK, LEAF, 208, PARTNER, KANGOO, NEW PANDA, 500, PANDA, YPSILON, TWINGO, 500X, STONIC, SPORTAGE, CROSSLAND X, SANDERO, FIESTA, C3, X1, C-HR, XV, YARIS, A 250,
+then 
+ Tree Node Identifier   = 50
+ Number of Observations = 48
+ Previsto: target10=1 = 0.79
+ Previsto: target10=0 = 0.21
+ 
+*------------------------------------------------------------*
+ Node = 52
+*------------------------------------------------------------*
+if Replacement: price < 16190
+AND Modello IS ONE OF: TIPO, GIULIETTA, PASSAT VARIANT, GOLF, OCTAVIA, GOLF VARIANT, GRAND C4 SPACETOURER, CADDY
+then 
+ Tree Node Identifier   = 52
+ Number of Observations = 150
+ Previsto: target10=1 = 1.00
+ Previsto: target10=0 = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 54
+*------------------------------------------------------------*
+if Replacement: price < 42550 AND Replacement: price >= 25800
+AND Modello IS ONE OF: PASSAT VARIANT
+then 
+ Tree Node Identifier   = 54
+ Number of Observations = 19
+ Previsto: target10=1 = 0.84
+ Previsto: target10=0 = 0.16
+ 
+*------------------------------------------------------------*
+ Node = 55
+*------------------------------------------------------------*
+if Replacement: price < 42550 AND Replacement: price >= 25800
+AND Modello IS ONE OF: GOLF or MISSING
+then 
+ Tree Node Identifier   = 55
+ Number of Observations = 34
+ Previsto: target10=1 = 0.00
+ Previsto: target10=0 = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 58
+*------------------------------------------------------------*
+if Replacement: price < 15770 or MISSING
+AND Replacement: Emissioni_di_CO2 < 96 or MISSING
+AND Modello IS ONE OF: KONA, COOPER, NIRO, TIVOLI, GRANDLAND X, CLIO, COROLLA, A3, POLO, KADJAR, Q2, ASTRA, SCENIC, DOBLO, 218, FIORINO
+then 
+ Tree Node Identifier   = 58
+ Number of Observations = 18
+ Previsto: target10=1 = 1.00
+ Previsto: target10=0 = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 59
+*------------------------------------------------------------*
+if Replacement: price < 18450 AND Replacement: price >= 15770
+AND Replacement: Emissioni_di_CO2 < 96 or MISSING
+AND Modello IS ONE OF: KONA, COOPER, NIRO, TIVOLI, GRANDLAND X, CLIO, COROLLA, A3, POLO, KADJAR, Q2, ASTRA, SCENIC, DOBLO, 218, FIORINO
+then 
+ Tree Node Identifier   = 59
+ Number of Observations = 15
+ Previsto: target10=1 = 0.33
+ Previsto: target10=0 = 0.67
+ 
+*------------------------------------------------------------*
+ Node = 61
+*------------------------------------------------------------*
+if Replacement: price < 42550 AND Replacement: price >= 33400
+AND Modello IS ONE OF: KONA, COOPER, NIRO, GRANDLAND X, COROLLA, A3, KADJAR, Q2, ASTRA, SCENIC, 218 or MISSING
+then 
+ Tree Node Identifier   = 61
+ Number of Observations = 42
+ Previsto: target10=1 = 0.00
+ Previsto: target10=0 = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 62
+*------------------------------------------------------------*
+if Replacement: price < 42550 AND Replacement: price >= 18450 or MISSING
+AND Replacement: Consumo_Carburante_Totale < 8.35 or MISSING
+AND Modello IS ONE OF: TIVOLI, CLIO, POLO, DOBLO
+then 
+ Tree Node Identifier   = 62
+ Number of Observations = 52
+ Previsto: target10=1 = 0.00
+ Previsto: target10=0 = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 63
+*------------------------------------------------------------*
+if Replacement: price < 42550 AND Replacement: price >= 18450 or MISSING
+AND Replacement: Consumo_Carburante_Totale >= 8.35
+AND Modello IS ONE OF: TIVOLI, CLIO, POLO, DOBLO
+then 
+ Tree Node Identifier   = 63
+ Number of Observations = 10
+ Previsto: target10=1 = 0.20
+ Previsto: target10=0 = 0.80
+ 
+*------------------------------------------------------------*
+ Node = 64
+*------------------------------------------------------------*
+if Replacement: price < 45200 AND Replacement: price >= 42550
+AND Replacement: Emissioni_di_CO2 >= 133 or MISSING
+AND Modello IS ONE OF: STELVIO
+then 
+ Tree Node Identifier   = 64
+ Number of Observations = 16
+ Previsto: target10=1 = 1.00
+ Previsto: target10=0 = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 65
+*------------------------------------------------------------*
+if Replacement: price < 45200 AND Replacement: price >= 42550
+AND Replacement: Emissioni_di_CO2 >= 133 or MISSING
+AND Modello equals Missing
+then 
+ Tree Node Identifier   = 65
+ Number of Observations = 10
+ Previsto: target10=1 = 0.50
+ Previsto: target10=0 = 0.50
+ 
+*------------------------------------------------------------*
+ Node = 66
+*------------------------------------------------------------*
+if Replacement: price < 15045 or MISSING
+AND Modello IS ONE OF: CORSA, DUSTER
+then 
+ Tree Node Identifier   = 66
+ Number of Observations = 21
+ Previsto: target10=1 = 1.00
+ Previsto: target10=0 = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 67
+*------------------------------------------------------------*
+if Replacement: price < 15820 AND Replacement: price >= 15045
+AND Modello IS ONE OF: CORSA, DUSTER
+then 
+ Tree Node Identifier   = 67
+ Number of Observations = 10
+ Previsto: target10=1 = 0.50
+ Previsto: target10=0 = 0.50
+ 
+*------------------------------------------------------------*
+ Node = 68
+*------------------------------------------------------------*
+if Replacement: price < 20620 AND Replacement: price >= 15820
+AND Replacement: Consumo_Carburante_Totale < 4.15 or MISSING
+AND Modello IS ONE OF: VITARA, PUMA, UX 250H, CX-30, X3, CLA 200, TIGUAN, PASSAT, SCALA, 118, TUCSON, B 180, 216, 116, C4 SPACETOURER or MISSING
+then 
+ Tree Node Identifier   = 68
+ Number of Observations = 17
+ Previsto: target10=1 = 0.29
+ Previsto: target10=0 = 0.71
+ 
+*------------------------------------------------------------*
+ Node = 69
+*------------------------------------------------------------*
+if Replacement: price < 20620 AND Replacement: price >= 15820
+AND Replacement: Consumo_Carburante_Totale >= 4.15
+AND Modello IS ONE OF: VITARA, PUMA, UX 250H, CX-30, X3, CLA 200, TIGUAN, PASSAT, SCALA, 118, TUCSON, B 180, 216, 116, C4 SPACETOURER or MISSING
+then 
+ Tree Node Identifier   = 69
+ Number of Observations = 48
+ Previsto: target10=1 = 0.81
+ Previsto: target10=0 = 0.19
+ 
+*------------------------------------------------------------*
+ Node = 70
+*------------------------------------------------------------*
+if Tipo_di_unita IS ONE OF: POSTERIORE
+AND Replacement: price >= 20620 or MISSING
+AND Modello IS ONE OF: VITARA, PUMA, UX 250H, CX-30, X3, CLA 200, TIGUAN, PASSAT, SCALA, 118, TUCSON, B 180, 216, 116, C4 SPACETOURER or MISSING
+then 
+ Tree Node Identifier   = 70
+ Number of Observations = 17
+ Previsto: target10=1 = 0.71
+ Previsto: target10=0 = 0.29
+ 
+*------------------------------------------------------------*
+ Node = 72
+*------------------------------------------------------------*
+if Replacement: price < 11725 AND Replacement: price >= 9445
+AND Replacement: Peso_a_vuoto < 1263.5 or MISSING
+AND Modello IS ONE OF: 500
+then 
+ Tree Node Identifier   = 72
+ Number of Observations = 31
+ Previsto: target10=1 = 1.00
+ Previsto: target10=0 = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 79
+*------------------------------------------------------------*
+if Replacement: price >= 17125 or MISSING
+AND Replacement: Peso_a_vuoto >= 1263.5
+AND Modello IS ONE OF: 500X, T-ROC, ARONA, ATECA, 308, L200, COOPER D COUNTRYMAN, CHEROKEE, COOPER D CLUBMAN, 320 or MISSING
+then 
+ Tree Node Identifier   = 79
+ Number of Observations = 233
+ Previsto: target10=1 = 0.02
+ Previsto: target10=0 = 0.98
+ 
+*------------------------------------------------------------*
+ Node = 81
+*------------------------------------------------------------*
+if Replacement: price < 25800 AND Replacement: price >= 16190 or MISSING
+AND Modello IS ONE OF: TIPO
+then 
+ Tree Node Identifier   = 81
+ Number of Observations = 38
+ Previsto: target10=1 = 0.00
+ Previsto: target10=0 = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 85
+*------------------------------------------------------------*
+if Replacement: price < 33400 AND Replacement: price >= 18450 or MISSING
+AND Modello IS ONE OF: GRANDLAND X, A3 or MISSING
+then 
+ Tree Node Identifier   = 85
+ Number of Observations = 54
+ Previsto: target10=1 = 1.00
+ Previsto: target10=0 = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 90
+*------------------------------------------------------------*
+if Replacement: price < 11725 AND Replacement: price >= 9445
+AND Replacement: Peso_a_vuoto < 1263.5 or MISSING
+AND Modello IS ONE OF: SANDERO or MISSING
+then 
+ Tree Node Identifier   = 90
+ Number of Observations = 15
+ Previsto: target10=1 = 0.33
+ Previsto: target10=0 = 0.67
+ 
+*------------------------------------------------------------*
+ Node = 91
+*------------------------------------------------------------*
+if Replacement: price < 11725 AND Replacement: price >= 9445
+AND Replacement: Peso_a_vuoto < 1263.5 or MISSING
+AND Modello IS ONE OF: NEW PANDA, PANDA, YPSILON
+then 
+ Tree Node Identifier   = 91
+ Number of Observations = 139
+ Previsto: target10=1 = 0.00
+ Previsto: target10=0 = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 92
+*------------------------------------------------------------*
+if Replacement: price < 17950 AND Replacement: price >= 11725
+AND Replacement: Peso_a_vuoto < 1263.5 or MISSING
+AND Modello IS ONE OF: 208, KANGOO, C3, X1, YARIS, T-ROC, ARONA, QASHQAI, MEGANE, FOCUS, 308, C 220 or MISSING
+then 
+ Tree Node Identifier   = 92
+ Number of Observations = 40
+ Previsto: target10=1 = 0.43
+ Previsto: target10=0 = 0.58
+ 
+*------------------------------------------------------------*
+ Node = 93
+*------------------------------------------------------------*
+if Replacement: price >= 17950 or MISSING
+AND Replacement: Peso_a_vuoto < 1263.5 or MISSING
+AND Modello IS ONE OF: 208, KANGOO, C3, X1, YARIS, T-ROC, ARONA, QASHQAI, MEGANE, FOCUS, 308, C 220 or MISSING
+then 
+ Tree Node Identifier   = 93
+ Number of Observations = 176
+ Previsto: target10=1 = 0.06
+ Previsto: target10=0 = 0.94
+ 
+*------------------------------------------------------------*
+ Node = 94
+*------------------------------------------------------------*
+if Replacement: price >= 11725 or MISSING
+AND Replacement: Peso_a_vuoto < 1263.5 or MISSING
+AND Modello IS ONE OF: 500X
+then 
+ Tree Node Identifier   = 94
+ Number of Observations = 54
+ Previsto: target10=1 = 0.04
+ Previsto: target10=0 = 0.96
+ 
+*------------------------------------------------------------*
+ Node = 95
+*------------------------------------------------------------*
+if Replacement: price >= 11725 or MISSING
+AND Replacement: Peso_a_vuoto < 1263.5 or MISSING
+AND Modello IS ONE OF: LEAF, PARTNER, 500, PANDA, YPSILON, TWINGO, STONIC, CROSSLAND X, SANDERO, FIESTA, C-HR, KAMIQ, X-TRAIL, T-CROSS, C4 CACTUS, IBIZA, COMBO, INSIGNIA, COOPER D CLUBMAN, 320 or MISS
+then 
+ Tree Node Identifier   = 95
+ Number of Observations = 1102
+ Previsto: target10=1 = 0.00
+ Previsto: target10=0 = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 96
+*------------------------------------------------------------*
+if Replacement: price < 22190 AND Replacement: price >= 17125
+AND Replacement: Peso_a_vuoto >= 1263.5
+AND Modello IS ONE OF: DS 3 CROSSBACK, C-HR, QASHQAI, 420
+then 
+ Tree Node Identifier   = 96
+ Number of Observations = 10
+ Previsto: target10=1 = 1.00
+ Previsto: target10=0 = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 97
+*------------------------------------------------------------*
+if Replacement: price >= 22190 or MISSING
+AND Replacement: Peso_a_vuoto >= 1263.5
+AND Modello IS ONE OF: DS 3 CROSSBACK, C-HR, QASHQAI, 420
+then 
+ Tree Node Identifier   = 97
+ Number of Observations = 65
+ Previsto: target10=1 = 0.11
+ Previsto: target10=0 = 0.89
+ 
+*------------------------------------------------------------*
+ Node = 98
+*------------------------------------------------------------*
+if Replacement: price < 25800 AND Replacement: price >= 16190 or MISSING
+AND Replacement: Emissioni_di_CO2 < 118.5 or MISSING
+AND Modello IS ONE OF: GIULIETTA, GOLF, OCTAVIA, GOLF VARIANT, GRAND C4 SPACETOURER, CADDY or MISSING
+then 
+ Tree Node Identifier   = 98
+ Number of Observations = 165
+ Previsto: target10=1 = 0.98
+ Previsto: target10=0 = 0.02
+ 
+*------------------------------------------------------------*
+ Node = 102
+*------------------------------------------------------------*
+if Tipo_di_unita IS ONE OF: ANTERIORE, 4X4 or MISSING
+AND Replacement: price >= 20620 or MISSING
+AND Replacement: Cilindrata < 1417
+AND Modello IS ONE OF: VITARA, PUMA, UX 250H, CX-30, X3, CLA 200, TIGUAN, PASSAT, SCALA, 118, TUCSON, B 180, 216, 116, C4 SPACETOURER or MISSING
+AND Alimentazione IS ONE OF: BENZINA
+then 
+ Tree Node Identifier   = 102
+ Number of Observations = 15
+ Previsto: target10=1 = 0.33
+ Previsto: target10=0 = 0.67
+ 
+*------------------------------------------------------------*
+ Node = 103
+*------------------------------------------------------------*
+if Tipo_di_unita IS ONE OF: ANTERIORE, 4X4 or MISSING
+AND Replacement: price >= 20620 or MISSING
+AND Replacement: Cilindrata < 1417
+AND Modello IS ONE OF: VITARA, PUMA, UX 250H, CX-30, X3, CLA 200, TIGUAN, PASSAT, SCALA, 118, TUCSON, B 180, 216, 116, C4 SPACETOURER or MISSING
+AND Alimentazione IS ONE OF: ELETTRICA/BENZINA or MISSING
+then 
+ Tree Node Identifier   = 103
+ Number of Observations = 78
+ Previsto: target10=1 = 0.00
+ Previsto: target10=0 = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 104
+*------------------------------------------------------------*
+if Tipo_di_unita IS ONE OF: ANTERIORE, 4X4 or MISSING
+AND Replacement: price < 31850 AND Replacement: price >= 20620
+AND Replacement: Cilindrata >= 1417 or MISSING
+AND Modello IS ONE OF: VITARA, PUMA, UX 250H, CX-30, X3, CLA 200, TIGUAN, PASSAT, SCALA, 118, TUCSON, B 180, 216, 116, C4 SPACETOURER or MISSING
+then 
+ Tree Node Identifier   = 104
+ Number of Observations = 101
+ Previsto: target10=1 = 0.45
+ Previsto: target10=0 = 0.55
+ 
+*------------------------------------------------------------*
+ Node = 105
+*------------------------------------------------------------*
+if Tipo_di_unita IS ONE OF: ANTERIORE, 4X4 or MISSING
+AND Replacement: price >= 31850 or MISSING
+AND Replacement: Cilindrata >= 1417 or MISSING
+AND Modello IS ONE OF: VITARA, PUMA, UX 250H, CX-30, X3, CLA 200, TIGUAN, PASSAT, SCALA, 118, TUCSON, B 180, 216, 116, C4 SPACETOURER or MISSING
+then 
+ Tree Node Identifier   = 105
+ Number of Observations = 159
+ Previsto: target10=1 = 0.17
+ Previsto: target10=0 = 0.83
+ 
+*------------------------------------------------------------*
+ Node = 108
+*------------------------------------------------------------*
+if Replacement: price < 21800 AND Replacement: price >= 16190 or MISSING
+AND Replacement: Emissioni_di_CO2 >= 118.5
+AND Modello IS ONE OF: GIULIETTA, GOLF, OCTAVIA, GOLF VARIANT, GRAND C4 SPACETOURER, CADDY or MISSING
+then 
+ Tree Node Identifier   = 108
+ Number of Observations = 29
+ Previsto: target10=1 = 1.00
+ Previsto: target10=0 = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 109
+*------------------------------------------------------------*
+if Replacement: price < 25800 AND Replacement: price >= 21800
+AND Replacement: Emissioni_di_CO2 >= 118.5
+AND Modello IS ONE OF: GIULIETTA, GOLF, OCTAVIA, GOLF VARIANT, GRAND C4 SPACETOURER, CADDY or MISSING
+then 
+ Tree Node Identifier   = 109
+ Number of Observations = 11
+ Previsto: target10=1 = 0.18
+ Previsto: target10=0 = 0.82
+ 
+*------------------------------------------------------------*
+ Node = 111
+*------------------------------------------------------------*
+if Replacement: price < 21995 AND Replacement: price >= 18450
+AND Modello IS ONE OF: KONA, KADJAR, SCENIC or MISSING
+then 
+ Tree Node Identifier   = 111
+ Number of Observations = 42
+ Previsto: target10=1 = 1.00
+ Previsto: target10=0 = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 112
+*------------------------------------------------------------*
+if Replacement: price < 33400 AND Replacement: price >= 21995 or MISSING
+AND Replacement: Cilindrata < 1773.5 or MISSING
+AND Modello IS ONE OF: KONA, NIRO, COROLLA, KADJAR, Q2, ASTRA, SCENIC, 218
+then 
+ Tree Node Identifier   = 112
+ Number of Observations = 65
+ Previsto: target10=1 = 0.18
+ Previsto: target10=0 = 0.82
+ 
+*------------------------------------------------------------*
+ Node = 116
+*------------------------------------------------------------*
+if Replacement: price < 20425 AND Replacement: price >= 18450 or MISSING
+AND Modello IS ONE OF: ASTRA
+then 
+ Tree Node Identifier   = 116
+ Number of Observations = 24
+ Previsto: target10=1 = 1.00
+ Previsto: target10=0 = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 117
+*------------------------------------------------------------*
+if Replacement: price < 21995 AND Replacement: price >= 20425
+AND Modello IS ONE OF: ASTRA
+then 
+ Tree Node Identifier   = 117
+ Number of Observations = 12
+ Previsto: target10=1 = 0.00
+ Previsto: target10=0 = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 118
+*------------------------------------------------------------*
+if Replacement: price < 30300 AND Replacement: price >= 21995 or MISSING
+AND Replacement: Cilindrata >= 1773.5
+AND Modello IS ONE OF: KONA, NIRO, COROLLA, KADJAR, Q2, ASTRA, SCENIC, 218
+then 
+ Tree Node Identifier   = 118
+ Number of Observations = 36
+ Previsto: target10=1 = 0.94
+ Previsto: target10=0 = 0.06
+ 
+*------------------------------------------------------------*
+ Node = 119
+*------------------------------------------------------------*
+if Replacement: price < 33400 AND Replacement: price >= 30300
+AND Replacement: Cilindrata >= 1773.5
+AND Modello IS ONE OF: KONA, NIRO, COROLLA, KADJAR, Q2, ASTRA, SCENIC, 218
+then 
+ Tree Node Identifier   = 119
+ Number of Observations = 11
+ Previsto: target10=1 = 0.00
+ Previsto: target10=0 = 1.00
+ 

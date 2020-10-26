@@ -1,0 +1,57 @@
+*------------------------------------------------------------*
+* Log di scoring
+Data:               25 ottobre 2020
+Ora:                20:00:03
+*------------------------------------------------------------*
+12081  *------------------------------------------------------------*;
+12082  * Ids: Computing metadata for DATA data;
+12083  *------------------------------------------------------------*;
+
+NOTE: Visualizza EMWS1.IDS_DATA.VIEW used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+12084  data EMWS1.Ids_EMINFO;
+12085  length TARGET KEY $32 DATA $43;
+12086  TARGET="";
+12087  KEY="IDSTABLE";
+12088  DATA="LIB.AUTOSCOUT_TRAIN";
+12089  output;
+12090  TARGET="target10";
+12091  KEY="DECDATA";
+12092  DATA="EMWS1.Ids_target10_DD";
+12093  output;
+12094  TARGET="target10";
+12095  KEY="DECMETA";
+12096  DATA="EMWS1.Ids_target10_DM";
+12097  output;
+12098  TARGET="";
+12099  KEY="STATS";
+12100  DATA="EMWS1.Ids_EMSTATDEFAULT";
+12101  output;
+12102  run;
+
+NOTE: The data set EMWS1.IDS_EMINFO has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: Visualizza EMWS1.IDS_DATA.VIEW used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+12103  data EMWS1.Ids_CMeta_DATA;
+12104  set EMWS1.Ids_VariableSet;
+12105  drop DROP;
+12106  where DROP='N';
+12107  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.IDS_VARIABLESET.
+      WHERE DROP='N';
+NOTE: The data set EMWS1.IDS_CMETA_DATA has 40 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
